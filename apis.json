@@ -1,0 +1,66 @@
+{
+    "name": "Roku",
+    "description": "Roku provides the simplest way to stream entertainment to your TV. On your terms. With thousands of available channels to choose from.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1134-roku.jpg",
+    "tags": [
+        "have api",
+        "televisions",
+        "time zones",
+        "videos"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/roku\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Roku",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1134-roku.jpg",
+            "humanURL": "http:\/\/www.roku.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/roku-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.roku.com"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blog.roku.com\/feed"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/roku"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/roku"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/developer.roku.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/roku"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/rokuplayer"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.roku.com"
+        }
+    ]
+}
