@@ -1,0 +1,118 @@
+---
+aid: roku
+url: https://github.com/api-evangelist/roku
+name: Roku
+type: Index
+image: https://image.roku.com/ImageServer/global/favicons/favicon-32x32.png
+tags:
+  - Streaming
+  - Television
+  - Media
+  - Entertainment
+  - Connected TV
+  - Consumer Electronics
+description: Roku is the leading TV streaming platform in the U.S., Canada, and Mexico, offering a comprehensive operating system that powers smart TVs, streaming players, and audio devices. Roku provides a robust developer program for building channel apps, monetizing through Roku Pay, integrating analytics, and controlling devices via the External Control Protocol. The platform supports both BrightScript and SceneGraph frameworks for app development.
+created: '2026-05-04'
+modified: '2026-05-04'
+specificationVersion: '0.19'
+apis:
+  - aid: roku:brightscript
+    name: Roku BrightScript SDK
+    humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+    description: BrightScript is Roku's scripting language used to build apps for the Roku platform. The SDK provides a comprehensive component library with over 100 built-in objects covering UI, networking, media playback, and device interaction.
+    tags:
+      - SDK
+      - BrightScript
+      - Channel Development
+    properties:
+      - type: Documentation
+        url: https://developer.roku.com/docs/references/brightscript/component-reference.md
+      - type: APIReference
+        url: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  - aid: roku:scenegraph
+    name: Roku SceneGraph
+    humanURL: https://developer.roku.com/docs/developer-program/core-concepts/scenegraph-overview.md
+    description: SceneGraph is Roku's XML-based declarative UI framework for building rich, performant channel applications. It provides node components, animations, and a scene-based architecture.
+    tags:
+      - UI Framework
+      - SceneGraph
+      - Channel Development
+    properties:
+      - type: Documentation
+        url: https://developer.roku.com/docs/developer-program/core-concepts/scenegraph-overview.md
+      - type: APIReference
+        url: https://developer.roku.com/docs/references/scenegraph/component-reference.md
+  - aid: roku:external-control-protocol
+    name: Roku External Control Protocol (ECP)
+    humanURL: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+    description: The External Control Protocol (ECP) is a simple HTTP-based API enabling third-party devices and applications to control Roku devices over the local network. Used for device discovery, key press injection, app launching, and querying device state.
+    tags:
+      - REST
+      - HTTP
+      - Device Control
+      - LAN
+    properties:
+      - type: Documentation
+        url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+      - type: APIReference
+        url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - aid: roku:pay
+    name: Roku Pay Web Services
+    humanURL: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+    description: Roku Pay provides web service APIs for billing, subscription management, transaction validation, and entitlement checks for monetized Roku channels.
+    tags:
+      - Billing
+      - Payments
+      - Subscriptions
+      - Monetization
+    properties:
+      - type: Documentation
+        url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+      - type: APIReference
+        url: https://developer.roku.com/docs/developer-program/roku-pay/web-services/web-services-overview.md
+  - aid: roku:analytics
+    name: Roku Analytics
+    humanURL: https://developer.roku.com/docs/developer-program/marketing/roku-analytics.md
+    description: Roku Analytics provides performance reporting, audience metrics, and engagement data for Roku channel publishers.
+    tags:
+      - Analytics
+      - Reporting
+    properties:
+      - type: Documentation
+        url: https://developer.roku.com/docs/developer-program/marketing/roku-analytics.md
+  - aid: roku:authentication
+    name: Roku Authentication Framework
+    humanURL: https://developer.roku.com/docs/developer-program/authentication/authentication-overview.md
+    description: APIs and patterns for implementing user sign-in and authentication within Roku channels, including OAuth-style flows.
+    tags:
+      - Authentication
+      - OAuth
+    properties:
+      - type: Documentation
+        url: https://developer.roku.com/docs/developer-program/authentication/authentication-overview.md
+common:
+  - type: Website
+    url: https://www.roku.com
+  - type: DeveloperPortal
+    url: https://developer.roku.com
+  - type: Documentation
+    url: https://developer.roku.com/docs
+  - type: GettingStarted
+    url: https://developer.roku.com/en-gb/docs/get-started/getting-started.md
+  - type: Courses
+    url: https://developer.roku.com/en-gb/videos/courses
+  - type: SDK
+    url: https://developer.roku.com/en-gb/docs/developer-program/dev-tools/dev-tools-overview.md
+  - type: Support
+    url: https://developer.roku.com/en-gb/support
+  - type: Blog
+    url: https://blog.roku.com
+  - type: GitHubOrganization
+    url: https://github.com/rokudev
+  - type: TermsOfService
+    url: https://developer.roku.com/en-gb/docs/developer-program/agreements/registered-developer-agreement.md
+  - type: PrivacyPolicy
+    url: https://docs.roku.com/published/userprivacypolicy/en/us
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
