@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/pay-web-services-transaction-validation-schema.json",
+  "title": "TransactionValidation",
+  "description": "Result of a transaction-validation request.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Operation status (Success, Failure)."
+    },
+    "errorCode": {
+      "type": "integer",
+      "description": "Numeric Roku error code on failure."
+    },
+    "errorMessage": {
+      "type": "string"
+    },
+    "transactionId": {
+      "type": "string",
+      "description": "The transaction identifier that was validated."
+    },
+    "productId": {
+      "type": "string",
+      "description": "The Roku product code for the entitled product."
+    },
+    "productName": {
+      "type": "string"
+    },
+    "purchaseDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the entitlement expires (for subscriptions and time-limited rentals)."
+    },
+    "purchaseStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Inactive",
+        "Pending_Active",
+        "Pending_Inactive"
+      ]
+    },
+    "isEntitled": {
+      "type": "boolean",
+      "description": "Whether the customer currently has access to the product."
+    },
+    "purchaseChannel": {
+      "type": "string",
+      "description": "How the purchase was initiated (e.g., Device, Web, InstantSignup)."
+    },
+    "purchaseContext": {
+      "type": "string",
+      "description": "Context flags identifying the purchase source."
+    },
+    "rokuCustomerId": {
+      "type": "string",
+      "description": "The Roku-issued anonymized customer identifier."
+    },
+    "amount": {
+      "type": "number",
+      "format": "float"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "tax": {
+      "type": "number",
+      "format": "float"
+    }
+  }
+}

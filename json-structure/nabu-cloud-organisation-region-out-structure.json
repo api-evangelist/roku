@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-organisation-region-out-structure.json",
+  "name": "OrganisationRegionOut",
+  "description": "OrganisationRegionOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "region_id": {
+      "type": "int32",
+      "title": "Region Id"
+    },
+    "region_name": {
+      "type": "string",
+      "title": "Region Name"
+    },
+    "aws_region": {
+      "$ref": "#/components/schemas/AWSRegion"
+    },
+    "agent_active": {
+      "type": "boolean",
+      "title": "Agent Active"
+    },
+    "agent_stream_options": {
+      "items": {
+        "$ref": "#/components/schemas/AgentStreamOption"
+      },
+      "type": "array",
+      "title": "Agent Stream Options"
+    }
+  },
+  "required": [
+    "region_id",
+    "region_name",
+    "aws_region",
+    "agent_active",
+    "agent_stream_options"
+  ]
+}

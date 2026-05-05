@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-device-start-schema.json",
+  "title": "DeviceStart",
+  "description": "DeviceStart schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "snapshot_id": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Snapshot Id",
+      "description": "The ID of the snapshot to use for the device."
+    },
+    "region_id": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Region Id",
+      "description": "The ID of the region where the device will run."
+    },
+    "stream_option_id": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Stream Option Id",
+      "description": "The ID of the stream option to use for the device."
+    },
+    "rootfs_artifactory_path": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "pattern": "^[a-zA-Z0-9_-]*(\\/[a-zA-Z0-9._-]+)*(\\:[a-zA-Z0-9._-]+)?$",
+      "title": "Rootfs Artifactory Path",
+      "description": "The path of the rootfs image in artifactory.",
+      "examples": [
+        "official/release/2024-h2/r14.0.4.122xx-rta/native_tv:latest",
+        "premergeci/native_tv:4838657"
+      ]
+    },
+    "max_runtime": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Max Runtime",
+      "description": "The maximum runtime of the device in seconds, 0 for project max runtime.",
+      "default": 0
+    },
+    "reboot": {
+      "type": "integer",
+      "maximum": 150,
+      "minimum": -1,
+      "title": "Reboot",
+      "description": "Device reboot behaviour.-1 for no reboots, including requested reboot; 0 for no device crash reboots; and >0 for n number of device crash reboots.A device crash is determined by restart_reason in the device nvram. A device shutdown will act like a reboot.",
+      "default": 0
+    },
+    "override_is_asan": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Override Is Asan",
+      "description": "\n            Whether to force the device instance to be an ASAN build. If set to\n            True then the instance is started with ASAN resources, if False the\n            instance is started without, if None the ASAN status is determined\n            by the rootfs image.\n            This can be useful if an asan rootfs is for some reason not\n            tagged as such.\n        "
+    }
+  },
+  "required": [
+    "snapshot_id",
+    "region_id",
+    "stream_option_id",
+    "rootfs_artifactory_path"
+  ]
+}

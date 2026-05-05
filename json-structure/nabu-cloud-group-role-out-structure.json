@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-group-role-out-structure.json",
+  "name": "GroupRoleOut",
+  "description": "GroupRoleOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "group_role_id": {
+      "type": "int32",
+      "title": "Group Role Id"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "permissions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "title": "Permissions"
+    }
+  },
+  "required": [
+    "group_role_id",
+    "name",
+    "permissions"
+  ]
+}

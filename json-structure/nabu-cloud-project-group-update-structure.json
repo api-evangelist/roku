@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-project-group-update-structure.json",
+  "name": "ProjectGroupUpdate",
+  "description": "ProjectGroupUpdate schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "project_role_id": {
+      "type": "int32",
+      "title": "Project Role Id"
+    }
+  },
+  "required": [
+    "project_role_id"
+  ]
+}

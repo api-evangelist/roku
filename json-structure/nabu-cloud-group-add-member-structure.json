@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-group-add-member-structure.json",
+  "name": "GroupAddMember",
+  "description": "GroupAddMember schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "group_role_id": {
+      "type": "int32",
+      "title": "Group Role Id"
+    },
+    "user_id": {
+      "type": "uuid",
+      "title": "User Id"
+    }
+  },
+  "required": [
+    "group_role_id",
+    "user_id"
+  ]
+}

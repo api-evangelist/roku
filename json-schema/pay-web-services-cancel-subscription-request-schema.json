@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/pay-web-services-cancel-subscription-request-schema.json",
+  "title": "CancelSubscriptionRequest",
+  "description": "CancelSubscriptionRequest schema from Roku Pay Web Services",
+  "type": "object",
+  "properties": {
+    "partnerAPIKey": {
+      "type": "string"
+    },
+    "rokuCustomerId": {
+      "type": "string"
+    },
+    "productCode": {
+      "type": "string"
+    },
+    "cancellationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "partnerAPIKey",
+    "rokuCustomerId",
+    "productCode"
+  ]
+}

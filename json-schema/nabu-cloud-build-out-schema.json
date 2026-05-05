@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-build-out-schema.json",
+  "title": "BuildOut",
+  "description": "BuildOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "title": "Id"
+    },
+    "artifactory_path": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "pattern": "^[a-zA-Z0-9_-]*(\\/[a-zA-Z0-9._-]+)*(\\:[a-zA-Z0-9._-]+)?$",
+      "title": "Artifactory Path",
+      "description": "The path of the build in artifactory."
+    },
+    "tag": {
+      "type": "string",
+      "title": "Tag",
+      "description": "The tag of the build"
+    },
+    "full_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Full Version",
+      "description": "The full version of the build"
+    },
+    "asan": {
+      "type": "boolean",
+      "title": "Asan",
+      "description": "Whether the build is ASAN"
+    },
+    "public": {
+      "type": "boolean",
+      "title": "Public",
+      "description": "Whether the build is public"
+    },
+    "source": {
+      "$ref": "#/components/schemas/BuildSource",
+      "description": "The source of the build",
+      "examples": [
+        "official",
+        "premergeci"
+      ]
+    },
+    "device_type": {
+      "$ref": "#/components/schemas/DeviceType",
+      "description": "The type of the Device.",
+      "examples": [
+        "tv"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "artifactory_path",
+    "tag",
+    "full_version",
+    "asan",
+    "public",
+    "source",
+    "device_type"
+  ]
+}

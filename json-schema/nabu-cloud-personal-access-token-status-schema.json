@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-personal-access-token-status-schema.json",
+  "title": "PersonalAccessTokenStatus",
+  "description": "PersonalAccessTokenStatus schema from Roku Nabu Cloud",
+  "type": "string",
+  "enum": [
+    "active",
+    "expired",
+    "revoked"
+  ]
+}

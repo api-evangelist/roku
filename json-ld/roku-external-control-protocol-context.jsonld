@@ -1,0 +1,222 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "roku": "https://developer.roku.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ActiveApp": "roku:ActiveApp",
+    "App": "roku:App",
+    "AppList": "roku:AppList",
+    "DeviceInfo": "roku:DeviceInfo",
+    "MediaPlayer": "roku:MediaPlayer",
+    "app": {
+      "@id": "roku:app"
+    },
+    "apps": {
+      "@id": "roku:apps",
+      "@container": "@set"
+    },
+    "audio": {
+      "@id": "roku:audio",
+      "@type": "xsd:string"
+    },
+    "bitrate": {
+      "@id": "roku:bitrate",
+      "@type": "xsd:integer"
+    },
+    "buffering": {
+      "@id": "roku:buffering",
+      "@type": "@id"
+    },
+    "captions": {
+      "@id": "roku:captions",
+      "@type": "xsd:string"
+    },
+    "container": {
+      "@id": "roku:container",
+      "@type": "xsd:string"
+    },
+    "countryCode": {
+      "@id": "roku:countryCode",
+      "@type": "xsd:string"
+    },
+    "current": {
+      "@id": "roku:current",
+      "@type": "xsd:integer"
+    },
+    "developerEnabled": {
+      "@id": "roku:developerEnabled",
+      "@type": "xsd:boolean"
+    },
+    "deviceId": {
+      "@id": "roku:deviceId",
+      "@type": "xsd:string"
+    },
+    "drm": {
+      "@id": "roku:drm",
+      "@type": "xsd:string"
+    },
+    "duration": {
+      "@id": "roku:duration",
+      "@type": "xsd:integer"
+    },
+    "error": {
+      "@id": "roku:error",
+      "@type": "xsd:boolean"
+    },
+    "ethernetMac": {
+      "@id": "roku:ethernetMac",
+      "@type": "xsd:string"
+    },
+    "format": {
+      "@id": "roku:format",
+      "@type": "@id"
+    },
+    "friendlyDeviceName": {
+      "@id": "roku:friendlyDeviceName",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "roku:id",
+      "@type": "xsd:string"
+    },
+    "isLive": {
+      "@id": "roku:is_live",
+      "@type": "xsd:boolean"
+    },
+    "language": {
+      "@id": "roku:language",
+      "@type": "xsd:string"
+    },
+    "max": {
+      "@id": "roku:max",
+      "@type": "xsd:integer"
+    },
+    "mediaSequence": {
+      "@id": "roku:media_sequence",
+      "@type": "xsd:integer"
+    },
+    "modelName": {
+      "@id": "roku:modelName",
+      "@type": "xsd:string"
+    },
+    "modelNumber": {
+      "@id": "roku:modelNumber",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "networkType": {
+      "@id": "roku:networkType",
+      "@type": "xsd:string"
+    },
+    "newStream": {
+      "@id": "roku:new_stream",
+      "@type": "@id"
+    },
+    "plugin": {
+      "@id": "roku:plugin",
+      "@type": "@id"
+    },
+    "position": {
+      "@id": "roku:position",
+      "@type": "xsd:integer"
+    },
+    "powerMode": {
+      "@id": "roku:powerMode",
+      "@type": "xsd:string"
+    },
+    "runtime": {
+      "@id": "roku:runtime",
+      "@type": "xsd:integer"
+    },
+    "screensaver": {
+      "@id": "roku:screensaver"
+    },
+    "segmentType": {
+      "@id": "roku:segment_type",
+      "@type": "xsd:string"
+    },
+    "serialNumber": {
+      "@id": "roku:serialNumber",
+      "@type": "xsd:string"
+    },
+    "softwareBuild": {
+      "@id": "roku:softwareBuild",
+      "@type": "xsd:string"
+    },
+    "softwareVersion": {
+      "@id": "roku:softwareVersion",
+      "@type": "xsd:string"
+    },
+    "speed": {
+      "@id": "roku:speed",
+      "@type": "xsd:integer"
+    },
+    "state": {
+      "@id": "roku:state",
+      "@type": "xsd:string"
+    },
+    "streamSegment": {
+      "@id": "roku:stream_segment",
+      "@type": "@id"
+    },
+    "subtype": {
+      "@id": "roku:subtype",
+      "@type": "xsd:string"
+    },
+    "supportsEcsMicrophone": {
+      "@id": "roku:supportsEcsMicrophone",
+      "@type": "xsd:boolean"
+    },
+    "supportsEcsTextedit": {
+      "@id": "roku:supportsEcsTextedit",
+      "@type": "xsd:boolean"
+    },
+    "supportsWakeOnWlan": {
+      "@id": "roku:supportsWakeOnWlan",
+      "@type": "xsd:boolean"
+    },
+    "target": {
+      "@id": "roku:target",
+      "@type": "xsd:integer"
+    },
+    "time": {
+      "@id": "roku:time",
+      "@type": "xsd:integer"
+    },
+    "timeZone": {
+      "@id": "roku:timeZone",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "roku:type",
+      "@type": "xsd:string"
+    },
+    "udn": {
+      "@id": "roku:udn",
+      "@type": "xsd:string"
+    },
+    "userDeviceName": {
+      "@id": "roku:userDeviceName",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version"
+    },
+    "video": {
+      "@id": "roku:video",
+      "@type": "xsd:string"
+    },
+    "videoRes": {
+      "@id": "roku:videoRes",
+      "@type": "xsd:string"
+    },
+    "wifiMac": {
+      "@id": "roku:wifiMac",
+      "@type": "xsd:string"
+    }
+  }
+}

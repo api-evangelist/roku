@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-build-source-schema.json",
+  "title": "BuildSource",
+  "description": "BuildSource schema from Roku Nabu Cloud",
+  "type": "string",
+  "enum": [
+    "pre-merge",
+    "main",
+    "released",
+    "alpha",
+    "misc"
+  ]
+}

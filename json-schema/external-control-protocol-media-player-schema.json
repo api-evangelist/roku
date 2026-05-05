@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/external-control-protocol-media-player-schema.json",
+  "title": "MediaPlayer",
+  "description": "State of the active video player.",
+  "type": "object",
+  "properties": {
+    "state": {
+      "type": "string",
+      "enum": [
+        "none",
+        "buffer",
+        "play",
+        "pause",
+        "stop",
+        "error",
+        "finished",
+        "startup",
+        "open"
+      ]
+    },
+    "error": {
+      "type": "boolean"
+    },
+    "plugin": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "format": {
+      "type": "object",
+      "properties": {
+        "audio": {
+          "type": "string"
+        },
+        "captions": {
+          "type": "string"
+        },
+        "container": {
+          "type": "string"
+        },
+        "drm": {
+          "type": "string"
+        },
+        "video": {
+          "type": "string"
+        },
+        "videoRes": {
+          "type": "string"
+        }
+      }
+    },
+    "position": {
+      "type": "integer",
+      "description": "Current playback position in milliseconds."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Total stream duration in milliseconds."
+    },
+    "is_live": {
+      "type": "boolean"
+    },
+    "runtime": {
+      "type": "integer"
+    },
+    "buffering": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "integer"
+        },
+        "max": {
+          "type": "integer"
+        },
+        "target": {
+          "type": "integer"
+        }
+      }
+    },
+    "new_stream": {
+      "type": "object",
+      "properties": {
+        "speed": {
+          "type": "integer"
+        }
+      }
+    },
+    "stream_segment": {
+      "type": "object",
+      "properties": {
+        "bitrate": {
+          "type": "integer"
+        },
+        "media_sequence": {
+          "type": "integer"
+        },
+        "segment_type": {
+          "type": "string"
+        },
+        "time": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

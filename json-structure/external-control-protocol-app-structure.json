@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/external-control-protocol-app-structure.json",
+  "name": "App",
+  "description": "An installed Roku channel.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Roku channel/app identifier.",
+      "example": "12"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "appl",
+        "menu",
+        "tvin"
+      ],
+      "description": "appl = installed channel, menu = system menu, tvin = TV input."
+    },
+    "version": {
+      "type": "string"
+    },
+    "subtype": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable channel name."
+    }
+  }
+}

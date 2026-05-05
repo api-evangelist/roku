@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/pay-web-services-refund-subscription-request-structure.json",
+  "name": "RefundSubscriptionRequest",
+  "description": "RefundSubscriptionRequest schema from Roku Pay Web Services",
+  "type": "object",
+  "properties": {
+    "partnerAPIKey": {
+      "type": "string"
+    },
+    "rokuCustomerId": {
+      "type": "string"
+    },
+    "transactionId": {
+      "type": "string"
+    },
+    "refundAmount": {
+      "type": "float",
+      "description": "If omitted, a full refund is issued."
+    },
+    "currency": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "partnerAPIKey",
+    "rokuCustomerId",
+    "transactionId"
+  ]
+}

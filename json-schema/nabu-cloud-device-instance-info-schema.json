@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-device-instance-info-schema.json",
+  "title": "DeviceInstanceInfo",
+  "description": "DeviceInstanceInfo schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Id"
+    },
+    "creator_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Creator Id",
+      "description": "The ID of the user who started the device."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Started At"
+    },
+    "snapshot_id": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Snapshot Id",
+      "description": "The ID of the snapshot to use for the device."
+    },
+    "snapshot_name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Snapshot Name",
+      "description": "Name of the snapshot."
+    },
+    "region_id": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Region Id",
+      "description": "The ID of the region where the device will run."
+    },
+    "region_name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Region Name",
+      "description": "Name of the region."
+    },
+    "stream_option_id": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Stream Option Id",
+      "description": "The ID of the stream option to use for the device."
+    },
+    "stream_option_name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Stream Option Name",
+      "description": "Name of the stream option. "
+    },
+    "max_runtime": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Max Runtime",
+      "description": "The maximum runtime of the device in seconds, 0 for project max runtime."
+    },
+    "rootfs_artifactory_path": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "pattern": "^[a-zA-Z0-9_-]*(\\/[a-zA-Z0-9._-]+)*(\\:[a-zA-Z0-9._-]+)?$",
+      "title": "Rootfs Artifactory Path",
+      "description": "The path of the rootfs image in artifactory.",
+      "examples": [
+        "official/release/2024-h2/r14.0.4.122xx-rta/native_tv:latest",
+        "premergeci/native_tv:4838657"
+      ]
+    },
+    "reboot": {
+      "type": "integer",
+      "maximum": 150,
+      "minimum": -1,
+      "title": "Reboot",
+      "description": "Device reboot behaviour.-1 for no reboots, including requested reboot; 0 for no device crash reboots; and >0 for n number of device crash reboots.A device crash is determined by restart_reason in the device nvram. A device shutdown will act like a reboot."
+    },
+    "ip_address": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "ipvanyaddress"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Ip Address",
+      "description": "IP address of the running device Instance."
+    },
+    "janus_id": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Janus Id",
+      "description": "ID of the Janus WebRTC stream."
+    },
+    "janus_pin": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Janus Pin",
+      "description": "Pin to access the Janus WebRTC stream."
+    },
+    "janus_token": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Janus Token",
+      "description": "Janus API Token."
+    },
+    "janus_websocket_url": {
+      "anyOf": [
+        {
+          "type": "string",
+          "description": "\n            WebSocket URL to connect to the Janus WebRTC gateway. Includes the\n            ws:// prefix and the path to the instance.\n        "
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Janus Websocket Url"
+    },
+    "janus_ice_servers": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/components/schemas/IceServer"
+          },
+          "type": "array",
+          "description": "List of ICE servers to use for WebRTC connections."
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Janus Ice Servers"
+    },
+    "instance_api_url": {
+      "anyOf": [
+        {
+          "type": "string",
+          "description": "\n            Url prefix for the instance api. Does not contain the protocol\n            prefix since the instance api contains both ws and http endpoints.\n        "
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Instance Api Url"
+    },
+    "instance_uuid": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Instance Uuid"
+    }
+  },
+  "required": [
+    "id",
+    "creator_id",
+    "created_at",
+    "snapshot_id",
+    "region_id",
+    "stream_option_id",
+    "max_runtime",
+    "rootfs_artifactory_path",
+    "reboot",
+    "instance_uuid"
+  ]
+}

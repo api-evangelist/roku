@@ -1,0 +1,480 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Roku Channel Operations"
+  description: |
+    Unified workflow capability for Roku channel teams. Combines the External Control Protocol
+    (local-network device control), Roku Pay Web Services (entitlement validation, refunds,
+    subscriptions), and Roku Nabu Cloud (remote test devices, snapshots, builds) into a single
+    REST and MCP surface. Personas: channel developer, QA engineer, billing operator.
+  tags:
+    - Roku
+    - Streaming
+    - Channel Development
+    - Test Automation
+    - Monetization
+  created: "2026-05-05"
+  modified: "2026-05-05"
+
+binds:
+  - namespace: env
+    keys:
+      ROKU_DEVICE_IP: ROKU_DEVICE_IP
+      ROKU_PAY_PARTNER_API_KEY: ROKU_PAY_PARTNER_API_KEY
+      ROKU_NABU_CLOUD_TOKEN: ROKU_NABU_CLOUD_TOKEN
+
+capability:
+  consumes:
+    - import: roku-ecp
+      location: ./shared/external-control-protocol.yaml
+    - import: roku-pay
+      location: ./shared/pay-web-services.yaml
+    - import: roku-nabu-cloud
+      location: ./shared/nabu-cloud.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: roku-channel-operations-api
+      description: "Unified REST API for Roku channel operations."
+      resources:
+        - path: /v1/devices
+          name: devices
+          description: "Local device control via ECP."
+          operations:
+            - method: GET
+              name: get-device-info
+              description: "Returns device metadata."
+              call: "roku-ecp.query-device-info"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: list-installed-apps
+              description: "Lists installed channels on the device."
+              call: "roku-ecp.query-apps"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-active-app
+              description: "Returns the currently active channel."
+              call: "roku-ecp.query-active-app"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-media-player-state
+              description: "Returns video player state."
+              call: "roku-ecp.query-media-player"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: launch-app
+              description: "Launches an installed channel with optional deep-link."
+              call: "roku-ecp.launch-app"
+              with:
+                appId: "rest.appId"
+                contentId: "rest.contentId"
+                mediaType: "rest.mediaType"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: press-key
+              description: "Sends a remote-control key press."
+              call: "roku-ecp.key-press"
+              with:
+                key: "rest.key"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/entitlements
+          name: entitlements
+          description: "Roku Pay transaction validation."
+          operations:
+            - method: GET
+              name: validate-transaction
+              description: "Validates a Roku Pay transaction."
+              call: "roku-pay.validate-transaction"
+              with:
+                partnerAPIKey: "rest.partnerAPIKey"
+                transactionId: "rest.transactionId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: validate-refund
+              description: "Validates a Roku Pay refund."
+              call: "roku-pay.validate-refund"
+              with:
+                partnerAPIKey: "rest.partnerAPIKey"
+                refundId: "rest.refundId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/subscriptions
+          name: subscriptions
+          description: "Subscription lifecycle and billing."
+          operations:
+            - method: POST
+              name: cancel-subscription
+              description: "Cancels a Roku Pay subscription."
+              call: "roku-pay.cancel-subscription"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: refund-subscription
+              description: "Issues a subscription refund."
+              call: "roku-pay.refund-subscription"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: update-bill-cycle
+              description: "Adjusts the subscription billing date."
+              call: "roku-pay.update-bill-cycle"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: issue-service-credit
+              description: "Issues an account-level service credit."
+              call: "roku-pay.issue-service-credit"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/test-devices
+          name: test-devices
+          description: "Nabu Cloud remote test devices and runs."
+          operations:
+            - method: GET
+              name: list-test-devices
+              description: "Lists Nabu Cloud test devices in a project."
+              call: "roku-nabu-cloud.list-devices"
+              with:
+                organisation_id: "rest.organisation_id"
+                project_id: "rest.project_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-test-device
+              description: "Allocates a Nabu Cloud test device."
+              call: "roku-nabu-cloud.create-device"
+              with:
+                organisation_id: "rest.organisation_id"
+                project_id: "rest.project_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: start-test-device
+              description: "Starts a remote test device run."
+              call: "roku-nabu-cloud.start-device"
+              with:
+                organisation_id: "rest.organisation_id"
+                project_id: "rest.project_id"
+                device_id: "rest.device_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: stop-test-device
+              description: "Stops a remote test device run."
+              call: "roku-nabu-cloud.stop-device"
+              with:
+                organisation_id: "rest.organisation_id"
+                project_id: "rest.project_id"
+                device_id: "rest.device_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: read-test-device-logs
+              description: "Reads logs from a test device run instance."
+              call: "roku-nabu-cloud.read-device-logs"
+              with:
+                organisation_id: "rest.organisation_id"
+                project_id: "rest.project_id"
+                device_id: "rest.device_id"
+                instance_id: "rest.instance_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/builds
+          name: builds
+          description: "Channel builds in Nabu Cloud."
+          operations:
+            - method: GET
+              name: list-builds
+              description: "Lists channel builds."
+              call: "roku-nabu-cloud.list-builds"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-build
+              description: "Returns a single build."
+              call: "roku-nabu-cloud.get-build"
+              with:
+                build_id: "rest.build_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: roku-channel-operations-mcp
+      transport: http
+      description: "MCP server for AI-assisted Roku channel development, QA, and billing workflows."
+      tools:
+        # ECP - device control
+        - name: ecp-get-device-info
+          description: "Get Roku device metadata via ECP."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-ecp.query-device-info"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: ecp-list-installed-apps
+          description: "List channels installed on the local Roku device."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-ecp.query-apps"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: ecp-get-active-app
+          description: "Get the active channel on the device."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-ecp.query-active-app"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: ecp-get-media-player-state
+          description: "Get the video player state."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-ecp.query-media-player"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: ecp-launch-app
+          description: "Launch an installed channel with optional deep-link."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "roku-ecp.launch-app"
+          with:
+            appId: "tools.appId"
+            contentId: "tools.contentId"
+            mediaType: "tools.mediaType"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: ecp-press-key
+          description: "Send a remote-control key press to the device."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "roku-ecp.key-press"
+          with:
+            key: "tools.key"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: ecp-exit-app
+          description: "Suspend or terminate a running channel."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+            openWorld: true
+          call: "roku-ecp.exit-app"
+          with:
+            appId: "tools.appId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: ecp-query-chanperf
+          description: "Get channel CPU and memory metrics (developer mode)."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-ecp.query-chanperf"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        # Roku Pay - billing
+        - name: pay-validate-transaction
+          description: "Validate a Roku Pay transaction and return entitlement state."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-pay.validate-transaction"
+          with:
+            partnerAPIKey: "tools.partnerAPIKey"
+            transactionId: "tools.transactionId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: pay-validate-refund
+          description: "Confirm a Roku Pay refund."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-pay.validate-refund"
+          with:
+            partnerAPIKey: "tools.partnerAPIKey"
+            refundId: "tools.refundId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: pay-cancel-subscription
+          description: "Cancel a Roku Pay subscription."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+            openWorld: true
+          call: "roku-pay.cancel-subscription"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: pay-refund-subscription
+          description: "Refund a Roku Pay subscription."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: false
+            openWorld: true
+          call: "roku-pay.refund-subscription"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: pay-update-bill-cycle
+          description: "Adjust the next billing date on a subscription."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+            openWorld: true
+          call: "roku-pay.update-bill-cycle"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: pay-issue-service-credit
+          description: "Issue an account-level service credit."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "roku-pay.issue-service-credit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        # Nabu Cloud - test devices and builds
+        - name: nabu-list-test-devices
+          description: "List Nabu Cloud test devices in a project."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-nabu-cloud.list-devices"
+          with:
+            organisation_id: "tools.organisation_id"
+            project_id: "tools.project_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: nabu-create-test-device
+          description: "Allocate a Nabu Cloud test device."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "roku-nabu-cloud.create-device"
+          with:
+            organisation_id: "tools.organisation_id"
+            project_id: "tools.project_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: nabu-start-test-device
+          description: "Start a Nabu Cloud test device run."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: true
+          call: "roku-nabu-cloud.start-device"
+          with:
+            organisation_id: "tools.organisation_id"
+            project_id: "tools.project_id"
+            device_id: "tools.device_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: nabu-stop-test-device
+          description: "Stop a Nabu Cloud test device run."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+            openWorld: true
+          call: "roku-nabu-cloud.stop-device"
+          with:
+            organisation_id: "tools.organisation_id"
+            project_id: "tools.project_id"
+            device_id: "tools.device_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: nabu-read-test-device-logs
+          description: "Read logs from a Nabu Cloud test device run."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-nabu-cloud.read-device-logs"
+          with:
+            organisation_id: "tools.organisation_id"
+            project_id: "tools.project_id"
+            device_id: "tools.device_id"
+            instance_id: "tools.instance_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: nabu-list-builds
+          description: "List channel builds in Nabu Cloud."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-nabu-cloud.list-builds"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: nabu-get-build
+          description: "Get a Nabu Cloud build by id."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roku-nabu-cloud.get-build"
+          with:
+            build_id: "tools.build_id"
+          outputParameters:
+            - type: object
+              mapping: "$."

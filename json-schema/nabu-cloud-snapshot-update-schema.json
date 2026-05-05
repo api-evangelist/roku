@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-snapshot-update-schema.json",
+  "title": "SnapshotUpdate",
+  "description": "SnapshotUpdate schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Name",
+      "description": "The name of the Snapshot."
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Description",
+      "description": "Description of the Snapshot."
+    },
+    "properties": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object",
+          "maxProperties": 8192
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Properties",
+      "description": "Properties of the Snapshot.",
+      "examples": [
+        {
+          "config_service_flags": {
+            "fw.swup.channel-sync-enabled": "false"
+          }
+        }
+      ]
+    }
+  }
+}

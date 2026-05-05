@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/pay-web-services-issue-credit-request-schema.json",
+  "title": "IssueCreditRequest",
+  "description": "IssueCreditRequest schema from Roku Pay Web Services",
+  "type": "object",
+  "properties": {
+    "partnerAPIKey": {
+      "type": "string"
+    },
+    "rokuCustomerId": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number",
+      "format": "float"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "partnerAPIKey",
+    "rokuCustomerId",
+    "amount",
+    "currency"
+  ]
+}

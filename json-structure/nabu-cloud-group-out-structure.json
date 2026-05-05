@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-group-out-structure.json",
+  "name": "GroupOut",
+  "description": "GroupOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "title": "Id"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Name",
+      "description": "The name of the group. Unique in the organisation"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

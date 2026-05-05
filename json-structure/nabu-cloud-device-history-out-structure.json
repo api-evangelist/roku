@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-device-history-out-structure.json",
+  "name": "DeviceHistoryOut",
+  "description": "DeviceHistoryOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "instance_id": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Instance Id",
+      "description": "ID of the device instance."
+    },
+    "creator_id": {
+      "type": "uuid",
+      "title": "Creator Id",
+      "description": "The ID of the user who started the device."
+    },
+    "creator_username": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Creator Username",
+      "description": "The username of the user who started the device."
+    },
+    "created_at": {
+      "type": "datetime",
+      "title": "Created At"
+    },
+    "started_at": {
+      "anyOf": [
+        {
+          "type": "datetime"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Started At"
+    },
+    "ended_at": {
+      "anyOf": [
+        {
+          "type": "datetime"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Ended At"
+    },
+    "runtime": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Runtime",
+      "description": "Runtime of the device in seconds."
+    },
+    "snapshot_id": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Snapshot Id",
+      "description": "The ID of the snapshot to use for the device."
+    },
+    "snapshot_name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Snapshot Name",
+      "description": "Name of the snapshot."
+    },
+    "region_id": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Region Id",
+      "description": "The ID of the region where the device will run."
+    },
+    "region_name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Region Name",
+      "description": "Name of the region."
+    },
+    "stream_option_id": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Stream Option Id",
+      "description": "The ID of the stream option to use for the device."
+    },
+    "stream_option_name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Stream Option Name",
+      "description": "Name of the stream option. "
+    },
+    "max_runtime": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Max Runtime",
+      "description": "The maximum runtime of the device in seconds, 0 for project max runtime."
+    },
+    "status": {
+      "$ref": "#/components/schemas/KubernetesStatus"
+    },
+    "rootfs_artifactory_path": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "pattern": "^[a-zA-Z0-9_-]*(\\/[a-zA-Z0-9._-]+)*(\\:[a-zA-Z0-9._-]+)?$",
+      "title": "Rootfs Artifactory Path",
+      "description": "The path of the rootfs image in artifactory.",
+      "examples": [
+        "official/release/2024-h2/r14.0.4.122xx-rta/native_tv:latest",
+        "premergeci/native_tv:4838657"
+      ]
+    },
+    "reboot": {
+      "type": "int32",
+      "maximum": 150,
+      "minimum": -1,
+      "title": "Reboot",
+      "description": "Device reboot behaviour.-1 for no reboots, including requested reboot; 0 for no device crash reboots; and >0 for n number of device crash reboots.A device crash is determined by restart_reason in the device nvram. A device shutdown will act like a reboot."
+    }
+  },
+  "required": [
+    "instance_id",
+    "creator_id",
+    "creator_username",
+    "created_at",
+    "runtime",
+    "snapshot_id",
+    "region_id",
+    "stream_option_id",
+    "max_runtime",
+    "status",
+    "rootfs_artifactory_path",
+    "reboot"
+  ]
+}

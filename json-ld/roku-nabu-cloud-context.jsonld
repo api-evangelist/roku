@@ -1,0 +1,409 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "roku": "https://developer.roku.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AgentStreamOption": "roku:AgentStreamOption",
+    "Body_serviceaccounts-login_token": "roku:Body_serviceaccounts-login_token",
+    "BuildOut": "roku:BuildOut",
+    "DeviceCreate": "roku:DeviceCreate",
+    "DeviceHistoryOut": "roku:DeviceHistoryOut",
+    "DeviceInstanceInfo": "roku:DeviceInstanceInfo",
+    "DeviceOut": "roku:DeviceOut",
+    "DeviceStart": "roku:DeviceStart",
+    "DeviceUpdate": "roku:DeviceUpdate",
+    "GroupAddMember": "roku:GroupAddMember",
+    "GroupCreate": "roku:GroupCreate",
+    "GroupMemberOut": "roku:GroupMemberOut",
+    "GroupOut": "roku:GroupOut",
+    "GroupRoleOut": "roku:GroupRoleOut",
+    "GroupUpdate": "roku:GroupUpdate",
+    "IceServer": "roku:IceServer",
+    "OIDCTokenResponseModel": "roku:OIDCTokenResponseModel",
+    "OrganisationMemberOut": "roku:OrganisationMemberOut",
+    "OrganisationOut": "roku:OrganisationOut",
+    "OrganisationRegionOut": "roku:OrganisationRegionOut",
+    "OrganisationRoleOut": "roku:OrganisationRoleOut",
+    "PersonalAccessTokenCreate": "roku:PersonalAccessTokenCreate",
+    "PersonalAccessTokenCreated": "roku:PersonalAccessTokenCreated",
+    "PersonalAccessTokenOut": "roku:PersonalAccessTokenOut",
+    "PersonalAccessTokenRefresh": "roku:PersonalAccessTokenRefresh",
+    "ProjectCreate": "roku:ProjectCreate",
+    "ProjectGroupAdd": "roku:ProjectGroupAdd",
+    "ProjectGroupOut": "roku:ProjectGroupOut",
+    "ProjectGroupUpdate": "roku:ProjectGroupUpdate",
+    "ProjectMemberAdd": "roku:ProjectMemberAdd",
+    "ProjectMemberOut": "roku:ProjectMemberOut",
+    "ProjectOut": "roku:ProjectOut",
+    "ProjectRoleOut": "roku:ProjectRoleOut",
+    "ProjectUpdate": "roku:ProjectUpdate",
+    "ScopeOut": "roku:ScopeOut",
+    "SnapshotCreate": "roku:SnapshotCreate",
+    "SnapshotOut": "roku:SnapshotOut",
+    "SnapshotUpdate": "roku:SnapshotUpdate",
+    "UserOut": "roku:UserOut",
+    "accessToken": {
+      "@id": "roku:access_token",
+      "@type": "xsd:string"
+    },
+    "accountName": {
+      "@id": "roku:account_name"
+    },
+    "agentActive": {
+      "@id": "roku:agent_active",
+      "@type": "xsd:boolean"
+    },
+    "agentStreamOptions": {
+      "@id": "roku:agent_stream_options",
+      "@container": "@set"
+    },
+    "artifactoryPath": {
+      "@id": "roku:artifactory_path",
+      "@type": "xsd:string"
+    },
+    "asan": {
+      "@id": "roku:asan",
+      "@type": "xsd:boolean"
+    },
+    "awsRegion": {
+      "@id": "roku:aws_region"
+    },
+    "billingEntity": {
+      "@id": "roku:billing_entity",
+      "@type": "xsd:string"
+    },
+    "children": {
+      "@id": "roku:children",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "clientId": {
+      "@id": "roku:client_id",
+      "@type": "xsd:string"
+    },
+    "clientSecret": {
+      "@id": "roku:client_secret",
+      "@type": "xsd:string"
+    },
+    "configServerOverridesChanges": {
+      "@id": "roku:config_server_overrides_changes"
+    },
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "creatorId": {
+      "@id": "roku:creator_id",
+      "@type": "xsd:string"
+    },
+    "creatorUsername": {
+      "@id": "roku:creator_username",
+      "@type": "xsd:string"
+    },
+    "credential": {
+      "@id": "roku:credential"
+    },
+    "currentDevices": {
+      "@id": "roku:current_devices",
+      "@type": "xsd:integer"
+    },
+    "currentSnapshots": {
+      "@id": "roku:current_snapshots",
+      "@type": "xsd:integer"
+    },
+    "description": {
+      "@id": "schema:description"
+    },
+    "deviceType": {
+      "@id": "roku:device_type"
+    },
+    "email": {
+      "@id": "schema:email"
+    },
+    "endedAt": {
+      "@id": "roku:ended_at"
+    },
+    "esn": {
+      "@id": "roku:esn",
+      "@type": "xsd:string"
+    },
+    "expiresAt": {
+      "@id": "roku:expires_at",
+      "@type": "xsd:dateTime"
+    },
+    "expiresIn": {
+      "@id": "roku:expires_in",
+      "@type": "xsd:integer"
+    },
+    "expiresInDays": {
+      "@id": "roku:expires_in_days",
+      "@type": "xsd:integer"
+    },
+    "fullName": {
+      "@id": "roku:full_name"
+    },
+    "fullVersion": {
+      "@id": "roku:full_version"
+    },
+    "grantType": {
+      "@id": "roku:grant_type",
+      "@type": "xsd:string"
+    },
+    "groupId": {
+      "@id": "roku:group_id",
+      "@type": "xsd:integer"
+    },
+    "groupName": {
+      "@id": "roku:group_name",
+      "@type": "xsd:string"
+    },
+    "groupRoleId": {
+      "@id": "roku:group_role_id",
+      "@type": "xsd:integer"
+    },
+    "groupRoleName": {
+      "@id": "roku:group_role_name",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "roku:id",
+      "@type": "xsd:integer"
+    },
+    "idpId": {
+      "@id": "roku:idp_id"
+    },
+    "instanceApiUrl": {
+      "@id": "roku:instance_api_url"
+    },
+    "instanceId": {
+      "@id": "roku:instance_id",
+      "@type": "xsd:integer"
+    },
+    "instanceUuid": {
+      "@id": "roku:instance_uuid",
+      "@type": "xsd:string"
+    },
+    "ipAddress": {
+      "@id": "roku:ip_address"
+    },
+    "janusIceServers": {
+      "@id": "roku:janus_ice_servers"
+    },
+    "janusId": {
+      "@id": "roku:janus_id"
+    },
+    "janusPin": {
+      "@id": "roku:janus_pin"
+    },
+    "janusToken": {
+      "@id": "roku:janus_token"
+    },
+    "janusWebsocketUrl": {
+      "@id": "roku:janus_websocket_url"
+    },
+    "lastSnapshot": {
+      "@id": "roku:last_snapshot",
+      "@type": "xsd:integer"
+    },
+    "lastSnapshotName": {
+      "@id": "roku:last_snapshot_name",
+      "@type": "xsd:string"
+    },
+    "lastUsedAt": {
+      "@id": "roku:last_used_at"
+    },
+    "maxDevices": {
+      "@id": "roku:max_devices",
+      "@type": "xsd:integer"
+    },
+    "maxProjectDevices": {
+      "@id": "roku:max_project_devices",
+      "@type": "xsd:integer"
+    },
+    "maxProjectRuntime": {
+      "@id": "roku:max_project_runtime",
+      "@type": "xsd:integer"
+    },
+    "maxProjectSnapshots": {
+      "@id": "roku:max_project_snapshots",
+      "@type": "xsd:integer"
+    },
+    "maxRuntime": {
+      "@id": "roku:max_runtime",
+      "@type": "xsd:integer"
+    },
+    "maxSnapshots": {
+      "@id": "roku:max_snapshots",
+      "@type": "xsd:integer"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "organisationId": {
+      "@id": "roku:organisation_id",
+      "@type": "xsd:integer"
+    },
+    "organisationRoleId": {
+      "@id": "roku:organisation_role_id",
+      "@type": "xsd:integer"
+    },
+    "organisationRoleName": {
+      "@id": "roku:organisation_role_name",
+      "@type": "xsd:string"
+    },
+    "overrideIsAsan": {
+      "@id": "roku:override_is_asan"
+    },
+    "parentId": {
+      "@id": "roku:parent_id"
+    },
+    "permissions": {
+      "@id": "roku:permissions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "private": {
+      "@id": "roku:private",
+      "@type": "xsd:boolean"
+    },
+    "projectRoleId": {
+      "@id": "roku:project_role_id",
+      "@type": "xsd:integer"
+    },
+    "projectRoleName": {
+      "@id": "roku:project_role_name",
+      "@type": "xsd:string"
+    },
+    "properties": {
+      "@id": "roku:properties"
+    },
+    "public": {
+      "@id": "roku:public",
+      "@type": "xsd:boolean"
+    },
+    "qaHub": {
+      "@id": "roku:qa_hub",
+      "@type": "xsd:boolean"
+    },
+    "ready": {
+      "@id": "roku:ready",
+      "@type": "xsd:boolean"
+    },
+    "reboot": {
+      "@id": "roku:reboot",
+      "@type": "xsd:integer"
+    },
+    "refreshExpiresIn": {
+      "@id": "roku:refresh_expires_in",
+      "@type": "xsd:integer"
+    },
+    "refreshToken": {
+      "@id": "roku:refresh_token"
+    },
+    "regionId": {
+      "@id": "roku:region_id",
+      "@type": "xsd:integer"
+    },
+    "regionName": {
+      "@id": "roku:region_name",
+      "@type": "xsd:string"
+    },
+    "revokedAt": {
+      "@id": "roku:revoked_at"
+    },
+    "rootfsArtifactoryPath": {
+      "@id": "roku:rootfs_artifactory_path",
+      "@type": "xsd:string"
+    },
+    "runningDevice": {
+      "@id": "roku:running_device"
+    },
+    "runtime": {
+      "@id": "roku:runtime",
+      "@type": "xsd:integer"
+    },
+    "scope": {
+      "@id": "roku:scope",
+      "@type": "xsd:string"
+    },
+    "scopes": {
+      "@id": "roku:scopes",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "slug": {
+      "@id": "roku:slug",
+      "@type": "xsd:string"
+    },
+    "snapshotId": {
+      "@id": "roku:snapshot_id",
+      "@type": "xsd:integer"
+    },
+    "snapshotName": {
+      "@id": "roku:snapshot_name",
+      "@type": "xsd:string"
+    },
+    "snapshots": {
+      "@id": "roku:snapshots",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "source": {
+      "@id": "roku:source"
+    },
+    "startedAt": {
+      "@id": "roku:started_at"
+    },
+    "status": {
+      "@id": "roku:status"
+    },
+    "streamOptionId": {
+      "@id": "roku:stream_option_id",
+      "@type": "xsd:integer"
+    },
+    "streamOptionName": {
+      "@id": "roku:stream_option_name",
+      "@type": "xsd:string"
+    },
+    "systemSettingChanges": {
+      "@id": "roku:system_setting_changes"
+    },
+    "tag": {
+      "@id": "roku:tag",
+      "@type": "xsd:string"
+    },
+    "token": {
+      "@id": "roku:token",
+      "@type": "xsd:string"
+    },
+    "tokenInfo": {
+      "@id": "roku:token_info"
+    },
+    "tokenType": {
+      "@id": "roku:token_type",
+      "@type": "xsd:string"
+    },
+    "urls": {
+      "@id": "roku:urls",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "userId": {
+      "@id": "roku:user_id",
+      "@type": "xsd:string"
+    },
+    "userProject": {
+      "@id": "roku:user_project",
+      "@type": "xsd:boolean"
+    },
+    "username": {
+      "@id": "roku:username",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version"
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-snapshot-out-structure.json",
+  "name": "SnapshotOut",
+  "description": "SnapshotOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Id"
+    },
+    "created_at": {
+      "type": "datetime",
+      "title": "Created At"
+    },
+    "parent_id": {
+      "anyOf": [
+        {
+          "type": "int32",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Parent Id",
+      "description": "The ID of the parent Snapshot."
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Name",
+      "description": "The name of the Snapshot."
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Description",
+      "description": "Description of the Snapshot."
+    },
+    "properties": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object",
+          "maxProperties": 8192
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Properties",
+      "description": "Properties of the Snapshot.",
+      "examples": [
+        {
+          "config_service_flags": {
+            "fw.swup.channel-sync-enabled": "false"
+          }
+        }
+      ]
+    },
+    "rootfs_artifactory_path": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 3,
+          "pattern": "^[a-zA-Z0-9_-]*(\\/[a-zA-Z0-9._-]+)*(\\:[a-zA-Z0-9._-]+)?$"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Rootfs Artifactory Path",
+      "description": "The path of the rootfs image in artifactory.",
+      "examples": [
+        "official/release/2024-h2/r14.0.4.122xx-rta/native_tv:latest",
+        "premergeci/native_tv:4838657"
+      ]
+    },
+    "started_at": {
+      "anyOf": [
+        {
+          "type": "datetime"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Started At"
+    },
+    "children": {
+      "items": {
+        "type": "int32"
+      },
+      "type": "array",
+      "title": "Children",
+      "description": "The IDs of the child Snapshots.",
+      "default": []
+    },
+    "ready": {
+      "type": "boolean",
+      "title": "Ready",
+      "description": "\n        Whether the snapshot is ready to use. Trying to start a device with a\n        snapshot that is not ready will result in an error. Deleting the\n        instance an unready snapshot is being taken from can cause the snapshot\n        creation process to fail.\n    ",
+      "default": false
+    }
+  },
+  "required": [
+    "id",
+    "created_at"
+  ]
+}

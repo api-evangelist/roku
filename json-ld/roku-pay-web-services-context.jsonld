@@ -1,0 +1,120 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "roku": "https://developer.roku.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "CancelSubscriptionRequest": "roku:CancelSubscriptionRequest",
+    "IssueCreditRequest": "roku:IssueCreditRequest",
+    "RefundSubscriptionRequest": "roku:RefundSubscriptionRequest",
+    "RefundValidation": "roku:RefundValidation",
+    "SubscriptionResult": "roku:SubscriptionResult",
+    "TransactionValidation": "roku:TransactionValidation",
+    "UpdateBillCycleRequest": "roku:UpdateBillCycleRequest",
+    "amount": {
+      "@id": "roku:amount",
+      "@type": "xsd:float"
+    },
+    "cancellationDate": {
+      "@id": "roku:cancellationDate",
+      "@type": "xsd:dateTime"
+    },
+    "currency": {
+      "@id": "roku:currency",
+      "@type": "xsd:string"
+    },
+    "effectiveDate": {
+      "@id": "roku:effectiveDate",
+      "@type": "xsd:dateTime"
+    },
+    "errorCode": {
+      "@id": "roku:errorCode",
+      "@type": "xsd:integer"
+    },
+    "errorMessage": {
+      "@id": "roku:errorMessage",
+      "@type": "xsd:string"
+    },
+    "expirationDate": {
+      "@id": "roku:expirationDate",
+      "@type": "xsd:dateTime"
+    },
+    "isEntitled": {
+      "@id": "roku:isEntitled",
+      "@type": "xsd:boolean"
+    },
+    "nextBillDate": {
+      "@id": "roku:nextBillDate",
+      "@type": "xsd:dateTime"
+    },
+    "partnerAPIKey": {
+      "@id": "roku:partnerAPIKey",
+      "@type": "xsd:string"
+    },
+    "productCode": {
+      "@id": "roku:productCode",
+      "@type": "xsd:string"
+    },
+    "productId": {
+      "@id": "roku:productId",
+      "@type": "xsd:string"
+    },
+    "productName": {
+      "@id": "roku:productName",
+      "@type": "xsd:string"
+    },
+    "purchaseChannel": {
+      "@id": "roku:purchaseChannel",
+      "@type": "xsd:string"
+    },
+    "purchaseContext": {
+      "@id": "roku:purchaseContext",
+      "@type": "xsd:string"
+    },
+    "purchaseDate": {
+      "@id": "roku:purchaseDate",
+      "@type": "xsd:dateTime"
+    },
+    "purchaseStatus": {
+      "@id": "roku:purchaseStatus",
+      "@type": "xsd:string"
+    },
+    "reason": {
+      "@id": "roku:reason",
+      "@type": "xsd:string"
+    },
+    "refundAmount": {
+      "@id": "roku:refundAmount",
+      "@type": "xsd:float"
+    },
+    "refundDate": {
+      "@id": "roku:refundDate",
+      "@type": "xsd:dateTime"
+    },
+    "refundId": {
+      "@id": "roku:refundId",
+      "@type": "xsd:string"
+    },
+    "refundReason": {
+      "@id": "roku:refundReason",
+      "@type": "xsd:string"
+    },
+    "rokuCustomerId": {
+      "@id": "roku:rokuCustomerId",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "roku:status",
+      "@type": "xsd:string"
+    },
+    "tax": {
+      "@id": "roku:tax",
+      "@type": "xsd:float"
+    },
+    "transactionId": {
+      "@id": "roku:transactionId",
+      "@type": "xsd:string"
+    }
+  }
+}

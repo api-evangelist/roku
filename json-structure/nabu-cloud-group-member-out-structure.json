@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-group-member-out-structure.json",
+  "name": "GroupMemberOut",
+  "description": "GroupMemberOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "uuid",
+      "title": "Id"
+    },
+    "username": {
+      "type": "string",
+      "title": "Username"
+    },
+    "full_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Full Name"
+    },
+    "email": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Email"
+    },
+    "group_role_id": {
+      "type": "int32",
+      "title": "Group Role Id"
+    },
+    "group_role_name": {
+      "type": "string",
+      "title": "Group Role Name"
+    }
+  },
+  "required": [
+    "id",
+    "username",
+    "full_name",
+    "email",
+    "group_role_id",
+    "group_role_name"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/pay-web-services-refund-validation-structure.json",
+  "name": "RefundValidation",
+  "description": "Result of a refund-validation request.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "errorCode": {
+      "type": "int32"
+    },
+    "errorMessage": {
+      "type": "string"
+    },
+    "refundId": {
+      "type": "string"
+    },
+    "transactionId": {
+      "type": "string"
+    },
+    "refundDate": {
+      "type": "datetime"
+    },
+    "refundAmount": {
+      "type": "float"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "refundReason": {
+      "type": "string"
+    }
+  }
+}

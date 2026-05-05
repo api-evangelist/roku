@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-ice-server-schema.json",
+  "title": "IceServer",
+  "description": "IceServer schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "urls": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "title": "Urls"
+    },
+    "username": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Username"
+    },
+    "credential": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Credential"
+    }
+  },
+  "required": [
+    "urls"
+  ]
+}

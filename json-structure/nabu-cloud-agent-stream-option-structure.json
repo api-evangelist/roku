@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-agent-stream-option-structure.json",
+  "name": "AgentStreamOption",
+  "description": "AgentStreamOption schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "title": "Id"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

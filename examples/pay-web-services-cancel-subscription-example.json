@@ -1,0 +1,15 @@
+{
+  "request": {
+    "partnerAPIKey": "***",
+    "rokuCustomerId": "RCID-XYZ-123",
+    "productCode": "premium-monthly",
+    "reason": "Customer requested cancellation"
+  },
+  "response": {
+    "status": "Success",
+    "errorCode": 0,
+    "rokuCustomerId": "RCID-XYZ-123",
+    "productCode": "premium-monthly",
+    "effectiveDate": "2026-05-15T19:23:00Z"
+  }
+}

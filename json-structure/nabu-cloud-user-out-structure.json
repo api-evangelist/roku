@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-user-out-structure.json",
+  "name": "UserOut",
+  "description": "UserOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "uuid",
+      "title": "Id"
+    },
+    "username": {
+      "type": "string",
+      "title": "Username"
+    },
+    "full_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Full Name"
+    },
+    "email": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Email"
+    }
+  },
+  "required": [
+    "id",
+    "username",
+    "full_name",
+    "email"
+  ]
+}

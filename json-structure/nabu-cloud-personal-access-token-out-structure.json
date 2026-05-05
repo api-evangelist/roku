@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-personal-access-token-out-structure.json",
+  "name": "PersonalAccessTokenOut",
+  "description": "PersonalAccessTokenOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "title": "Id",
+      "description": "The unique identifier of the personal access token"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Name",
+      "description": "A descriptive name for the token"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Description",
+      "description": "Optional description for the token"
+    },
+    "scopes": {
+      "items": {
+        "type": "string",
+        "maxLength": 255,
+        "minLength": 3,
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "type": "array",
+      "title": "Scopes",
+      "description": "List of scopes that define the token's permissions"
+    },
+    "version": {
+      "type": "int32",
+      "title": "Version",
+      "description": "Version number of the token format"
+    },
+    "created_at": {
+      "type": "datetime",
+      "title": "Created At",
+      "description": "When the token was created"
+    },
+    "expires_at": {
+      "type": "datetime",
+      "title": "Expires At",
+      "description": "When the token expires"
+    },
+    "last_used_at": {
+      "anyOf": [
+        {
+          "type": "datetime"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Last Used At",
+      "description": "When the token was last used"
+    },
+    "revoked_at": {
+      "anyOf": [
+        {
+          "type": "datetime"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Revoked At",
+      "description": "When the token was revoked, if applicable"
+    },
+    "status": {
+      "$ref": "#/components/schemas/PersonalAccessTokenStatus",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "scopes",
+    "version",
+    "created_at",
+    "expires_at",
+    "status"
+  ]
+}

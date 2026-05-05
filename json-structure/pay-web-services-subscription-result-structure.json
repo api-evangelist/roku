@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/pay-web-services-subscription-result-structure.json",
+  "name": "SubscriptionResult",
+  "description": "SubscriptionResult schema from Roku Pay Web Services",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "errorCode": {
+      "type": "int32"
+    },
+    "errorMessage": {
+      "type": "string"
+    },
+    "rokuCustomerId": {
+      "type": "string"
+    },
+    "productCode": {
+      "type": "string"
+    },
+    "effectiveDate": {
+      "type": "datetime"
+    }
+  }
+}

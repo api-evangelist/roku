@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/launch/12",
+    "query": {
+      "contentId": "80100172",
+      "mediaType": "movie"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": ""
+  }
+}

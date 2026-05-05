@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-personal-access-token-create-schema.json",
+  "title": "PersonalAccessTokenCreate",
+  "description": "PersonalAccessTokenCreate schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Name",
+      "description": "A descriptive name for the token"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Description",
+      "description": "Optional description for the token"
+    },
+    "expires_in_days": {
+      "type": "integer",
+      "maximum": 365,
+      "minimum": 1,
+      "title": "Expires In Days",
+      "description": "Number of days until the token expires (1-365 days)",
+      "default": 30
+    },
+    "scopes": {
+      "items": {
+        "type": "string",
+        "maxLength": 255,
+        "minLength": 3,
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "type": "array",
+      "title": "Scopes",
+      "description": "List of scopes that define the token's permissions"
+    }
+  },
+  "required": [
+    "name",
+    "scopes"
+  ]
+}

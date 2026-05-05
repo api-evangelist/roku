@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-personal-access-token-created-structure.json",
+  "name": "PersonalAccessTokenCreated",
+  "description": "Response when a new PAT is created - includes the actual token",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string",
+      "maxLength": 2048,
+      "minLength": 1,
+      "title": "Token",
+      "description": "The actual token - save this, it won't be shown again!"
+    },
+    "token_info": {
+      "$ref": "#/components/schemas/PersonalAccessTokenOut"
+    }
+  },
+  "required": [
+    "token",
+    "token_info"
+  ]
+}

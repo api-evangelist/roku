@@ -1,0 +1,14 @@
+{
+  "request": {
+    "name": "QA Roku Ultra",
+    "region": "us-west-2",
+    "model": "4660X"
+  },
+  "response": {
+    "id": "dev-03",
+    "name": "QA Roku Ultra",
+    "model": "4660X",
+    "region": "us-west-2",
+    "status": "creating"
+  }
+}

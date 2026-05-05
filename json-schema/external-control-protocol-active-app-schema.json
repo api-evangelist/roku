@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/external-control-protocol-active-app-schema.json",
+  "title": "ActiveApp",
+  "description": "Currently active app or screensaver/home if none.",
+  "type": "object",
+  "properties": {
+    "app": {
+      "$ref": "#/components/schemas/App"
+    },
+    "screensaver": {
+      "$ref": "#/components/schemas/App"
+    }
+  }
+}

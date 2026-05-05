@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-oidctoken-response-model-schema.json",
+  "title": "OIDCTokenResponseModel",
+  "description": "OIDC Token response model",
+  "type": "object",
+  "properties": {
+    "access_token": {
+      "type": "string",
+      "title": "Access Token"
+    },
+    "refresh_token": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Refresh Token"
+    },
+    "expires_in": {
+      "type": "integer",
+      "title": "Expires In"
+    },
+    "refresh_expires_in": {
+      "type": "integer",
+      "title": "Refresh Expires In"
+    },
+    "token_type": {
+      "type": "string",
+      "title": "Token Type"
+    },
+    "scope": {
+      "type": "string",
+      "title": "Scope"
+    }
+  },
+  "required": [
+    "access_token",
+    "expires_in",
+    "refresh_expires_in",
+    "token_type",
+    "scope"
+  ]
+}

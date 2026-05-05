@@ -1,0 +1,150 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "roku": "https://developer.roku.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "advisoryRatings": {
+      "@id": "roku:advisoryRatings",
+      "@container": "@set"
+    },
+    "assets": {
+      "@id": "roku:assets",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "birthDate": {
+      "@id": "roku:birthDate",
+      "@type": "xsd:string"
+    },
+    "content": {
+      "@id": "roku:content",
+      "@type": "@id"
+    },
+    "credits": {
+      "@id": "roku:credits",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "deathDate": {
+      "@id": "roku:deathDate",
+      "@type": "xsd:string"
+    },
+    "defaultAvailabilityCountries": {
+      "@id": "roku:defaultAvailabilityCountries",
+      "@container": "@set"
+    },
+    "defaultLanguage": {
+      "@id": "roku:defaultLanguage"
+    },
+    "durationInMilliseconds": {
+      "@id": "roku:durationInMilliseconds",
+      "@type": "xsd:decimal"
+    },
+    "durationInSeconds": {
+      "@id": "roku:durationInSeconds",
+      "@type": "xsd:integer"
+    },
+    "episodeInfo": {
+      "@id": "roku:episodeInfo",
+      "@type": "@id"
+    },
+    "episodeNumber": {
+      "@id": "roku:episodeNumber",
+      "@type": "xsd:integer"
+    },
+    "externalIdSource": {
+      "@id": "roku:externalIdSource"
+    },
+    "externalIds": {
+      "@id": "roku:externalIds",
+      "@container": "@set"
+    },
+    "genres": {
+      "@id": "roku:genres",
+      "@container": "@set"
+    },
+    "id": {
+      "@id": "roku:id",
+      "@type": "xsd:string"
+    },
+    "imageUrl": {
+      "@id": "roku:imageUrl",
+      "@type": "xsd:string"
+    },
+    "images": {
+      "@id": "roku:images",
+      "@container": "@set"
+    },
+    "isOriginal": {
+      "@id": "roku:isOriginal",
+      "@type": "xsd:boolean"
+    },
+    "linearEvents": {
+      "@id": "roku:linearEvents",
+      "@container": "@set"
+    },
+    "longDescriptions": {
+      "@id": "roku:longDescriptions",
+      "@container": "@set"
+    },
+    "media": {
+      "@id": "roku:media"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "nextPageUrl": {
+      "@id": "roku:nextPageUrl",
+      "@type": "xsd:string"
+    },
+    "playOptions": {
+      "@id": "roku:playOptions",
+      "@container": "@set"
+    },
+    "releaseDate": {
+      "@id": "roku:releaseDate",
+      "@type": "xsd:string"
+    },
+    "releaseYear": {
+      "@id": "roku:releaseYear",
+      "@type": "xsd:integer"
+    },
+    "role": {
+      "@id": "roku:role",
+      "@type": "xsd:string"
+    },
+    "seasonInfo": {
+      "@id": "roku:seasonInfo",
+      "@type": "@id"
+    },
+    "seasonNumber": {
+      "@id": "roku:seasonNumber",
+      "@type": "xsd:integer"
+    },
+    "seriesId": {
+      "@id": "roku:seriesId",
+      "@type": "xsd:string"
+    },
+    "shortDescriptions": {
+      "@id": "roku:shortDescriptions",
+      "@container": "@set"
+    },
+    "tags": {
+      "@id": "roku:tags",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "titles": {
+      "@id": "roku:titles",
+      "@container": "@set"
+    },
+    "type": {
+      "@id": "roku:type"
+    },
+    "version": {
+      "@id": "schema:version"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "udn": "29380007-1234-5678-9abc-def012345678",
+  "serialNumber": "YH00CV012345",
+  "deviceId": "S1234567890",
+  "modelNumber": "4660X",
+  "modelName": "Roku Ultra",
+  "friendlyDeviceName": "Living Room Roku",
+  "softwareVersion": "12.5.0",
+  "softwareBuild": "4222",
+  "userDeviceName": "Living Room Roku",
+  "wifiMac": "ac:3a:7a:00:11:22",
+  "ethernetMac": "ac:3a:7a:00:11:23",
+  "networkType": "wifi",
+  "countryCode": "US",
+  "language": "en",
+  "timeZone": "America/Los_Angeles",
+  "powerMode": "PowerOn",
+  "supportsEcsTextedit": true,
+  "supportsEcsMicrophone": true,
+  "supportsWakeOnWlan": false,
+  "developerEnabled": true
+}

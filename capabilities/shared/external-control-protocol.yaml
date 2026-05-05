@@ -1,0 +1,232 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Roku External Control Protocol"
+  description: "Roku ECP HTTP API on port 8060 of a local-network Roku device for discovery, key injection, app launch, query, and diagnostics."
+  tags:
+    - Roku
+    - External Control Protocol
+    - Device Control
+    - Streaming
+  created: "2026-05-05"
+  modified: "2026-05-05"
+
+binds:
+  - namespace: env
+    keys:
+      ROKU_DEVICE_IP: ROKU_DEVICE_IP
+
+capability:
+  consumes:
+    - type: http
+      namespace: roku-ecp
+      baseUri: "http://{{ROKU_DEVICE_IP}}:8060"
+      description: "Roku device on the local network."
+      resources:
+        - name: discovery
+          path: /
+          description: "SSDP device description and metadata."
+          operations:
+            - name: get-device-root
+              method: GET
+              path: /
+              description: "Returns the SSDP device description XML."
+              outputRawFormat: xml
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: query-device-info
+              method: GET
+              path: /query/device-info
+              description: "Returns device metadata (model, serial, software version, network state)."
+              outputRawFormat: xml
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: apps
+          path: /query/apps
+          description: "Installed channel listing and active-app queries."
+          operations:
+            - name: query-apps
+              method: GET
+              path: /query/apps
+              description: "Lists channels installed on the device."
+              outputRawFormat: xml
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: query-active-app
+              method: GET
+              path: /query/active-app
+              description: "Returns the currently active channel."
+              outputRawFormat: xml
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: query-app-icon
+              method: GET
+              path: /query/icon/{appId}
+              description: "Returns the binary icon image for the specified channel."
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Roku channel/app identifier."
+              outputRawFormat: binary
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: launch-app
+              method: POST
+              path: /launch/{appId}
+              description: "Launches an installed channel; supports deep-link contentId/mediaType."
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Roku channel/app identifier."
+                - name: contentId
+                  in: query
+                  type: string
+                  required: false
+                  description: "Deep-link content identifier."
+                - name: mediaType
+                  in: query
+                  type: string
+                  required: false
+                  description: "Deep-link content type."
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: install-app
+              method: POST
+              path: /install/{appId}
+              description: "Opens the channel store details page for the specified channel."
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Roku channel/app identifier."
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: exit-app
+              method: POST
+              path: /exit-app/{appId}
+              description: "Suspends or terminates a running channel (Roku OS 14.1+)."
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Roku channel/app identifier."
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: keypress
+          path: /keypress
+          description: "Simulated remote-control key injection."
+          operations:
+            - name: key-press
+              method: POST
+              path: /keypress/{key}
+              description: "Press-and-release a remote-control key."
+              inputParameters:
+                - name: key
+                  in: path
+                  type: string
+                  required: true
+                  description: "Key name (Home, Up, Down, Left, Right, Select, Back, Play, etc.) or Lit_<char> for a literal character."
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: key-down
+              method: POST
+              path: /keydown/{key}
+              description: "Press and hold a remote-control key."
+              inputParameters:
+                - name: key
+                  in: path
+                  type: string
+                  required: true
+                  description: "Key name."
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: key-up
+              method: POST
+              path: /keyup/{key}
+              description: "Release a previously held key."
+              inputParameters:
+                - name: key
+                  in: path
+                  type: string
+                  required: true
+                  description: "Key name."
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: media-player
+          path: /query/media-player
+          description: "Active video player playback state."
+          operations:
+            - name: query-media-player
+              method: GET
+              path: /query/media-player
+              description: "Returns playback state, position, duration, and buffering metrics."
+              outputRawFormat: xml
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: diagnostics
+          path: /query
+          description: "Developer-mode diagnostics (chanperf, sgnodes, registry)."
+          operations:
+            - name: query-chanperf
+              method: GET
+              path: /query/chanperf
+              description: "CPU and memory metrics for the foreground channel."
+              outputRawFormat: xml
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: query-sgnodes-all
+              method: GET
+              path: /query/sgnodes/all
+              description: "All SceneGraph nodes with reference counts."
+              outputRawFormat: xml
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: query-registry
+              method: GET
+              path: /query/registry/{appId}
+              description: "Persistent registry entries for the specified channel."
+              inputParameters:
+                - name: appId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Roku channel identifier."
+              outputRawFormat: xml
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."

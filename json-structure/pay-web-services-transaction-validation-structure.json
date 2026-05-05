@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/pay-web-services-transaction-validation-structure.json",
+  "name": "TransactionValidation",
+  "description": "Result of a transaction-validation request.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Operation status (Success, Failure)."
+    },
+    "errorCode": {
+      "type": "int32",
+      "description": "Numeric Roku error code on failure."
+    },
+    "errorMessage": {
+      "type": "string"
+    },
+    "transactionId": {
+      "type": "string",
+      "description": "The transaction identifier that was validated."
+    },
+    "productId": {
+      "type": "string",
+      "description": "The Roku product code for the entitled product."
+    },
+    "productName": {
+      "type": "string"
+    },
+    "purchaseDate": {
+      "type": "datetime"
+    },
+    "expirationDate": {
+      "type": "datetime",
+      "description": "When the entitlement expires (for subscriptions and time-limited rentals)."
+    },
+    "purchaseStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Inactive",
+        "Pending_Active",
+        "Pending_Inactive"
+      ]
+    },
+    "isEntitled": {
+      "type": "boolean",
+      "description": "Whether the customer currently has access to the product."
+    },
+    "purchaseChannel": {
+      "type": "string",
+      "description": "How the purchase was initiated (e.g., Device, Web, InstantSignup)."
+    },
+    "purchaseContext": {
+      "type": "string",
+      "description": "Context flags identifying the purchase source."
+    },
+    "rokuCustomerId": {
+      "type": "string",
+      "description": "The Roku-issued anonymized customer identifier."
+    },
+    "amount": {
+      "type": "float"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "tax": {
+      "type": "float"
+    }
+  }
+}

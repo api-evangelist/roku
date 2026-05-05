@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-awsregion-schema.json",
+  "title": "AWSRegion",
+  "description": "AWSRegion schema from Roku Nabu Cloud",
+  "type": "string",
+  "enum": [
+    "us-west-2"
+  ]
+}

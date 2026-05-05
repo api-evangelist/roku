@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/external-control-protocol-app-list-structure.json",
+  "name": "AppList",
+  "description": "Container for the list of installed channels.",
+  "type": "object",
+  "properties": {
+    "apps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/App"
+      }
+    }
+  }
+}

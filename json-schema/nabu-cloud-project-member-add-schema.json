@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-project-member-add-schema.json",
+  "title": "ProjectMemberAdd",
+  "description": "ProjectMemberAdd schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "User Id"
+    },
+    "project_role_id": {
+      "type": "integer",
+      "title": "Project Role Id"
+    }
+  },
+  "required": [
+    "user_id",
+    "project_role_id"
+  ]
+}

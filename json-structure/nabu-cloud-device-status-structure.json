@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-device-status-structure.json",
+  "name": "DeviceStatus",
+  "description": "DeviceStatus schema from Roku Nabu Cloud",
+  "type": "string",
+  "enum": [
+    "shutdown",
+    "pending",
+    "running"
+  ]
+}

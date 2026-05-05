@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-kubernetes-status-structure.json",
+  "name": "KubernetesStatus",
+  "description": "KubernetesStatus schema from Roku Nabu Cloud",
+  "type": "string",
+  "enum": [
+    "created",
+    "pending",
+    "running",
+    "completed",
+    "failed",
+    "crashed",
+    "unknown"
+  ]
+}

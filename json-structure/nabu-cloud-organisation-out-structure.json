@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-organisation-out-structure.json",
+  "name": "OrganisationOut",
+  "description": "OrganisationOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "title": "Id"
+    },
+    "idp_id": {
+      "anyOf": [
+        {
+          "type": "uuid"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Idp Id",
+      "description": "Identity Provider(IdP) ID of the organisation"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Name",
+      "description": "Slug of the organisation, used in URLs"
+    },
+    "slug": {
+      "type": "string",
+      "title": "Slug",
+      "description": "Name of the organisation"
+    },
+    "max_devices": {
+      "type": "int32",
+      "exclusiveMinimum": 0,
+      "title": "Max Devices",
+      "description": "Maximum number of devices in the organisation"
+    },
+    "max_snapshots": {
+      "type": "int32",
+      "exclusiveMinimum": 0,
+      "title": "Max Snapshots",
+      "description": "Maximum number of snapshots in the organisation"
+    },
+    "max_project_devices": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Max Project Devices",
+      "description": "Maximum number of devices in the organisation per project, 0 for Organisation max"
+    },
+    "max_project_snapshots": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Max Project Snapshots",
+      "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max"
+    },
+    "max_project_runtime": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Max Project Runtime",
+      "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max"
+    },
+    "current_devices": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Current Devices",
+      "default": 0
+    },
+    "current_snapshots": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Current Snapshots",
+      "default": 0
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "slug",
+    "max_devices",
+    "max_snapshots",
+    "max_project_devices",
+    "max_project_snapshots",
+    "max_project_runtime"
+  ]
+}

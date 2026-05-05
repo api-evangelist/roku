@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-project-out-structure.json",
+  "name": "ProjectOut",
+  "description": "ProjectOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Id"
+    },
+    "slug": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Slug",
+      "description": "The slug of the project, used in URLs"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Name",
+      "description": "The name of the Project"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Description",
+      "description": "The description of the Project"
+    },
+    "billing_entity": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Billing Entity",
+      "description": "The billing entity of the Project"
+    },
+    "max_devices": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Max Devices",
+      "description": "Maximum number of devices in the project, 0 for organisation max",
+      "default": 0
+    },
+    "max_snapshots": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Max Snapshots",
+      "description": "Maximum number of snapshots in the project, 0 for organisation max",
+      "default": 0
+    },
+    "max_runtime": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Max Runtime",
+      "description": "Maximum runtime of a device in the project, 0 for organisation max",
+      "default": 0
+    },
+    "private": {
+      "type": "boolean",
+      "title": "Private",
+      "description": "Whether the project is listed in search results",
+      "default": false
+    },
+    "user_project": {
+      "type": "boolean",
+      "title": "User Project",
+      "description": "Whether the project is a user project"
+    },
+    "created_at": {
+      "type": "datetime",
+      "title": "Created At",
+      "description": "When the project was created"
+    },
+    "current_devices": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Current Devices",
+      "default": 0
+    },
+    "current_snapshots": {
+      "type": "int32",
+      "minimum": 0,
+      "title": "Current Snapshots",
+      "default": 0
+    }
+  },
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "billing_entity",
+    "user_project",
+    "created_at"
+  ]
+}

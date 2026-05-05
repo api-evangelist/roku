@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-project-group-add-schema.json",
+  "title": "ProjectGroupAdd",
+  "description": "ProjectGroupAdd schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "group_id": {
+      "type": "integer",
+      "title": "Group Id"
+    },
+    "project_role_id": {
+      "type": "integer",
+      "title": "Project Role Id"
+    }
+  },
+  "required": [
+    "group_id",
+    "project_role_id"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-snapshot-create-structure.json",
+  "name": "SnapshotCreate",
+  "description": "SnapshotCreate schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "parent_id": {
+      "anyOf": [
+        {
+          "type": "int32",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Parent Id",
+      "description": "The ID of the parent Snapshot."
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Name",
+      "description": "The name of the Snapshot."
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Description",
+      "description": "Description of the Snapshot."
+    },
+    "properties": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object",
+          "maxProperties": 8192
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Properties",
+      "description": "Properties of the Snapshot.",
+      "examples": [
+        {
+          "config_service_flags": {
+            "fw.swup.channel-sync-enabled": "false"
+          }
+        }
+      ]
+    },
+    "system_setting_changes": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "binary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "propertyNames": {
+            "format": "binary"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "System Setting Changes",
+      "description": "\n            A dictionary of system setting changes to apply to the snapshot.\n            This dictionary changes settings in system.conf.db. Entries with a\n            value of null will be removed.\n        "
+    },
+    "config_server_overrides_changes": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Config Server Overrides Changes",
+      "description": "\n            A dictionary of config server setting override changes to apply to\n            the snapshot. These overrides are set in the ConfigServer/Overrides\n            key of system.conf.db. Entries with a value of null will be removed.\n        "
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

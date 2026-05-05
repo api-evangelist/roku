@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/external-control-protocol-device-info-structure.json",
+  "name": "DeviceInfo",
+  "description": "Roku device metadata returned as XML.",
+  "type": "object",
+  "properties": {
+    "udn": {
+      "type": "string",
+      "description": "Unique Device Name (UUID)."
+    },
+    "serialNumber": {
+      "type": "string",
+      "description": "Hardware serial number."
+    },
+    "deviceId": {
+      "type": "string"
+    },
+    "modelNumber": {
+      "type": "string",
+      "description": "Hardware model number (e.g., 4660X)."
+    },
+    "modelName": {
+      "type": "string",
+      "description": "Marketing model name (e.g., Roku Ultra)."
+    },
+    "friendlyDeviceName": {
+      "type": "string"
+    },
+    "softwareVersion": {
+      "type": "string",
+      "example": "12.5.0"
+    },
+    "softwareBuild": {
+      "type": "string"
+    },
+    "userDeviceName": {
+      "type": "string"
+    },
+    "wifiMac": {
+      "type": "string"
+    },
+    "ethernetMac": {
+      "type": "string"
+    },
+    "networkType": {
+      "type": "string",
+      "enum": [
+        "wifi",
+        "ethernet"
+      ]
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "timeZone": {
+      "type": "string"
+    },
+    "powerMode": {
+      "type": "string",
+      "enum": [
+        "PowerOn",
+        "DisplayOff",
+        "Headless",
+        "Ready"
+      ]
+    },
+    "supportsEcsTextedit": {
+      "type": "boolean"
+    },
+    "supportsEcsMicrophone": {
+      "type": "boolean"
+    },
+    "supportsWakeOnWlan": {
+      "type": "boolean"
+    },
+    "developerEnabled": {
+      "type": "boolean"
+    }
+  }
+}

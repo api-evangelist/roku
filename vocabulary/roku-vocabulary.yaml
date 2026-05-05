@@ -1,0 +1,329 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Roku"
+  description: |
+    Unified vocabulary mapping the operational dimension (Roku's HTTP APIs as captured in OpenAPI)
+    to the capability dimension (Naftiko channel-operations workflow). Covers the External Control
+    Protocol device-control surface, Roku Pay billing/entitlement web services, and Roku Nabu Cloud
+    test-device orchestration. Excludes the BrightScript SDK and SceneGraph framework, which are
+    on-device programming interfaces rather than network APIs.
+  created: "2026-05-05"
+  modified: "2026-05-05"
+
+operational:
+  apis:
+    - namespace: roku-ecp
+      name: "Roku External Control Protocol"
+      version: "1.0"
+      baseUrl: "http://{rokuDeviceIp}:8060"
+      status: active
+      transport: HTTP
+      authentication: None (LAN trust)
+    - namespace: roku-pay
+      name: "Roku Pay Web Services"
+      version: "1.0"
+      baseUrl: "https://apipub.roku.com/listen/transaction-service.svc"
+      status: active
+      transport: HTTPS
+      authentication: PartnerAPIKey
+    - namespace: roku-nabu-cloud
+      name: "Roku Nabu Cloud"
+      version: "1.3.29"
+      baseUrl: "https://api.cloud.roku.dev"
+      status: active
+      transport: HTTPS
+      authentication: Bearer (Personal Access Token)
+
+  resources:
+    - name: device
+      api: roku-ecp
+      actions: [query, key-press, key-down, key-up, input, get-root]
+      description: "A physical Roku streaming device on the local network."
+    - name: app
+      api: roku-ecp
+      actions: [list, get-active, get-icon, launch, install, exit]
+      description: "An installed Roku channel."
+    - name: media-player
+      api: roku-ecp
+      actions: [query]
+      description: "The active video player on the device."
+    - name: tv-channel
+      api: roku-ecp
+      actions: [list, get-active]
+      description: "Tuned TV channel on Roku TV devices."
+    - name: diagnostics
+      api: roku-ecp
+      actions: [query-chanperf, query-r2d2-bitmaps, query-sgnodes, query-registry, query-app-state]
+      description: "Developer-mode diagnostic resources."
+    - name: transaction
+      api: roku-pay
+      actions: [validate]
+      description: "A Roku Pay purchase transaction."
+    - name: refund
+      api: roku-pay
+      actions: [validate]
+      description: "A Roku Pay refund record."
+    - name: subscription
+      api: roku-pay
+      actions: [cancel, refund, update-bill-cycle]
+      description: "A recurring Roku Pay subscription."
+    - name: service-credit
+      api: roku-pay
+      actions: [issue]
+      description: "An account-level credit issued to a customer."
+    - name: user
+      api: roku-nabu-cloud
+      actions: [get, list-organisations, list-projects, list-groups]
+      description: "An authenticated Nabu Cloud user (channel team member)."
+    - name: personal-access-token
+      api: roku-nabu-cloud
+      actions: [list, create, revoke, refresh, list-scopes]
+      description: "Personal access token for Nabu Cloud API access."
+    - name: organisation
+      api: roku-nabu-cloud
+      actions: [list, get, list-members, list-regions, list-roles]
+      description: "Top-level Nabu Cloud tenant."
+    - name: group
+      api: roku-nabu-cloud
+      actions: [list, get, create, update, delete, add-member, remove-member]
+      description: "Permission group within an organisation."
+    - name: project
+      api: roku-nabu-cloud
+      actions: [list, get, create, update, delete, list-groups, list-members]
+      description: "A channel testing project."
+    - name: test-device
+      api: roku-nabu-cloud
+      actions: [list, get, create, update, delete, start, stop, list-runs, read-logs]
+      description: "A remote Roku test device managed by Nabu Cloud."
+    - name: snapshot
+      api: roku-nabu-cloud
+      actions: [list, get, create, update, delete]
+      description: "A snapshot of a test device's state."
+    - name: build
+      api: roku-nabu-cloud
+      actions: [list, get]
+      description: "A channel build artifact in Nabu Cloud."
+
+  actions:
+    - name: query
+      methods: [GET]
+      pattern: read
+    - name: list
+      methods: [GET]
+      pattern: read
+    - name: get
+      methods: [GET]
+      pattern: read
+    - name: create
+      methods: [POST]
+      pattern: write
+    - name: update
+      methods: [PATCH, PUT]
+      pattern: write
+    - name: delete
+      methods: [DELETE]
+      pattern: destructive
+    - name: launch
+      methods: [POST]
+      pattern: write
+    - name: exit
+      methods: [POST]
+      pattern: destructive
+    - name: key-press
+      methods: [POST]
+      pattern: write
+    - name: validate
+      methods: [GET]
+      pattern: query
+    - name: cancel
+      methods: [POST]
+      pattern: destructive
+    - name: refund
+      methods: [POST]
+      pattern: destructive
+    - name: issue
+      methods: [POST]
+      pattern: write
+    - name: start
+      methods: [POST]
+      pattern: write
+    - name: stop
+      methods: [POST]
+      pattern: destructive
+
+  schemas:
+    device:
+      - DeviceInfo
+      - App
+      - AppList
+      - ActiveApp
+      - MediaPlayer
+    billing:
+      - TransactionValidation
+      - RefundValidation
+      - CancelSubscriptionRequest
+      - RefundSubscriptionRequest
+      - UpdateBillCycleRequest
+      - IssueCreditRequest
+      - SubscriptionResult
+    cloud:
+      - DeviceOut
+      - DeviceCreate
+      - DeviceUpdate
+      - DeviceStart
+      - DeviceStatus
+      - SnapshotOut
+      - BuildOut
+      - ProjectOut
+      - OrganisationOut
+      - GroupOut
+      - UserOut
+      - PersonalAccessTokenOut
+
+  parameters:
+    pagination:
+      - page
+      - limit
+      - cursor
+    identifiers:
+      - appId
+      - device_id
+      - project_id
+      - organisation_id
+      - group_id
+      - user_id
+      - build_id
+      - snapshot_id
+      - token_id
+      - transactionId
+      - refundId
+      - rokuCustomerId
+    filters:
+      - status
+      - region
+      - role
+    deep-link:
+      - contentId
+      - mediaType
+
+  enums:
+    media-types: [movie, episode, season, series, shortFormVideo, tvEpisode, special, live]
+    network-types: [wifi, ethernet]
+    power-modes: [PowerOn, DisplayOff, Headless, Ready]
+    purchase-statuses: [Active, Inactive, Pending_Active, Pending_Inactive]
+    media-player-states: [none, buffer, play, pause, stop, error, finished, startup, open]
+    app-types: [appl, menu, tvin]
+    device-statuses: [creating, running, stopped, error]
+
+  authentication:
+    - scheme: PartnerAPIKey
+      type: apiKey
+      placement: query
+      apis: [roku-pay]
+    - scheme: BearerToken
+      type: http
+      flow: bearer
+      apis: [roku-nabu-cloud]
+    - scheme: None
+      apis: [roku-ecp]
+      notes: "ECP requires user-enabled 'Control by mobile apps' on the device; some endpoints additionally require Developer Mode."
+
+capability:
+  workflows:
+    - name: "Roku Channel Operations"
+      file: capabilities/channel-operations.yaml
+      description: "Unified channel developer, QA, and billing workflow combining ECP, Roku Pay, and Nabu Cloud."
+      apis: [roku-ecp, roku-pay, roku-nabu-cloud]
+      restPort: 8080
+      mcpPort: 9090
+      tools: 22
+      personas: [Channel Developer, QA Engineer, Billing Operator]
+      domains: [Device Control, Test Automation, Monetization]
+
+  personas:
+    - id: channel-developer
+      name: "Channel Developer"
+      description: "Builds and ships Roku channels. Uses ECP for local-device debugging and Nabu Cloud for builds and remote test devices."
+      workflows: [Roku Channel Operations]
+    - id: qa-engineer
+      name: "QA Engineer"
+      description: "Runs automated channel certification tests on remote Nabu Cloud devices and exercises the channel via ECP key injection."
+      workflows: [Roku Channel Operations]
+    - id: billing-operator
+      name: "Billing Operator"
+      description: "Validates Roku Pay transactions, processes refunds, manages subscriptions, and issues service credits."
+      workflows: [Roku Channel Operations]
+
+  domains:
+    - id: device-control
+      name: "Device Control"
+      resources: [device, app, media-player, tv-channel, diagnostics]
+    - id: test-automation
+      name: "Test Automation"
+      resources: [test-device, snapshot, build, project]
+    - id: monetization
+      name: "Monetization"
+      resources: [transaction, refund, subscription, service-credit]
+    - id: identity-and-access
+      name: "Identity and Access"
+      resources: [user, personal-access-token, organisation, group]
+
+  namespaces:
+    consumed:
+      - roku-ecp
+      - roku-pay
+      - roku-nabu-cloud
+    rest-exposed:
+      - roku-channel-operations-api
+    mcp-exposed:
+      - roku-channel-operations-mcp
+
+  binds:
+    - name: ROKU_DEVICE_IP
+      description: "IPv4 address of the Roku device on the local network."
+      workflows: [Roku Channel Operations]
+    - name: ROKU_PAY_PARTNER_API_KEY
+      description: "Roku-issued partner API key for Roku Pay Web Services."
+      workflows: [Roku Channel Operations]
+    - name: ROKU_NABU_CLOUD_TOKEN
+      description: "Bearer token (personal access token) for Nabu Cloud."
+      workflows: [Roku Channel Operations]
+
+crossReference:
+  - resource: device
+    operations: [queryDeviceInfo, getDeviceRoot]
+    workflow: Roku Channel Operations
+    persona: Channel Developer
+  - resource: app
+    operations: [queryApps, queryActiveApp, launchApp, exitApp]
+    workflow: Roku Channel Operations
+    persona: Channel Developer
+  - resource: media-player
+    operations: [queryMediaPlayer]
+    workflow: Roku Channel Operations
+    persona: QA Engineer
+  - resource: transaction
+    operations: [validateTransaction]
+    workflow: Roku Channel Operations
+    persona: Billing Operator
+  - resource: subscription
+    operations: [cancelSubscription, refundSubscription, updateBillCycle]
+    workflow: Roku Channel Operations
+    persona: Billing Operator
+  - resource: service-credit
+    operations: [issueServiceCredit]
+    workflow: Roku Channel Operations
+    persona: Billing Operator
+  - resource: test-device
+    operations: [list-devices, create-device, start-device, stop-device, read-logs]
+    workflow: Roku Channel Operations
+    persona: QA Engineer
+  - resource: snapshot
+    operations: [list-snapshots, create-snapshot]
+    workflow: Roku Channel Operations
+    persona: QA Engineer
+  - resource: build
+    operations: [list-builds, get-build]
+    workflow: Roku Channel Operations
+    persona: Channel Developer

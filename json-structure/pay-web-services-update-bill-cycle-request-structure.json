@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/pay-web-services-update-bill-cycle-request-structure.json",
+  "name": "UpdateBillCycleRequest",
+  "description": "UpdateBillCycleRequest schema from Roku Pay Web Services",
+  "type": "object",
+  "properties": {
+    "partnerAPIKey": {
+      "type": "string"
+    },
+    "rokuCustomerId": {
+      "type": "string"
+    },
+    "productCode": {
+      "type": "string"
+    },
+    "nextBillDate": {
+      "type": "datetime"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "partnerAPIKey",
+    "rokuCustomerId",
+    "productCode",
+    "nextBillDate"
+  ]
+}

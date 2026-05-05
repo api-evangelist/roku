@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-structure/nabu-cloud-organisation-role-out-structure.json",
+  "name": "OrganisationRoleOut",
+  "description": "OrganisationRoleOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "organisation_id": {
+      "type": "int32",
+      "title": "Organisation Id"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "permissions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "title": "Permissions"
+    }
+  },
+  "required": [
+    "organisation_id",
+    "name",
+    "permissions"
+  ]
+}

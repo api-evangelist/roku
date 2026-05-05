@@ -1,0 +1,401 @@
+openapi: 3.0.3
+info:
+  title: Roku Pay Web Services
+  version: '1.0'
+  description: |
+    Roku Pay Web Services provide server-to-server APIs for billing, subscription management,
+    transaction validation, and entitlement checks for monetized Roku channels. Use these endpoints
+    to verify that a Roku user holds a valid entitlement to your content, to issue refunds, to update
+    billing cycles, and to grant service credits. All endpoints require a Roku-issued Partner API
+    Key.
+
+    Roku Pay handles payment processing, subscription state, and tax calculation on behalf of the
+    publisher; channels query these endpoints from their authentication backends rather than from
+    BrightScript directly.
+  contact:
+    name: Roku Pay Support
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/dev/docs/roku-web-service
+servers:
+- url: https://apipub.roku.com/listen/transaction-service.svc
+  description: Roku Pay production transaction service
+tags:
+- name: Validation
+  description: Transaction and refund validation
+- name: Subscription
+  description: Subscription lifecycle management
+- name: Billing
+  description: Billing cycle and credit management
+paths:
+  /validate-transaction/{partnerAPIKey}/{transactionId}:
+    get:
+      operationId: validateTransaction
+      summary: Roku Validate Transaction
+      description: |
+        Verifies that a customer holds a valid entitlement to a product purchased through Roku Pay.
+        Returns the purchase status, expiration date, and source channel of the transaction.
+        Channels must call this from their backend before granting entitled access to content.
+      tags: [Validation]
+      parameters:
+      - name: partnerAPIKey
+        in: path
+        required: true
+        description: The publisher's Roku-issued Partner API key.
+        schema:
+          type: string
+      - name: transactionId
+        in: path
+        required: true
+        description: The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore component at purchase time.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Transaction validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionValidation'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TransactionValidation'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /validate-refund/{partnerAPIKey}/{refundId}:
+    get:
+      operationId: validateRefund
+      summary: Roku Validate Refund
+      description: Confirms whether a refund has been successfully issued for a previous transaction.
+      tags: [Validation]
+      parameters:
+      - name: partnerAPIKey
+        in: path
+        required: true
+        description: The publisher's Roku-issued Partner API key.
+        schema:
+          type: string
+      - name: refundId
+        in: path
+        required: true
+        description: The Roku-issued refund identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Refund validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundValidation'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RefundValidation'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cancel-subscription:
+    post:
+      operationId: cancelSubscription
+      summary: Roku Cancel Subscription
+      description: Terminates a Roku Pay subscription. After cancellation the entitlement remains active until the end of the current billing period.
+      tags: [Subscription]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelSubscriptionRequest'
+      responses:
+        '200':
+          description: Cancellation status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResult'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /refund-subscription:
+    post:
+      operationId: refundSubscription
+      summary: Roku Refund Subscription
+      description: Issues a partial or full refund against a Roku Pay subscription.
+      tags: [Subscription, Billing]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundSubscriptionRequest'
+      responses:
+        '200':
+          description: Refund result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResult'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /update-bill-cycle:
+    post:
+      operationId: updateBillCycle
+      summary: Roku Update Bill Cycle
+      description: Adjusts the next billing date on an active Roku Pay subscription.
+      tags: [Billing]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBillCycleRequest'
+      responses:
+        '200':
+          description: Updated billing schedule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResult'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /issue-service-credit:
+    post:
+      operationId: issueServiceCredit
+      summary: Roku Issue Service Credit
+      description: Grants an account-level service credit to the customer, typically used to compensate for service interruptions or as a goodwill gesture.
+      tags: [Billing]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueCreditRequest'
+      responses:
+        '200':
+          description: Credit issuance result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResult'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TransactionValidation:
+      type: object
+      description: Result of a transaction-validation request.
+      x-schema-source: documentation
+      properties:
+        status:
+          type: string
+          description: Operation status (Success, Failure).
+        errorCode:
+          type: integer
+          description: Numeric Roku error code on failure.
+        errorMessage:
+          type: string
+        transactionId:
+          type: string
+          description: The transaction identifier that was validated.
+        productId:
+          type: string
+          description: The Roku product code for the entitled product.
+        productName:
+          type: string
+        purchaseDate:
+          type: string
+          format: date-time
+        expirationDate:
+          type: string
+          format: date-time
+          description: When the entitlement expires (for subscriptions and time-limited rentals).
+        purchaseStatus:
+          type: string
+          enum: [Active, Inactive, Pending_Active, Pending_Inactive]
+        isEntitled:
+          type: boolean
+          description: Whether the customer currently has access to the product.
+        purchaseChannel:
+          type: string
+          description: How the purchase was initiated (e.g., Device, Web, InstantSignup).
+        purchaseContext:
+          type: string
+          description: Context flags identifying the purchase source.
+        rokuCustomerId:
+          type: string
+          description: The Roku-issued anonymized customer identifier.
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+        tax:
+          type: number
+          format: float
+    RefundValidation:
+      type: object
+      description: Result of a refund-validation request.
+      x-schema-source: documentation
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+        refundId:
+          type: string
+        transactionId:
+          type: string
+        refundDate:
+          type: string
+          format: date-time
+        refundAmount:
+          type: number
+          format: float
+        currency:
+          type: string
+        refundReason:
+          type: string
+    CancelSubscriptionRequest:
+      type: object
+      required: [partnerAPIKey, rokuCustomerId, productCode]
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        productCode:
+          type: string
+        cancellationDate:
+          type: string
+          format: date-time
+        reason:
+          type: string
+    RefundSubscriptionRequest:
+      type: object
+      required: [partnerAPIKey, rokuCustomerId, transactionId]
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        transactionId:
+          type: string
+        refundAmount:
+          type: number
+          format: float
+          description: If omitted, a full refund is issued.
+        currency:
+          type: string
+        reason:
+          type: string
+    UpdateBillCycleRequest:
+      type: object
+      required: [partnerAPIKey, rokuCustomerId, productCode, nextBillDate]
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        productCode:
+          type: string
+        nextBillDate:
+          type: string
+          format: date-time
+        reason:
+          type: string
+    IssueCreditRequest:
+      type: object
+      required: [partnerAPIKey, rokuCustomerId, amount, currency]
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+        reason:
+          type: string
+    SubscriptionResult:
+      type: object
+      x-schema-source: documentation
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+        rokuCustomerId:
+          type: string
+        productCode:
+          type: string
+        effectiveDate:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    PartnerAPIKey:
+      type: apiKey
+      in: query
+      name: partnerAPIKey
+      description: |
+        Roku-issued Partner API Key. For GET endpoints the key is included in the URL path; for
+        POST endpoints it is included in the request body. Channels obtain this key from the Roku
+        Developer Dashboard.
+security:
+- PartnerAPIKey: []

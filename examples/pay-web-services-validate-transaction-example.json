@@ -1,0 +1,18 @@
+{
+  "status": "Success",
+  "errorCode": 0,
+  "errorMessage": "",
+  "transactionId": "transaction-abc123",
+  "productId": "premium-monthly",
+  "productName": "Premium Monthly Plan",
+  "purchaseDate": "2026-04-15T19:23:00Z",
+  "expirationDate": "2026-05-15T19:23:00Z",
+  "purchaseStatus": "Active",
+  "isEntitled": true,
+  "purchaseChannel": "Device",
+  "purchaseContext": "InAppPurchase",
+  "rokuCustomerId": "RCID-XYZ-123",
+  "amount": 9.99,
+  "currency": "USD",
+  "tax": 0.79
+}

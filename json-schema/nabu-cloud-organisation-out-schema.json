@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-organisation-out-schema.json",
+  "title": "OrganisationOut",
+  "description": "OrganisationOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "title": "Id"
+    },
+    "idp_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uuid"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Idp Id",
+      "description": "Identity Provider(IdP) ID of the organisation"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Name",
+      "description": "Slug of the organisation, used in URLs"
+    },
+    "slug": {
+      "type": "string",
+      "title": "Slug",
+      "description": "Name of the organisation"
+    },
+    "max_devices": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "title": "Max Devices",
+      "description": "Maximum number of devices in the organisation"
+    },
+    "max_snapshots": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "title": "Max Snapshots",
+      "description": "Maximum number of snapshots in the organisation"
+    },
+    "max_project_devices": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Max Project Devices",
+      "description": "Maximum number of devices in the organisation per project, 0 for Organisation max"
+    },
+    "max_project_snapshots": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Max Project Snapshots",
+      "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max"
+    },
+    "max_project_runtime": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Max Project Runtime",
+      "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max"
+    },
+    "current_devices": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Current Devices",
+      "default": 0
+    },
+    "current_snapshots": {
+      "type": "integer",
+      "minimum": 0,
+      "title": "Current Snapshots",
+      "default": 0
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "slug",
+    "max_devices",
+    "max_snapshots",
+    "max_project_devices",
+    "max_project_snapshots",
+    "max_project_runtime"
+  ]
+}

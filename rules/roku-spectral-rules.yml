@@ -1,0 +1,299 @@
+extends: [[spectral:oas, all]]
+
+# Roku API Spectral Ruleset
+# Enforces conventions observed across the Roku Nabu Cloud, External Control Protocol (ECP),
+# and Roku Pay Web Services OpenAPI specifications.
+#
+# Casing dominance:
+#   - Operation IDs: camelCase / snake_case mixed (Nabu Cloud uses snake_case operationIds via tags;
+#     ECP and Roku Pay use camelCase). Enforce camelCase as the canonical convention going forward.
+#   - Path segments: kebab-case dominant (e.g., /validate-transaction, /query/active-app, /personal_access_tokens).
+#     The Nabu Cloud API uses snake_case for some path segments — relax this to allow either.
+#   - Schema property names: camelCase dominant in ECP and Roku Pay, snake_case in Nabu Cloud.
+#     Enforce that they are consistent within each spec.
+#   - Tag names: Title Case (e.g., "Validation", "Apps", "KeyPress" -> "Key Press").
+
+rules:
+
+  # ============================================================
+  # INFO / METADATA
+  # ============================================================
+
+  roku-info-title-prefix:
+    description: API title should begin with "Roku".
+    message: "Title '{{value}}' should begin with 'Roku'."
+    severity: warn
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Roku"
+
+  roku-info-description-required:
+    description: API info.description is required and should be at least 80 characters.
+    message: "info.description must be present and substantive (>= 80 chars)."
+    severity: error
+    given: $.info
+    then:
+      - field: description
+        function: truthy
+      - field: description
+        function: length
+        functionOptions:
+          min: 80
+
+  roku-info-version-required:
+    description: API info.version is required.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  roku-info-contact-required:
+    description: info.contact should be defined with a name or url.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  # ============================================================
+  # OPENAPI VERSION
+  # ============================================================
+
+  roku-openapi-version:
+    description: Use OpenAPI 3.0.3 or 3.1.x.
+    message: "openapi version should be 3.0.x or 3.1.x."
+    severity: warn
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\.[01]\\."
+
+  # ============================================================
+  # SERVERS
+  # ============================================================
+
+  roku-servers-defined:
+    description: At least one server must be defined.
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+
+  roku-servers-https-preferred:
+    description: Production servers should use https. ECP local-network endpoints are an explicit exception (port 8060 plain HTTP).
+    severity: info
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(https://|http://\\{rokuDeviceIp\\}:8060)"
+
+  # ============================================================
+  # PATHS - NAMING CONVENTIONS
+  # ============================================================
+
+  roku-path-no-trailing-slash:
+    description: Paths should not end with a trailing slash.
+    severity: warn
+    given: $.paths
+    then:
+      function: pattern
+      field: "@key"
+      functionOptions:
+        notMatch: ".+/$"
+
+  roku-path-no-query-string:
+    description: Paths must not contain query strings.
+    severity: error
+    given: $.paths
+    then:
+      function: pattern
+      field: "@key"
+      functionOptions:
+        notMatch: "\\?"
+
+  roku-path-allowed-casing:
+    description: Path segments should be kebab-case or snake_case (no PascalCase or spaces).
+    severity: warn
+    given: $.paths
+    then:
+      function: pattern
+      field: "@key"
+      functionOptions:
+        match: "^(/(([a-z0-9][a-z0-9_-]*)|\\{[a-zA-Z_][a-zA-Z0-9_]*\\}))*/?$"
+
+  # ============================================================
+  # OPERATIONS
+  # ============================================================
+
+  roku-operation-operationid-required:
+    description: Every operation must have an operationId.
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete,head,options]
+    then:
+      field: operationId
+      function: truthy
+
+  roku-operation-summary-required:
+    description: Every operation must have a summary.
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete,head,options]
+    then:
+      field: summary
+      function: truthy
+
+  roku-operation-summary-prefix:
+    description: Operation summaries should begin with "Roku ".
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete,head,options].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Roku "
+
+  roku-operation-description-required:
+    description: Every operation should have a description.
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete,head,options]
+    then:
+      field: description
+      function: truthy
+
+  roku-operation-tags-required:
+    description: Every operation must have at least one tag.
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete,head,options]
+    then:
+      field: tags
+      function: truthy
+
+  roku-operation-microcks-extension:
+    description: Operations should declare an x-microcks-operation extension for mock dispatch.
+    severity: info
+    given: $.paths.*[get,post,put,patch,delete,head,options]
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  # ============================================================
+  # TAGS
+  # ============================================================
+
+  roku-tags-defined:
+    description: A global tags array should be defined at the document root.
+    severity: warn
+    given: $
+    then:
+      field: tags
+      function: truthy
+
+  roku-tag-description:
+    description: Each tag should have a description.
+    severity: info
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
+
+  # ============================================================
+  # PARAMETERS
+  # ============================================================
+
+  roku-parameter-description:
+    description: Each parameter must have a description.
+    severity: warn
+    given: $..parameters[?(@.in)]
+    then:
+      field: description
+      function: truthy
+
+  roku-parameter-schema:
+    description: Each parameter must declare a schema with a type.
+    severity: error
+    given: $..parameters[?(@.in)]
+    then:
+      field: schema
+      function: truthy
+
+  # ============================================================
+  # REQUEST BODIES
+  # ============================================================
+
+  roku-requestbody-json:
+    description: Request bodies should support application/json.
+    severity: warn
+    given: $..requestBody.content
+    then:
+      field: application/json
+      function: truthy
+
+  # ============================================================
+  # RESPONSES
+  # ============================================================
+
+  roku-response-success-required:
+    description: Every operation must declare a 2xx success response.
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete,head,options].responses
+    then:
+      function: pattern
+      field: "@key"
+      functionOptions:
+        match: "^(2[0-9][0-9]|default)$"
+
+  roku-response-description:
+    description: Every response must have a description.
+    severity: warn
+    given: $..responses.*
+    then:
+      field: description
+      function: truthy
+
+  # ============================================================
+  # SCHEMAS
+  # ============================================================
+
+  roku-schema-type-required:
+    description: Top-level component schemas should declare a type.
+    severity: warn
+    given: $.components.schemas.*
+    then:
+      field: type
+      function: truthy
+
+  roku-schema-source-extension:
+    description: Schemas extracted from documentation, SDK, or samples should declare x-schema-source for traceability.
+    severity: info
+    given: $.components.schemas.*
+    then:
+      field: x-schema-source
+      function: truthy
+
+  # ============================================================
+  # SECURITY
+  # ============================================================
+
+  roku-security-schemes-described:
+    description: Security schemes should declare a description.
+    severity: info
+    given: $.components.securitySchemes.*
+    then:
+      field: description
+      function: truthy
+
+  # ============================================================
+  # GENERAL QUALITY
+  # ============================================================
+
+  roku-info-x-source-url:
+    description: Specs generated from documentation should declare x-source-url for traceability.
+    severity: info
+    given: $.info
+    then:
+      field: x-source-url
+      function: truthy

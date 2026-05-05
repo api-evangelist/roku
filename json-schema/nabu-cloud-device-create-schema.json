@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-device-create-schema.json",
+  "title": "DeviceCreate",
+  "description": "DeviceCreate schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "device_type": {
+      "$ref": "#/components/schemas/DeviceType",
+      "description": "The type of the Device.",
+      "examples": [
+        "tv"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 3,
+      "title": "Name",
+      "description": "The name of the Device."
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Description",
+      "description": "Description of the Device."
+    },
+    "account_name": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "email"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Account Name",
+      "description": "Account name of the Device.",
+      "examples": [
+        "user@roku.com"
+      ]
+    },
+    "properties": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object",
+          "maxProperties": 8192
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Properties",
+      "description": "Device properties.",
+      "examples": [
+        {},
+        {
+          "config_service_flags": {
+            "fw.swup.channel-sync-enabled": "false"
+          }
+        }
+      ]
+    },
+    "qa_hub": {
+      "type": "boolean",
+      "title": "Qa Hub",
+      "description": "Whether the device should be auto registered in QA Hub."
+    }
+  },
+  "required": [
+    "device_type",
+    "name"
+  ]
+}

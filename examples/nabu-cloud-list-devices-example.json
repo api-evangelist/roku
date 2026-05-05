@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "dev-01",
+      "name": "Roku Ultra Test 1",
+      "model": "4660X",
+      "region": "us-west-2",
+      "status": "running",
+      "createdAt": "2026-04-01T10:00:00Z"
+    },
+    {
+      "id": "dev-02",
+      "name": "Roku Streaming Stick Test",
+      "model": "3820X",
+      "region": "us-east-1",
+      "status": "stopped",
+      "createdAt": "2026-04-05T14:30:00Z"
+    }
+  ]
+}

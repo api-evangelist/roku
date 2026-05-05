@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/roku/refs/heads/main/json-schema/nabu-cloud-group-member-out-schema.json",
+  "title": "GroupMemberOut",
+  "description": "GroupMemberOut schema from Roku Nabu Cloud",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "username": {
+      "type": "string",
+      "title": "Username"
+    },
+    "full_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Full Name"
+    },
+    "email": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "email"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Email"
+    },
+    "group_role_id": {
+      "type": "integer",
+      "title": "Group Role Id"
+    },
+    "group_role_name": {
+      "type": "string",
+      "title": "Group Role Name"
+    }
+  },
+  "required": [
+    "id",
+    "username",
+    "full_name",
+    "email",
+    "group_role_id",
+    "group_role_name"
+  ]
+}
