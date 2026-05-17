@@ -88,7 +88,7 @@ apis:
       - type: JSONStructure
         url: json-structure/external-control-protocol-media-player-structure.json
         title: Media Player Structure
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/roku-external-control-protocol-context.jsonld
       - type: Example
         url: examples/external-control-protocol-query-device-info-example.json
@@ -145,7 +145,7 @@ apis:
       - type: JSONStructure
         url: json-structure/pay-web-services-subscription-result-structure.json
         title: Subscription Result Structure
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/roku-pay-web-services-context.jsonld
       - type: Example
         url: examples/pay-web-services-validate-transaction-example.json
@@ -167,7 +167,7 @@ apis:
         url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
       - type: OpenAPI
         url: openapi/roku-nabu-cloud.yaml
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/roku-nabu-cloud-context.jsonld
       - type: Example
         url: examples/nabu-cloud-list-devices-example.json
@@ -189,7 +189,7 @@ apis:
       - type: JSONSchema
         url: json-schema/search-feed-schema.json
         title: Search Feed Schema
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/roku-search-feed-context.jsonld
       - type: Example
         url: examples/roku-search-feed-simple-example.json
