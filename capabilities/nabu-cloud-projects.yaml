@@ -1,0 +1,892 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roku Nabu Cloud — projects
+  description: 'Roku Nabu Cloud — projects. 15 operations. Lead operation: Roku List Projects. Self-contained Naftiko capability
+    covering one Roku business surface.'
+  tags:
+  - Roku
+  - projects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROKU_API_KEY: ROKU_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nabu-cloud-projects
+    baseUri: https://api.cloud.roku.dev
+    description: Roku Nabu Cloud — projects business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-organisations-organisation_id-projects
+      path: /api/v1/organisations/{organisation_id}/projects
+      operations:
+      - name: projectslistprojects
+        method: GET
+        description: Roku List Projects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+        - name: slug
+          in: query
+          type: string
+          description: The slug of the project, used in URLs
+        - name: name
+          in: query
+          type: string
+          description: The name of the Project
+        - name: description
+          in: query
+          type: string
+          description: The description of the Project
+        - name: billing_entity
+          in: query
+          type: string
+          description: The billing entity of the Project
+        - name: max_devices
+          in: query
+          type: integer
+          description: Maximum number of devices in the project, 0 for organisation max
+        - name: max_snapshots
+          in: query
+          type: integer
+          description: Maximum number of snapshots in the project, 0 for organisation max
+        - name: max_runtime
+          in: query
+          type: integer
+          description: Maximum runtime of a device in the project, 0 for organisation max
+        - name: created_at
+          in: query
+          type: string
+          description: The creation day of the project
+        - name: include_personal_project
+          in: query
+          type: boolean
+          description: Show private projects
+      - name: projectscreateproject
+        method: POST
+        description: Roku Create Project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-organisations-organisation_id-projects-project_id
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}
+      operations:
+      - name: projectsgetproject
+        method: GET
+        description: Roku Get Project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+      - name: projectsupdateproject
+        method: PATCH
+        description: Roku Update Project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: projectsdeleteproject
+        method: DELETE
+        description: Roku Delete Project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: cascade_delete
+          in: query
+          type: string
+          description: Deletes project, and everything associated with it, including snapshots!
+    - name: api-v1-organisations-organisation_id-projects-project_id-groups
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/groups
+      operations:
+      - name: projectslistprojectgroups
+        method: GET
+        description: Roku List Project Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+        - name: project_role
+          in: query
+          type: string
+          description: The name of the project role
+        - name: added
+          in: query
+          type: string
+          description: The day the group was added
+        - name: group_name
+          in: query
+          type: string
+          description: The name of the Group
+        - name: group_description
+          in: query
+          type: string
+          description: The name of the Group
+        - name: group_created_at
+          in: query
+          type: string
+          description: When the group was created
+      - name: projectsaddprojectgroup
+        method: POST
+        description: Roku Add Project Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-organisations-organisation_id-projects-project_id-groups-group_id
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/groups/{group_id}
+      operations:
+      - name: projectsgetprojectgroup
+        method: GET
+        description: Roku Get Project Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+      - name: projectsupdateprojectgroup
+        method: PATCH
+        description: Roku Update Project Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: projectsremoveprojectgroup
+        method: DELETE
+        description: Roku Remove Project Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+    - name: api-v1-organisations-organisation_id-projects-project_id-members
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/members
+      operations:
+      - name: projectslistprojectmembers
+        method: GET
+        description: Roku List Project Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+        - name: project_role
+          in: query
+          type: string
+          description: The name of the project role
+        - name: added
+          in: query
+          type: string
+          description: When the user was added.
+        - name: member_username
+          in: query
+          type: string
+          description: The username of the member.
+        - name: member_email
+          in: query
+          type: string
+          description: The email of the member.
+      - name: projectsaddprojectmember
+        method: POST
+        description: Roku Add Project Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-organisations-organisation_id-projects-project_id-members-user_id
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/members/{user_id}
+      operations:
+      - name: projectsgetprojectmember
+        method: GET
+        description: Roku Get Project Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+      - name: projectsupdateprojectmember
+        method: PATCH
+        description: Roku Update Project Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: project_role_id
+          in: query
+          type: integer
+          required: true
+      - name: projectsremoveprojectmember
+        method: DELETE
+        description: Roku Remove Project Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: user_id
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: nabu-cloud-projects-rest
+    port: 8080
+    description: REST adapter for Roku Nabu Cloud — projects. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/organisations/{organisation-id}/projects
+      name: api-v1-organisations-organisation-id-projects
+      description: REST surface for api-v1-organisations-organisation_id-projects.
+      operations:
+      - method: GET
+        name: projectslistprojects
+        description: Roku List Projects
+        call: nabu-cloud-projects.projectslistprojects
+        with:
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+          slug: rest.slug
+          name: rest.name
+          description: rest.description
+          billing_entity: rest.billing_entity
+          max_devices: rest.max_devices
+          max_snapshots: rest.max_snapshots
+          max_runtime: rest.max_runtime
+          created_at: rest.created_at
+          include_personal_project: rest.include_personal_project
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: projectscreateproject
+        description: Roku Create Project
+        call: nabu-cloud-projects.projectscreateproject
+        with:
+          organisation_id: rest.organisation_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}
+      name: api-v1-organisations-organisation-id-projects-project-id
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id.
+      operations:
+      - method: GET
+        name: projectsgetproject
+        description: Roku Get Project
+        call: nabu-cloud-projects.projectsgetproject
+        with:
+          organisation_id: rest.organisation_id
+          project_id: rest.project_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: projectsupdateproject
+        description: Roku Update Project
+        call: nabu-cloud-projects.projectsupdateproject
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: projectsdeleteproject
+        description: Roku Delete Project
+        call: nabu-cloud-projects.projectsdeleteproject
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          cascade_delete: rest.cascade_delete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/groups
+      name: api-v1-organisations-organisation-id-projects-project-id-groups
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-groups.
+      operations:
+      - method: GET
+        name: projectslistprojectgroups
+        description: Roku List Project Groups
+        call: nabu-cloud-projects.projectslistprojectgroups
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+          project_role: rest.project_role
+          added: rest.added
+          group_name: rest.group_name
+          group_description: rest.group_description
+          group_created_at: rest.group_created_at
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: projectsaddprojectgroup
+        description: Roku Add Project Group
+        call: nabu-cloud-projects.projectsaddprojectgroup
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/groups/{group-id}
+      name: api-v1-organisations-organisation-id-projects-project-id-groups-group-id
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-groups-group_id.
+      operations:
+      - method: GET
+        name: projectsgetprojectgroup
+        description: Roku Get Project Group
+        call: nabu-cloud-projects.projectsgetprojectgroup
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          group_id: rest.group_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: projectsupdateprojectgroup
+        description: Roku Update Project Group
+        call: nabu-cloud-projects.projectsupdateprojectgroup
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          group_id: rest.group_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: projectsremoveprojectgroup
+        description: Roku Remove Project Group
+        call: nabu-cloud-projects.projectsremoveprojectgroup
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          group_id: rest.group_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/members
+      name: api-v1-organisations-organisation-id-projects-project-id-members
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-members.
+      operations:
+      - method: GET
+        name: projectslistprojectmembers
+        description: Roku List Project Members
+        call: nabu-cloud-projects.projectslistprojectmembers
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+          project_role: rest.project_role
+          added: rest.added
+          member_username: rest.member_username
+          member_email: rest.member_email
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: projectsaddprojectmember
+        description: Roku Add Project Member
+        call: nabu-cloud-projects.projectsaddprojectmember
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/members/{user-id}
+      name: api-v1-organisations-organisation-id-projects-project-id-members-user-id
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-members-user_id.
+      operations:
+      - method: GET
+        name: projectsgetprojectmember
+        description: Roku Get Project Member
+        call: nabu-cloud-projects.projectsgetprojectmember
+        with:
+          user_id: rest.user_id
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: projectsupdateprojectmember
+        description: Roku Update Project Member
+        call: nabu-cloud-projects.projectsupdateprojectmember
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          user_id: rest.user_id
+          project_role_id: rest.project_role_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: projectsremoveprojectmember
+        description: Roku Remove Project Member
+        call: nabu-cloud-projects.projectsremoveprojectmember
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nabu-cloud-projects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roku Nabu Cloud — projects. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: roku-list-projects
+      description: Roku List Projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectslistprojects
+      with:
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+        slug: tools.slug
+        name: tools.name
+        description: tools.description
+        billing_entity: tools.billing_entity
+        max_devices: tools.max_devices
+        max_snapshots: tools.max_snapshots
+        max_runtime: tools.max_runtime
+        created_at: tools.created_at
+        include_personal_project: tools.include_personal_project
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-create-project
+      description: Roku Create Project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nabu-cloud-projects.projectscreateproject
+      with:
+        organisation_id: tools.organisation_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-project
+      description: Roku Get Project
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectsgetproject
+      with:
+        organisation_id: tools.organisation_id
+        project_id: tools.project_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-update-project
+      description: Roku Update Project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectsupdateproject
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-delete-project
+      description: Roku Delete Project
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nabu-cloud-projects.projectsdeleteproject
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        cascade_delete: tools.cascade_delete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-list-project-groups
+      description: Roku List Project Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectslistprojectgroups
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+        project_role: tools.project_role
+        added: tools.added
+        group_name: tools.group_name
+        group_description: tools.group_description
+        group_created_at: tools.group_created_at
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-add-project-group
+      description: Roku Add Project Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nabu-cloud-projects.projectsaddprojectgroup
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-project-group
+      description: Roku Get Project Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectsgetprojectgroup
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        group_id: tools.group_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-update-project-group
+      description: Roku Update Project Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectsupdateprojectgroup
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        group_id: tools.group_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-remove-project-group
+      description: Roku Remove Project Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nabu-cloud-projects.projectsremoveprojectgroup
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        group_id: tools.group_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-list-project-members
+      description: Roku List Project Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectslistprojectmembers
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+        project_role: tools.project_role
+        added: tools.added
+        member_username: tools.member_username
+        member_email: tools.member_email
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-add-project-member
+      description: Roku Add Project Member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nabu-cloud-projects.projectsaddprojectmember
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-project-member
+      description: Roku Get Project Member
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectsgetprojectmember
+      with:
+        user_id: tools.user_id
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-update-project-member
+      description: Roku Update Project Member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-projects.projectsupdateprojectmember
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        user_id: tools.user_id
+        project_role_id: tools.project_role_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-remove-project-member
+      description: Roku Remove Project Member
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nabu-cloud-projects.projectsremoveprojectmember
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,311 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roku External Control Protocol (ECP) — Query
+  description: 'Roku External Control Protocol (ECP) — Query. 8 operations. Lead operation: Roku Query Active App. Self-contained
+    Naftiko capability covering one Roku business surface.'
+  tags:
+  - Roku
+  - Query
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROKU_API_KEY: ROKU_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: external-control-protocol-query
+    baseUri: http://{rokuDeviceIp}:8060
+    description: Roku External Control Protocol (ECP) — Query business capability. Self-contained, no shared references.
+    resources:
+    - name: query-active-app
+      path: /query/active-app
+      operations:
+      - name: queryactiveapp
+        method: GET
+        description: Roku Query Active App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: query-app-state-appId
+      path: /query/app-state/{appId}
+      operations:
+      - name: queryappstate
+        method: GET
+        description: Roku Query App State
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          description: The Roku channel identifier
+          required: true
+    - name: query-apps
+      path: /query/apps
+      operations:
+      - name: queryapps
+        method: GET
+        description: Roku Query Installed Apps
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: query-device-info
+      path: /query/device-info
+      operations:
+      - name: querydeviceinfo
+        method: GET
+        description: Roku Query Device Info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: query-icon-appId
+      path: /query/icon/{appId}
+      operations:
+      - name: queryappicon
+        method: GET
+        description: Roku Query App Icon
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          description: The Roku channel/app identifier
+          required: true
+    - name: query-media-player
+      path: /query/media-player
+      operations:
+      - name: querymediaplayer
+        method: GET
+        description: Roku Query Media Player
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: query-tv-active-channel
+      path: /query/tv-active-channel
+      operations:
+      - name: querytvactivechannel
+        method: GET
+        description: Roku Query Active TV Channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: query-tv-channels
+      path: /query/tv-channels
+      operations:
+      - name: querytvchannels
+        method: GET
+        description: Roku Query TV Channels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: external-control-protocol-query-rest
+    port: 8080
+    description: REST adapter for Roku External Control Protocol (ECP) — Query. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/query/active-app
+      name: query-active-app
+      description: REST surface for query-active-app.
+      operations:
+      - method: GET
+        name: queryactiveapp
+        description: Roku Query Active App
+        call: external-control-protocol-query.queryactiveapp
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/app-state/{appid}
+      name: query-app-state-appid
+      description: REST surface for query-app-state-appId.
+      operations:
+      - method: GET
+        name: queryappstate
+        description: Roku Query App State
+        call: external-control-protocol-query.queryappstate
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/apps
+      name: query-apps
+      description: REST surface for query-apps.
+      operations:
+      - method: GET
+        name: queryapps
+        description: Roku Query Installed Apps
+        call: external-control-protocol-query.queryapps
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/device-info
+      name: query-device-info
+      description: REST surface for query-device-info.
+      operations:
+      - method: GET
+        name: querydeviceinfo
+        description: Roku Query Device Info
+        call: external-control-protocol-query.querydeviceinfo
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/icon/{appid}
+      name: query-icon-appid
+      description: REST surface for query-icon-appId.
+      operations:
+      - method: GET
+        name: queryappicon
+        description: Roku Query App Icon
+        call: external-control-protocol-query.queryappicon
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/media-player
+      name: query-media-player
+      description: REST surface for query-media-player.
+      operations:
+      - method: GET
+        name: querymediaplayer
+        description: Roku Query Media Player
+        call: external-control-protocol-query.querymediaplayer
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/tv-active-channel
+      name: query-tv-active-channel
+      description: REST surface for query-tv-active-channel.
+      operations:
+      - method: GET
+        name: querytvactivechannel
+        description: Roku Query Active TV Channel
+        call: external-control-protocol-query.querytvactivechannel
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/tv-channels
+      name: query-tv-channels
+      description: REST surface for query-tv-channels.
+      operations:
+      - method: GET
+        name: querytvchannels
+        description: Roku Query TV Channels
+        call: external-control-protocol-query.querytvchannels
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: external-control-protocol-query-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roku External Control Protocol (ECP) — Query. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: roku-query-active-app
+      description: Roku Query Active App
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-query.queryactiveapp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-app-state
+      description: Roku Query App State
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-query.queryappstate
+      with:
+        appId: tools.appId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-installed-apps
+      description: Roku Query Installed Apps
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-query.queryapps
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-device-info
+      description: Roku Query Device Info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-query.querydeviceinfo
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-app-icon
+      description: Roku Query App Icon
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-query.queryappicon
+      with:
+        appId: tools.appId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-media-player
+      description: Roku Query Media Player
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-query.querymediaplayer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-active-tv-channel
+      description: Roku Query Active TV Channel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-query.querytvactivechannel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-tv-channels
+      description: Roku Query TV Channels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-query.querytvchannels
+      outputParameters:
+      - type: object
+        mapping: $.

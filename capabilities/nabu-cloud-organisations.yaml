@@ -1,0 +1,570 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roku Nabu Cloud — organisations
+  description: 'Roku Nabu Cloud — organisations. 10 operations. Lead operation: Roku List Organisations. Self-contained Naftiko
+    capability covering one Roku business surface.'
+  tags:
+  - Roku
+  - organisations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROKU_API_KEY: ROKU_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nabu-cloud-organisations
+    baseUri: https://api.cloud.roku.dev
+    description: Roku Nabu Cloud — organisations business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-organisations
+      path: /api/v1/organisations
+      operations:
+      - name: organisationslistorganisations
+        method: GET
+        description: Roku List Organisations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+        - name: slug
+          in: query
+          type: string
+          description: Slug of the organisation, used in URLs
+        - name: name
+          in: query
+          type: string
+        - name: max_devices
+          in: query
+          type: integer
+          description: Maximum number of devices in the organisation
+        - name: max_snapshots
+          in: query
+          type: integer
+          description: Maximum number of snapshots in the organisation
+        - name: max_project_devices
+          in: query
+          type: integer
+          description: Maximum number of devices in the organisation per project, 0 for Organisation max
+        - name: max_project_snapshots
+          in: query
+          type: integer
+          description: Maximum number of snapshots in the organisation per project, 0 for Organisation max
+        - name: max_project_runtime
+          in: query
+          type: integer
+          description: Maximum runtime of a device in the organisation per project, 0 for Organisation max
+        - name: created_at
+          in: query
+          type: string
+          description: The creation day of the organisation
+    - name: api-v1-organisations-organisation_id
+      path: /api/v1/organisations/{organisation_id}
+      operations:
+      - name: organisationsgetorganisation
+        method: GET
+        description: Roku Get Organisation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+    - name: api-v1-organisations-organisation_id-members
+      path: /api/v1/organisations/{organisation_id}/members
+      operations:
+      - name: organisationslistorganisationmembers
+        method: GET
+        description: Roku List Organisation Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+    - name: api-v1-organisations-organisation_id-members-user_id
+      path: /api/v1/organisations/{organisation_id}/members/{user_id}
+      operations:
+      - name: organisationsgetorganisationmember
+        method: GET
+        description: Roku Get Organisation Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+    - name: api-v1-organisations-organisation_id-regions
+      path: /api/v1/organisations/{organisation_id}/regions
+      operations:
+      - name: organisationslistorganisationregions
+        method: GET
+        description: Roku List Organisation Regions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+    - name: api-v1-organisations-organisation_id-regions-region_id
+      path: /api/v1/organisations/{organisation_id}/regions/{region_id}
+      operations:
+      - name: organisationsgetorganisationregion
+        method: GET
+        description: Roku Get Organisation Region
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: region_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+    - name: api-v1-organisations-organisation_id-roles-groups
+      path: /api/v1/organisations/{organisation_id}/roles/groups
+      operations:
+      - name: organisationslistgrouproles
+        method: GET
+        description: Roku List Group Roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+    - name: api-v1-organisations-organisation_id-roles-groups-role_id
+      path: /api/v1/organisations/{organisation_id}/roles/groups/{role_id}
+      operations:
+      - name: organisationsgetgrouprole
+        method: GET
+        description: Roku Get Group Role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: role_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+    - name: api-v1-organisations-organisation_id-roles-projects
+      path: /api/v1/organisations/{organisation_id}/roles/projects
+      operations:
+      - name: organisationslistprojectroles
+        method: GET
+        description: Roku List Project Roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+    - name: api-v1-organisations-organisation_id-roles-projects-role_id
+      path: /api/v1/organisations/{organisation_id}/roles/projects/{role_id}
+      operations:
+      - name: organisationsgetprojectrole
+        method: GET
+        description: Roku Get Project Role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: role_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+  exposes:
+  - type: rest
+    namespace: nabu-cloud-organisations-rest
+    port: 8080
+    description: REST adapter for Roku Nabu Cloud — organisations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/organisations
+      name: api-v1-organisations
+      description: REST surface for api-v1-organisations.
+      operations:
+      - method: GET
+        name: organisationslistorganisations
+        description: Roku List Organisations
+        call: nabu-cloud-organisations.organisationslistorganisations
+        with:
+          items: rest.items
+          page: rest.page
+          slug: rest.slug
+          name: rest.name
+          max_devices: rest.max_devices
+          max_snapshots: rest.max_snapshots
+          max_project_devices: rest.max_project_devices
+          max_project_snapshots: rest.max_project_snapshots
+          max_project_runtime: rest.max_project_runtime
+          created_at: rest.created_at
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}
+      name: api-v1-organisations-organisation-id
+      description: REST surface for api-v1-organisations-organisation_id.
+      operations:
+      - method: GET
+        name: organisationsgetorganisation
+        description: Roku Get Organisation
+        call: nabu-cloud-organisations.organisationsgetorganisation
+        with:
+          organisation_id: rest.organisation_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/members
+      name: api-v1-organisations-organisation-id-members
+      description: REST surface for api-v1-organisations-organisation_id-members.
+      operations:
+      - method: GET
+        name: organisationslistorganisationmembers
+        description: Roku List Organisation Members
+        call: nabu-cloud-organisations.organisationslistorganisationmembers
+        with:
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/members/{user-id}
+      name: api-v1-organisations-organisation-id-members-user-id
+      description: REST surface for api-v1-organisations-organisation_id-members-user_id.
+      operations:
+      - method: GET
+        name: organisationsgetorganisationmember
+        description: Roku Get Organisation Member
+        call: nabu-cloud-organisations.organisationsgetorganisationmember
+        with:
+          user_id: rest.user_id
+          organisation_id: rest.organisation_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/regions
+      name: api-v1-organisations-organisation-id-regions
+      description: REST surface for api-v1-organisations-organisation_id-regions.
+      operations:
+      - method: GET
+        name: organisationslistorganisationregions
+        description: Roku List Organisation Regions
+        call: nabu-cloud-organisations.organisationslistorganisationregions
+        with:
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/regions/{region-id}
+      name: api-v1-organisations-organisation-id-regions-region-id
+      description: REST surface for api-v1-organisations-organisation_id-regions-region_id.
+      operations:
+      - method: GET
+        name: organisationsgetorganisationregion
+        description: Roku Get Organisation Region
+        call: nabu-cloud-organisations.organisationsgetorganisationregion
+        with:
+          region_id: rest.region_id
+          organisation_id: rest.organisation_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/roles/groups
+      name: api-v1-organisations-organisation-id-roles-groups
+      description: REST surface for api-v1-organisations-organisation_id-roles-groups.
+      operations:
+      - method: GET
+        name: organisationslistgrouproles
+        description: Roku List Group Roles
+        call: nabu-cloud-organisations.organisationslistgrouproles
+        with:
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/roles/groups/{role-id}
+      name: api-v1-organisations-organisation-id-roles-groups-role-id
+      description: REST surface for api-v1-organisations-organisation_id-roles-groups-role_id.
+      operations:
+      - method: GET
+        name: organisationsgetgrouprole
+        description: Roku Get Group Role
+        call: nabu-cloud-organisations.organisationsgetgrouprole
+        with:
+          role_id: rest.role_id
+          organisation_id: rest.organisation_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/roles/projects
+      name: api-v1-organisations-organisation-id-roles-projects
+      description: REST surface for api-v1-organisations-organisation_id-roles-projects.
+      operations:
+      - method: GET
+        name: organisationslistprojectroles
+        description: Roku List Project Roles
+        call: nabu-cloud-organisations.organisationslistprojectroles
+        with:
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/roles/projects/{role-id}
+      name: api-v1-organisations-organisation-id-roles-projects-role-id
+      description: REST surface for api-v1-organisations-organisation_id-roles-projects-role_id.
+      operations:
+      - method: GET
+        name: organisationsgetprojectrole
+        description: Roku Get Project Role
+        call: nabu-cloud-organisations.organisationsgetprojectrole
+        with:
+          role_id: rest.role_id
+          organisation_id: rest.organisation_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nabu-cloud-organisations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roku Nabu Cloud — organisations. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: roku-list-organisations
+      description: Roku List Organisations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationslistorganisations
+      with:
+        items: tools.items
+        page: tools.page
+        slug: tools.slug
+        name: tools.name
+        max_devices: tools.max_devices
+        max_snapshots: tools.max_snapshots
+        max_project_devices: tools.max_project_devices
+        max_project_snapshots: tools.max_project_snapshots
+        max_project_runtime: tools.max_project_runtime
+        created_at: tools.created_at
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-organisation
+      description: Roku Get Organisation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationsgetorganisation
+      with:
+        organisation_id: tools.organisation_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-list-organisation-members
+      description: Roku List Organisation Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationslistorganisationmembers
+      with:
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-organisation-member
+      description: Roku Get Organisation Member
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationsgetorganisationmember
+      with:
+        user_id: tools.user_id
+        organisation_id: tools.organisation_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-list-organisation-regions
+      description: Roku List Organisation Regions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationslistorganisationregions
+      with:
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-organisation-region
+      description: Roku Get Organisation Region
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationsgetorganisationregion
+      with:
+        region_id: tools.region_id
+        organisation_id: tools.organisation_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-list-group-roles
+      description: Roku List Group Roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationslistgrouproles
+      with:
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-group-role
+      description: Roku Get Group Role
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationsgetgrouprole
+      with:
+        role_id: tools.role_id
+        organisation_id: tools.organisation_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-list-project-roles
+      description: Roku List Project Roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationslistprojectroles
+      with:
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-project-role
+      description: Roku Get Project Role
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-organisations.organisationsgetprojectrole
+      with:
+        role_id: tools.role_id
+        organisation_id: tools.organisation_id
+      outputParameters:
+      - type: object
+        mapping: $.

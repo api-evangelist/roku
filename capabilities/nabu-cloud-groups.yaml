@@ -1,0 +1,543 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roku Nabu Cloud — groups
+  description: 'Roku Nabu Cloud — groups. 10 operations. Lead operation: Roku List Group. Self-contained Naftiko capability
+    covering one Roku business surface.'
+  tags:
+  - Roku
+  - groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROKU_API_KEY: ROKU_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nabu-cloud-groups
+    baseUri: https://api.cloud.roku.dev
+    description: Roku Nabu Cloud — groups business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-organisations-organisation_id-groups
+      path: /api/v1/organisations/{organisation_id}/groups
+      operations:
+      - name: groupslistgroup
+        method: GET
+        description: Roku List Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+        - name: project_id
+          in: query
+          type: string
+        - name: name
+          in: query
+          type: string
+          description: The name of the group. Unique in the organisation
+        - name: description
+          in: query
+          type: string
+          description: Description of the Group.
+        - name: created_at
+          in: query
+          type: string
+          description: The day the group was created
+      - name: groupscreategroup
+        method: POST
+        description: Roku Create Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-organisations-organisation_id-groups-group_id
+      path: /api/v1/organisations/{organisation_id}/groups/{group_id}
+      operations:
+      - name: groupsgetgroup
+        method: GET
+        description: Roku Get a Group by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+      - name: groupsupdategroup
+        method: PATCH
+        description: Roku Update Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: groupsdeletegroup
+        method: DELETE
+        description: Roku Delete Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+    - name: api-v1-organisations-organisation_id-groups-group_id-members
+      path: /api/v1/organisations/{organisation_id}/groups/{group_id}/members
+      operations:
+      - name: groupslistgroupmembers
+        method: GET
+        description: Roku List Group Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: skip
+          in: query
+          type: integer
+          description: The number of results to skip. Use this for pagination. Use 0 for the first page.
+        - name: limit
+          in: query
+          type: integer
+          description: The number of results to return, must be non-negative int. Use 0 for no limit.
+      - name: groupsaddgroupmember
+        method: POST
+        description: Roku Add Group Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-organisations-organisation_id-groups-group_id-members-user_id
+      path: /api/v1/organisations/{organisation_id}/groups/{group_id}/members/{user_id}
+      operations:
+      - name: groupsgetgroupmember
+        method: GET
+        description: Roku Get Group Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: user_id
+          in: path
+          type: string
+          required: true
+      - name: groupsupdategroupmember
+        method: PATCH
+        description: Roku Update Group Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: group_role_id
+          in: query
+          type: integer
+          required: true
+      - name: groupsremovegroupmember
+        method: DELETE
+        description: Roku Remove Group Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: user_id
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: nabu-cloud-groups-rest
+    port: 8080
+    description: REST adapter for Roku Nabu Cloud — groups. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/organisations/{organisation-id}/groups
+      name: api-v1-organisations-organisation-id-groups
+      description: REST surface for api-v1-organisations-organisation_id-groups.
+      operations:
+      - method: GET
+        name: groupslistgroup
+        description: Roku List Group
+        call: nabu-cloud-groups.groupslistgroup
+        with:
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+          project_id: rest.project_id
+          name: rest.name
+          description: rest.description
+          created_at: rest.created_at
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: groupscreategroup
+        description: Roku Create Group
+        call: nabu-cloud-groups.groupscreategroup
+        with:
+          organisation_id: rest.organisation_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/groups/{group-id}
+      name: api-v1-organisations-organisation-id-groups-group-id
+      description: REST surface for api-v1-organisations-organisation_id-groups-group_id.
+      operations:
+      - method: GET
+        name: groupsgetgroup
+        description: Roku Get a Group by ID
+        call: nabu-cloud-groups.groupsgetgroup
+        with:
+          organisation_id: rest.organisation_id
+          group_id: rest.group_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: groupsupdategroup
+        description: Roku Update Group
+        call: nabu-cloud-groups.groupsupdategroup
+        with:
+          group_id: rest.group_id
+          organisation_id: rest.organisation_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: groupsdeletegroup
+        description: Roku Delete Group
+        call: nabu-cloud-groups.groupsdeletegroup
+        with:
+          group_id: rest.group_id
+          organisation_id: rest.organisation_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/groups/{group-id}/members
+      name: api-v1-organisations-organisation-id-groups-group-id-members
+      description: REST surface for api-v1-organisations-organisation_id-groups-group_id-members.
+      operations:
+      - method: GET
+        name: groupslistgroupmembers
+        description: Roku List Group Members
+        call: nabu-cloud-groups.groupslistgroupmembers
+        with:
+          group_id: rest.group_id
+          organisation_id: rest.organisation_id
+          skip: rest.skip
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: groupsaddgroupmember
+        description: Roku Add Group Member
+        call: nabu-cloud-groups.groupsaddgroupmember
+        with:
+          group_id: rest.group_id
+          organisation_id: rest.organisation_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/groups/{group-id}/members/{user-id}
+      name: api-v1-organisations-organisation-id-groups-group-id-members-user-id
+      description: REST surface for api-v1-organisations-organisation_id-groups-group_id-members-user_id.
+      operations:
+      - method: GET
+        name: groupsgetgroupmember
+        description: Roku Get Group Member
+        call: nabu-cloud-groups.groupsgetgroupmember
+        with:
+          group_id: rest.group_id
+          organisation_id: rest.organisation_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: groupsupdategroupmember
+        description: Roku Update Group Member
+        call: nabu-cloud-groups.groupsupdategroupmember
+        with:
+          group_id: rest.group_id
+          organisation_id: rest.organisation_id
+          user_id: rest.user_id
+          group_role_id: rest.group_role_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: groupsremovegroupmember
+        description: Roku Remove Group Member
+        call: nabu-cloud-groups.groupsremovegroupmember
+        with:
+          group_id: rest.group_id
+          organisation_id: rest.organisation_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nabu-cloud-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roku Nabu Cloud — groups. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: roku-list-group
+      description: Roku List Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-groups.groupslistgroup
+      with:
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+        project_id: tools.project_id
+        name: tools.name
+        description: tools.description
+        created_at: tools.created_at
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-create-group
+      description: Roku Create Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nabu-cloud-groups.groupscreategroup
+      with:
+        organisation_id: tools.organisation_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-group-id
+      description: Roku Get a Group by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-groups.groupsgetgroup
+      with:
+        organisation_id: tools.organisation_id
+        group_id: tools.group_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-update-group
+      description: Roku Update Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-groups.groupsupdategroup
+      with:
+        group_id: tools.group_id
+        organisation_id: tools.organisation_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-delete-group
+      description: Roku Delete Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nabu-cloud-groups.groupsdeletegroup
+      with:
+        group_id: tools.group_id
+        organisation_id: tools.organisation_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-list-group-members
+      description: Roku List Group Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-groups.groupslistgroupmembers
+      with:
+        group_id: tools.group_id
+        organisation_id: tools.organisation_id
+        skip: tools.skip
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-add-group-member
+      description: Roku Add Group Member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nabu-cloud-groups.groupsaddgroupmember
+      with:
+        group_id: tools.group_id
+        organisation_id: tools.organisation_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-group-member
+      description: Roku Get Group Member
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-groups.groupsgetgroupmember
+      with:
+        group_id: tools.group_id
+        organisation_id: tools.organisation_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-update-group-member
+      description: Roku Update Group Member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-groups.groupsupdategroupmember
+      with:
+        group_id: tools.group_id
+        organisation_id: tools.organisation_id
+        user_id: tools.user_id
+        group_role_id: tools.group_role_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-remove-group-member
+      description: Roku Remove Group Member
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nabu-cloud-groups.groupsremovegroupmember
+      with:
+        group_id: tools.group_id
+        organisation_id: tools.organisation_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.

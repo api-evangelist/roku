@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roku External Control Protocol (ECP) — KeyPress
+  description: 'Roku External Control Protocol (ECP) — KeyPress. 3 operations. Lead operation: Roku Hold Key Down. Self-contained
+    Naftiko capability covering one Roku business surface.'
+  tags:
+  - Roku
+  - KeyPress
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROKU_API_KEY: ROKU_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: external-control-protocol-keypress
+    baseUri: http://{rokuDeviceIp}:8060
+    description: Roku External Control Protocol (ECP) — KeyPress business capability. Self-contained, no shared references.
+    resources:
+    - name: keydown-key
+      path: /keydown/{key}
+      operations:
+      - name: keydown
+        method: POST
+        description: Roku Hold Key Down
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          description: Key name
+          required: true
+    - name: keypress-key
+      path: /keypress/{key}
+      operations:
+      - name: keypress
+        method: POST
+        description: Roku Press Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          description: Key name (e.g., Home, Up, Down, Left, Right, Select, Back, Play, Rev, Fwd, InstantReplay, Info, Backspace,
+            Search, Enter, VolumeUp, VolumeDown, VolumeMute, Powe
+          required: true
+    - name: keyup-key
+      path: /keyup/{key}
+      operations:
+      - name: keyup
+        method: POST
+        description: Roku Release Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          description: Key name
+          required: true
+  exposes:
+  - type: rest
+    namespace: external-control-protocol-keypress-rest
+    port: 8080
+    description: REST adapter for Roku External Control Protocol (ECP) — KeyPress. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/keydown/{key}
+      name: keydown-key
+      description: REST surface for keydown-key.
+      operations:
+      - method: POST
+        name: keydown
+        description: Roku Hold Key Down
+        call: external-control-protocol-keypress.keydown
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/keypress/{key}
+      name: keypress-key
+      description: REST surface for keypress-key.
+      operations:
+      - method: POST
+        name: keypress
+        description: Roku Press Key
+        call: external-control-protocol-keypress.keypress
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/keyup/{key}
+      name: keyup-key
+      description: REST surface for keyup-key.
+      operations:
+      - method: POST
+        name: keyup
+        description: Roku Release Key
+        call: external-control-protocol-keypress.keyup
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: external-control-protocol-keypress-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roku External Control Protocol (ECP) — KeyPress. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: roku-hold-key-down
+      description: Roku Hold Key Down
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: external-control-protocol-keypress.keydown
+      with:
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-press-key
+      description: Roku Press Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: external-control-protocol-keypress.keypress
+      with:
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-release-key
+      description: Roku Release Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: external-control-protocol-keypress.keyup
+      with:
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.

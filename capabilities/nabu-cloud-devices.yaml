@@ -1,0 +1,576 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roku Nabu Cloud — devices
+  description: 'Roku Nabu Cloud — devices. 9 operations. Lead operation: Roku List Devices. Self-contained Naftiko capability
+    covering one Roku business surface.'
+  tags:
+  - Roku
+  - devices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROKU_API_KEY: ROKU_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nabu-cloud-devices
+    baseUri: https://api.cloud.roku.dev
+    description: Roku Nabu Cloud — devices business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-organisations-organisation_id-projects-project_id-devices
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/devices
+      operations:
+      - name: deviceslistdevices
+        method: GET
+        description: Roku List Devices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: items
+          in: query
+          type: integer
+          description: The number of items per page. Use 0 for no limit.
+        - name: page
+          in: query
+          type: integer
+          description: The page number. Use 0 for the first page.
+        - name: esn
+          in: query
+          type: string
+          description: The ESN of the device.
+        - name: device_type
+          in: query
+          type: string
+          description: The type of the Device.
+        - name: name
+          in: query
+          type: string
+          description: The name of the Device.
+        - name: description
+          in: query
+          type: string
+          description: Description of the Device.
+        - name: account_name
+          in: query
+          type: string
+          description: Account name of the Device.
+        - name: properties
+          in: query
+          type: string
+          description: Device properties.
+        - name: qa_hub
+          in: query
+          type: boolean
+          description: Whether the device should be auto registered in QA Hub.
+        - name: created_at
+          in: query
+          type: string
+          description: The day the device was created
+      - name: devicescreatedevice
+        method: POST
+        description: Roku Create Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-organisations-organisation_id-projects-project_id-devices-device_id
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}
+      operations:
+      - name: devicesgetdevice
+        method: GET
+        description: Roku Get Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: device_id
+          in: path
+          type: integer
+          required: true
+      - name: devicesupdatedevice
+        method: PATCH
+        description: Roku Update Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: device_id
+          in: path
+          type: integer
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: devicesdeletedevice
+        method: DELETE
+        description: Roku Delete Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: device_id
+          in: path
+          type: integer
+          required: true
+        - name: delete_snapshots
+          in: query
+          type: boolean
+    - name: api-v1-organisations-organisation_id-projects-project_id-devices-device_id-logs-
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/logs/{instance_id}
+      operations:
+      - name: devicesreadlogs
+        method: GET
+        description: Roku Read Logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: instance_id
+          in: path
+          type: integer
+          required: true
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: device_id
+          in: path
+          type: integer
+          required: true
+    - name: api-v1-organisations-organisation_id-projects-project_id-devices-device_id-runs
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/runs
+      operations:
+      - name: devicesgetdeviceruns
+        method: GET
+        description: Roku Get Device Runs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: device_id
+          in: path
+          type: integer
+          required: true
+    - name: api-v1-organisations-organisation_id-projects-project_id-devices-device_id-start
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/start
+      operations:
+      - name: devicesstartdevice
+        method: POST
+        description: Roku Start Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: device_id
+          in: path
+          type: integer
+          required: true
+        - name: skip_build_validation
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-organisations-organisation_id-projects-project_id-devices-device_id-stop
+      path: /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/stop
+      operations:
+      - name: devicesstopdevice
+        method: POST
+        description: Roku Stop Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: integer
+          required: true
+        - name: organisation_id
+          in: path
+          type: integer
+          required: true
+        - name: device_id
+          in: path
+          type: integer
+          required: true
+  exposes:
+  - type: rest
+    namespace: nabu-cloud-devices-rest
+    port: 8080
+    description: REST adapter for Roku Nabu Cloud — devices. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/devices
+      name: api-v1-organisations-organisation-id-projects-project-id-devices
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-devices.
+      operations:
+      - method: GET
+        name: deviceslistdevices
+        description: Roku List Devices
+        call: nabu-cloud-devices.deviceslistdevices
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          items: rest.items
+          page: rest.page
+          esn: rest.esn
+          device_type: rest.device_type
+          name: rest.name
+          description: rest.description
+          account_name: rest.account_name
+          properties: rest.properties
+          qa_hub: rest.qa_hub
+          created_at: rest.created_at
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: devicescreatedevice
+        description: Roku Create Device
+        call: nabu-cloud-devices.devicescreatedevice
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/devices/{device-id}
+      name: api-v1-organisations-organisation-id-projects-project-id-devices-device-id
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-devices-device_id.
+      operations:
+      - method: GET
+        name: devicesgetdevice
+        description: Roku Get Device
+        call: nabu-cloud-devices.devicesgetdevice
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          device_id: rest.device_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: devicesupdatedevice
+        description: Roku Update Device
+        call: nabu-cloud-devices.devicesupdatedevice
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          device_id: rest.device_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: devicesdeletedevice
+        description: Roku Delete Device
+        call: nabu-cloud-devices.devicesdeletedevice
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          device_id: rest.device_id
+          delete_snapshots: rest.delete_snapshots
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/devices/{device-id}/logs/{instance-id}
+      name: api-v1-organisations-organisation-id-projects-project-id-devices-device-id-logs
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-devices-device_id-logs-.
+      operations:
+      - method: GET
+        name: devicesreadlogs
+        description: Roku Read Logs
+        call: nabu-cloud-devices.devicesreadlogs
+        with:
+          instance_id: rest.instance_id
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          device_id: rest.device_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/devices/{device-id}/runs
+      name: api-v1-organisations-organisation-id-projects-project-id-devices-device-id-runs
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-devices-device_id-runs.
+      operations:
+      - method: GET
+        name: devicesgetdeviceruns
+        description: Roku Get Device Runs
+        call: nabu-cloud-devices.devicesgetdeviceruns
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          device_id: rest.device_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/devices/{device-id}/start
+      name: api-v1-organisations-organisation-id-projects-project-id-devices-device-id-start
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-devices-device_id-start.
+      operations:
+      - method: POST
+        name: devicesstartdevice
+        description: Roku Start Device
+        call: nabu-cloud-devices.devicesstartdevice
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          device_id: rest.device_id
+          skip_build_validation: rest.skip_build_validation
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/organisations/{organisation-id}/projects/{project-id}/devices/{device-id}/stop
+      name: api-v1-organisations-organisation-id-projects-project-id-devices-device-id-stop
+      description: REST surface for api-v1-organisations-organisation_id-projects-project_id-devices-device_id-stop.
+      operations:
+      - method: POST
+        name: devicesstopdevice
+        description: Roku Stop Device
+        call: nabu-cloud-devices.devicesstopdevice
+        with:
+          project_id: rest.project_id
+          organisation_id: rest.organisation_id
+          device_id: rest.device_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nabu-cloud-devices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roku Nabu Cloud — devices. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: roku-list-devices
+      description: Roku List Devices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-devices.deviceslistdevices
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        items: tools.items
+        page: tools.page
+        esn: tools.esn
+        device_type: tools.device_type
+        name: tools.name
+        description: tools.description
+        account_name: tools.account_name
+        properties: tools.properties
+        qa_hub: tools.qa_hub
+        created_at: tools.created_at
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-create-device
+      description: Roku Create Device
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nabu-cloud-devices.devicescreatedevice
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-device
+      description: Roku Get Device
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-devices.devicesgetdevice
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        device_id: tools.device_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-update-device
+      description: Roku Update Device
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-devices.devicesupdatedevice
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        device_id: tools.device_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-delete-device
+      description: Roku Delete Device
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nabu-cloud-devices.devicesdeletedevice
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        device_id: tools.device_id
+        delete_snapshots: tools.delete_snapshots
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-read-logs
+      description: Roku Read Logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-devices.devicesreadlogs
+      with:
+        instance_id: tools.instance_id
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        device_id: tools.device_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-get-device-runs
+      description: Roku Get Device Runs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nabu-cloud-devices.devicesgetdeviceruns
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        device_id: tools.device_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-start-device
+      description: Roku Start Device
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nabu-cloud-devices.devicesstartdevice
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        device_id: tools.device_id
+        skip_build_validation: tools.skip_build_validation
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-stop-device
+      description: Roku Stop Device
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nabu-cloud-devices.devicesstopdevice
+      with:
+        project_id: tools.project_id
+        organisation_id: tools.organisation_id
+        device_id: tools.device_id
+      outputParameters:
+      - type: object
+        mapping: $.

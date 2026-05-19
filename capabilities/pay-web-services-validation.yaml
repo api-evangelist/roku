@@ -1,0 +1,139 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roku Pay Web Services — Validation
+  description: 'Roku Pay Web Services — Validation. 2 operations. Lead operation: Roku Validate Refund. Self-contained Naftiko
+    capability covering one Roku business surface.'
+  tags:
+  - Roku
+  - Validation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROKU_API_KEY: ROKU_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: pay-web-services-validation
+    baseUri: https://apipub.roku.com/listen/transaction-service.svc
+    description: Roku Pay Web Services — Validation business capability. Self-contained, no shared references.
+    resources:
+    - name: validate-refund-partnerAPIKey-refundId
+      path: /validate-refund/{partnerAPIKey}/{refundId}
+      operations:
+      - name: validaterefund
+        method: GET
+        description: Roku Validate Refund
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: partnerAPIKey
+          in: path
+          type: string
+          description: The publisher's Roku-issued Partner API key.
+          required: true
+        - name: refundId
+          in: path
+          type: string
+          description: The Roku-issued refund identifier.
+          required: true
+    - name: validate-transaction-partnerAPIKey-transactionId
+      path: /validate-transaction/{partnerAPIKey}/{transactionId}
+      operations:
+      - name: validatetransaction
+        method: GET
+        description: Roku Validate Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: partnerAPIKey
+          in: path
+          type: string
+          description: The publisher's Roku-issued Partner API key.
+          required: true
+        - name: transactionId
+          in: path
+          type: string
+          description: The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore
+            component at purchase time.
+          required: true
+    authentication:
+      type: apikey
+      key: partnerAPIKey
+      value: '{{env.ROKU_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: pay-web-services-validation-rest
+    port: 8080
+    description: REST adapter for Roku Pay Web Services — Validation. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/validate-refund/{partnerapikey}/{refundid}
+      name: validate-refund-partnerapikey-refundid
+      description: REST surface for validate-refund-partnerAPIKey-refundId.
+      operations:
+      - method: GET
+        name: validaterefund
+        description: Roku Validate Refund
+        call: pay-web-services-validation.validaterefund
+        with:
+          partnerAPIKey: rest.partnerAPIKey
+          refundId: rest.refundId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/validate-transaction/{partnerapikey}/{transactionid}
+      name: validate-transaction-partnerapikey-transactionid
+      description: REST surface for validate-transaction-partnerAPIKey-transactionId.
+      operations:
+      - method: GET
+        name: validatetransaction
+        description: Roku Validate Transaction
+        call: pay-web-services-validation.validatetransaction
+        with:
+          partnerAPIKey: rest.partnerAPIKey
+          transactionId: rest.transactionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: pay-web-services-validation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roku Pay Web Services — Validation. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: roku-validate-refund
+      description: Roku Validate Refund
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pay-web-services-validation.validaterefund
+      with:
+        partnerAPIKey: tools.partnerAPIKey
+        refundId: tools.refundId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-validate-transaction
+      description: Roku Validate Transaction
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pay-web-services-validation.validatetransaction
+      with:
+        partnerAPIKey: tools.partnerAPIKey
+        transactionId: tools.transactionId
+      outputParameters:
+      - type: object
+        mapping: $.

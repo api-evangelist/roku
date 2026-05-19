@@ -1,0 +1,311 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roku External Control Protocol (ECP) — Apps
+  description: 'Roku External Control Protocol (ECP) — Apps. 7 operations. Lead operation: Roku Exit App. Self-contained Naftiko
+    capability covering one Roku business surface.'
+  tags:
+  - Roku
+  - Apps
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROKU_API_KEY: ROKU_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: external-control-protocol-apps
+    baseUri: http://{rokuDeviceIp}:8060
+    description: Roku External Control Protocol (ECP) — Apps business capability. Self-contained, no shared references.
+    resources:
+    - name: exit-app-appId
+      path: /exit-app/{appId}
+      operations:
+      - name: exitapp
+        method: POST
+        description: Roku Exit App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          description: The Roku channel/app identifier
+          required: true
+    - name: install-appId
+      path: /install/{appId}
+      operations:
+      - name: installapp
+        method: POST
+        description: Roku Install App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          description: The Roku channel/app identifier
+          required: true
+    - name: launch-appId
+      path: /launch/{appId}
+      operations:
+      - name: launchapp
+        method: POST
+        description: Roku Launch App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          description: The Roku channel/app identifier (or `dev` for the side-loaded developer channel)
+          required: true
+        - name: contentId
+          in: query
+          type: string
+          description: Deep-link content identifier passed to the app
+        - name: mediaType
+          in: query
+          type: string
+          description: Deep-link content type (movie, episode, season, series, shortFormVideo, tvEpisode, special, live)
+    - name: query-active-app
+      path: /query/active-app
+      operations:
+      - name: queryactiveapp
+        method: GET
+        description: Roku Query Active App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: query-apps
+      path: /query/apps
+      operations:
+      - name: queryapps
+        method: GET
+        description: Roku Query Installed Apps
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: query-icon-appId
+      path: /query/icon/{appId}
+      operations:
+      - name: queryappicon
+        method: GET
+        description: Roku Query App Icon
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appId
+          in: path
+          type: string
+          description: The Roku channel/app identifier
+          required: true
+    - name: search-browse
+      path: /search/browse
+      operations:
+      - name: searchbrowse
+        method: POST
+        description: Roku Search Browse
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: external-control-protocol-apps-rest
+    port: 8080
+    description: REST adapter for Roku External Control Protocol (ECP) — Apps. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/exit-app/{appid}
+      name: exit-app-appid
+      description: REST surface for exit-app-appId.
+      operations:
+      - method: POST
+        name: exitapp
+        description: Roku Exit App
+        call: external-control-protocol-apps.exitapp
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/install/{appid}
+      name: install-appid
+      description: REST surface for install-appId.
+      operations:
+      - method: POST
+        name: installapp
+        description: Roku Install App
+        call: external-control-protocol-apps.installapp
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/launch/{appid}
+      name: launch-appid
+      description: REST surface for launch-appId.
+      operations:
+      - method: POST
+        name: launchapp
+        description: Roku Launch App
+        call: external-control-protocol-apps.launchapp
+        with:
+          appId: rest.appId
+          contentId: rest.contentId
+          mediaType: rest.mediaType
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/active-app
+      name: query-active-app
+      description: REST surface for query-active-app.
+      operations:
+      - method: GET
+        name: queryactiveapp
+        description: Roku Query Active App
+        call: external-control-protocol-apps.queryactiveapp
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/apps
+      name: query-apps
+      description: REST surface for query-apps.
+      operations:
+      - method: GET
+        name: queryapps
+        description: Roku Query Installed Apps
+        call: external-control-protocol-apps.queryapps
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/query/icon/{appid}
+      name: query-icon-appid
+      description: REST surface for query-icon-appId.
+      operations:
+      - method: GET
+        name: queryappicon
+        description: Roku Query App Icon
+        call: external-control-protocol-apps.queryappicon
+        with:
+          appId: rest.appId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search/browse
+      name: search-browse
+      description: REST surface for search-browse.
+      operations:
+      - method: POST
+        name: searchbrowse
+        description: Roku Search Browse
+        call: external-control-protocol-apps.searchbrowse
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: external-control-protocol-apps-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roku External Control Protocol (ECP) — Apps. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: roku-exit-app
+      description: Roku Exit App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: external-control-protocol-apps.exitapp
+      with:
+        appId: tools.appId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-install-app
+      description: Roku Install App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: external-control-protocol-apps.installapp
+      with:
+        appId: tools.appId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-launch-app
+      description: Roku Launch App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: external-control-protocol-apps.launchapp
+      with:
+        appId: tools.appId
+        contentId: tools.contentId
+        mediaType: tools.mediaType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-active-app
+      description: Roku Query Active App
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-apps.queryactiveapp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-installed-apps
+      description: Roku Query Installed Apps
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-apps.queryapps
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-query-app-icon
+      description: Roku Query App Icon
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: external-control-protocol-apps.queryappicon
+      with:
+        appId: tools.appId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: roku-search-browse
+      description: Roku Search Browse
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: external-control-protocol-apps.searchbrowse
+      outputParameters:
+      - type: object
+        mapping: $.
