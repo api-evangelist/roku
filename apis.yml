@@ -10,11 +10,13 @@ tags:
 - Entertainment
 - Connected TV
 - Consumer Electronics
-description: Roku is the leading TV streaming platform in the U.S., Canada, and Mexico, offering a comprehensive operating
-  system that powers smart TVs, streaming players, and audio devices. Roku provides a robust developer program for building
-  channel apps, monetizing through Roku Pay, integrating analytics, and controlling devices via the External Control Protocol.
-  The platform supports both BrightScript and SceneGraph frameworks for app development, and the Nabu Cloud developer cloud
-  for managing remote test devices and channel builds.
+description: Roku is the leading TV streaming platform in the U.S., Canada, and Mexico,
+  offering a comprehensive operating system that powers smart TVs, streaming players,
+  and audio devices. Roku provides a robust developer program for building channel
+  apps, monetizing through Roku Pay, integrating analytics, and controlling devices
+  via the External Control Protocol. The platform supports both BrightScript and SceneGraph
+  frameworks for app development, and the Nabu Cloud developer cloud for managing
+  remote test devices and channel builds.
 created: '2026-05-04'
 modified: '2026-05-19'
 specificationVersion: '0.19'
@@ -22,9 +24,10 @@ apis:
 - aid: roku:brightscript
   name: Roku BrightScript SDK
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
-  description: BrightScript is Roku's scripting language used to build apps for the Roku platform. The SDK provides a comprehensive
-    component library with over 100 built-in objects covering UI, networking, media playback, and device interaction. BrightScript
-    is a programming language and on-device runtime, not a network API.
+  description: BrightScript is Roku's scripting language used to build apps for the
+    Roku platform. The SDK provides a comprehensive component library with over 100
+    built-in objects covering UI, networking, media playback, and device interaction.
+    BrightScript is a programming language and on-device runtime, not a network API.
   tags:
   - SDK
   - BrightScript
@@ -34,12 +37,15 @@ apis:
     url: https://developer.roku.com/docs/references/brightscript/component-reference.md
   - type: APIReference
     url: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  - url: graphql/roku-graphql.md
+    type: GraphQL
 - aid: roku:scenegraph
   name: Roku SceneGraph
   humanURL: https://developer.roku.com/docs/developer-program/core-concepts/scenegraph-overview.md
-  description: SceneGraph is Roku's XML-based declarative UI framework for building rich, performant channel applications.
-    It provides node components, animations, and a scene-based architecture. SceneGraph is an on-device UI framework, not
-    a network API.
+  description: SceneGraph is Roku's XML-based declarative UI framework for building
+    rich, performant channel applications. It provides node components, animations,
+    and a scene-based architecture. SceneGraph is an on-device UI framework, not a
+    network API.
   tags:
   - UI Framework
   - SceneGraph
@@ -52,10 +58,12 @@ apis:
 - aid: roku:external-control-protocol
   name: Roku External Control Protocol (ECP)
   humanURL: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
-  description: The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku device on the local
-    network. It enables third-party applications, mobile remote-control apps, automated test systems, and home-automation
-    hubs to discover devices via SSDP, inject simulated remote-control key presses, launch installed apps with deep-link parameters,
-    query device state, and retrieve developer-mode diagnostics.
+  description: The External Control Protocol (ECP) is an HTTP-based API exposed on
+    port 8060 of every Roku device on the local network. It enables third-party applications,
+    mobile remote-control apps, automated test systems, and home-automation hubs to
+    discover devices via SSDP, inject simulated remote-control key presses, launch
+    installed apps with deep-link parameters, query device state, and retrieve developer-mode
+    diagnostics.
   tags:
   - REST
   - HTTP
@@ -124,9 +132,10 @@ apis:
 - aid: roku:pay
   name: Roku Pay Web Services
   humanURL: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
-  description: Roku Pay Web Services provide server-to-server APIs for billing, subscription management, transaction validation,
-    and entitlement checks for monetized Roku channels. Channels query these endpoints from their authentication backends
-    to verify entitlements, issue refunds, adjust billing cycles, and grant service credits.
+  description: Roku Pay Web Services provide server-to-server APIs for billing, subscription
+    management, transaction validation, and entitlement checks for monetized Roku
+    channels. Channels query these endpoints from their authentication backends to
+    verify entitlements, issue refunds, adjust billing cycles, and grant service credits.
   tags:
   - Billing
   - Payments
@@ -186,9 +195,11 @@ apis:
 - aid: roku:nabu-cloud
   name: Roku Nabu Cloud
   humanURL: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
-  description: Nabu Cloud is Roku's developer cloud platform for managing remote test devices, snapshots, builds, projects,
-    organisations, groups, and personal access tokens. It provides REST APIs (and an AsyncAPI streaming endpoint) for orchestrating
-    remote Roku test devices and CI/CD workflows. The OpenAPI specification is published in the Roku dev-doc repository.
+  description: Nabu Cloud is Roku's developer cloud platform for managing remote test
+    devices, snapshots, builds, projects, organisations, groups, and personal access
+    tokens. It provides REST APIs (and an AsyncAPI streaming endpoint) for orchestrating
+    remote Roku test devices and CI/CD workflows. The OpenAPI specification is published
+    in the Roku dev-doc repository.
   tags:
   - REST
   - Developer Cloud
@@ -234,9 +245,10 @@ apis:
 - aid: roku:search-feed
   name: Roku Search Feed
   humanURL: https://github.com/rokudev/search-feed-json
-  description: Roku Search Feed is a JSON feed format that publishers ingest to expose their catalog to Roku Search. The feed
-    provides movies, series, episodes, short-form videos, TV specials, and live feeds with localized titles, descriptions,
-    ratings, content links, and external IDs.
+  description: Roku Search Feed is a JSON feed format that publishers ingest to expose
+    their catalog to Roku Search. The feed provides movies, series, episodes, short-form
+    videos, TV specials, and live feeds with localized titles, descriptions, ratings,
+    content links, and external IDs.
   tags:
   - Feed
   - Search
@@ -258,9 +270,10 @@ apis:
 - aid: roku:direct-publisher-feed
   name: Roku Direct Publisher Feed
   humanURL: https://github.com/rokudev/feed-specifications
-  description: Roku Direct Publisher (RDP) feed is a JSON feed specification that allows non-technical publishers to populate
-    channels by hosting a structured catalog of short-form videos, movies, series, episodes, and live feeds. Roku ingests
-    the feed on a schedule and renders the channel UI automatically.
+  description: Roku Direct Publisher (RDP) feed is a JSON feed specification that
+    allows non-technical publishers to populate channels by hosting a structured catalog
+    of short-form videos, movies, series, episodes, and live feeds. Roku ingests the
+    feed on a schedule and renders the channel UI automatically.
   tags:
   - Feed
   - Direct Publisher
@@ -276,8 +289,9 @@ apis:
 - aid: roku:analytics
   name: Roku Analytics
   humanURL: https://developer.roku.com/docs/developer-program/marketing/roku-analytics.md
-  description: Roku Analytics provides performance reporting, audience metrics, and engagement data for Roku channel publishers.
-    Reports are accessed through the Roku Developer Dashboard rather than a public REST API.
+  description: Roku Analytics provides performance reporting, audience metrics, and
+    engagement data for Roku channel publishers. Reports are accessed through the
+    Roku Developer Dashboard rather than a public REST API.
   tags:
   - Analytics
   - Reporting
@@ -287,9 +301,10 @@ apis:
 - aid: roku:authentication
   name: Roku Authentication Framework
   humanURL: https://developer.roku.com/docs/developer-program/authentication/authentication-overview.md
-  description: APIs and patterns for implementing user sign-in and authentication within Roku channels, including device-linking
-    ("on-device authentication") and OAuth-style flows. The framework is implemented in BrightScript on the device; the publisher's
-    authentication backend is custom-built.
+  description: APIs and patterns for implementing user sign-in and authentication
+    within Roku channels, including device-linking ("on-device authentication") and
+    OAuth-style flows. The framework is implemented in BrightScript on the device;
+    the publisher's authentication backend is custom-built.
   tags:
   - Authentication
   - OAuth
@@ -375,35 +390,47 @@ common:
   url: https://docs.roku.com/published/userprivacypolicy/en/us
 - data:
   - name: Channel Development
-    description: BrightScript and SceneGraph frameworks for building Roku TV streaming channel applications.
+    description: BrightScript and SceneGraph frameworks for building Roku TV streaming
+      channel applications.
   - name: Device Control
-    description: Local-network HTTP API (ECP) for discovery, key injection, app launching, and diagnostics.
+    description: Local-network HTTP API (ECP) for discovery, key injection, app launching,
+      and diagnostics.
   - name: Roku Pay
-    description: Server-to-server billing APIs for transaction validation, refunds, and subscription management.
+    description: Server-to-server billing APIs for transaction validation, refunds,
+      and subscription management.
   - name: Direct Publisher
-    description: JSON feed ingestion path for non-technical publishers to populate Roku channels.
+    description: JSON feed ingestion path for non-technical publishers to populate
+      Roku channels.
   - name: Search Feed
     description: Catalog feed ingestion that surfaces publisher content in Roku Search.
   - name: Nabu Cloud
-    description: Roku's developer cloud for managing remote test devices, snapshots, and builds.
+    description: Roku's developer cloud for managing remote test devices, snapshots,
+      and builds.
   - name: Channel Store Monetization
-    description: Transactional and subscription monetization through ChannelStore and roChannelStore components.
+    description: Transactional and subscription monetization through ChannelStore
+      and roChannelStore components.
   - name: Advertising Framework
-    description: Roku Advertising Framework (RAF) for monetizing video content with ads.
+    description: Roku Advertising Framework (RAF) for monetizing video content with
+      ads.
   type: Features
 - data:
   - name: Streaming Channel Development
-    description: Build full-screen TV streaming channels with BrightScript/SceneGraph and ship to the Roku Channel Store.
+    description: Build full-screen TV streaming channels with BrightScript/SceneGraph
+      and ship to the Roku Channel Store.
   - name: Subscription Video On Demand
-    description: Monetize video content with recurring subscriptions managed by Roku Pay.
+    description: Monetize video content with recurring subscriptions managed by Roku
+      Pay.
   - name: Transactional Video On Demand
-    description: Monetize individual movie/episode purchases via the Channel Store and Roku Pay.
+    description: Monetize individual movie/episode purchases via the Channel Store
+      and Roku Pay.
   - name: Free Ad-Supported Streaming TV
     description: Free streaming with the Roku Advertising Framework.
   - name: TV Remote and Home Automation
-    description: Build mobile or hub-based remote-control apps that drive Roku devices via ECP.
+    description: Build mobile or hub-based remote-control apps that drive Roku devices
+      via ECP.
   - name: Automated Channel Testing
-    description: Run channel certification tests on remote Roku test devices in Nabu Cloud.
+    description: Run channel certification tests on remote Roku test devices in Nabu
+      Cloud.
   type: UseCases
 - data:
   - name: Visual Studio Code
@@ -415,7 +442,8 @@ common:
   - name: Sublime Text
     description: BrightScript syntax-highlighting package.
   - name: GitHub
-    description: Source-of-truth for Roku-published samples, tooling, and the dev-doc OpenAPI spec.
+    description: Source-of-truth for Roku-published samples, tooling, and the dev-doc
+      OpenAPI spec.
   type: Integrations
 maintainers:
 - FN: API Evangelist

@@ -1,0 +1,1020 @@
+"""
+Roku GraphQL Schema
+Conceptual schema covering the Roku streaming platform: Roku Pay Web Services (billing,
+subscriptions, transaction validation), External Control Protocol (ECP), content catalog
+(Direct Publisher and Search Feed), channel and media modeling, SceneGraph components,
+device management, and developer account management.
+
+Sources:
+  https://developer.roku.com/en-gb/docs/developer-program/getting-started/roku-dev-prog.md
+  https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  https://github.com/rokudev/feed-specifications
+  https://github.com/rokudev/search-feed-json
+  https://github.com/rokudev/dev-doc
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar DateTime
+scalar URL
+scalar JSON
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+"""Supported key types for ECP key-press simulation."""
+enum KeyType {
+  HOME
+  BACK
+  SELECT
+  UP
+  DOWN
+  LEFT
+  RIGHT
+  PLAY
+  PAUSE
+  REV
+  FWD
+  REPLAY
+  INFO
+  VOLUMEUP
+  VOLUMEDOWN
+  MUTE
+  CHANNELUP
+  CHANNELDOWN
+  SEARCH
+  ENTER
+  FIND_REMOTE
+  BACKSPACE
+  POWER
+}
+
+"""Billing cycle frequency for a subscription product."""
+enum BillingPeriod {
+  MONTHLY
+  ANNUAL
+  QUARTERLY
+  ONE_TIME
+}
+
+"""Pricing model for a Roku Pay product."""
+enum PriceType {
+  PURCHASE
+  RENTAL
+  SUBSCRIPTION_MONTHLY
+  SUBSCRIPTION_ANNUAL
+  FREE
+}
+
+"""Current state of a media player on a Roku device."""
+enum PlayerState {
+  NONE
+  PLAYING
+  PAUSED
+  BUFFERING
+  FINISHED
+  ERROR
+}
+
+"""Type of media content."""
+enum MediaType {
+  MOVIE
+  SERIES
+  EPISODE
+  SEASON
+  CLIP
+  LIVE
+  LINEAR_CHANNEL
+  TV_SPECIAL
+  SHORT_FORM_VIDEO
+}
+
+"""Video encoding format."""
+enum VideoFormat {
+  HLS
+  DASH
+  MP4
+  MOV
+  MKV
+  SMOOTH
+}
+
+"""Display capability of a Roku device."""
+enum DisplayType {
+  HD
+  FHD
+  UHD_4K
+  HDR10
+  DOLBY_VISION
+  HLG
+}
+
+"""Audio output capability of a Roku device."""
+enum AudioType {
+  STEREO
+  DOLBY_AUDIO
+  DOLBY_ATMOS
+  DTS
+  PASSTHROUGH
+}
+
+"""Rating authority system."""
+enum RatingType {
+  MPAA
+  TV_PG
+  BBFC
+  ACB
+  IFCO
+  CHVRS
+  DJCTQ
+  FSK
+}
+
+"""Entitlement status."""
+enum EntitlementStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
+  PENDING
+  TRIAL
+}
+
+"""Transaction status for a Roku Pay billing record."""
+enum TransactionStatus {
+  SUCCESS
+  PENDING
+  FAILED
+  REFUNDED
+  CANCELLED
+  CHARGED_BACK
+}
+
+"""ECP command type."""
+enum ECPCommandType {
+  LAUNCH
+  INPUT
+  KEYPRESS
+  QUERY_DEVICE_INFO
+  QUERY_APPS
+  QUERY_ACTIVE_APP
+  QUERY_MEDIA_PLAYER
+  INSTALL
+}
+
+# ---------------------------------------------------------------------------
+# Content Catalog Types
+# ---------------------------------------------------------------------------
+
+"""A Roku channel application available in the Channel Store or installed on a device."""
+type Channel {
+  id: ID!
+  name: String!
+  description: String
+  version: String
+  type: String
+  storeUrl: URL
+  iconUrl: URL
+  bannerUrl: URL
+  categories: [ChannelCategory!]
+  content: ChannelContent
+  items: [ChannelItem!]
+  store: ChannelStore
+  trsEnabled: Boolean
+  appInfo: AppInfo
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+"""An individual content item listed within a channel."""
+type ChannelItem {
+  id: ID!
+  channel: Channel!
+  title: String!
+  description: String
+  thumbnail: URL
+  media: Media
+  categories: [ChannelCategory!]
+  availabilityWindows: [AvailabilityWindow!]
+  ratings: [Rating!]
+  price: Price
+}
+
+"""A grouping of content within a channel (genre, collection, playlist)."""
+type ChannelCategory {
+  id: ID!
+  name: String!
+  description: String
+  order: Int
+  items: [ChannelItem!]
+  channel: Channel
+}
+
+"""Content metadata associated with a channel, referencing the catalog."""
+type ChannelContent {
+  channel: Channel!
+  movies: [Movie!]
+  series: [Series!]
+  episodes: [Episode!]
+  clips: [Clip!]
+  liveFeeds: [Live!]
+  linearChannels: [LinearChannel!]
+}
+
+# ---------------------------------------------------------------------------
+# Media Types
+# ---------------------------------------------------------------------------
+
+"""Abstract representation of playable media on the Roku platform."""
+interface Media {
+  id: ID!
+  title: String!
+  description: String
+  thumbnailUrl: URL
+  releaseDate: String
+  ratings: [Rating!]
+  mediaType: MediaType!
+  contentUrls: [ContentUrl!]
+  availabilityWindows: [AvailabilityWindow!]
+}
+
+"""A long-form film."""
+type Movie implements Media {
+  id: ID!
+  title: String!
+  description: String
+  thumbnailUrl: URL
+  releaseDate: String
+  ratings: [Rating!]
+  mediaType: MediaType!
+  contentUrls: [ContentUrl!]
+  availabilityWindows: [AvailabilityWindow!]
+  duration: Int
+  genres: [String!]
+  tags: [String!]
+  cast: [Actor!]
+  directors: [Director!]
+  externalIds: JSON
+  price: Price
+  languages: [String!]
+  subtitles: [String!]
+}
+
+"""A TV series containing one or more seasons."""
+type Series implements Media {
+  id: ID!
+  title: String!
+  description: String
+  thumbnailUrl: URL
+  releaseDate: String
+  ratings: [Rating!]
+  mediaType: MediaType!
+  contentUrls: [ContentUrl!]
+  availabilityWindows: [AvailabilityWindow!]
+  seasons: [Season!]
+  genres: [String!]
+  tags: [String!]
+  cast: [Actor!]
+  directors: [Director!]
+  episodeCount: Int
+  externalIds: JSON
+  languages: [String!]
+}
+
+"""A season of a TV series."""
+type Season {
+  id: ID!
+  series: Series!
+  seasonNumber: Int!
+  title: String
+  description: String
+  thumbnailUrl: URL
+  episodes: [Episode!]
+  episodeCount: Int
+  releaseDate: String
+}
+
+"""A single episode within a season."""
+type Episode implements Media {
+  id: ID!
+  title: String!
+  description: String
+  thumbnailUrl: URL
+  releaseDate: String
+  ratings: [Rating!]
+  mediaType: MediaType!
+  contentUrls: [ContentUrl!]
+  availabilityWindows: [AvailabilityWindow!]
+  season: Season
+  series: Series
+  episodeNumber: Int
+  seasonNumber: Int
+  duration: Int
+  externalIds: JSON
+}
+
+"""A short-form video clip or promotional excerpt."""
+type Clip implements Media {
+  id: ID!
+  title: String!
+  description: String
+  thumbnailUrl: URL
+  releaseDate: String
+  ratings: [Rating!]
+  mediaType: MediaType!
+  contentUrls: [ContentUrl!]
+  availabilityWindows: [AvailabilityWindow!]
+  duration: Int
+  parentContent: Media
+  tags: [String!]
+}
+
+"""A live-streaming feed with a real-time content URL."""
+type Live implements Media {
+  id: ID!
+  title: String!
+  description: String
+  thumbnailUrl: URL
+  releaseDate: String
+  ratings: [Rating!]
+  mediaType: MediaType!
+  contentUrls: [ContentUrl!]
+  availabilityWindows: [AvailabilityWindow!]
+  streamUrl: URL!
+  genres: [String!]
+  tags: [String!]
+  language: String
+}
+
+"""A 24/7 linear programming channel with an electronic program guide."""
+type LinearChannel implements Media {
+  id: ID!
+  title: String!
+  description: String
+  thumbnailUrl: URL
+  releaseDate: String
+  ratings: [Rating!]
+  mediaType: MediaType!
+  contentUrls: [ContentUrl!]
+  availabilityWindows: [AvailabilityWindow!]
+  streamUrl: URL!
+  epgUrl: URL
+  callSign: String
+  genres: [String!]
+  language: String
+  country: String
+}
+
+"""A URL for streaming content, including format and DRM information."""
+type ContentUrl {
+  url: URL!
+  format: VideoFormat!
+  quality: String
+  drm: String
+  bitrate: Int
+}
+
+# ---------------------------------------------------------------------------
+# Feed Content Types
+# ---------------------------------------------------------------------------
+
+"""Root object for a Direct Publisher or Roku Search Feed JSON payload."""
+type FeedContent {
+  providerName: String!
+  lastUpdated: DateTime
+  language: String
+  movies: [Movie!]
+  series: [Series!]
+  liveFeeds: [Live!]
+  linearChannels: [LinearChannel!]
+  categories: [ContentCategory!]
+}
+
+"""A polymorphic content entry within a feed."""
+type ContentItem {
+  id: ID!
+  feedContent: FeedContent
+  contentType: MediaType!
+  title: String!
+  description: String
+  thumbnailUrl: URL
+  releaseDate: String
+  genres: [String!]
+  tags: [String!]
+  ratings: [Rating!]
+  languages: [String!]
+  detail: ContentDetail
+}
+
+"""A category label grouping content items within a feed."""
+type ContentCategory {
+  name: String!
+  playlistName: String
+  query: String
+  order: Int
+  items: [ContentItem!]
+}
+
+"""Extended metadata for a content item."""
+type ContentDetail {
+  contentItem: ContentItem!
+  longDescription: String
+  shortDescription: String
+  releaseYear: Int
+  ratingAdvisories: [String!]
+  cast: [Actor!]
+  directors: [Director!]
+  externalIds: JSON
+  episodeNumber: Int
+  seasonNumber: Int
+  seriesId: String
+  duration: Int
+  originalTitle: String
+  subtitles: [String!]
+}
+
+# ---------------------------------------------------------------------------
+# People
+# ---------------------------------------------------------------------------
+
+"""A cast member associated with a content item."""
+type Actor {
+  name: String!
+  role: String
+}
+
+"""A director credit associated with a content item."""
+type Director {
+  name: String!
+}
+
+# ---------------------------------------------------------------------------
+# Ratings and Availability
+# ---------------------------------------------------------------------------
+
+"""A content rating attached to a media item."""
+type Rating {
+  rating: String!
+  ratingSource: RatingType!
+  ratingAdvisories: [String!]
+}
+
+"""A time window during which a content item is available for streaming."""
+type AvailabilityWindow {
+  startDate: DateTime
+  endDate: DateTime
+  regions: [String!]
+}
+
+# ---------------------------------------------------------------------------
+# Billing and Payments
+# ---------------------------------------------------------------------------
+
+"""A monetary amount associated with a purchase or subscription."""
+type Price {
+  amount: Float!
+  currency: String!
+  priceType: PriceType!
+  billingPeriod: BillingPeriod
+  freeTrialDays: Int
+}
+
+"""A record of a subscription or purchase entitlement granted to a user."""
+type EntitlementGrant {
+  id: ID!
+  customerId: String!
+  channelId: String!
+  productId: String!
+  status: EntitlementStatus!
+  grantedAt: DateTime!
+  expiresAt: DateTime
+  transactionId: String
+  price: Price
+}
+
+"""A record of an entitlement revocation or cancellation."""
+type EntitlementRevoke {
+  id: ID!
+  customerId: String!
+  channelId: String!
+  productId: String!
+  revokedAt: DateTime!
+  reason: String
+  originalGrant: EntitlementGrant
+}
+
+"""A transactional purchase of content or a subscription product."""
+type Purchase {
+  id: ID!
+  transactionId: String!
+  customerId: String!
+  channelId: String!
+  items: [PurchaseItem!]!
+  totalAmount: Float!
+  currency: String!
+  purchasedAt: DateTime!
+  status: TransactionStatus!
+  billingRecord: BillingRecord
+}
+
+"""An individual line item within a purchase."""
+type PurchaseItem {
+  purchase: Purchase!
+  productId: String!
+  productName: String
+  quantity: Int!
+  unitPrice: Float!
+  totalPrice: Float!
+  priceType: PriceType!
+}
+
+"""A Roku Pay billing transaction record."""
+type BillingRecord {
+  id: ID!
+  transactionId: String!
+  customerId: String!
+  channelId: String!
+  productId: String!
+  amount: Float!
+  currency: String!
+  status: TransactionStatus!
+  billingPeriod: BillingPeriod
+  createdAt: DateTime!
+  updatedAt: DateTime
+  refundedAt: DateTime
+  refundAmount: Float
+  purchase: Purchase
+}
+
+# ---------------------------------------------------------------------------
+# TRS (Transactional / Recurring Subscriptions)
+# ---------------------------------------------------------------------------
+
+"""Content metadata for a transactional or recurring subscription product."""
+type TRSContent {
+  id: ID!
+  productId: String!
+  title: String!
+  description: String
+  price: Price!
+  channel: TRSChannel!
+  media: [Media!]
+}
+
+"""A Roku channel configured with TRS monetization."""
+type TRSChannel {
+  id: ID!
+  channel: Channel!
+  products: [TRSContent!]
+  apiKey: String
+  testMode: Boolean!
+}
+
+# ---------------------------------------------------------------------------
+# Player and Device
+# ---------------------------------------------------------------------------
+
+"""Media player state of a Roku device."""
+type Player {
+  device: Device!
+  state: PlayerState!
+  currentApp: AppInfo
+  position: Int
+  duration: Int
+  isLive: Boolean
+  isUnderrun: Boolean
+  error: String
+  runtime: Int
+}
+
+"""Configurable playback preferences on a Roku device."""
+type PlayerSettings {
+  device: Device!
+  closedCaptionsEnabled: Boolean
+  audioTrack: String
+  subtitleTrack: String
+  videoQuality: String
+}
+
+"""A Roku device on the local network."""
+type Device {
+  id: ID!
+  serialNumber: String!
+  udn: String
+  friendlyName: String
+  softwareVersion: String
+  softwareBuild: String
+  model: DeviceModel
+  networkInfo: NetworkInfo
+  settings: DeviceSettings
+  player: Player
+  installedApps: [AppInfo!]
+  activeApp: AppInfo
+  powerMode: String
+}
+
+"""Hardware model specification for a Roku device."""
+type DeviceModel {
+  modelNumber: String!
+  modelName: String!
+  modelRegion: String
+  displayType: DisplayType
+  audioType: AudioType
+  wifiSupported: Boolean
+  ethernetSupported: Boolean
+}
+
+"""User-configurable settings on a Roku device."""
+type DeviceSettings {
+  device: Device!
+  countryCode: String
+  locale: String
+  timeZone: String
+  clockFormat: String
+  displayType: DisplayType
+  audioOutputChannel: AudioType
+  screensaverEnabled: Boolean
+  screensaverTimeout: Int
+}
+
+"""Network configuration details for a Roku device."""
+type NetworkInfo {
+  device: Device!
+  ipAddress: String
+  macAddress: String
+  wifiSSID: String
+  wifiMAC: String
+  ethernetMAC: String
+  connectionType: String
+}
+
+# ---------------------------------------------------------------------------
+# Application and SceneGraph
+# ---------------------------------------------------------------------------
+
+"""Metadata about an installed Roku channel application."""
+type AppInfo {
+  id: ID!
+  appId: String!
+  name: String!
+  version: String!
+  type: String
+  subtype: String
+  iconUrl: URL
+  channel: Channel
+}
+
+"""A SceneGraph UI node component definition."""
+type SceneGraphComponent {
+  id: ID!
+  name: String!
+  componentType: String!
+  fields: [SceneGraphField!]
+  children: [SceneGraphComponent!]
+  parent: SceneGraphComponent
+}
+
+"""A field within a SceneGraph component definition."""
+type SceneGraphField {
+  name: String!
+  fieldType: String!
+  value: JSON
+  onChange: String
+}
+
+"""A SceneGraph component for triggering subscription purchases."""
+type SubscribeButton {
+  id: ID!
+  label: String!
+  productId: String!
+  channel: Channel
+  price: Price
+  component: SceneGraphComponent
+}
+
+"""A SceneGraph component for implementing user sign-in UI."""
+type SignInScreen {
+  id: ID!
+  channel: Channel
+  title: String
+  logoUrl: URL
+  authEndpoint: URL
+  linkingCodeEnabled: Boolean
+  component: SceneGraphComponent
+}
+
+"""A new user signup event within a Roku channel."""
+type Signup {
+  id: ID!
+  channel: Channel!
+  customerId: String!
+  email: String
+  signupAt: DateTime!
+  productId: String
+  entitlement: EntitlementGrant
+}
+
+# ---------------------------------------------------------------------------
+# External Control Protocol (ECP)
+# ---------------------------------------------------------------------------
+
+"""Root object for External Control Protocol interactions with a local Roku device."""
+type ECP {
+  device: Device!
+  port: Int!
+  baseUrl: URL!
+  activeApp: AppInfo
+  player: Player
+  installedApps: [AppInfo!]
+}
+
+"""An ECP command issued to a Roku device."""
+type ECPControl {
+  id: ID!
+  ecp: ECP!
+  commandType: ECPCommandType!
+  appId: String
+  input: ECPInput
+  keyPress: ECPKeyPress
+  timestamp: DateTime!
+  success: Boolean!
+  responseCode: Int
+}
+
+"""An ECP deep-link input payload for passing parameters to an app at launch."""
+type ECPInput {
+  contentId: String
+  mediaType: String
+  params: JSON
+}
+
+"""A simulated remote-control key press event sent via ECP."""
+type ECPKeyPress {
+  key: KeyType!
+  device: Device!
+  timestamp: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Developer and Authentication
+# ---------------------------------------------------------------------------
+
+"""An API key credential for authenticating with Roku Pay Web Services."""
+type APIKey {
+  id: ID!
+  key: String!
+  developerAccount: DeveloperAccount!
+  channels: [Channel!]
+  createdAt: DateTime!
+  expiresAt: DateTime
+  active: Boolean!
+}
+
+"""An active authenticated session with a Roku developer API."""
+type APISession {
+  id: ID!
+  apiKey: APIKey!
+  createdAt: DateTime!
+  expiresAt: DateTime
+  ipAddress: String
+  userAgent: String
+}
+
+"""A Roku developer account."""
+type DeveloperAccount {
+  id: ID!
+  email: String!
+  name: String!
+  channels: [Channel!]
+  apiKeys: [APIKey!]
+  testUsers: [TestUser!]
+  billingRecords: [BillingRecord!]
+  nabuOrganization: String
+  createdAt: DateTime!
+  updatedAt: DateTime
+}
+
+"""A test user account for Roku Pay sandbox testing."""
+type TestUser {
+  id: ID!
+  developerAccount: DeveloperAccount!
+  customerId: String!
+  email: String
+  entitlements: [EntitlementGrant!]
+  purchases: [Purchase!]
+  createdAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Channel Store
+# ---------------------------------------------------------------------------
+
+"""The Roku Channel Store providing discovery and installation of channels."""
+type ChannelStore {
+  id: ID!
+  featured: [Channel!]
+  categories: [ChannelStoreCategory!]
+  search(query: String!): [Channel!]
+  topFree: [Channel!]
+  topPaid: [Channel!]
+}
+
+"""A category within the Roku Channel Store."""
+type ChannelStoreCategory {
+  id: ID!
+  name: String!
+  channels: [Channel!]
+}
+
+# ---------------------------------------------------------------------------
+# Input Types
+# ---------------------------------------------------------------------------
+
+"""Filter criteria for querying channels."""
+input ChannelFilter {
+  name: String
+  type: String
+  trsEnabled: Boolean
+}
+
+"""Input for launching an app via ECP."""
+input ECPInputInput {
+  contentId: String
+  mediaType: String
+  params: JSON
+}
+
+"""Input for validating a Roku Pay transaction."""
+input ValidateTransactionInput {
+  transactionId: String!
+  apiKey: String!
+}
+
+"""Input for cancelling a subscription."""
+input CancelSubscriptionInput {
+  customerId: String!
+  channelId: String!
+  apiKey: String!
+  cancellationReason: String
+}
+
+"""Input for refunding a transaction."""
+input RefundTransactionInput {
+  transactionId: String!
+  apiKey: String!
+  amount: Float
+  reason: String
+}
+
+"""Input for updating a billing cycle date."""
+input UpdateBillCycleInput {
+  customerId: String!
+  channelId: String!
+  newDate: String!
+  apiKey: String!
+}
+
+"""Input for issuing a service credit."""
+input IssueCreditInput {
+  customerId: String!
+  channelId: String!
+  amount: Float!
+  currency: String!
+  apiKey: String!
+  reason: String
+}
+
+"""Input for granting an entitlement."""
+input GrantEntitlementInput {
+  customerId: String!
+  channelId: String!
+  productId: String!
+  apiKey: String!
+  expiresAt: DateTime
+}
+
+"""Input for revoking an entitlement."""
+input RevokeEntitlementInput {
+  customerId: String!
+  channelId: String!
+  productId: String!
+  apiKey: String!
+  reason: String
+}
+
+# ---------------------------------------------------------------------------
+# Query
+# ---------------------------------------------------------------------------
+
+type Query {
+  """Fetch a channel by ID."""
+  channel(id: ID!): Channel
+
+  """List channels matching filter criteria."""
+  channels(filter: ChannelFilter, limit: Int, offset: Int): [Channel!]!
+
+  """Fetch a Roku device by serial number."""
+  device(serialNumber: String!): Device
+
+  """List all Roku devices discoverable on the local network via ECP."""
+  devices: [Device!]!
+
+  """Fetch ECP state for a device."""
+  ecp(deviceId: ID!): ECP
+
+  """Fetch a movie by ID."""
+  movie(id: ID!): Movie
+
+  """Fetch a series by ID."""
+  series(id: ID!): Series
+
+  """Fetch an episode by ID."""
+  episode(id: ID!): Episode
+
+  """Fetch a clip by ID."""
+  clip(id: ID!): Clip
+
+  """Fetch a live stream by ID."""
+  live(id: ID!): Live
+
+  """Fetch a linear channel by ID."""
+  linearChannel(id: ID!): LinearChannel
+
+  """Fetch a purchase record by transaction ID."""
+  purchase(transactionId: String!): Purchase
+
+  """Check entitlement for a customer on a channel."""
+  entitlement(customerId: String!, channelId: String!, productId: String!): EntitlementGrant
+
+  """Fetch a billing record by transaction ID."""
+  billingRecord(transactionId: String!): BillingRecord
+
+  """Fetch the active app on a Roku device."""
+  appInfo(deviceId: ID!): AppInfo
+
+  """List all installed apps on a Roku device."""
+  installedApps(deviceId: ID!): [AppInfo!]!
+
+  """Fetch and parse a Direct Publisher or Search Feed from a URL."""
+  feedContent(feedUrl: String!): FeedContent
+
+  """Fetch a developer account by ID."""
+  developerAccount(id: ID!): DeveloperAccount
+
+  """Search the Roku Channel Store."""
+  channelStore(query: String): ChannelStore
+
+  """Fetch a TRS channel configuration by channel ID."""
+  trsChannel(channelId: ID!): TRSChannel
+
+  """Fetch a test user by customer ID."""
+  testUser(customerId: String!): TestUser
+}
+
+# ---------------------------------------------------------------------------
+# Mutation
+# ---------------------------------------------------------------------------
+
+type Mutation {
+  """Launch a Roku app via ECP."""
+  launchApp(deviceId: ID!, appId: String!, input: ECPInputInput): ECPControl!
+
+  """Send a key press to a Roku device via ECP."""
+  sendKeyPress(deviceId: ID!, key: KeyType!): ECPKeyPress!
+
+  """Validate a Roku Pay transaction."""
+  validateTransaction(input: ValidateTransactionInput!): BillingRecord!
+
+  """Cancel a Roku Pay subscription."""
+  cancelSubscription(input: CancelSubscriptionInput!): EntitlementRevoke!
+
+  """Refund a Roku Pay transaction."""
+  refundTransaction(input: RefundTransactionInput!): BillingRecord!
+
+  """Update the billing cycle date for a subscription."""
+  updateBillCycle(input: UpdateBillCycleInput!): BillingRecord!
+
+  """Issue a service credit to a customer."""
+  issueCredit(input: IssueCreditInput!): BillingRecord!
+
+  """Grant an entitlement to a customer."""
+  grantEntitlement(input: GrantEntitlementInput!): EntitlementGrant!
+
+  """Revoke an entitlement from a customer."""
+  revokeEntitlement(input: RevokeEntitlementInput!): EntitlementRevoke!
+}
+
+# ---------------------------------------------------------------------------
+# Subscription
+# ---------------------------------------------------------------------------
+
+type Subscription {
+  """Stream real-time player and network status updates from a Roku device."""
+  deviceStatus(deviceId: ID!): Player!
+
+  """Stream billing events for a channel."""
+  billingEvents(channelId: String!, apiKey: String!): BillingRecord!
+}
