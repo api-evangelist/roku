@@ -108,26 +108,26 @@ apis:
     title: Media Player Structure
   - type: JSONLD
     url: json-ld/roku-external-control-protocol-context.jsonld
-  - type: Example
+  - type: Examples
     url: examples/external-control-protocol-query-device-info-example.json
     title: Query Device Info Example
-  - type: Example
+  - type: Examples
     url: examples/external-control-protocol-query-apps-example.json
     title: Query Apps Example
-  - type: Example
+  - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
     title: Launch App Example
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/external-control-protocol-apps.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/external-control-protocol-discovery.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/external-control-protocol-input.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/external-control-protocol-keypress.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/external-control-protocol-query.yaml
 - aid: roku:pay
   name: Roku Pay Web Services
@@ -180,17 +180,17 @@ apis:
     title: Subscription Result Structure
   - type: JSONLD
     url: json-ld/roku-pay-web-services-context.jsonld
-  - type: Example
+  - type: Examples
     url: examples/pay-web-services-validate-transaction-example.json
     title: Validate Transaction Example
-  - type: Example
+  - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
     title: Cancel Subscription Example
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/pay-web-services-billing.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/pay-web-services-subscription.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/pay-web-services-validation.yaml
 - aid: roku:nabu-cloud
   name: Roku Nabu Cloud
@@ -212,35 +212,35 @@ apis:
     url: openapi/roku-nabu-cloud.yaml
   - type: JSONLD
     url: json-ld/roku-nabu-cloud-context.jsonld
-  - type: Example
+  - type: Examples
     url: examples/nabu-cloud-list-devices-example.json
     title: List Devices Example
-  - type: Example
+  - type: Examples
     url: examples/nabu-cloud-create-device-example.json
     title: Create Device Example
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-builds.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-devices.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-groups.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-healthz.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-organisations.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-projects.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-snapshots.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-users.yaml
 - aid: roku:search-feed
   name: Roku Search Feed
@@ -261,10 +261,10 @@ apis:
     title: Search Feed Schema
   - type: JSONLD
     url: json-ld/roku-search-feed-context.jsonld
-  - type: Example
+  - type: Examples
     url: examples/roku-search-feed-simple-example.json
     title: Simple Search Feed Example
-  - type: Example
+  - type: Examples
     url: examples/roku-search-feed-advanced-example.json
     title: Advanced Search Feed Example
 - aid: roku:direct-publisher-feed
@@ -283,7 +283,7 @@ apis:
     url: https://github.com/rokudev/feed-specifications/blob/master/direct-publisher-feed-specification.md
   - type: APIReference
     url: https://github.com/rokudev/feed-specifications
-  - type: Example
+  - type: Examples
     url: examples/roku-direct-publisher-feed-example.json
     title: Direct Publisher Feed Example
 - aid: roku:analytics
@@ -327,7 +327,7 @@ common:
   url: https://developer.roku.com/en-gb/docs/get-started/getting-started.md
 - type: Courses
   url: https://developer.roku.com/en-gb/videos/courses
-- type: SDK
+- type: SDKs
   url: https://developer.roku.com/en-gb/docs/developer-program/dev-tools/dev-tools-overview.md
 - type: Support
   url: https://developer.roku.com/en-gb/support
