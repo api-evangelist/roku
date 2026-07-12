@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/roku-pay-web-services.yaml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: PartnerAPIKey
+  type: apiKey
+  in: query
+  parameter: partnerAPIKey
+  description: |-
+    Roku-issued Partner API Key. For GET endpoints the key is included in the URL path; for
+    POST endpoints it is included in the request body. Channels obtain this key from the Roku
+    Developer Dashboard.
+  sources:
+  - openapi/roku-pay-web-services.yaml

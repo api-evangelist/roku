@@ -315,6 +315,12 @@ apis:
     url: https://github.com/rokudev/on-device-authentication
     title: On-Device Authentication Sample
 common:
+- type: VulnerabilityDisclosure
+  url: security/roku-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/roku-domain-security.yml
+- type: Authentication
+  url: authentication/roku-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/roku
 - type: Website
