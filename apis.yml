@@ -315,6 +315,8 @@ apis:
     url: https://github.com/rokudev/on-device-authentication
     title: On-Device Authentication Sample
 common:
+- type: AgenticAccess
+  url: agentic-access/roku-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/roku-vulnerability-disclosure.yml
 - type: DomainSecurity
