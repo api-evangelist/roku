@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps KeyPress API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: KeyPress
+  description: Simulated remote-control key injection
+paths:
+  /keypress/{key}:
+    post:
+      operationId: keyPress
+      summary: Roku Press Key
+      description: Simulates a momentary press-and-release of a remote-control key.
+      tags:
+      - KeyPress
+      parameters:
+      - name: key
+        in: path
+        required: true
+        description: Key name (e.g., Home, Up, Down, Left, Right, Select, Back, Play, Rev, Fwd, InstantReplay, Info, Backspace, Search, Enter, VolumeUp, VolumeDown, VolumeMute, PowerOff, ChannelUp, ChannelDown, InputTuner, InputHDMI1, etc.) or `Lit_<urlencodedchar>` to send a literal text character.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Key press accepted
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /keydown/{key}:
+    post:
+      operationId: keyDown
+      summary: Roku Hold Key Down
+      description: Simulates pressing and holding a remote-control key. Must be paired with `/keyup/{key}` to release.
+      tags:
+      - KeyPress
+      parameters:
+      - name: key
+        in: path
+        required: true
+        description: Key name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Key down accepted
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /keyup/{key}:
+    post:
+      operationId: keyUp
+      summary: Roku Release Key
+      description: Releases a previously held key.
+      tags:
+      - KeyPress
+      parameters:
+      - name: key
+        in: path
+        required: true
+        description: Key name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Key release accepted
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

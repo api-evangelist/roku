@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps Validation API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: Validation
+  description: Transaction and refund validation
+paths:
+  /validate-transaction/{partnerAPIKey}/{transactionId}:
+    get:
+      operationId: validateTransaction
+      summary: Roku Validate Transaction
+      description: 'Verifies that a customer holds a valid entitlement to a product purchased through Roku Pay.
+
+        Returns the purchase status, expiration date, and source channel of the transaction.
+
+        Channels must call this from their backend before granting entitled access to content.
+
+        '
+      tags:
+      - Validation
+      parameters:
+      - name: partnerAPIKey
+        in: path
+        required: true
+        description: The publisher's Roku-issued Partner API key.
+        schema:
+          type: string
+      - name: transactionId
+        in: path
+        required: true
+        description: The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore component at purchase time.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Transaction validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionValidation'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TransactionValidation'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /validate-refund/{partnerAPIKey}/{refundId}:
+    get:
+      operationId: validateRefund
+      summary: Roku Validate Refund
+      description: Confirms whether a refund has been successfully issued for a previous transaction.
+      tags:
+      - Validation
+      parameters:
+      - name: partnerAPIKey
+        in: path
+        required: true
+        description: The publisher's Roku-issued Partner API key.
+        schema:
+          type: string
+      - name: refundId
+        in: path
+        required: true
+        description: The Roku-issued refund identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Refund validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundValidation'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RefundValidation'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RefundValidation:
+      type: object
+      description: Result of a refund-validation request.
+      x-schema-source: documentation
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+        refundId:
+          type: string
+        transactionId:
+          type: string
+        refundDate:
+          type: string
+          format: date-time
+        refundAmount:
+          type: number
+          format: float
+        currency:
+          type: string
+        refundReason:
+          type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+    TransactionValidation:
+      type: object
+      description: Result of a transaction-validation request.
+      x-schema-source: documentation
+      properties:
+        status:
+          type: string
+          description: Operation status (Success, Failure).
+        errorCode:
+          type: integer
+          description: Numeric Roku error code on failure.
+        errorMessage:
+          type: string
+        transactionId:
+          type: string
+          description: The transaction identifier that was validated.
+        productId:
+          type: string
+          description: The Roku product code for the entitled product.
+        productName:
+          type: string
+        purchaseDate:
+          type: string
+          format: date-time
+        expirationDate:
+          type: string
+          format: date-time
+          description: When the entitlement expires (for subscriptions and time-limited rentals).
+        purchaseStatus:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          - Pending_Active
+          - Pending_Inactive
+        isEntitled:
+          type: boolean
+          description: Whether the customer currently has access to the product.
+        purchaseChannel:
+          type: string
+          description: How the purchase was initiated (e.g., Device, Web, InstantSignup).
+        purchaseContext:
+          type: string
+          description: Context flags identifying the purchase source.
+        rokuCustomerId:
+          type: string
+          description: The Roku-issued anonymized customer identifier.
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+        tax:
+          type: number
+          format: float
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Error'

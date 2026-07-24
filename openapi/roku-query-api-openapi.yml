@@ -1,0 +1,372 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps Query API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: Query
+  description: Device, media, and TV state queries
+paths:
+  /query/device-info:
+    get:
+      operationId: queryDeviceInfo
+      summary: Roku Query Device Info
+      description: Returns metadata about the Roku device including model, serial number, software version, network status, supported features, and user account state.
+      tags:
+      - Query
+      responses:
+        '200':
+          description: Device info XML
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DeviceInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/apps:
+    get:
+      operationId: queryApps
+      summary: Roku Query Installed Apps
+      description: Returns the list of channels (apps) installed on the device with their app ID, name, version, and type.
+      tags:
+      - Query
+      responses:
+        '200':
+          description: Apps XML list
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AppList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/active-app:
+    get:
+      operationId: queryActiveApp
+      summary: Roku Query Active App
+      description: Returns the currently running app (or Roku home if no channel is active).
+      tags:
+      - Query
+      responses:
+        '200':
+          description: Active app XML
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ActiveApp'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/icon/{appId}:
+    get:
+      operationId: queryAppIcon
+      summary: Roku Query App Icon
+      description: Returns the binary icon image for the given installed app.
+      tags:
+      - Query
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        description: The Roku channel/app identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Icon image
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/media-player:
+    get:
+      operationId: queryMediaPlayer
+      summary: Roku Query Media Player
+      description: Returns the playback state, stream URI, current position, duration, and buffering metrics for the active video player.
+      tags:
+      - Query
+      responses:
+        '200':
+          description: Media player state XML
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MediaPlayer'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/tv-channels:
+    get:
+      operationId: queryTvChannels
+      summary: Roku Query TV Channels
+      description: Returns the list of antenna or TV-input channels tuned on a Roku TV device.
+      tags:
+      - Query
+      responses:
+        '200':
+          description: TV channel list XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/tv-active-channel:
+    get:
+      operationId: queryTvActiveChannel
+      summary: Roku Query Active TV Channel
+      description: Returns the currently tuned TV channel and signal information on a Roku TV device.
+      tags:
+      - Query
+      responses:
+        '200':
+          description: Active TV channel XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/app-state/{appId}:
+    get:
+      operationId: queryAppState
+      summary: Roku Query App State
+      description: Returns whether the specified channel is currently active, in the background, or inactive.
+      tags:
+      - Query
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        description: The Roku channel identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: App state XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ActiveApp:
+      type: object
+      description: Currently active app or screensaver/home if none.
+      x-schema-source: documentation
+      properties:
+        app:
+          $ref: '#/components/schemas/App'
+        screensaver:
+          $ref: '#/components/schemas/App'
+    AppList:
+      type: object
+      description: Container for the list of installed channels.
+      x-schema-source: documentation
+      properties:
+        apps:
+          type: array
+          items:
+            $ref: '#/components/schemas/App'
+    App:
+      type: object
+      description: An installed Roku channel.
+      x-schema-source: documentation
+      properties:
+        id:
+          type: string
+          description: The Roku channel/app identifier.
+          example: '12'
+        type:
+          type: string
+          enum:
+          - appl
+          - menu
+          - tvin
+          description: appl = installed channel, menu = system menu, tvin = TV input.
+        version:
+          type: string
+        subtype:
+          type: string
+        name:
+          type: string
+          description: Human-readable channel name.
+    DeviceInfo:
+      type: object
+      description: Roku device metadata returned as XML.
+      x-schema-source: documentation
+      properties:
+        udn:
+          type: string
+          description: Unique Device Name (UUID).
+        serialNumber:
+          type: string
+          description: Hardware serial number.
+        deviceId:
+          type: string
+        modelNumber:
+          type: string
+          description: Hardware model number (e.g., 4660X).
+        modelName:
+          type: string
+          description: Marketing model name (e.g., Roku Ultra).
+        friendlyDeviceName:
+          type: string
+        softwareVersion:
+          type: string
+          example: 12.5.0
+        softwareBuild:
+          type: string
+        userDeviceName:
+          type: string
+        wifiMac:
+          type: string
+        ethernetMac:
+          type: string
+        networkType:
+          type: string
+          enum:
+          - wifi
+          - ethernet
+        countryCode:
+          type: string
+        language:
+          type: string
+        timeZone:
+          type: string
+        powerMode:
+          type: string
+          enum:
+          - PowerOn
+          - DisplayOff
+          - Headless
+          - Ready
+        supportsEcsTextedit:
+          type: boolean
+        supportsEcsMicrophone:
+          type: boolean
+        supportsWakeOnWlan:
+          type: boolean
+        developerEnabled:
+          type: boolean
+    MediaPlayer:
+      type: object
+      description: State of the active video player.
+      x-schema-source: documentation
+      properties:
+        state:
+          type: string
+          enum:
+          - none
+          - buffer
+          - play
+          - pause
+          - stop
+          - error
+          - finished
+          - startup
+          - open
+        error:
+          type: boolean
+        plugin:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        format:
+          type: object
+          properties:
+            audio:
+              type: string
+            captions:
+              type: string
+            container:
+              type: string
+            drm:
+              type: string
+            video:
+              type: string
+            videoRes:
+              type: string
+        position:
+          type: integer
+          description: Current playback position in milliseconds.
+        duration:
+          type: integer
+          description: Total stream duration in milliseconds.
+        is_live:
+          type: boolean
+        runtime:
+          type: integer
+        buffering:
+          type: object
+          properties:
+            current:
+              type: integer
+            max:
+              type: integer
+            target:
+              type: integer
+        new_stream:
+          type: object
+          properties:
+            speed:
+              type: integer
+        stream_segment:
+          type: object
+          properties:
+            bitrate:
+              type: integer
+            media_sequence:
+              type: integer
+            segment_type:
+              type: string
+            time:
+              type: integer

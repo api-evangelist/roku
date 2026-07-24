@@ -1,0 +1,619 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps users API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: users
+paths:
+  /api/v1/users/me:
+    get:
+      tags:
+      - users
+      summary: Roku Get Me
+      operationId: users-get_me
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOut'
+      security:
+      - Nabu Cloud: []
+  /api/v1/users/me/organisations:
+    get:
+      tags:
+      - users
+      summary: Roku Get My Organisation
+      description: Currently only returns a single item, the roku organisation
+      operationId: users-get_my_organisation
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 255
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          description: Slug of the organisation, used in URLs
+          title: Slug
+        description: Slug of the organisation, used in URLs
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+          title: Name
+      - name: max_devices
+        in: query
+        required: false
+        schema:
+          type: integer
+          exclusiveMinimum: 0
+          description: Maximum number of devices in the organisation
+          title: Max Devices
+        description: Maximum number of devices in the organisation
+      - name: max_snapshots
+        in: query
+        required: false
+        schema:
+          type: integer
+          exclusiveMinimum: 0
+          description: Maximum number of snapshots in the organisation
+          title: Max Snapshots
+        description: Maximum number of snapshots in the organisation
+      - name: max_project_devices
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum number of devices in the organisation per project, 0 for Organisation max
+          title: Max Project Devices
+        description: Maximum number of devices in the organisation per project, 0 for Organisation max
+      - name: max_project_snapshots
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum number of snapshots in the organisation per project, 0 for Organisation max
+          title: Max Project Snapshots
+        description: Maximum number of snapshots in the organisation per project, 0 for Organisation max
+      - name: max_project_runtime
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum runtime of a device in the organisation per project, 0 for Organisation max
+          title: Max Project Runtime
+        description: Maximum runtime of a device in the organisation per project, 0 for Organisation max
+      - name: created_at
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          description: The creation day of the organisation
+          title: Created At
+        description: The creation day of the organisation
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganisationOut'
+                title: Response Users-Get My Organisation
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/users/me/projects:
+    get:
+      tags:
+      - users
+      summary: Roku Get My Projects
+      operationId: users-get_my_projects
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 255
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          description: The slug of the project, used in URLs
+          title: Slug
+        description: The slug of the project, used in URLs
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 255
+          description: The name of the Project
+          title: Name
+        description: The name of the Project
+      - name: description
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            minLength: 0
+            maxLength: 4096
+          - type: 'null'
+          description: The description of the Project
+          title: Description
+        description: The description of the Project
+      - name: billing_entity
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 255
+          description: The billing entity of the Project
+          title: Billing Entity
+        description: The billing entity of the Project
+      - name: max_devices
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum number of devices in the project, 0 for organisation max
+          title: Max Devices
+        description: Maximum number of devices in the project, 0 for organisation max
+      - name: max_snapshots
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum number of snapshots in the project, 0 for organisation max
+          title: Max Snapshots
+        description: Maximum number of snapshots in the project, 0 for organisation max
+      - name: max_runtime
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum runtime of a device in the project, 0 for organisation max
+          title: Max Runtime
+        description: Maximum runtime of a device in the project, 0 for organisation max
+      - name: created_at
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          description: The creation day of the project
+          title: Created At
+        description: The creation day of the project
+      - name: include_personal_project
+        in: query
+        required: false
+        schema:
+          type: boolean
+          description: Show private projects
+          default: true
+          title: Include Personal Project
+        description: Show private projects
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectOut'
+                title: Response Users-Get My Projects
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/users/me/groups:
+    get:
+      tags:
+      - users
+      summary: Roku Get My Group
+      operationId: users-get_my_group
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      - name: project_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Project Id
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 255
+          description: The name of the group. Unique in the organisation
+          title: Name
+        description: The name of the group. Unique in the organisation
+      - name: description
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            minLength: 0
+            maxLength: 4096
+          - type: 'null'
+          description: Description of the Group.
+          title: Description
+        description: Description of the Group.
+      - name: created_at
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          description: The day the group was created
+          title: Created At
+        description: The day the group was created
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupOut'
+                title: Response Users-Get My Group
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ProjectOut:
+      properties:
+        id:
+          type: integer
+          minimum: 0
+          title: Id
+        slug:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Slug
+          description: The slug of the project, used in URLs
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Project
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: The description of the Project
+        billing_entity:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Billing Entity
+          description: The billing entity of the Project
+        max_devices:
+          type: integer
+          minimum: 0
+          title: Max Devices
+          description: Maximum number of devices in the project, 0 for organisation max
+          default: 0
+        max_snapshots:
+          type: integer
+          minimum: 0
+          title: Max Snapshots
+          description: Maximum number of snapshots in the project, 0 for organisation max
+          default: 0
+        max_runtime:
+          type: integer
+          minimum: 0
+          title: Max Runtime
+          description: Maximum runtime of a device in the project, 0 for organisation max
+          default: 0
+        private:
+          type: boolean
+          title: Private
+          description: Whether the project is listed in search results
+          default: false
+        user_project:
+          type: boolean
+          title: User Project
+          description: Whether the project is a user project
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: When the project was created
+        current_devices:
+          type: integer
+          minimum: 0
+          title: Current Devices
+          default: 0
+        current_snapshots:
+          type: integer
+          minimum: 0
+          title: Current Snapshots
+          default: 0
+      type: object
+      required:
+      - id
+      - slug
+      - name
+      - billing_entity
+      - user_project
+      - created_at
+      title: ProjectOut
+    UserOut:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        username:
+          type: string
+          title: Username
+        full_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Full Name
+        email:
+          anyOf:
+          - type: string
+            format: email
+          - type: 'null'
+          title: Email
+      type: object
+      required:
+      - id
+      - username
+      - full_name
+      - email
+      title: UserOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    OrganisationOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+        idp_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Idp Id
+          description: Identity Provider(IdP) ID of the organisation
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Name
+          description: Slug of the organisation, used in URLs
+        slug:
+          type: string
+          title: Slug
+          description: Name of the organisation
+        max_devices:
+          type: integer
+          exclusiveMinimum: 0
+          title: Max Devices
+          description: Maximum number of devices in the organisation
+        max_snapshots:
+          type: integer
+          exclusiveMinimum: 0
+          title: Max Snapshots
+          description: Maximum number of snapshots in the organisation
+        max_project_devices:
+          type: integer
+          minimum: 0
+          title: Max Project Devices
+          description: Maximum number of devices in the organisation per project, 0 for Organisation max
+        max_project_snapshots:
+          type: integer
+          minimum: 0
+          title: Max Project Snapshots
+          description: Maximum number of snapshots in the organisation per project, 0 for Organisation max
+        max_project_runtime:
+          type: integer
+          minimum: 0
+          title: Max Project Runtime
+          description: Maximum runtime of a device in the organisation per project, 0 for Organisation max
+        current_devices:
+          type: integer
+          minimum: 0
+          title: Current Devices
+          default: 0
+        current_snapshots:
+          type: integer
+          minimum: 0
+          title: Current Snapshots
+          default: 0
+      type: object
+      required:
+      - id
+      - name
+      - slug
+      - max_devices
+      - max_snapshots
+      - max_project_devices
+      - max_project_snapshots
+      - max_project_runtime
+      title: OrganisationOut
+    GroupOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - id
+      - name
+      title: GroupOut

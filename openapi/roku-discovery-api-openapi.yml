@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps Discovery API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: Discovery
+  description: Device discovery and metadata
+paths:
+  /:
+    get:
+      operationId: getDeviceRoot
+      summary: Roku Get Device Root
+      description: Returns the SSDP device description XML used for UPnP discovery.
+      tags:
+      - Discovery
+      responses:
+        '200':
+          description: Device description XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/device-info:
+    get:
+      operationId: queryDeviceInfo
+      summary: Roku Query Device Info
+      description: Returns metadata about the Roku device including model, serial number, software version, network status, supported features, and user account state.
+      tags:
+      - Discovery
+      responses:
+        '200':
+          description: Device info XML
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DeviceInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DeviceInfo:
+      type: object
+      description: Roku device metadata returned as XML.
+      x-schema-source: documentation
+      properties:
+        udn:
+          type: string
+          description: Unique Device Name (UUID).
+        serialNumber:
+          type: string
+          description: Hardware serial number.
+        deviceId:
+          type: string
+        modelNumber:
+          type: string
+          description: Hardware model number (e.g., 4660X).
+        modelName:
+          type: string
+          description: Marketing model name (e.g., Roku Ultra).
+        friendlyDeviceName:
+          type: string
+        softwareVersion:
+          type: string
+          example: 12.5.0
+        softwareBuild:
+          type: string
+        userDeviceName:
+          type: string
+        wifiMac:
+          type: string
+        ethernetMac:
+          type: string
+        networkType:
+          type: string
+          enum:
+          - wifi
+          - ethernet
+        countryCode:
+          type: string
+        language:
+          type: string
+        timeZone:
+          type: string
+        powerMode:
+          type: string
+          enum:
+          - PowerOn
+          - DisplayOff
+          - Headless
+          - Ready
+        supportsEcsTextedit:
+          type: boolean
+        supportsEcsMicrophone:
+          type: boolean
+        supportsWakeOnWlan:
+          type: boolean
+        developerEnabled:
+          type: boolean

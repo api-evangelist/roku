@@ -1,0 +1,605 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps groups API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: groups
+paths:
+  /api/v1/organisations/{organisation_id}/groups:
+    get:
+      tags:
+      - groups
+      summary: Roku List Group
+      operationId: groups-list_group
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      - name: project_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Project Id
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 255
+          description: The name of the group. Unique in the organisation
+          title: Name
+        description: The name of the group. Unique in the organisation
+      - name: description
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            minLength: 0
+            maxLength: 4096
+          - type: 'null'
+          description: Description of the Group.
+          title: Description
+        description: Description of the Group.
+      - name: created_at
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          description: The day the group was created
+          title: Created At
+        description: The day the group was created
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupOut'
+                title: Response Groups-List Group
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - groups
+      summary: Roku Create Group
+      operationId: groups-create_group
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/groups/{group_id}:
+    get:
+      tags:
+      - groups
+      summary: Roku Get a Group by ID
+      operationId: groups-get_group
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Group Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - groups
+      summary: Roku Update Group
+      operationId: groups-update_group
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Group Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - groups
+      summary: Roku Delete Group
+      operationId: groups-delete_group
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Group Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/groups/{group_id}/members:
+    get:
+      tags:
+      - groups
+      summary: Roku List Group Members
+      operationId: groups-list_group_members
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Group Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: skip
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: The number of results to skip. Use this for pagination. Use 0 for the first page.
+          default: 0
+          title: Skip
+        description: The number of results to skip. Use this for pagination. Use 0 for the first page.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: The number of results to return, must be non-negative int. Use 0 for no limit.
+          default: 100
+          title: Limit
+        description: The number of results to return, must be non-negative int. Use 0 for no limit.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupMemberOut'
+                title: Response Groups-List Group Members
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - groups
+      summary: Roku Add Group Member
+      operationId: groups-add_group_member
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Group Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupAddMember'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMemberOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/groups/{group_id}/members/{user_id}:
+    get:
+      tags:
+      - groups
+      summary: Roku Get Group Member
+      operationId: groups-get_group_member
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Group Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMemberOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - groups
+      summary: Roku Update Group Member
+      operationId: groups-update_group_member
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Group Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: User Id
+      - name: group_role_id
+        in: query
+        required: true
+        schema:
+          type: integer
+          title: Group Role Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMemberOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - groups
+      summary: Roku Remove Group Member
+      operationId: groups-remove_group_member
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Group Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: User Id
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    GroupMemberOut:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        username:
+          type: string
+          title: Username
+        full_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Full Name
+        email:
+          anyOf:
+          - type: string
+            format: email
+          - type: 'null'
+          title: Email
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        group_role_name:
+          type: string
+          title: Group Role Name
+      type: object
+      required:
+      - id
+      - username
+      - full_name
+      - email
+      - group_role_id
+      - group_role_name
+      title: GroupMemberOut
+    GroupUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - name
+      title: GroupUpdate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    GroupOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - id
+      - name
+      title: GroupOut
+    GroupAddMember:
+      properties:
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+      type: object
+      required:
+      - group_role_id
+      - user_id
+      title: GroupAddMember
+    GroupCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - name
+      title: GroupCreate

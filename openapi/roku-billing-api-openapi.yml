@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps Billing API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: Billing
+  description: Billing cycle and credit management
+paths:
+  /refund-subscription:
+    post:
+      operationId: refundSubscription
+      summary: Roku Refund Subscription
+      description: Issues a partial or full refund against a Roku Pay subscription.
+      tags:
+      - Billing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundSubscriptionRequest'
+      responses:
+        '200':
+          description: Refund result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResult'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /update-bill-cycle:
+    post:
+      operationId: updateBillCycle
+      summary: Roku Update Bill Cycle
+      description: Adjusts the next billing date on an active Roku Pay subscription.
+      tags:
+      - Billing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBillCycleRequest'
+      responses:
+        '200':
+          description: Updated billing schedule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResult'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /issue-service-credit:
+    post:
+      operationId: issueServiceCredit
+      summary: Roku Issue Service Credit
+      description: Grants an account-level service credit to the customer, typically used to compensate for service interruptions or as a goodwill gesture.
+      tags:
+      - Billing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueCreditRequest'
+      responses:
+        '200':
+          description: Credit issuance result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResult'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UpdateBillCycleRequest:
+      type: object
+      required:
+      - partnerAPIKey
+      - rokuCustomerId
+      - productCode
+      - nextBillDate
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        productCode:
+          type: string
+        nextBillDate:
+          type: string
+          format: date-time
+        reason:
+          type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+    RefundSubscriptionRequest:
+      type: object
+      required:
+      - partnerAPIKey
+      - rokuCustomerId
+      - transactionId
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        transactionId:
+          type: string
+        refundAmount:
+          type: number
+          format: float
+          description: If omitted, a full refund is issued.
+        currency:
+          type: string
+        reason:
+          type: string
+    IssueCreditRequest:
+      type: object
+      required:
+      - partnerAPIKey
+      - rokuCustomerId
+      - amount
+      - currency
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+        reason:
+          type: string
+    SubscriptionResult:
+      type: object
+      x-schema-source: documentation
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+        rokuCustomerId:
+          type: string
+        productCode:
+          type: string
+        effectiveDate:
+          type: string
+          format: date-time
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Error'

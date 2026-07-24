@@ -1,0 +1,367 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps personal-access-tokens API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: personal-access-tokens
+paths:
+  /api/v1/users/me/personal_access_tokens:
+    get:
+      tags:
+      - personal-access-tokens
+      summary: Roku List Personal Access Tokens
+      description: List all personal access tokens for the authenticated user with their associated scopes.
+      operationId: personal-access-tokens-list_personal_access_tokens
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PersonalAccessTokenOut'
+                type: array
+                title: Response Personal-Access-Tokens-List Personal Access Tokens
+      security:
+      - Nabu Cloud: []
+    post:
+      tags:
+      - personal-access-tokens
+      summary: Roku Create Personal Access Token
+      description: Create a new personal access token for the authenticated user. The token will be returned only once and cannot be retrieved again. Maximum of 20 tokens per user.
+      operationId: personal-access-tokens-create_personal_access_token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonalAccessTokenCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalAccessTokenCreated'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - Nabu Cloud: []
+  /api/v1/users/me/personal_access_tokens/{token_id}:
+    delete:
+      tags:
+      - personal-access-tokens
+      summary: Roku Revoke Personal Access Token
+      description: Revoke a specific personal access token for the authenticated user by token ID.
+      operationId: personal-access-tokens-revoke_personal_access_token
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: token_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Token Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/users/me/personal_access_tokens/scopes:
+    get:
+      tags:
+      - personal-access-tokens
+      summary: Roku Get Personal Access Token Scopes
+      description: Get all available scopes for personal access tokens that the authenticated user can use. Admin scope is only available to superusers.
+      operationId: personal-access-tokens-get_personal_access_token_scopes
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ScopeOut'
+                type: array
+                title: Response Personal-Access-Tokens-Get Personal Access Token Scopes
+      security:
+      - Nabu Cloud: []
+  /api/v1/users/me/personal_access_tokens/{token_id}/refresh:
+    patch:
+      tags:
+      - personal-access-tokens
+      summary: Roku Refresh Personal Access Token
+      description: Refresh a personal access token by updating its expiration date.
+      operationId: personal-access-tokens-refresh_personal_access_token
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: token_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Token Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonalAccessTokenRefresh'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalAccessTokenOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    PersonalAccessTokenOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+          description: The unique identifier of the personal access token
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: A descriptive name for the token
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Optional description for the token
+        scopes:
+          items:
+            type: string
+            maxLength: 255
+            minLength: 3
+            pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          type: array
+          title: Scopes
+          description: List of scopes that define the token's permissions
+        version:
+          type: integer
+          title: Version
+          description: Version number of the token format
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: When the token was created
+        expires_at:
+          type: string
+          format: date-time
+          title: Expires At
+          description: When the token expires
+        last_used_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Used At
+          description: When the token was last used
+        revoked_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Revoked At
+          description: When the token was revoked, if applicable
+        status:
+          $ref: '#/components/schemas/PersonalAccessTokenStatus'
+          readOnly: true
+      type: object
+      required:
+      - id
+      - name
+      - scopes
+      - version
+      - created_at
+      - expires_at
+      - status
+      title: PersonalAccessTokenOut
+    PersonalAccessTokenRefresh:
+      properties:
+        expires_in_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          title: Expires In Days
+          description: Number of days until the token expires (1-365 days)
+          default: 30
+      type: object
+      title: PersonalAccessTokenRefresh
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ScopeOut:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Name
+          description: The name of the scope
+        description:
+          type: string
+          maxLength: 4096
+          minLength: 0
+          title: Description
+          description: Description of what the scope allows
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+          description: List of permissions granted by this scope
+      type: object
+      required:
+      - name
+      - description
+      - permissions
+      title: ScopeOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    PersonalAccessTokenCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: A descriptive name for the token
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Optional description for the token
+        expires_in_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          title: Expires In Days
+          description: Number of days until the token expires (1-365 days)
+          default: 30
+        scopes:
+          items:
+            type: string
+            maxLength: 255
+            minLength: 3
+            pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          type: array
+          title: Scopes
+          description: List of scopes that define the token's permissions
+      type: object
+      required:
+      - name
+      - scopes
+      title: PersonalAccessTokenCreate
+    PersonalAccessTokenStatus:
+      type: string
+      enum:
+      - active
+      - expired
+      - revoked
+      title: PersonalAccessTokenStatus
+    PersonalAccessTokenCreated:
+      properties:
+        token:
+          type: string
+          maxLength: 2048
+          minLength: 1
+          title: Token
+          description: The actual token - save this, it won't be shown again!
+        token_info:
+          $ref: '#/components/schemas/PersonalAccessTokenOut'
+      type: object
+      required:
+      - token
+      - token_info
+      title: PersonalAccessTokenCreated
+      description: Response when a new PAT is created - includes the actual token

@@ -1,0 +1,728 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps organisations API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: organisations
+paths:
+  /api/v1/organisations:
+    get:
+      tags:
+      - organisations
+      summary: Roku List Organisations
+      operationId: organisations-list_organisations
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 255
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          description: Slug of the organisation, used in URLs
+          title: Slug
+        description: Slug of the organisation, used in URLs
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+          title: Name
+      - name: max_devices
+        in: query
+        required: false
+        schema:
+          type: integer
+          exclusiveMinimum: 0
+          description: Maximum number of devices in the organisation
+          title: Max Devices
+        description: Maximum number of devices in the organisation
+      - name: max_snapshots
+        in: query
+        required: false
+        schema:
+          type: integer
+          exclusiveMinimum: 0
+          description: Maximum number of snapshots in the organisation
+          title: Max Snapshots
+        description: Maximum number of snapshots in the organisation
+      - name: max_project_devices
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum number of devices in the organisation per project, 0 for Organisation max
+          title: Max Project Devices
+        description: Maximum number of devices in the organisation per project, 0 for Organisation max
+      - name: max_project_snapshots
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum number of snapshots in the organisation per project, 0 for Organisation max
+          title: Max Project Snapshots
+        description: Maximum number of snapshots in the organisation per project, 0 for Organisation max
+      - name: max_project_runtime
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Maximum runtime of a device in the organisation per project, 0 for Organisation max
+          title: Max Project Runtime
+        description: Maximum runtime of a device in the organisation per project, 0 for Organisation max
+      - name: created_at
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          description: The creation day of the organisation
+          title: Created At
+        description: The creation day of the organisation
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganisationOut'
+                title: Response Organisations-List Organisations
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}:
+    get:
+      tags:
+      - organisations
+      summary: Roku Get Organisation
+      description: Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use.
+      operationId: organisations-get_organisation
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/members:
+    get:
+      tags:
+      - organisations
+      summary: Roku List Organisation Members
+      operationId: organisations-list_organisation_members
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganisationMemberOut'
+                title: Response Organisations-List Organisation Members
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/members/{user_id}:
+    get:
+      tags:
+      - organisations
+      summary: Roku Get Organisation Member
+      operationId: organisations-get_organisation_member
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: User Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationMemberOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/regions:
+    get:
+      tags:
+      - organisations
+      summary: Roku List Organisation Regions
+      description: Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use.
+      operationId: organisations-list_organisation_regions
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganisationRegionOut'
+                title: Response Organisations-List Organisation Regions
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/regions/{region_id}:
+    get:
+      tags:
+      - organisations
+      summary: Roku Get Organisation Region
+      operationId: organisations-get_organisation_region
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Region Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationRegionOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/roles/projects:
+    get:
+      tags:
+      - organisations
+      summary: Roku List Project Roles
+      operationId: organisations-list_project_roles
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectRoleOut'
+                title: Response Organisations-List Project Roles
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/roles/projects/{role_id}:
+    get:
+      tags:
+      - organisations
+      summary: Roku Get Project Role
+      operationId: organisations-get_project_role
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Role Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectRoleOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/roles/groups:
+    get:
+      tags:
+      - organisations
+      summary: Roku List Group Roles
+      operationId: organisations-list_group_roles
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupRoleOut'
+                title: Response Organisations-List Group Roles
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/roles/groups/{role_id}:
+    get:
+      tags:
+      - organisations
+      summary: Roku Get Group Role
+      operationId: organisations-get_group_role
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Role Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupRoleOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    OrganisationOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+        idp_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Idp Id
+          description: Identity Provider(IdP) ID of the organisation
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Name
+          description: Slug of the organisation, used in URLs
+        slug:
+          type: string
+          title: Slug
+          description: Name of the organisation
+        max_devices:
+          type: integer
+          exclusiveMinimum: 0
+          title: Max Devices
+          description: Maximum number of devices in the organisation
+        max_snapshots:
+          type: integer
+          exclusiveMinimum: 0
+          title: Max Snapshots
+          description: Maximum number of snapshots in the organisation
+        max_project_devices:
+          type: integer
+          minimum: 0
+          title: Max Project Devices
+          description: Maximum number of devices in the organisation per project, 0 for Organisation max
+        max_project_snapshots:
+          type: integer
+          minimum: 0
+          title: Max Project Snapshots
+          description: Maximum number of snapshots in the organisation per project, 0 for Organisation max
+        max_project_runtime:
+          type: integer
+          minimum: 0
+          title: Max Project Runtime
+          description: Maximum runtime of a device in the organisation per project, 0 for Organisation max
+        current_devices:
+          type: integer
+          minimum: 0
+          title: Current Devices
+          default: 0
+        current_snapshots:
+          type: integer
+          minimum: 0
+          title: Current Snapshots
+          default: 0
+      type: object
+      required:
+      - id
+      - name
+      - slug
+      - max_devices
+      - max_snapshots
+      - max_project_devices
+      - max_project_snapshots
+      - max_project_runtime
+      title: OrganisationOut
+    OrganisationMemberOut:
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        username:
+          type: string
+          title: Username
+        organisation_role_id:
+          type: integer
+          title: Organisation Role Id
+        organisation_role_name:
+          type: string
+          title: Organisation Role Name
+      type: object
+      required:
+      - user_id
+      - username
+      - organisation_role_id
+      - organisation_role_name
+      title: OrganisationMemberOut
+    AgentStreamOption:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - id
+      - name
+      title: AgentStreamOption
+    GroupRoleOut:
+      properties:
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        name:
+          type: string
+          title: Name
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+      type: object
+      required:
+      - group_role_id
+      - name
+      - permissions
+      title: GroupRoleOut
+    AWSRegion:
+      type: string
+      enum:
+      - us-west-2
+      title: AWSRegion
+    ProjectRoleOut:
+      properties:
+        project_role_id:
+          type: integer
+          title: Project Role Id
+        name:
+          type: string
+          title: Name
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+      type: object
+      required:
+      - project_role_id
+      - name
+      - permissions
+      title: ProjectRoleOut
+    OrganisationRegionOut:
+      properties:
+        region_id:
+          type: integer
+          title: Region Id
+        region_name:
+          type: string
+          title: Region Name
+        aws_region:
+          $ref: '#/components/schemas/AWSRegion'
+        agent_active:
+          type: boolean
+          title: Agent Active
+        agent_stream_options:
+          items:
+            $ref: '#/components/schemas/AgentStreamOption'
+          type: array
+          title: Agent Stream Options
+      type: object
+      required:
+      - region_id
+      - region_name
+      - aws_region
+      - agent_active
+      - agent_stream_options
+      title: OrganisationRegionOut

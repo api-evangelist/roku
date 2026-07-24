@@ -1,0 +1,139 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps Diagnostics API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: Diagnostics
+  description: Developer-mode diagnostics and performance counters
+paths:
+  /query/chanperf:
+    get:
+      operationId: queryChanPerf
+      summary: Roku Query Channel Performance
+      description: Returns CPU and memory utilization metrics for the foreground channel. Requires Roku Developer Mode.
+      tags:
+      - Diagnostics
+      responses:
+        '200':
+          description: Channel perf metrics XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/r2d2-bitmaps:
+    get:
+      operationId: queryR2d2Bitmaps
+      summary: Roku Query R2D2 Bitmaps
+      description: Lists currently loaded texture/bitmap assets and their memory footprint. Requires Roku Developer Mode.
+      tags:
+      - Diagnostics
+      responses:
+        '200':
+          description: Bitmap inventory XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/sgnodes/all:
+    get:
+      operationId: querySgNodesAll
+      summary: Roku Query SceneGraph Nodes
+      description: Enumerates all SceneGraph nodes currently allocated by the channel along with reference counts. Requires Roku Developer Mode.
+      tags:
+      - Diagnostics
+      responses:
+        '200':
+          description: SceneGraph node tree XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/registry/{appId}:
+    get:
+      operationId: queryRegistry
+      summary: Roku Query Registry
+      description: Returns the persistent registry entries written by the specified channel. Requires Roku Developer Mode.
+      tags:
+      - Diagnostics
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        description: The Roku channel identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Registry entries XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/app-state/{appId}:
+    get:
+      operationId: queryAppState
+      summary: Roku Query App State
+      description: Returns whether the specified channel is currently active, in the background, or inactive.
+      tags:
+      - Diagnostics
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        description: The Roku channel identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: App state XML
+          content:
+            application/xml:
+              schema:
+                type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

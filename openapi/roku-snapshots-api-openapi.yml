@@ -1,0 +1,605 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps snapshots API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: snapshots
+paths:
+  /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/snapshots:
+    get:
+      tags:
+      - snapshots
+      summary: Roku List Snapshots
+      operationId: snapshots-list_snapshots
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Project Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Device Id
+      - name: items
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000000
+          description: The number of items per page. Use 0 for no limit.
+          default: 100
+          title: Items
+        description: The number of items per page. Use 0 for no limit.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: The page number. Use 0 for the first page.
+          default: 0
+          title: Page
+        description: The page number. Use 0 for the first page.
+      - name: parent_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+            minimum: 0
+          - type: 'null'
+          description: The ID of the parent Snapshot.
+          title: Parent Id
+        description: The ID of the parent Snapshot.
+      - name: live
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          description: Show live snapshots
+          title: Live
+        description: Show live snapshots
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 255
+          description: The name of the Snapshot.
+          title: Name
+        description: The name of the Snapshot.
+      - name: description
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            minLength: 0
+            maxLength: 4096
+          - type: 'null'
+          description: Description of the Snapshot.
+          title: Description
+        description: Description of the Snapshot.
+      - name: properties
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: object
+            additionalProperties: true
+            maxProperties: 8192
+          - type: 'null'
+          description: Properties of the Snapshot.
+          examples:
+          - config_service_flags:
+              fw.swup.channel-sync-enabled: 'false'
+          title: Properties
+        description: Properties of the Snapshot.
+      - name: rootfs_artifactory_path
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            minLength: 3
+            maxLength: 255
+            pattern: ^[a-zA-Z0-9_-]*(\/[a-zA-Z0-9._-]+)*(\:[a-zA-Z0-9._-]+)?$
+          - type: 'null'
+          description: The path of the rootfs image in artifactory.
+          examples:
+          - official/release/2024-h2/r14.0.4.122xx-rta/native_tv:latest
+          - premergeci/native_tv:4838657
+          title: Rootfs Artifactory Path
+        description: The path of the rootfs image in artifactory.
+      - name: start_at
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          description: The last time the snapshot was run
+          title: Start At
+        description: The last time the snapshot was run
+      - name: created_at
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          description: The day the snapshot was created
+          title: Created At
+        description: The day the snapshot was created
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SnapshotOut'
+                title: Response Snapshots-List Snapshots
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - snapshots
+      summary: Roku Create Snapshot
+      description: 'Snapshots can either be created from a device''s current filesystem state (or
+
+        most recent filesystem state if the device is currently off) or by creating
+
+        a modified version of an existing snapshot.
+
+
+        If both SnapshotCreate.system_setting_changes and
+
+        SnapshotCreate.config_server_overrides_changes are None then the snapshot
+
+        will be created from the device state. However if either is not None then
+
+        parent_id must be provided and the new snapshot will be created as a
+
+        modified version of the parent snapshot.
+
+
+        If creating from a running device parent_id is purely organisational and
+
+        will not effect the content of the created snapshot.
+
+
+        If creating from a parent snapshot the parent snapshot must belong to the
+
+        same device.'
+      operationId: snapshots-create_snapshot
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Project Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Device Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnapshotCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/snapshots/{snapshot_id}:
+    get:
+      tags:
+      - snapshots
+      summary: Roku Get Snapshot
+      operationId: snapshots-get_snapshot
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Project Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Device Id
+      - name: snapshot_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Snapshot Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - snapshots
+      summary: Roku Update Snapshot
+      operationId: snapshots-update_snapshot
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Project Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Device Id
+      - name: snapshot_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Snapshot Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnapshotUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - snapshots
+      summary: Roku Delete Snapshot
+      operationId: snapshots-delete_snapshot
+      security:
+      - Nabu Cloud: []
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Project Id
+      - name: organisation_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Organisation Id
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Device Id
+      - name: snapshot_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Snapshot Id
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    SnapshotUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Snapshot.
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Description of the Snapshot.
+        properties:
+          anyOf:
+          - additionalProperties: true
+            type: object
+            maxProperties: 8192
+          - type: 'null'
+          title: Properties
+          description: Properties of the Snapshot.
+          examples:
+          - config_service_flags:
+              fw.swup.channel-sync-enabled: 'false'
+      type: object
+      title: SnapshotUpdate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    SnapshotCreate:
+      properties:
+        parent_id:
+          anyOf:
+          - type: integer
+            minimum: 0
+          - type: 'null'
+          title: Parent Id
+          description: The ID of the parent Snapshot.
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Snapshot.
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Description of the Snapshot.
+        properties:
+          anyOf:
+          - additionalProperties: true
+            type: object
+            maxProperties: 8192
+          - type: 'null'
+          title: Properties
+          description: Properties of the Snapshot.
+          examples:
+          - config_service_flags:
+              fw.swup.channel-sync-enabled: 'false'
+        system_setting_changes:
+          anyOf:
+          - additionalProperties:
+              anyOf:
+              - type: string
+                format: binary
+              - type: 'null'
+            propertyNames:
+              format: binary
+            type: object
+          - type: 'null'
+          title: System Setting Changes
+          description: "\n            A dictionary of system setting changes to apply to the snapshot.\n            This dictionary changes settings in system.conf.db. Entries with a\n            value of null will be removed.\n        "
+        config_server_overrides_changes:
+          anyOf:
+          - additionalProperties:
+              anyOf:
+              - type: string
+              - type: 'null'
+            type: object
+          - type: 'null'
+          title: Config Server Overrides Changes
+          description: "\n            A dictionary of config server setting override changes to apply to\n            the snapshot. These overrides are set in the ConfigServer/Overrides\n            key of system.conf.db. Entries with a value of null will be removed.\n        "
+      type: object
+      required:
+      - name
+      title: SnapshotCreate
+    SnapshotOut:
+      properties:
+        id:
+          type: integer
+          minimum: 0
+          title: Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        parent_id:
+          anyOf:
+          - type: integer
+            minimum: 0
+          - type: 'null'
+          title: Parent Id
+          description: The ID of the parent Snapshot.
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Snapshot.
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Description of the Snapshot.
+        properties:
+          anyOf:
+          - additionalProperties: true
+            type: object
+            maxProperties: 8192
+          - type: 'null'
+          title: Properties
+          description: Properties of the Snapshot.
+          examples:
+          - config_service_flags:
+              fw.swup.channel-sync-enabled: 'false'
+        rootfs_artifactory_path:
+          anyOf:
+          - type: string
+            maxLength: 255
+            minLength: 3
+            pattern: ^[a-zA-Z0-9_-]*(\/[a-zA-Z0-9._-]+)*(\:[a-zA-Z0-9._-]+)?$
+          - type: 'null'
+          title: Rootfs Artifactory Path
+          description: The path of the rootfs image in artifactory.
+          examples:
+          - official/release/2024-h2/r14.0.4.122xx-rta/native_tv:latest
+          - premergeci/native_tv:4838657
+        started_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Started At
+        children:
+          items:
+            type: integer
+          type: array
+          title: Children
+          description: The IDs of the child Snapshots.
+          default: []
+        ready:
+          type: boolean
+          title: Ready
+          description: "\n        Whether the snapshot is ready to use. Trying to start a device with a\n        snapshot that is not ready will result in an error. Deleting the\n        instance an unready snapshot is being taken from can cause the snapshot\n        creation process to fail.\n    "
+          default: false
+      type: object
+      required:
+      - id
+      - created_at
+      title: SnapshotOut

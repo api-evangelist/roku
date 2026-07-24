@@ -1,0 +1,240 @@
+openapi: 3.0.3
+info:
+  title: Roku External Control Protocol (ECP) Apps API
+  version: '1.0'
+  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+
+    streaming device on the local network. It enables third-party applications, mobile remote-control
+
+    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+
+    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+
+    query device state, and retrieve diagnostic information.
+
+
+    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+
+    Most control operations require the user to enable "Control by mobile apps" on the device.
+
+    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
+
+    Developer Mode.
+
+    '
+  contact:
+    name: Roku Developer Program
+    url: https://developer.roku.com
+  x-generated-from: documentation
+  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+servers:
+- url: http://{rokuDeviceIp}:8060
+  description: A Roku device on the local network
+  variables:
+    rokuDeviceIp:
+      default: 192.168.1.100
+      description: The IPv4 address of the Roku device, discovered via SSDP
+tags:
+- name: Apps
+  description: Application listing, launching, and termination
+paths:
+  /query/apps:
+    get:
+      operationId: queryApps
+      summary: Roku Query Installed Apps
+      description: Returns the list of channels (apps) installed on the device with their app ID, name, version, and type.
+      tags:
+      - Apps
+      responses:
+        '200':
+          description: Apps XML list
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AppList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/active-app:
+    get:
+      operationId: queryActiveApp
+      summary: Roku Query Active App
+      description: Returns the currently running app (or Roku home if no channel is active).
+      tags:
+      - Apps
+      responses:
+        '200':
+          description: Active app XML
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ActiveApp'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /query/icon/{appId}:
+    get:
+      operationId: queryAppIcon
+      summary: Roku Query App Icon
+      description: Returns the binary icon image for the given installed app.
+      tags:
+      - Apps
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        description: The Roku channel/app identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Icon image
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /launch/{appId}:
+    post:
+      operationId: launchApp
+      summary: Roku Launch App
+      description: Launches the specified installed app. Optional `contentId` and `mediaType` query parameters provide deep-link parameters delivered to the app on launch.
+      tags:
+      - Apps
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        description: The Roku channel/app identifier (or `dev` for the side-loaded developer channel)
+        schema:
+          type: string
+      - name: contentId
+        in: query
+        required: false
+        description: Deep-link content identifier passed to the app
+        schema:
+          type: string
+      - name: mediaType
+        in: query
+        required: false
+        description: Deep-link content type (movie, episode, season, series, shortFormVideo, tvEpisode, special, live)
+        schema:
+          type: string
+          enum:
+          - movie
+          - episode
+          - season
+          - series
+          - shortFormVideo
+          - tvEpisode
+          - special
+          - live
+      responses:
+        '200':
+          description: App launched
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /install/{appId}:
+    post:
+      operationId: installApp
+      summary: Roku Install App
+      description: Opens the channel store details page for the specified app, prompting the user to install it.
+      tags:
+      - Apps
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        description: The Roku channel/app identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Channel store details opened
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /exit-app/{appId}:
+    post:
+      operationId: exitApp
+      summary: Roku Exit App
+      description: Suspends or terminates the specified running app. Requires Roku OS 14.1 or later and "Control by mobile apps" enabled.
+      tags:
+      - Apps
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        description: The Roku channel/app identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: App exit requested
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /search/browse:
+    post:
+      operationId: searchBrowse
+      summary: Roku Search Browse
+      description: Performs a Roku search across installed channels using query parameters such as keyword, title, season, type, provider-id, and launch.
+      tags:
+      - Apps
+      responses:
+        '200':
+          description: Search initiated
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AppList:
+      type: object
+      description: Container for the list of installed channels.
+      x-schema-source: documentation
+      properties:
+        apps:
+          type: array
+          items:
+            $ref: '#/components/schemas/App'
+    ActiveApp:
+      type: object
+      description: Currently active app or screensaver/home if none.
+      x-schema-source: documentation
+      properties:
+        app:
+          $ref: '#/components/schemas/App'
+        screensaver:
+          $ref: '#/components/schemas/App'
+    App:
+      type: object
+      description: An installed Roku channel.
+      x-schema-source: documentation
+      properties:
+        id:
+          type: string
+          description: The Roku channel/app identifier.
+          example: '12'
+        type:
+          type: string
+          enum:
+          - appl
+          - menu
+          - tvin
+          description: appl = installed channel, menu = system menu, tvin = TV input.
+        version:
+          type: string
+        subtype:
+          type: string
+        name:
+          type: string
+          description: Human-readable channel name.
