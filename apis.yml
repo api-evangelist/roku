@@ -2,6 +2,19 @@ aid: roku
 url: https://github.com/api-evangelist/roku
 name: Roku
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://image.roku.com/ImageServer/global/favicons/favicon-32x32.png
 tags:
 - Streaming
@@ -24,10 +37,11 @@ apis:
 - aid: roku:brightscript
   name: Roku BrightScript SDK
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
-  description: BrightScript is Roku's scripting language used to build apps for the
-    Roku platform. The SDK provides a comprehensive component library with over 100
-    built-in objects covering UI, networking, media playback, and device interaction.
-    BrightScript is a programming language and on-device runtime, not a network API.
+  description: >-
+    BrightScript is Roku's scripting language used to build apps for the Roku platform. The SDK provides
+    a comprehensive component library with over 100 built-in objects covering UI, networking, media playback,
+    and device interaction. BrightScript is a programming language and on-device runtime, not a network
+    API.
   tags:
   - SDK
   - BrightScript
@@ -42,10 +56,10 @@ apis:
 - aid: roku:scenegraph
   name: Roku SceneGraph
   humanURL: https://developer.roku.com/docs/developer-program/core-concepts/scenegraph-overview.md
-  description: SceneGraph is Roku's XML-based declarative UI framework for building
-    rich, performant channel applications. It provides node components, animations,
-    and a scene-based architecture. SceneGraph is an on-device UI framework, not a
-    network API.
+  description: >-
+    SceneGraph is Roku's XML-based declarative UI framework for building rich, performant channel applications.
+    It provides node components, animations, and a scene-based architecture. SceneGraph is an on-device
+    UI framework, not a network API.
   tags:
   - UI Framework
   - SceneGraph
@@ -55,68 +69,122 @@ apis:
     url: https://developer.roku.com/docs/developer-program/core-concepts/scenegraph-overview.md
   - type: APIReference
     url: https://developer.roku.com/docs/references/scenegraph/component-reference.md
-- aid: roku:external-control-protocol
-  name: Roku External Control Protocol (ECP)
-  humanURL: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
-  description: The External Control Protocol (ECP) is an HTTP-based API exposed on
-    port 8060 of every Roku device on the local network. It enables third-party applications,
-    mobile remote-control apps, automated test systems, and home-automation hubs to
-    discover devices via SSDP, inject simulated remote-control key presses, launch
-    installed apps with deep-link parameters, query device state, and retrieve developer-mode
-    diagnostics.
+- aid: roku:search-feed
+  name: Roku Search Feed
+  humanURL: https://github.com/rokudev/search-feed-json
+  description: >-
+    Roku Search Feed is a JSON feed format that publishers ingest to expose their catalog to Roku Search.
+    The feed provides movies, series, episodes, short-form videos, TV specials, and live feeds with localized
+    titles, descriptions, ratings, content links, and external IDs.
   tags:
-  - REST
-  - HTTP
-  - Device Control
-  - LAN
+  - Feed
+  - Search
+  - Content Catalog
   properties:
+  - type: Documentation
+    url: https://github.com/rokudev/search-feed-json
+  - type: JSONSchema
+    url: json-schema/search-feed-schema.json
+    title: Search Feed Schema
+  - type: JSONLD
+    url: json-ld/roku-search-feed-context.jsonld
+  - type: Examples
+    url: examples/roku-search-feed-simple-example.json
+    title: Simple Search Feed Example
+  - type: Examples
+    url: examples/roku-search-feed-advanced-example.json
+    title: Advanced Search Feed Example
+- aid: roku:direct-publisher-feed
+  name: Roku Direct Publisher Feed
+  humanURL: https://github.com/rokudev/feed-specifications
+  description: >-
+    Roku Direct Publisher (RDP) feed is a JSON feed specification that allows non-technical publishers
+    to populate channels by hosting a structured catalog of short-form videos, movies, series, episodes,
+    and live feeds. Roku ingests the feed on a schedule and renders the channel UI automatically.
+  tags:
+  - Feed
+  - Direct Publisher
+  - Content Catalog
+  properties:
+  - type: Documentation
+    url: >-
+      https://github.com/rokudev/feed-specifications/blob/master/direct-publisher-feed-specification.md
+  - type: APIReference
+    url: https://github.com/rokudev/feed-specifications
+  - type: Examples
+    url: examples/roku-direct-publisher-feed-example.json
+    title: Direct Publisher Feed Example
+- aid: roku:analytics
+  name: Roku Analytics
+  humanURL: https://developer.roku.com/docs/developer-program/marketing/roku-analytics.md
+  description: >-
+    Roku Analytics provides performance reporting, audience metrics, and engagement data for Roku channel
+    publishers. Reports are accessed through the Roku Developer Dashboard rather than a public REST API.
+  tags:
+  - Analytics
+  - Reporting
+  properties:
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/marketing/roku-analytics.md
+- aid: roku:authentication
+  name: Roku Authentication Framework
+  humanURL: >-
+    https://developer.roku.com/docs/developer-program/authentication/authentication-overview.md
+  description: >-
+    APIs and patterns for implementing user sign-in and authentication within Roku channels, including
+    device-linking ("on-device authentication") and OAuth-style flows. The framework is implemented in
+    BrightScript on the device; the publisher's authentication backend is custom-built.
+  tags:
+  - Authentication
+  - OAuth
+  properties:
+  - type: Documentation
+    url: >-
+      https://developer.roku.com/docs/developer-program/authentication/authentication-overview.md
+  - type: CodeExamples
+    url: https://github.com/rokudev/on-device-authentication
+    title: On-Device Authentication Sample
+- aid: roku:roku-apps-api
+  name: Roku Apps API
+  description: Application listing, launching, and termination
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-apps-api-openapi.yml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
   - type: APIReference
     url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
-  - type: OpenAPI
-    url: openapi/roku-external-control-protocol.yaml
   - type: JSONSchema
     url: json-schema/external-control-protocol-active-app-schema.json
-    title: Active App Schema
   - type: JSONSchema
     url: json-schema/external-control-protocol-app-list-schema.json
-    title: App List Schema
   - type: JSONSchema
     url: json-schema/external-control-protocol-app-schema.json
-    title: App Schema
   - type: JSONSchema
     url: json-schema/external-control-protocol-device-info-schema.json
-    title: Device Info Schema
   - type: JSONSchema
     url: json-schema/external-control-protocol-media-player-schema.json
-    title: Media Player Schema
   - type: JSONStructure
     url: json-structure/external-control-protocol-device-info-structure.json
-    title: Device Info Structure
   - type: JSONStructure
     url: json-structure/external-control-protocol-app-structure.json
-    title: App Structure
   - type: JSONStructure
     url: json-structure/external-control-protocol-app-list-structure.json
-    title: App List Structure
   - type: JSONStructure
     url: json-structure/external-control-protocol-active-app-structure.json
-    title: Active App Structure
   - type: JSONStructure
     url: json-structure/external-control-protocol-media-player-structure.json
-    title: Media Player Structure
   - type: JSONLD
     url: json-ld/roku-external-control-protocol-context.jsonld
   - type: Examples
     url: examples/external-control-protocol-query-device-info-example.json
-    title: Query Device Info Example
   - type: Examples
     url: examples/external-control-protocol-query-apps-example.json
-    title: Query Apps Example
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-    title: Launch App Example
   - type: X-NaftikoCapability
     url: capabilities/external-control-protocol-apps.yaml
   - type: X-NaftikoCapability
@@ -129,95 +197,50 @@ apis:
     url: capabilities/external-control-protocol-keypress.yaml
   - type: X-NaftikoCapability
     url: capabilities/external-control-protocol-query.yaml
-- aid: roku:pay
-  name: Roku Pay Web Services
-  humanURL: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
-  description: Roku Pay Web Services provide server-to-server APIs for billing, subscription
-    management, transaction validation, and entitlement checks for monetized Roku
-    channels. Channels query these endpoints from their authentication backends to
-    verify entitlements, issue refunds, adjust billing cycles, and grant service credits.
-  tags:
-  - Billing
-  - Payments
-  - Subscriptions
-  - Monetization
-  properties:
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
     url: https://developer.roku.com/dev/docs/roku-web-service
-  - type: OpenAPI
-    url: openapi/roku-pay-web-services.yaml
   - type: JSONSchema
     url: json-schema/pay-web-services-transaction-validation-schema.json
-    title: Transaction Validation Schema
   - type: JSONSchema
     url: json-schema/pay-web-services-refund-validation-schema.json
-    title: Refund Validation Schema
   - type: JSONSchema
     url: json-schema/pay-web-services-cancel-subscription-request-schema.json
-    title: Cancel Subscription Request Schema
   - type: JSONSchema
     url: json-schema/pay-web-services-refund-subscription-request-schema.json
-    title: Refund Subscription Request Schema
   - type: JSONSchema
     url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
-    title: Update Bill Cycle Request Schema
   - type: JSONSchema
     url: json-schema/pay-web-services-issue-credit-request-schema.json
-    title: Issue Credit Request Schema
   - type: JSONSchema
     url: json-schema/pay-web-services-subscription-result-schema.json
-    title: Subscription Result Schema
   - type: JSONStructure
     url: json-structure/pay-web-services-transaction-validation-structure.json
-    title: Transaction Validation Structure
   - type: JSONStructure
     url: json-structure/pay-web-services-refund-validation-structure.json
-    title: Refund Validation Structure
   - type: JSONStructure
     url: json-structure/pay-web-services-subscription-result-structure.json
-    title: Subscription Result Structure
   - type: JSONLD
     url: json-ld/roku-pay-web-services-context.jsonld
   - type: Examples
     url: examples/pay-web-services-validate-transaction-example.json
-    title: Validate Transaction Example
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-    title: Cancel Subscription Example
   - type: X-NaftikoCapability
     url: capabilities/pay-web-services-billing.yaml
   - type: X-NaftikoCapability
     url: capabilities/pay-web-services-subscription.yaml
   - type: X-NaftikoCapability
     url: capabilities/pay-web-services-validation.yaml
-- aid: roku:nabu-cloud
-  name: Roku Nabu Cloud
-  humanURL: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
-  description: Nabu Cloud is Roku's developer cloud platform for managing remote test
-    devices, snapshots, builds, projects, organisations, groups, and personal access
-    tokens. It provides REST APIs (and an AsyncAPI streaming endpoint) for orchestrating
-    remote Roku test devices and CI/CD workflows. The OpenAPI specification is published
-    in the Roku dev-doc repository.
-  tags:
-  - REST
-  - Developer Cloud
-  - Test Devices
-  - CI CD
-  properties:
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
-  - type: OpenAPI
-    url: openapi/roku-nabu-cloud.yaml
   - type: JSONLD
     url: json-ld/roku-nabu-cloud-context.jsonld
   - type: Examples
     url: examples/nabu-cloud-list-devices-example.json
-    title: List Devices Example
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-    title: Create Device Example
   - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-asyncapi.yaml
   - type: X-NaftikoCapability
@@ -242,78 +265,2426 @@ apis:
     url: capabilities/nabu-cloud-snapshots.yaml
   - type: X-NaftikoCapability
     url: capabilities/nabu-cloud-users.yaml
-- aid: roku:search-feed
-  name: Roku Search Feed
-  humanURL: https://github.com/rokudev/search-feed-json
-  description: Roku Search Feed is a JSON feed format that publishers ingest to expose
-    their catalog to Roku Search. The feed provides movies, series, episodes, short-form
-    videos, TV specials, and live feeds with localized titles, descriptions, ratings,
-    content links, and external IDs.
+- aid: roku:roku-asyncapi-api
+  name: Roku asyncapi API
+  description: The asyncapi API from Roku — 3 operation(s) for asyncapi.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
-  - Feed
-  - Search
-  - Content Catalog
+  - asyncapi
   properties:
+  - type: OpenAPI
+    url: openapi/roku-asyncapi-api-openapi.yml
   - type: Documentation
-    url: https://github.com/rokudev/search-feed-json
-  - type: JSONSchema
-    url: json-schema/search-feed-schema.json
-    title: Search Feed Schema
-  - type: JSONLD
-    url: json-ld/roku-search-feed-context.jsonld
-  - type: Examples
-    url: examples/roku-search-feed-simple-example.json
-    title: Simple Search Feed Example
-  - type: Examples
-    url: examples/roku-search-feed-advanced-example.json
-    title: Advanced Search Feed Example
-- aid: roku:direct-publisher-feed
-  name: Roku Direct Publisher Feed
-  humanURL: https://github.com/rokudev/feed-specifications
-  description: Roku Direct Publisher (RDP) feed is a JSON feed specification that
-    allows non-technical publishers to populate channels by hosting a structured catalog
-    of short-form videos, movies, series, episodes, and live feeds. Roku ingests the
-    feed on a schedule and renders the channel UI automatically.
-  tags:
-  - Feed
-  - Direct Publisher
-  - Content Catalog
-  properties:
-  - type: Documentation
-    url: https://github.com/rokudev/feed-specifications/blob/master/direct-publisher-feed-specification.md
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
   - type: APIReference
-    url: https://github.com/rokudev/feed-specifications
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
   - type: Examples
-    url: examples/roku-direct-publisher-feed-example.json
-    title: Direct Publisher Feed Example
-- aid: roku:analytics
-  name: Roku Analytics
-  humanURL: https://developer.roku.com/docs/developer-program/marketing/roku-analytics.md
-  description: Roku Analytics provides performance reporting, audience metrics, and
-    engagement data for Roku channel publishers. Reports are accessed through the
-    Roku Developer Dashboard rather than a public REST API.
-  tags:
-  - Analytics
-  - Reporting
-  properties:
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
-    url: https://developer.roku.com/docs/developer-program/marketing/roku-analytics.md
-- aid: roku:authentication
-  name: Roku Authentication Framework
-  humanURL: https://developer.roku.com/docs/developer-program/authentication/authentication-overview.md
-  description: APIs and patterns for implementing user sign-in and authentication
-    within Roku channels, including device-linking ("on-device authentication") and
-    OAuth-style flows. The framework is implemented in BrightScript on the device;
-    the publisher's authentication backend is custom-built.
-  tags:
-  - Authentication
-  - OAuth
-  properties:
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
-    url: https://developer.roku.com/docs/developer-program/authentication/authentication-overview.md
-  - type: CodeExamples
-    url: https://github.com/rokudev/on-device-authentication
-    title: On-Device Authentication Sample
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-billing-api
+  name: Roku Billing API
+  description: Billing cycle and credit management
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Billing
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-billing-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-builds-api
+  name: Roku builds API
+  description: The builds API from Roku — 2 operation(s) for builds.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - builds
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-builds-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-devices-api
+  name: Roku devices API
+  description: The devices API from Roku — 6 operation(s) for devices.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - devices
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-devices-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-diagnostics-api
+  name: Roku Diagnostics API
+  description: Developer-mode diagnostics and performance counters
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Diagnostics
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-diagnostics-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-discovery-api
+  name: Roku Discovery API
+  description: Device discovery and metadata
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-discovery-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-groups-api
+  name: Roku groups API
+  description: The groups API from Roku — 4 operation(s) for groups.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - groups
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-healthz-api
+  name: Roku healthz API
+  description: The healthz API from Roku — 2 operation(s) for healthz.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - healthz
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-healthz-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-input-api
+  name: Roku Input API
+  description: Custom input event injection
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Input
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-input-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-keypress-api
+  name: Roku KeyPress API
+  description: Simulated remote-control key injection
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - KeyPress
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-keypress-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-organisation-roles-api
+  name: Roku organisation-roles API
+  description: The organisation-roles API from Roku — 2 operation(s) for organisation-roles.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - organisation-roles
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-organisation-roles-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-organisations-api
+  name: Roku organisations API
+  description: The organisations API from Roku — 10 operation(s) for organisations.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - organisations
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-organisations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-personal-access-tokens-api
+  name: Roku personal-access-tokens API
+  description: The personal-access-tokens API from Roku — 4 operation(s) for personal-access-tokens.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - personal-access-tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-personal-access-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-projects-api
+  name: Roku projects API
+  description: The projects API from Roku — 6 operation(s) for projects.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - projects
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-projects-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-query-api
+  name: Roku Query API
+  description: Device, media, and TV state queries
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Query
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-query-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-serviceaccounts-api
+  name: Roku serviceaccounts API
+  description: The serviceaccounts API from Roku — 1 operation(s) for serviceaccounts.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - serviceaccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-serviceaccounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-snapshots-api
+  name: Roku snapshots API
+  description: The snapshots API from Roku — 2 operation(s) for snapshots.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - snapshots
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-snapshots-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-subscription-api
+  name: Roku Subscription API
+  description: Subscription lifecycle management
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-subscription-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-users-api
+  name: Roku users API
+  description: The users API from Roku — 4 operation(s) for users.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
+- aid: roku:roku-validation-api
+  name: Roku Validation API
+  description: Transaction and refund validation
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Validation
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-validation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-apps.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-diagnostics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-input.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-keypress.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/external-control-protocol-query.yaml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-billing.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-subscription.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/pay-web-services-validation.yaml
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-asyncapi.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-builds.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-devices.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-healthz.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisation-roles.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-organisations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-personal-access-tokens.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-projects.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-serviceaccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-snapshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/nabu-cloud-users.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/roku-agentic-access.yml
