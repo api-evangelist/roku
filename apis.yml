@@ -185,18 +185,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -227,12 +215,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -241,30 +223,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-asyncapi-api
   name: Roku asyncapi API
   description: The asyncapi API from Roku — 3 operation(s) for asyncapi.
@@ -306,18 +264,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -348,12 +294,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -362,30 +302,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-billing-api
   name: Roku Billing API
   description: Billing cycle and credit management
@@ -427,18 +343,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -469,12 +373,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -483,30 +381,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-builds-api
   name: Roku builds API
   description: The builds API from Roku — 2 operation(s) for builds.
@@ -548,18 +422,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -590,12 +452,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -604,30 +460,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-devices-api
   name: Roku devices API
   description: The devices API from Roku — 6 operation(s) for devices.
@@ -669,18 +501,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -711,12 +531,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -725,30 +539,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-diagnostics-api
   name: Roku Diagnostics API
   description: Developer-mode diagnostics and performance counters
@@ -790,18 +580,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -832,12 +610,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -846,30 +618,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-discovery-api
   name: Roku Discovery API
   description: Device discovery and metadata
@@ -911,18 +659,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -953,12 +689,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -967,30 +697,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-groups-api
   name: Roku groups API
   description: The groups API from Roku — 4 operation(s) for groups.
@@ -1032,18 +738,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -1074,12 +768,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -1088,30 +776,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-healthz-api
   name: Roku healthz API
   description: The healthz API from Roku — 2 operation(s) for healthz.
@@ -1153,18 +817,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -1195,12 +847,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -1209,30 +855,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-input-api
   name: Roku Input API
   description: Custom input event injection
@@ -1274,18 +896,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -1316,12 +926,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -1330,30 +934,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-keypress-api
   name: Roku KeyPress API
   description: Simulated remote-control key injection
@@ -1395,18 +975,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -1437,12 +1005,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -1451,30 +1013,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-organisation-roles-api
   name: Roku organisation-roles API
   description: The organisation-roles API from Roku — 2 operation(s) for organisation-roles.
@@ -1516,18 +1054,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -1558,12 +1084,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -1572,30 +1092,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-organisations-api
   name: Roku organisations API
   description: The organisations API from Roku — 10 operation(s) for organisations.
@@ -1637,18 +1133,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -1679,12 +1163,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -1693,30 +1171,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-personal-access-tokens-api
   name: Roku personal-access-tokens API
   description: The personal-access-tokens API from Roku — 4 operation(s) for personal-access-tokens.
@@ -1758,18 +1212,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -1800,12 +1242,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -1814,30 +1250,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-projects-api
   name: Roku projects API
   description: The projects API from Roku — 6 operation(s) for projects.
@@ -1879,18 +1291,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -1921,12 +1321,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -1935,30 +1329,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-query-api
   name: Roku Query API
   description: Device, media, and TV state queries
@@ -2000,18 +1370,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -2042,12 +1400,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -2056,30 +1408,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-serviceaccounts-api
   name: Roku serviceaccounts API
   description: The serviceaccounts API from Roku — 1 operation(s) for serviceaccounts.
@@ -2121,18 +1449,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -2163,12 +1479,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -2177,30 +1487,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-snapshots-api
   name: Roku snapshots API
   description: The snapshots API from Roku — 2 operation(s) for snapshots.
@@ -2242,18 +1528,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -2284,12 +1558,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -2298,30 +1566,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-subscription-api
   name: Roku Subscription API
   description: Subscription lifecycle management
@@ -2363,18 +1607,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -2405,12 +1637,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -2419,30 +1645,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-users-api
   name: Roku users API
   description: The users API from Roku — 4 operation(s) for users.
@@ -2484,18 +1686,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -2526,12 +1716,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -2540,30 +1724,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 - aid: roku:roku-validation-api
   name: Roku Validation API
   description: Transaction and refund validation
@@ -2605,18 +1765,6 @@ apis:
     url: examples/external-control-protocol-query-apps-example.json
   - type: Examples
     url: examples/external-control-protocol-launch-app-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-apps.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-diagnostics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-input.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-keypress.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/external-control-protocol-query.yaml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   - type: APIReference
@@ -2647,12 +1795,6 @@ apis:
     url: examples/pay-web-services-validate-transaction-example.json
   - type: Examples
     url: examples/pay-web-services-cancel-subscription-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-billing.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-subscription.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pay-web-services-validation.yaml
   - type: Documentation
     url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
   - type: JSONLD
@@ -2661,30 +1803,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-asyncapi.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-builds.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-devices.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-healthz.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisation-roles.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-organisations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-personal-access-tokens.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-projects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-serviceaccounts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-snapshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/nabu-cloud-users.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/roku-agentic-access.yml
