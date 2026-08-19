@@ -32,7 +32,7 @@ description: Roku is the leading TV streaming platform in the U.S., Canada, and 
   remote test devices and channel builds.
 created: '2026-05-04'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: roku:brightscript
   name: Roku BrightScript SDK
