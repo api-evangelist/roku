@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps personal-access-tokens API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "personal-access-tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku List Personal Access Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me/personal_access_tokens"
+          },
+          "docs": "List all personal access tokens for the authenticated user with their associated scopes."
+        },
+        {
+          "info": {
+            "name": "Roku Create Personal Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me/personal_access_tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new personal access token for the authenticated user. The token will be returned only once and cannot be retrieved again. Maximum of 20 tokens per user."
+        },
+        {
+          "info": {
+            "name": "Roku Revoke Personal Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me/personal_access_tokens/:token_id",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Revoke a specific personal access token for the authenticated user by token ID."
+        },
+        {
+          "info": {
+            "name": "Roku Get Personal Access Token Scopes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me/personal_access_tokens/scopes"
+          },
+          "docs": "Get all available scopes for personal access tokens that the authenticated user can use. Admin scope is only available to superusers."
+        },
+        {
+          "info": {
+            "name": "Roku Refresh Personal Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me/personal_access_tokens/:token_id/refresh",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh a personal access token by updating its expiration date."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

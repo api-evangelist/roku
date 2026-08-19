@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Query Installed Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/apps"
+          },
+          "docs": "Returns the list of channels (apps) installed on the device with their app ID, name, version, and type."
+        },
+        {
+          "info": {
+            "name": "Roku Query Active App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/active-app"
+          },
+          "docs": "Returns the currently running app (or Roku home if no channel is active)."
+        },
+        {
+          "info": {
+            "name": "Roku Query App Icon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/icon/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku channel/app identifier"
+              }
+            ]
+          },
+          "docs": "Returns the binary icon image for the given installed app."
+        },
+        {
+          "info": {
+            "name": "Roku Launch App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/launch/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku channel/app identifier (or `dev` for the side-loaded developer channel)"
+              },
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "query",
+                "description": "Deep-link content identifier passed to the app"
+              },
+              {
+                "name": "mediaType",
+                "value": "",
+                "type": "query",
+                "description": "Deep-link content type (movie, episode, season, series, shortFormVideo, tvEpisode, special, live)"
+              }
+            ]
+          },
+          "docs": "Launches the specified installed app. Optional `contentId` and `mediaType` query parameters provide deep-link parameters delivered to the app on launch."
+        },
+        {
+          "info": {
+            "name": "Roku Install App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/install/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku channel/app identifier"
+              }
+            ]
+          },
+          "docs": "Opens the channel store details page for the specified app, prompting the user to install it."
+        },
+        {
+          "info": {
+            "name": "Roku Exit App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/exit-app/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku channel/app identifier"
+              }
+            ]
+          },
+          "docs": "Suspends or terminates the specified running app. Requires Roku OS 14.1 or later and \"Control by mobile apps\" enabled."
+        },
+        {
+          "info": {
+            "name": "Roku Search Browse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/search/browse"
+          },
+          "docs": "Performs a Roku search across installed channels using query parameters such as keyword, title, season, type, provider-id, and launch."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

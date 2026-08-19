@@ -1,0 +1,436 @@
+{
+  "item": [
+    {
+      "id": "c679f429-e0f4-4ad8-beea-aaa52c5cae51",
+      "name": "asyncapi",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0df75e6-4ad4-4ae9-8b76-07d5cd5b7f8d",
+          "name": "Roku Serve Asyncapi Schema",
+          "request": {
+            "name": "Roku Serve Asyncapi Schema",
+            "description": {
+              "content": "Serve the AsyncAPI schema as an HTML response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "asyncapi"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sidebar",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "info",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "servers",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "operations",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "messages",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "schemas",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "errors",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "expandMessageExamples",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c3641b8-7e86-4bff-8138-bedc1abbb863",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asyncapi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sidebar",
+                      "value": "true"
+                    },
+                    {
+                      "key": "info",
+                      "value": "true"
+                    },
+                    {
+                      "key": "servers",
+                      "value": "true"
+                    },
+                    {
+                      "key": "operations",
+                      "value": "true"
+                    },
+                    {
+                      "key": "messages",
+                      "value": "true"
+                    },
+                    {
+                      "key": "schemas",
+                      "value": "true"
+                    },
+                    {
+                      "key": "errors",
+                      "value": "true"
+                    },
+                    {
+                      "key": "expandMessageExamples",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3f60b29-8d40-480c-a41e-53ec821cab85",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asyncapi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sidebar",
+                      "value": "true"
+                    },
+                    {
+                      "key": "info",
+                      "value": "true"
+                    },
+                    {
+                      "key": "servers",
+                      "value": "true"
+                    },
+                    {
+                      "key": "operations",
+                      "value": "true"
+                    },
+                    {
+                      "key": "messages",
+                      "value": "true"
+                    },
+                    {
+                      "key": "schemas",
+                      "value": "true"
+                    },
+                    {
+                      "key": "errors",
+                      "value": "true"
+                    },
+                    {
+                      "key": "expandMessageExamples",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ceecdc82-2c1b-48d6-9a74-7b231b7974d8",
+          "name": "Roku Download App Json Schema",
+          "request": {
+            "name": "Roku Download App Json Schema",
+            "description": {},
+            "url": {
+              "path": [
+                "asyncapi.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4eac72fa-1383-47eb-b795-7fe7d1520d8e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asyncapi.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08afe670-ada3-4eaf-be72-47d736782955",
+          "name": "Roku Download App Yaml Schema",
+          "request": {
+            "name": "Roku Download App Yaml Schema",
+            "description": {},
+            "url": {
+              "path": [
+                "asyncapi.yaml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26830100-fdf0-46fe-979b-62315796121d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asyncapi.yaml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IPv4 address of the Roku device, discovered via SSDP",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "rokuDeviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{rokuDeviceIp}}:8060",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3f401d7e-2336-439e-ab62-f626bafd81a8",
+    "name": "Roku External Control Protocol (ECP) Apps asyncapi API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

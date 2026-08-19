@@ -1,0 +1,215 @@
+{
+  "item": [
+    {
+      "id": "f7ccb435-e9cf-47b8-aede-29d749bebdda",
+      "name": "healthz",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10c32fff-594c-46f6-aa5d-d18fd8e3d291",
+          "name": "Roku Healthz",
+          "request": {
+            "name": "Roku Healthz",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "-",
+                "livez"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dcd86581-ac03-4841-a3b6-923d2f5ba06a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "-",
+                    "livez"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6da8bf4-8902-4087-9fa4-086ae900c733",
+          "name": "Roku Readyz",
+          "request": {
+            "name": "Roku Readyz",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "-",
+                "readyz"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc942b2d-71b4-4537-9ef8-b134e5bb604f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "-",
+                    "readyz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IPv4 address of the Roku device, discovered via SSDP",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "rokuDeviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{rokuDeviceIp}}:8060",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "48717a8a-2cbd-4d96-853f-0b2b0090ac22",
+    "name": "Roku External Control Protocol (ECP) Apps healthz API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

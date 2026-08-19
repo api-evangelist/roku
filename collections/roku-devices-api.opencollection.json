@@ -1,0 +1,347 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps devices API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "esn",
+                "value": "",
+                "type": "query",
+                "description": "The ESN of the device."
+              },
+              {
+                "name": "device_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the Device."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Device."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Description of the Device."
+              },
+              {
+                "name": "account_name",
+                "value": "",
+                "type": "query",
+                "description": "Account name of the Device."
+              },
+              {
+                "name": "properties",
+                "value": "",
+                "type": "query",
+                "description": "Device properties."
+              },
+              {
+                "name": "qa_hub",
+                "value": "",
+                "type": "query",
+                "description": "Whether the device should be auto registered in QA Hub."
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "The day the device was created"
+              }
+            ]
+          },
+          "docs": "Show devices in a project."
+        },
+        {
+          "info": {
+            "name": "Roku Create Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Create Device"
+        },
+        {
+          "info": {
+            "name": "Roku Get Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Device"
+        },
+        {
+          "info": {
+            "name": "Roku Update Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Update Device"
+        },
+        {
+          "info": {
+            "name": "Roku Delete Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "delete_snapshots",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Roku Delete Device"
+        },
+        {
+          "info": {
+            "name": "Roku Start Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/start",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "skip_build_validation",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Start Device"
+        },
+        {
+          "info": {
+            "name": "Roku Stop Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/stop",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Stop Device"
+        },
+        {
+          "info": {
+            "name": "Roku Get Device Runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/runs",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Device Runs"
+        },
+        {
+          "info": {
+            "name": "Roku Read Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/logs/:instance_id",
+            "params": [
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Read Logs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

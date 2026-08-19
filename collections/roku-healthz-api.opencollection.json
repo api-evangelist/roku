@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps healthz API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "healthz",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Healthz",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/-/livez"
+          },
+          "docs": "Roku Healthz"
+        },
+        {
+          "info": {
+            "name": "Roku Readyz",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/-/readyz"
+          },
+          "docs": "Roku Readyz"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

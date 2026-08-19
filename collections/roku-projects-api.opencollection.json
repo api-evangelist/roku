@@ -1,0 +1,558 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps projects API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "The slug of the project, used in URLs"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Project"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "The description of the Project"
+              },
+              {
+                "name": "billing_entity",
+                "value": "",
+                "type": "query",
+                "description": "The billing entity of the Project"
+              },
+              {
+                "name": "max_devices",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of devices in the project, 0 for organisation max"
+              },
+              {
+                "name": "max_snapshots",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of snapshots in the project, 0 for organisation max"
+              },
+              {
+                "name": "max_runtime",
+                "value": "",
+                "type": "query",
+                "description": "Maximum runtime of a device in the project, 0 for organisation max"
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "The creation day of the project"
+              },
+              {
+                "name": "include_personal_project",
+                "value": "",
+                "type": "query",
+                "description": "Show private projects"
+              }
+            ]
+          },
+          "docs": "Roku List Projects"
+        },
+        {
+          "info": {
+            "name": "Roku Create Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Create Project"
+        },
+        {
+          "info": {
+            "name": "Roku Get Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Project"
+        },
+        {
+          "info": {
+            "name": "Roku Update Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Update Project"
+        },
+        {
+          "info": {
+            "name": "Roku Delete Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cascade_delete",
+                "value": "",
+                "type": "query",
+                "description": "Deletes project, and everything associated with it, including snapshots!"
+              }
+            ]
+          },
+          "docs": "Roku Delete Project"
+        },
+        {
+          "info": {
+            "name": "Roku List Project Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/groups",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "project_role",
+                "value": "",
+                "type": "query",
+                "description": "The name of the project role"
+              },
+              {
+                "name": "added",
+                "value": "",
+                "type": "query",
+                "description": "The day the group was added"
+              },
+              {
+                "name": "group_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Group"
+              },
+              {
+                "name": "group_description",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Group"
+              },
+              {
+                "name": "group_created_at",
+                "value": "",
+                "type": "query",
+                "description": "When the group was created"
+              }
+            ]
+          },
+          "docs": "Roku List Project Groups"
+        },
+        {
+          "info": {
+            "name": "Roku Add Project Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/groups",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Add Project Group"
+        },
+        {
+          "info": {
+            "name": "Roku Get Project Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/groups/:group_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Project Group"
+        },
+        {
+          "info": {
+            "name": "Roku Update Project Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/groups/:group_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Update Project Group"
+        },
+        {
+          "info": {
+            "name": "Roku Remove Project Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/groups/:group_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Remove Project Group"
+        },
+        {
+          "info": {
+            "name": "Roku List Project Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/members",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "project_role",
+                "value": "",
+                "type": "query",
+                "description": "The name of the project role"
+              },
+              {
+                "name": "added",
+                "value": "",
+                "type": "query",
+                "description": "When the user was added."
+              },
+              {
+                "name": "member_username",
+                "value": "",
+                "type": "query",
+                "description": "The username of the member."
+              },
+              {
+                "name": "member_email",
+                "value": "",
+                "type": "query",
+                "description": "The email of the member."
+              }
+            ]
+          },
+          "docs": "Roku List Project Members"
+        },
+        {
+          "info": {
+            "name": "Roku Add Project Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/members",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Add Project Member"
+        },
+        {
+          "info": {
+            "name": "Roku Get Project Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/members/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Project Member"
+        },
+        {
+          "info": {
+            "name": "Roku Update Project Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/members/:user_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_role_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Roku Update Project Member"
+        },
+        {
+          "info": {
+            "name": "Roku Remove Project Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/members/:user_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Remove Project Member"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

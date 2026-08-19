@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps Subscription API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Cancel Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/cancel-subscription",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Terminates a Roku Pay subscription. After cancellation the entitlement remains active until the end of the current billing period."
+        },
+        {
+          "info": {
+            "name": "Roku Refund Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/refund-subscription",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Issues a partial or full refund against a Roku Pay subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

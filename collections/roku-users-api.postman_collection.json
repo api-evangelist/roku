@@ -1,0 +1,917 @@
+{
+  "item": [
+    {
+      "id": "fbe260f9-7259-44c5-8324-22b74bd6ad8a",
+      "name": "users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9b4eefc-0e91-44c6-9345-90e00b1b3311",
+          "name": "Roku Get Me",
+          "request": {
+            "name": "Roku Get Me",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "51cd97c1-97b8-4b40-971b-44f999c5b159",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"fc0cce1e-57a6-fe39-5eea-60f51fbe1e74\",\n  \"username\": \"string\",\n  \"full_name\": \"string\",\n  \"email\": \"CoHO0ChoeFT@SnWBxmfzIQNNHORMdspHsrvfX.fckl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34da46f6-729c-4645-95fe-ec4555b04d47",
+          "name": "Roku Get My Organisation",
+          "request": {
+            "name": "Roku Get My Organisation",
+            "description": {
+              "content": "Currently only returns a single item, the roku organisation",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "me",
+                "organisations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "items",
+                  "value": "100",
+                  "description": "The number of items per page. Use 0 for no limit."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The page number. Use 0 for the first page."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "Slug of the organisation, used in URLs"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_devices",
+                  "value": "<integer>",
+                  "description": "Maximum number of devices in the organisation"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_snapshots",
+                  "value": "<integer>",
+                  "description": "Maximum number of snapshots in the organisation"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_project_devices",
+                  "value": "<integer>",
+                  "description": "Maximum number of devices in the organisation per project, 0 for Organisation max"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_project_snapshots",
+                  "value": "<integer>",
+                  "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_project_runtime",
+                  "value": "<integer>",
+                  "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<date>",
+                  "description": "The creation day of the organisation"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "57d6b652-d0a0-468d-80f1-3bdaa5b929e0",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "me",
+                    "organisations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "items",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max_devices",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_snapshots",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_project_devices",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_project_snapshots",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_project_runtime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3110,\n    \"name\": \"ffxx1-j15qfms3-2-c727-4msok-q4xpwn\",\n    \"slug\": \"string\",\n    \"max_devices\": 8757,\n    \"max_snapshots\": 4552,\n    \"max_project_devices\": 7009,\n    \"max_project_snapshots\": 2482,\n    \"max_project_runtime\": 1014,\n    \"idp_id\": \"65aa711e-8a6c-44b1-a370-c6dfb9339c8a\",\n    \"current_devices\": 0,\n    \"current_snapshots\": 0\n  },\n  {\n    \"id\": 4017,\n    \"name\": \"f6xqxcre-nr8olr9ns0i-a2kh1l70-1w42-8rtp54-t\",\n    \"slug\": \"string\",\n    \"max_devices\": 2280,\n    \"max_snapshots\": 9815,\n    \"max_project_devices\": 4793,\n    \"max_project_snapshots\": 3599,\n    \"max_project_runtime\": 8257,\n    \"idp_id\": \"6e1a5099-0268-09b9-cc54-5ca8aa925bd1\",\n    \"current_devices\": 0,\n    \"current_snapshots\": 0\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c9d8e2a-16da-4c14-80f4-c382f1cc1921",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "me",
+                    "organisations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "items",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max_devices",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_snapshots",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_project_devices",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_project_snapshots",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_project_runtime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef42378f-1c37-47e1-b266-c2d242ba490c",
+          "name": "Roku Get My Projects",
+          "request": {
+            "name": "Roku Get My Projects",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "me",
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "items",
+                  "value": "100",
+                  "description": "The number of items per page. Use 0 for no limit."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The page number. Use 0 for the first page."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "The slug of the project, used in URLs"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the Project"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>",
+                  "description": "The description of the Project"
+                },
+                {
+                  "disabled": false,
+                  "key": "billing_entity",
+                  "value": "<string>",
+                  "description": "The billing entity of the Project"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_devices",
+                  "value": "<integer>",
+                  "description": "Maximum number of devices in the project, 0 for organisation max"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_snapshots",
+                  "value": "<integer>",
+                  "description": "Maximum number of snapshots in the project, 0 for organisation max"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_runtime",
+                  "value": "<integer>",
+                  "description": "Maximum runtime of a device in the project, 0 for organisation max"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<date>",
+                  "description": "The creation day of the project"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_personal_project",
+                  "value": "true",
+                  "description": "Show private projects"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "71e5e4d7-de69-4ecb-bf1d-177646f76531",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "me",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "items",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max_devices",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_snapshots",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_runtime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "include_personal_project",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4299,\n    \"slug\": \"n-tuteuc-dle04rrmqt3\",\n    \"name\": \"string\",\n    \"billing_entity\": \"string\",\n    \"user_project\": false,\n    \"created_at\": \"1959-01-21T18:08:10.073Z\",\n    \"description\": \"string\",\n    \"max_devices\": 0,\n    \"max_snapshots\": 0,\n    \"max_runtime\": 0,\n    \"private\": false,\n    \"current_devices\": 0,\n    \"current_snapshots\": 0\n  },\n  {\n    \"id\": 2724,\n    \"slug\": \"gouvk-4-z9ph7-3ipnrkw-z08-wtbd369ucc6\",\n    \"name\": \"string\",\n    \"billing_entity\": \"string\",\n    \"user_project\": true,\n    \"created_at\": \"1989-07-16T21:39:57.761Z\",\n    \"description\": \"string\",\n    \"max_devices\": 0,\n    \"max_snapshots\": 0,\n    \"max_runtime\": 0,\n    \"private\": false,\n    \"current_devices\": 0,\n    \"current_snapshots\": 0\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40897cfc-afc7-47c3-a391-15c1daa74e5b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "me",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "items",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max_devices",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_snapshots",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_runtime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "include_personal_project",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f281f4ba-ecd5-4bbf-b61a-9ae23809cc1c",
+          "name": "Roku Get My Group",
+          "request": {
+            "name": "Roku Get My Group",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "me",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "items",
+                  "value": "100",
+                  "description": "The number of items per page. Use 0 for no limit."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The page number. Use 0 for the first page."
+                },
+                {
+                  "disabled": false,
+                  "key": "project_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the group. Unique in the organisation"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>",
+                  "description": "Description of the Group."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<date>",
+                  "description": "The day the group was created"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "870a2fd8-cdb3-4827-8e56-32c31b962776",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "me",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "items",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 2938,\n    \"name\": \"string\"\n  },\n  {\n    \"id\": 5030,\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02c64e20-bbbe-4d7f-83a9-2910bf5fcaea",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "me",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "items",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IPv4 address of the Roku device, discovered via SSDP",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "rokuDeviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{rokuDeviceIp}}:8060",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "61caae03-4226-46c2-bd03-ccfc099d4d79",
+    "name": "Roku External Control Protocol (ECP) Apps users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "item": [
+    {
+      "id": "7156fd03-47f3-4e0c-ba02-e52974c822ba",
+      "name": "KeyPress",
+      "description": {
+        "content": "Simulated remote-control key injection",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a45bb0ca-093d-4ae7-b017-f9c3386ac476",
+          "name": "Roku Press Key",
+          "request": {
+            "name": "Roku Press Key",
+            "description": {
+              "content": "Simulates a momentary press-and-release of a remote-control key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "keypress",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) Key name (e.g., Home, Up, Down, Left, Right, Select, Back, Play, Rev, Fwd, InstantReplay, Info, Backspace, Search, Enter, VolumeUp, VolumeDown, VolumeMute, PowerOff, ChannelUp, ChannelDown, InputTuner, InputHDMI1, etc.) or `Lit_<urlencodedchar>` to send a literal text character."
+                },
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c36891a-0c55-4246-86ac-a6a1b6760d87",
+              "name": "Key press accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "keypress",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Key name (e.g., Home, Up, Down, Left, Right, Select, Back, Play, Rev, Fwd, InstantReplay, Info, Backspace, Search, Enter, VolumeUp, VolumeDown, VolumeMute, PowerOff, ChannelUp, ChannelDown, InputTuner, InputHDMI1, etc.) or `Lit_<urlencodedchar>` to send a literal text character."
+                    },
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7525a1ad-dd29-4c3a-8168-fc8f3440790b",
+          "name": "Roku Hold Key Down",
+          "request": {
+            "name": "Roku Hold Key Down",
+            "description": {
+              "content": "Simulates pressing and holding a remote-control key. Must be paired with `/keyup/{key}` to release.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "keydown",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) Key name"
+                },
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3cfda08-62ad-40ad-873e-23318697cd64",
+              "name": "Key down accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "keydown",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Key name"
+                    },
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d56dc370-1627-428e-ba79-e080d9220163",
+          "name": "Roku Release Key",
+          "request": {
+            "name": "Roku Release Key",
+            "description": {
+              "content": "Releases a previously held key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "keyup",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) Key name"
+                },
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea0a1f86-ed47-4c82-a1e4-ac0d6a72fa90",
+              "name": "Key release accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "keyup",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Key name"
+                    },
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IPv4 address of the Roku device, discovered via SSDP",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "rokuDeviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{rokuDeviceIp}}:8060",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "662e40ad-838e-4f9b-9742-27ce74b457be",
+    "name": "Roku External Control Protocol (ECP) Apps KeyPress API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

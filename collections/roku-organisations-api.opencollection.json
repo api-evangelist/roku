@@ -1,0 +1,320 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps organisations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organisations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku List Organisations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations",
+            "params": [
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Slug of the organisation, used in URLs"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_devices",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of devices in the organisation"
+              },
+              {
+                "name": "max_snapshots",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of snapshots in the organisation"
+              },
+              {
+                "name": "max_project_devices",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of devices in the organisation per project, 0 for Organisation max"
+              },
+              {
+                "name": "max_project_snapshots",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max"
+              },
+              {
+                "name": "max_project_runtime",
+                "value": "",
+                "type": "query",
+                "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max"
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "The creation day of the organisation"
+              }
+            ]
+          },
+          "docs": "Roku List Organisations"
+        },
+        {
+          "info": {
+            "name": "Roku Get Organisation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use."
+        },
+        {
+          "info": {
+            "name": "Roku List Organisation Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/members",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              }
+            ]
+          },
+          "docs": "Roku List Organisation Members"
+        },
+        {
+          "info": {
+            "name": "Roku Get Organisation Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/members/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Organisation Member"
+        },
+        {
+          "info": {
+            "name": "Roku List Organisation Regions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/regions",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              }
+            ]
+          },
+          "docs": "Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use."
+        },
+        {
+          "info": {
+            "name": "Roku Get Organisation Region",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/regions/:region_id",
+            "params": [
+              {
+                "name": "region_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Organisation Region"
+        },
+        {
+          "info": {
+            "name": "Roku List Project Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/roles/projects",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              }
+            ]
+          },
+          "docs": "Roku List Project Roles"
+        },
+        {
+          "info": {
+            "name": "Roku Get Project Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/roles/projects/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Project Role"
+        },
+        {
+          "info": {
+            "name": "Roku List Group Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/roles/groups",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              }
+            ]
+          },
+          "docs": "Roku List Group Roles"
+        },
+        {
+          "info": {
+            "name": "Roku Get Group Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/roles/groups/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Group Role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

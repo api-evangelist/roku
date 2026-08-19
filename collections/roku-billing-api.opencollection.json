@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps Billing API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Refund Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/refund-subscription",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Issues a partial or full refund against a Roku Pay subscription."
+        },
+        {
+          "info": {
+            "name": "Roku Update Bill Cycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/update-bill-cycle",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adjusts the next billing date on an active Roku Pay subscription."
+        },
+        {
+          "info": {
+            "name": "Roku Issue Service Credit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/issue-service-credit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grants an account-level service credit to the customer, typically used to compensate for service interruptions or as a goodwill gesture."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

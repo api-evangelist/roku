@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps Input API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Input",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Send Input Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/input"
+          },
+          "docs": "Sends a custom input event (key/value query parameters) to the active channel via the `roInput` SceneGraph node. Used for deep-linking, sensor data, and external control integrations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

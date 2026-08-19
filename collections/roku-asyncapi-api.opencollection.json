@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps asyncapi API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "asyncapi",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Serve Asyncapi Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/asyncapi",
+            "params": [
+              {
+                "name": "sidebar",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "info",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "servers",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "operations",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "messages",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "schemas",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "errors",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expandMessageExamples",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Serve the AsyncAPI schema as an HTML response."
+        },
+        {
+          "info": {
+            "name": "Roku Download App Json Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/asyncapi.json"
+          },
+          "docs": "Roku Download App Json Schema"
+        },
+        {
+          "info": {
+            "name": "Roku Download App Yaml Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/asyncapi.yaml"
+          },
+          "docs": "Roku Download App Yaml Schema"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

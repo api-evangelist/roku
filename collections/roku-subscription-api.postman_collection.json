@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "a1dcd094-fb95-4cae-8f9f-b8945787073a",
+      "name": "Subscription",
+      "description": {
+        "content": "Subscription lifecycle management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2bbbcced-fc1b-40db-8ac0-a596dba61170",
+          "name": "Roku Cancel Subscription",
+          "request": {
+            "name": "Roku Cancel Subscription",
+            "description": {
+              "content": "Terminates a Roku Pay subscription. After cancellation the entitlement remains active until the end of the current billing period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cancel-subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"cancellationDate\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "743e0f1c-ffba-4a5b-9f8f-8fb5294db01a",
+              "name": "Cancellation status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cancel-subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"cancellationDate\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 44,\n  \"errorMessage\": \"string\",\n  \"rokuCustomerId\": \"string\",\n  \"productCode\": \"string\",\n  \"effectiveDate\": \"1995-03-27T20:28:21.851Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35ebb1bd-dc0f-4ae9-b2f3-34550102dbc1",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cancel-subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"cancellationDate\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 9978,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b33d736-bea6-41b7-a476-f82969ca7fde",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cancel-subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"cancellationDate\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 9978,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02790b18-49e3-4f48-a339-5e3f3fa6b01e",
+          "name": "Roku Refund Subscription",
+          "request": {
+            "name": "Roku Refund Subscription",
+            "description": {
+              "content": "Issues a partial or full refund against a Roku Pay subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refund-subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5b9ad91-adae-4666-ab3f-16ed7133a233",
+              "name": "Refund result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refund-subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 44,\n  \"errorMessage\": \"string\",\n  \"rokuCustomerId\": \"string\",\n  \"productCode\": \"string\",\n  \"effectiveDate\": \"1995-03-27T20:28:21.851Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47d012bc-0511-46e7-96f2-cbd56a8b9065",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refund-subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 9978,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc50b0db-86b8-40db-a2ec-ca49246cc462",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refund-subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 9978,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IPv4 address of the Roku device, discovered via SSDP",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "rokuDeviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{rokuDeviceIp}}:8060",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bc06e684-81f3-479b-a0a1-568f597132f5",
+    "name": "Roku External Control Protocol (ECP) Apps Subscription API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

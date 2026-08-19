@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps Query API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Query Device Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/device-info"
+          },
+          "docs": "Returns metadata about the Roku device including model, serial number, software version, network status, supported features, and user account state."
+        },
+        {
+          "info": {
+            "name": "Roku Query Installed Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/apps"
+          },
+          "docs": "Returns the list of channels (apps) installed on the device with their app ID, name, version, and type."
+        },
+        {
+          "info": {
+            "name": "Roku Query Active App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/active-app"
+          },
+          "docs": "Returns the currently running app (or Roku home if no channel is active)."
+        },
+        {
+          "info": {
+            "name": "Roku Query App Icon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/icon/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku channel/app identifier"
+              }
+            ]
+          },
+          "docs": "Returns the binary icon image for the given installed app."
+        },
+        {
+          "info": {
+            "name": "Roku Query Media Player",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/media-player"
+          },
+          "docs": "Returns the playback state, stream URI, current position, duration, and buffering metrics for the active video player."
+        },
+        {
+          "info": {
+            "name": "Roku Query TV Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/tv-channels"
+          },
+          "docs": "Returns the list of antenna or TV-input channels tuned on a Roku TV device."
+        },
+        {
+          "info": {
+            "name": "Roku Query Active TV Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/tv-active-channel"
+          },
+          "docs": "Returns the currently tuned TV channel and signal information on a Roku TV device."
+        },
+        {
+          "info": {
+            "name": "Roku Query App State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/app-state/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku channel identifier"
+              }
+            ]
+          },
+          "docs": "Returns whether the specified channel is currently active, in the background, or inactive."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

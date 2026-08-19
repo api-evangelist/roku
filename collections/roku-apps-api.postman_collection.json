@@ -1,0 +1,675 @@
+{
+  "item": [
+    {
+      "id": "b9c3c0f2-225d-4c87-a827-e9b7b07b3261",
+      "name": "Apps",
+      "description": {
+        "content": "Application listing, launching, and termination",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a5889a35-7475-43db-bf6f-512943a26d10",
+          "name": "Roku Query Installed Apps",
+          "request": {
+            "name": "Roku Query Installed Apps",
+            "description": {
+              "content": "Returns the list of channels (apps) installed on the device with their app ID, name, version, and type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea48308b-b31d-4ed3-9adb-bc2f25569d24",
+              "name": "Apps XML list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <apps>\n    <id>12</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </apps>\n  <apps>\n    <id>12</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </apps>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4864573b-2528-4b31-bb24-3d7407173a44",
+          "name": "Roku Query Active App",
+          "request": {
+            "name": "Roku Query Active App",
+            "description": {
+              "content": "Returns the currently running app (or Roku home if no channel is active).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "active-app"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7229464-49fb-4824-a9ac-3b51d3f33eab",
+              "name": "Active app XML",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "active-app"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <app>\n    <id>12</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </app>\n  <screensaver>\n    <id>12</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </screensaver>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2073dced-00dc-4c68-97e0-0e32d4d13e90",
+          "name": "Roku Query App Icon",
+          "request": {
+            "name": "Roku Query App Icon",
+            "description": {
+              "content": "Returns the binary icon image for the given installed app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "icon",
+                ":appId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) The Roku channel/app identifier"
+                },
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09490535-eaa1-49f1-b53d-089f04971cdb",
+              "name": "Icon image",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "icon",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The Roku channel/app identifier"
+                    },
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "904d586a-f5e7-4808-9b66-82780f29a104",
+          "name": "Roku Launch App",
+          "request": {
+            "name": "Roku Launch App",
+            "description": {
+              "content": "Launches the specified installed app. Optional `contentId` and `mediaType` query parameters provide deep-link parameters delivered to the app on launch.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "launch",
+                ":appId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contentId",
+                  "value": "<string>",
+                  "description": "Deep-link content identifier passed to the app"
+                },
+                {
+                  "disabled": false,
+                  "key": "mediaType",
+                  "value": "<string>",
+                  "description": "Deep-link content type (movie, episode, season, series, shortFormVideo, tvEpisode, special, live)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) The Roku channel/app identifier (or `dev` for the side-loaded developer channel)"
+                },
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3e9f146-3f77-4a19-947f-cacd3b198fed",
+              "name": "App launched",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "launch",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mediaType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The Roku channel/app identifier (or `dev` for the side-loaded developer channel)"
+                    },
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49de36f0-15b9-44e0-9798-d01b5b0505e1",
+          "name": "Roku Install App",
+          "request": {
+            "name": "Roku Install App",
+            "description": {
+              "content": "Opens the channel store details page for the specified app, prompting the user to install it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "install",
+                ":appId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) The Roku channel/app identifier"
+                },
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3fc6561-cdef-4df5-8939-cd65d5d6f43d",
+              "name": "Channel store details opened",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "install",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The Roku channel/app identifier"
+                    },
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02d142b5-8b5c-4284-a78c-c255640329c3",
+          "name": "Roku Exit App",
+          "request": {
+            "name": "Roku Exit App",
+            "description": {
+              "content": "Suspends or terminates the specified running app. Requires Roku OS 14.1 or later and \"Control by mobile apps\" enabled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "exit-app",
+                ":appId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) The Roku channel/app identifier"
+                },
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0092bf75-e482-4c70-8f21-9be8ff7ec25f",
+              "name": "App exit requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exit-app",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) The Roku channel/app identifier"
+                    },
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64eea308-d983-4ff0-abc0-8c07f4e76295",
+          "name": "Roku Search Browse",
+          "request": {
+            "name": "Roku Search Browse",
+            "description": {
+              "content": "Performs a Roku search across installed channels using query parameters such as keyword, title, season, type, provider-id, and launch.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "browse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                  "type": "any",
+                  "value": "{{rokuDeviceIp}}",
+                  "key": "rokuDeviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2e1f780-e29e-47eb-b9fd-8814d7dff83b",
+              "name": "Search initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "browse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
+                      "type": "any",
+                      "value": "{{rokuDeviceIp}}",
+                      "key": "rokuDeviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IPv4 address of the Roku device, discovered via SSDP",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.1.100",
+      "key": "rokuDeviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{rokuDeviceIp}}:8060",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c14b8e9e-b5a8-4f34-9ec3-4c5e0db6e68b",
+    "name": "Roku External Control Protocol (ECP) Apps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

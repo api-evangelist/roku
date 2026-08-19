@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps Validation API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Validate Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/validate-transaction/:partnerAPIKey/:transactionId",
+            "params": [
+              {
+                "name": "partnerAPIKey",
+                "value": "",
+                "type": "path",
+                "description": "The publisher's Roku-issued Partner API key."
+              },
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore component at purchase time."
+              }
+            ]
+          },
+          "docs": "Verifies that a customer holds a valid entitlement to a product purchased through Roku Pay.\nReturns the purchase status, expiration date, and source channel of the transaction.\nChannels must call this from their backend before granting entitled access to content.\n"
+        },
+        {
+          "info": {
+            "name": "Roku Validate Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/validate-refund/:partnerAPIKey/:refundId",
+            "params": [
+              {
+                "name": "partnerAPIKey",
+                "value": "",
+                "type": "path",
+                "description": "The publisher's Roku-issued Partner API key."
+              },
+              {
+                "name": "refundId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku-issued refund identifier."
+              }
+            ]
+          },
+          "docs": "Confirms whether a refund has been successfully issued for a previous transaction."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

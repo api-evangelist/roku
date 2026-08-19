@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps builds API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku List All Builds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/builds",
+            "params": [
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "artifactory_path",
+                "value": "",
+                "type": "query",
+                "description": "The path of the build in artifactory."
+              },
+              {
+                "name": "public",
+                "value": "",
+                "type": "query",
+                "description": "Whether the build is public"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "The source of the build"
+              },
+              {
+                "name": "device_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the Device."
+              },
+              {
+                "name": "asan",
+                "value": "",
+                "type": "query",
+                "description": "Whether the build is ASAN"
+              },
+              {
+                "name": "only_artifactory_path",
+                "value": "",
+                "type": "query",
+                "description": "Only return the artifactory path of the build"
+              }
+            ]
+          },
+          "docs": "Roku List All Builds"
+        },
+        {
+          "info": {
+            "name": "Roku Get Build",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/builds/:build_id",
+            "params": [
+              {
+                "name": "build_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Build"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

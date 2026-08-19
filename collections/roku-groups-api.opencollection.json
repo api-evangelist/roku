@@ -1,0 +1,317 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps groups API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku List Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the group. Unique in the organisation"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Description of the Group."
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "The day the group was created"
+              }
+            ]
+          },
+          "docs": "Roku List Group"
+        },
+        {
+          "info": {
+            "name": "Roku Create Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Create Group"
+        },
+        {
+          "info": {
+            "name": "Roku Get a Group by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups/:group_id",
+            "params": [
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get a Group by ID"
+        },
+        {
+          "info": {
+            "name": "Roku Update Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Update Group"
+        },
+        {
+          "info": {
+            "name": "Roku Delete Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Delete Group"
+        },
+        {
+          "info": {
+            "name": "Roku List Group Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups/:group_id/members",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of results to skip. Use this for pagination. Use 0 for the first page."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of results to return, must be non-negative int. Use 0 for no limit."
+              }
+            ]
+          },
+          "docs": "Roku List Group Members"
+        },
+        {
+          "info": {
+            "name": "Roku Add Group Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups/:group_id/members",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Add Group Member"
+        },
+        {
+          "info": {
+            "name": "Roku Get Group Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups/:group_id/members/:user_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Group Member"
+        },
+        {
+          "info": {
+            "name": "Roku Update Group Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups/:group_id/members/:user_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group_role_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Roku Update Group Member"
+        },
+        {
+          "info": {
+            "name": "Roku Remove Group Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/groups/:group_id/members/:user_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Remove Group Member"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

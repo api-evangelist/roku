@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps Diagnostics API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diagnostics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Query Channel Performance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/chanperf"
+          },
+          "docs": "Returns CPU and memory utilization metrics for the foreground channel. Requires Roku Developer Mode."
+        },
+        {
+          "info": {
+            "name": "Roku Query R2D2 Bitmaps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/r2d2-bitmaps"
+          },
+          "docs": "Lists currently loaded texture/bitmap assets and their memory footprint. Requires Roku Developer Mode."
+        },
+        {
+          "info": {
+            "name": "Roku Query SceneGraph Nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/sgnodes/all"
+          },
+          "docs": "Enumerates all SceneGraph nodes currently allocated by the channel along with reference counts. Requires Roku Developer Mode."
+        },
+        {
+          "info": {
+            "name": "Roku Query Registry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/registry/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku channel identifier"
+              }
+            ]
+          },
+          "docs": "Returns the persistent registry entries written by the specified channel. Requires Roku Developer Mode."
+        },
+        {
+          "info": {
+            "name": "Roku Query App State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/app-state/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The Roku channel identifier"
+              }
+            ]
+          },
+          "docs": "Returns whether the specified channel is currently active, in the background, or inactive."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

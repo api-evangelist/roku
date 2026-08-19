@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps users API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Get Me",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me"
+          },
+          "docs": "Roku Get Me"
+        },
+        {
+          "info": {
+            "name": "Roku Get My Organisation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me/organisations",
+            "params": [
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Slug of the organisation, used in URLs"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_devices",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of devices in the organisation"
+              },
+              {
+                "name": "max_snapshots",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of snapshots in the organisation"
+              },
+              {
+                "name": "max_project_devices",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of devices in the organisation per project, 0 for Organisation max"
+              },
+              {
+                "name": "max_project_snapshots",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max"
+              },
+              {
+                "name": "max_project_runtime",
+                "value": "",
+                "type": "query",
+                "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max"
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "The creation day of the organisation"
+              }
+            ]
+          },
+          "docs": "Currently only returns a single item, the roku organisation"
+        },
+        {
+          "info": {
+            "name": "Roku Get My Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me/projects",
+            "params": [
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "The slug of the project, used in URLs"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Project"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "The description of the Project"
+              },
+              {
+                "name": "billing_entity",
+                "value": "",
+                "type": "query",
+                "description": "The billing entity of the Project"
+              },
+              {
+                "name": "max_devices",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of devices in the project, 0 for organisation max"
+              },
+              {
+                "name": "max_snapshots",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of snapshots in the project, 0 for organisation max"
+              },
+              {
+                "name": "max_runtime",
+                "value": "",
+                "type": "query",
+                "description": "Maximum runtime of a device in the project, 0 for organisation max"
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "The creation day of the project"
+              },
+              {
+                "name": "include_personal_project",
+                "value": "",
+                "type": "query",
+                "description": "Show private projects"
+              }
+            ]
+          },
+          "docs": "Roku Get My Projects"
+        },
+        {
+          "info": {
+            "name": "Roku Get My Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/users/me/groups",
+            "params": [
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the group. Unique in the organisation"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Description of the Group."
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "The day the group was created"
+              }
+            ]
+          },
+          "docs": "Roku Get My Group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

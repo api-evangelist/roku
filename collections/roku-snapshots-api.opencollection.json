@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps snapshots API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "snapshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku List Snapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/snapshots",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "items",
+                "value": "",
+                "type": "query",
+                "description": "The number of items per page. Use 0 for no limit."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Use 0 for the first page."
+              },
+              {
+                "name": "parent_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the parent Snapshot."
+              },
+              {
+                "name": "live",
+                "value": "",
+                "type": "query",
+                "description": "Show live snapshots"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Snapshot."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Description of the Snapshot."
+              },
+              {
+                "name": "properties",
+                "value": "",
+                "type": "query",
+                "description": "Properties of the Snapshot."
+              },
+              {
+                "name": "rootfs_artifactory_path",
+                "value": "",
+                "type": "query",
+                "description": "The path of the rootfs image in artifactory."
+              },
+              {
+                "name": "start_at",
+                "value": "",
+                "type": "query",
+                "description": "The last time the snapshot was run"
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "The day the snapshot was created"
+              }
+            ]
+          },
+          "docs": "Roku List Snapshots"
+        },
+        {
+          "info": {
+            "name": "Roku Create Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/snapshots",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Snapshots can either be created from a device's current filesystem state (or\nmost recent filesystem state if the device is currently off) or by creating\na modified version of an existing snapshot.\n\nIf both SnapshotCreate.system_setting_changes and\nSnapshotCreate.config_server_overrides_changes are None then the snapshot\nwill be created from the device state. However if either is not None then\nparent_id must be provided and the new snapshot will be created as a\nmodified version of the parent snap"
+        },
+        {
+          "info": {
+            "name": "Roku Get Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/snapshots/:snapshot_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "snapshot_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Get Snapshot"
+        },
+        {
+          "info": {
+            "name": "Roku Update Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/snapshots/:snapshot_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "snapshot_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Roku Update Snapshot"
+        },
+        {
+          "info": {
+            "name": "Roku Delete Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{rokuDeviceIp}:8060/api/v1/organisations/:organisation_id/projects/:project_id/devices/:device_id/snapshots/:snapshot_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organisation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "snapshot_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Roku Delete Snapshot"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

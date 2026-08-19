@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps KeyPress API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "KeyPress",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Press Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/keypress/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Key name (e.g., Home, Up, Down, Left, Right, Select, Back, Play, Rev, Fwd, InstantReplay, Info, Backspace, Search, Enter, VolumeUp, VolumeDown, VolumeMute, PowerOff, ChannelUp, ChannelDown, InputTuner, InputHDMI1, etc.) or `Lit_<urlencodedchar>` to send a literal text character."
+              }
+            ]
+          },
+          "docs": "Simulates a momentary press-and-release of a remote-control key."
+        },
+        {
+          "info": {
+            "name": "Roku Hold Key Down",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/keydown/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Key name"
+              }
+            ]
+          },
+          "docs": "Simulates pressing and holding a remote-control key. Must be paired with `/keyup/{key}` to release."
+        },
+        {
+          "info": {
+            "name": "Roku Release Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{rokuDeviceIp}:8060/keyup/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Key name"
+              }
+            ]
+          },
+          "docs": "Releases a previously held key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

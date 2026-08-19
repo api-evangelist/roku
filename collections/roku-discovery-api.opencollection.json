@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roku External Control Protocol (ECP) Apps Discovery API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Roku Get Device Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/"
+          },
+          "docs": "Returns the SSDP device description XML used for UPnP discovery."
+        },
+        {
+          "info": {
+            "name": "Roku Query Device Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{rokuDeviceIp}:8060/query/device-info"
+          },
+          "docs": "Returns metadata about the Roku device including model, serial number, software version, network status, supported features, and user account state."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
