@@ -136,6 +136,8 @@ apis:
     BrightScript on the device; the publisher's authentication backend is custom-built.
   tags:
   - Authentication
+  tags_raw:
+  - Authentication
   - OAuth
   properties:
   - type: Documentation
@@ -149,6 +151,8 @@ apis:
   description: Application listing, launching, and termination
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Application
+  tags_raw:
   - Apps
   properties:
   - type: OpenAPI
@@ -228,6 +232,8 @@ apis:
   description: The asyncapi API from Roku — 3 operation(s) for asyncapi.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - AsyncAPI
+  tags_raw:
   - asyncapi
   properties:
   - type: OpenAPI
@@ -386,6 +392,8 @@ apis:
   description: The builds API from Roku — 2 operation(s) for builds.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Builds
+  tags_raw:
   - builds
   properties:
   - type: OpenAPI
@@ -465,6 +473,8 @@ apis:
   description: The devices API from Roku — 6 operation(s) for devices.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Devices
+  tags_raw:
   - devices
   properties:
   - type: OpenAPI
@@ -702,6 +712,8 @@ apis:
   description: The groups API from Roku — 4 operation(s) for groups.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Group
+  tags_raw:
   - groups
   properties:
   - type: OpenAPI
@@ -781,6 +793,8 @@ apis:
   description: The healthz API from Roku — 2 operation(s) for healthz.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Healthz
+  tags_raw:
   - healthz
   properties:
   - type: OpenAPI
@@ -1097,6 +1111,8 @@ apis:
   description: The organisations API from Roku — 10 operation(s) for organisations.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Organisations
+  tags_raw:
   - organisations
   properties:
   - type: OpenAPI
@@ -1176,6 +1192,8 @@ apis:
   description: The personal-access-tokens API from Roku — 4 operation(s) for personal-access-tokens.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Personal Access Tokens
+  tags_raw:
   - personal-access-tokens
   properties:
   - type: OpenAPI
@@ -1255,6 +1273,8 @@ apis:
   description: The projects API from Roku — 6 operation(s) for projects.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Project
+  tags_raw:
   - projects
   properties:
   - type: OpenAPI
@@ -1413,6 +1433,8 @@ apis:
   description: The serviceaccounts API from Roku — 1 operation(s) for serviceaccounts.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Service Accounts
+  tags_raw:
   - serviceaccounts
   properties:
   - type: OpenAPI
@@ -1492,6 +1514,8 @@ apis:
   description: The snapshots API from Roku — 2 operation(s) for snapshots.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - Snapshots
+  tags_raw:
   - snapshots
   properties:
   - type: OpenAPI
@@ -1650,6 +1674,8 @@ apis:
   description: The users API from Roku — 4 operation(s) for users.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
