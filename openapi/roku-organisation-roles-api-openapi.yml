@@ -1,39 +1,16 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Roku External Control Protocol (ECP) Apps organisation-roles API
-  version: '1.0'
-  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
-
-    streaming device on the local network. It enables third-party applications, mobile remote-control
-
-    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
-
-    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
-
-    query device state, and retrieve diagnostic information.
-
-
-    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
-
-    Most control operations require the user to enable "Control by mobile apps" on the device.
-
-    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
-
-    Developer Mode.
-
-    '
+  title: Roku Nabu Cloud Organisation Roles API
   contact:
-    name: Roku Developer Program
-    url: https://developer.roku.com
-  x-generated-from: documentation
-  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+    name: DevX Tools Team
+    email: dldevxtools@roku.com
+  version: 1.3.29
+  description: Nabu Cloud is Roku's developer cloud platform for managing test devices, snapshots, builds, projects, organisations, groups, and personal access tokens. It provides REST APIs for orchestrating remote Roku test devices and CI/CD workflows.
+  x-generated-from: rokudev/dev-doc
+  x-source-url: https://github.com/rokudev/dev-doc/blob/v2.0/reference/openapi.json
 servers:
-- url: http://{rokuDeviceIp}:8060
-  description: A Roku device on the local network
-  variables:
-    rokuDeviceIp:
-      default: 192.168.1.100
-      description: The IPv4 address of the Roku device, discovered via SSDP
+- url: https://api.cloud.roku.dev
+  description: Roku Nabu Cloud Production
 tags:
 - name: organisation-roles
 paths:
@@ -111,34 +88,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    OrganisationRoleOut:
-      properties:
-        organisation_id:
-          type: integer
-          title: Organisation Id
-        name:
-          type: string
-          title: Name
-        permissions:
-          items:
-            type: string
-          type: array
-          title: Permissions
-      type: object
-      required:
-      - organisation_id
-      - name
-      - permissions
-      title: OrganisationRoleOut
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -160,3 +109,31 @@ components:
       - msg
       - type
       title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    OrganisationRoleOut:
+      properties:
+        organisation_id:
+          type: integer
+          title: Organisation Id
+        name:
+          type: string
+          title: Name
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+      type: object
+      required:
+      - organisation_id
+      - name
+      - permissions
+      title: OrganisationRoleOut

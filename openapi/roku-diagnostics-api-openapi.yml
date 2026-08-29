@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Roku External Control Protocol (ECP) Apps Diagnostics API
+  title: Roku External Control Protocol (ECP) Diagnostics API
   version: '1.0'
   description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
 

@@ -1,39 +1,35 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Roku External Control Protocol (ECP) Apps Validation API
+  title: Roku Pay Web Services Validation API
   version: '1.0'
-  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
+  description: 'Roku Pay Web Services provide server-to-server APIs for billing, subscription management,
 
-    streaming device on the local network. It enables third-party applications, mobile remote-control
+    transaction validation, and entitlement checks for monetized Roku channels. Use these endpoints
 
-    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
+    to verify that a Roku user holds a valid entitlement to your content, to issue refunds, to update
 
-    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
+    billing cycles, and to grant service credits. All endpoints require a Roku-issued Partner API
 
-    query device state, and retrieve diagnostic information.
+    Key.
 
 
-    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
+    Roku Pay handles payment processing, subscription state, and tax calculation on behalf of the
 
-    Most control operations require the user to enable "Control by mobile apps" on the device.
+    publisher; channels query these endpoints from their authentication backends rather than from
 
-    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
-
-    Developer Mode.
+    BrightScript directly.
 
     '
   contact:
-    name: Roku Developer Program
-    url: https://developer.roku.com
+    name: Roku Pay Support
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
   x-generated-from: documentation
-  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  x-source-url: https://developer.roku.com/dev/docs/roku-web-service
 servers:
-- url: http://{rokuDeviceIp}:8060
-  description: A Roku device on the local network
-  variables:
-    rokuDeviceIp:
-      default: 192.168.1.100
-      description: The IPv4 address of the Roku device, discovered via SSDP
+- url: https://apipub.roku.com/listen/transaction-service.svc
+  description: Roku Pay production transaction service
+security:
+- PartnerAPIKey: []
 tags:
 - name: Validation
   description: Transaction and refund validation
@@ -219,3 +215,15 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/Error'
+  securitySchemes:
+    PartnerAPIKey:
+      type: apiKey
+      in: query
+      name: partnerAPIKey
+      description: 'Roku-issued Partner API Key. For GET endpoints the key is included in the URL path; for
+
+        POST endpoints it is included in the request body. Channels obtain this key from the Roku
+
+        Developer Dashboard.
+
+        '

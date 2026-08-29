@@ -1,39 +1,16 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Roku External Control Protocol (ECP) Apps projects API
-  version: '1.0'
-  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
-
-    streaming device on the local network. It enables third-party applications, mobile remote-control
-
-    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
-
-    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
-
-    query device state, and retrieve diagnostic information.
-
-
-    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
-
-    Most control operations require the user to enable "Control by mobile apps" on the device.
-
-    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
-
-    Developer Mode.
-
-    '
+  title: Roku Nabu Cloud Projects API
   contact:
-    name: Roku Developer Program
-    url: https://developer.roku.com
-  x-generated-from: documentation
-  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+    name: DevX Tools Team
+    email: dldevxtools@roku.com
+  version: 1.3.29
+  description: Nabu Cloud is Roku's developer cloud platform for managing test devices, snapshots, builds, projects, organisations, groups, and personal access tokens. It provides REST APIs for orchestrating remote Roku test devices and CI/CD workflows.
+  x-generated-from: rokudev/dev-doc
+  x-source-url: https://github.com/rokudev/dev-doc/blob/v2.0/reference/openapi.json
 servers:
-- url: http://{rokuDeviceIp}:8060
-  description: A Roku device on the local network
-  variables:
-    rokuDeviceIp:
-      default: 192.168.1.100
-      description: The IPv4 address of the Roku device, discovered via SSDP
+- url: https://api.cloud.roku.dev
+  description: Roku Nabu Cloud Production
 tags:
 - name: projects
 paths:
@@ -849,6 +826,19 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    ProjectGroupAdd:
+      properties:
+        group_id:
+          type: integer
+          title: Group Id
+        project_role_id:
+          type: integer
+          title: Project Role Id
+      type: object
+      required:
+      - group_id
+      - project_role_id
+      title: ProjectGroupAdd
     ProjectGroupOut:
       properties:
         group_id:
@@ -870,15 +860,6 @@ components:
       - project_role_id
       - project_role_name
       title: ProjectGroupOut
-    ProjectGroupUpdate:
-      properties:
-        project_role_id:
-          type: integer
-          title: Project Role Id
-      type: object
-      required:
-      - project_role_id
-      title: ProjectGroupUpdate
     ProjectCreate:
       properties:
         slug:
@@ -937,6 +918,65 @@ components:
       - name
       - billing_entity
       title: ProjectCreate
+    ProjectUpdate:
+      properties:
+        slug:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Slug
+          description: The slug of the project, used in URLs
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Project
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: The description of the Project
+        billing_entity:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Billing Entity
+          description: The billing entity of the Project
+        max_devices:
+          type: integer
+          minimum: 0
+          title: Max Devices
+          description: Maximum number of devices in the project, 0 for organisation max
+        max_snapshots:
+          type: integer
+          minimum: 0
+          title: Max Snapshots
+          description: Maximum number of snapshots in the project, 0 for organisation max
+        max_runtime:
+          type: integer
+          minimum: 0
+          title: Max Runtime
+          description: Maximum runtime of a device in the project, 0 for organisation max
+        private:
+          type: boolean
+          title: Private
+          description: Whether the project is listed in search results
+      type: object
+      title: ProjectUpdate
+    ProjectGroupUpdate:
+      properties:
+        project_role_id:
+          type: integer
+          title: Project Role Id
+      type: object
+      required:
+      - project_role_id
+      title: ProjectGroupUpdate
     ValidationError:
       properties:
         loc:
@@ -1042,78 +1082,6 @@ components:
       - user_project
       - created_at
       title: ProjectOut
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ProjectUpdate:
-      properties:
-        slug:
-          type: string
-          maxLength: 255
-          minLength: 3
-          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
-          title: Slug
-          description: The slug of the project, used in URLs
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the Project
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: The description of the Project
-        billing_entity:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Billing Entity
-          description: The billing entity of the Project
-        max_devices:
-          type: integer
-          minimum: 0
-          title: Max Devices
-          description: Maximum number of devices in the project, 0 for organisation max
-        max_snapshots:
-          type: integer
-          minimum: 0
-          title: Max Snapshots
-          description: Maximum number of snapshots in the project, 0 for organisation max
-        max_runtime:
-          type: integer
-          minimum: 0
-          title: Max Runtime
-          description: Maximum runtime of a device in the project, 0 for organisation max
-        private:
-          type: boolean
-          title: Private
-          description: Whether the project is listed in search results
-      type: object
-      title: ProjectUpdate
-    ProjectGroupAdd:
-      properties:
-        group_id:
-          type: integer
-          title: Group Id
-        project_role_id:
-          type: integer
-          title: Project Role Id
-      type: object
-      required:
-      - group_id
-      - project_role_id
-      title: ProjectGroupAdd
     ProjectMemberAdd:
       properties:
         user_id:
@@ -1128,6 +1096,15 @@ components:
       - user_id
       - project_role_id
       title: ProjectMemberAdd
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ProjectMemberOut:
       properties:
         user_id:

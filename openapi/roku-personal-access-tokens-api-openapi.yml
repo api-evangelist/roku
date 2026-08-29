@@ -1,39 +1,16 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Roku External Control Protocol (ECP) Apps personal-access-tokens API
-  version: '1.0'
-  description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
-
-    streaming device on the local network. It enables third-party applications, mobile remote-control
-
-    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
-
-    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
-
-    query device state, and retrieve diagnostic information.
-
-
-    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
-
-    Most control operations require the user to enable "Control by mobile apps" on the device.
-
-    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
-
-    Developer Mode.
-
-    '
+  title: Roku Nabu Cloud Personal Access Tokens API
   contact:
-    name: Roku Developer Program
-    url: https://developer.roku.com
-  x-generated-from: documentation
-  x-source-url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+    name: DevX Tools Team
+    email: dldevxtools@roku.com
+  version: 1.3.29
+  description: Nabu Cloud is Roku's developer cloud platform for managing test devices, snapshots, builds, projects, organisations, groups, and personal access tokens. It provides REST APIs for orchestrating remote Roku test devices and CI/CD workflows.
+  x-generated-from: rokudev/dev-doc
+  x-source-url: https://github.com/rokudev/dev-doc/blob/v2.0/reference/openapi.json
 servers:
-- url: http://{rokuDeviceIp}:8060
-  description: A Roku device on the local network
-  variables:
-    rokuDeviceIp:
-      default: 192.168.1.100
-      description: The IPv4 address of the Roku device, discovered via SSDP
+- url: https://api.cloud.roku.dev
+  description: Roku Nabu Cloud Production
 tags:
 - name: personal-access-tokens
 paths:
@@ -167,6 +144,134 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    PersonalAccessTokenStatus:
+      type: string
+      enum:
+      - active
+      - expired
+      - revoked
+      title: PersonalAccessTokenStatus
+    PersonalAccessTokenRefresh:
+      properties:
+        expires_in_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          title: Expires In Days
+          description: Number of days until the token expires (1-365 days)
+          default: 30
+      type: object
+      title: PersonalAccessTokenRefresh
+    ScopeOut:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Name
+          description: The name of the scope
+        description:
+          type: string
+          maxLength: 4096
+          minLength: 0
+          title: Description
+          description: Description of what the scope allows
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+          description: List of permissions granted by this scope
+      type: object
+      required:
+      - name
+      - description
+      - permissions
+      title: ScopeOut
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    PersonalAccessTokenCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: A descriptive name for the token
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Optional description for the token
+        expires_in_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          title: Expires In Days
+          description: Number of days until the token expires (1-365 days)
+          default: 30
+        scopes:
+          items:
+            type: string
+            maxLength: 255
+            minLength: 3
+            pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          type: array
+          title: Scopes
+          description: List of scopes that define the token's permissions
+      type: object
+      required:
+      - name
+      - scopes
+      title: PersonalAccessTokenCreate
+    PersonalAccessTokenCreated:
+      properties:
+        token:
+          type: string
+          maxLength: 2048
+          minLength: 1
+          title: Token
+          description: The actual token - save this, it won't be shown again!
+        token_info:
+          $ref: '#/components/schemas/PersonalAccessTokenOut'
+      type: object
+      required:
+      - token
+      - token_info
+      title: PersonalAccessTokenCreated
+      description: Response when a new PAT is created - includes the actual token
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     PersonalAccessTokenOut:
       properties:
         id:
@@ -237,131 +342,3 @@ components:
       - expires_at
       - status
       title: PersonalAccessTokenOut
-    PersonalAccessTokenRefresh:
-      properties:
-        expires_in_days:
-          type: integer
-          maximum: 365
-          minimum: 1
-          title: Expires In Days
-          description: Number of days until the token expires (1-365 days)
-          default: 30
-      type: object
-      title: PersonalAccessTokenRefresh
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ScopeOut:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
-          title: Name
-          description: The name of the scope
-        description:
-          type: string
-          maxLength: 4096
-          minLength: 0
-          title: Description
-          description: Description of what the scope allows
-        permissions:
-          items:
-            type: string
-          type: array
-          title: Permissions
-          description: List of permissions granted by this scope
-      type: object
-      required:
-      - name
-      - description
-      - permissions
-      title: ScopeOut
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    PersonalAccessTokenCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: A descriptive name for the token
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: Optional description for the token
-        expires_in_days:
-          type: integer
-          maximum: 365
-          minimum: 1
-          title: Expires In Days
-          description: Number of days until the token expires (1-365 days)
-          default: 30
-        scopes:
-          items:
-            type: string
-            maxLength: 255
-            minLength: 3
-            pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
-          type: array
-          title: Scopes
-          description: List of scopes that define the token's permissions
-      type: object
-      required:
-      - name
-      - scopes
-      title: PersonalAccessTokenCreate
-    PersonalAccessTokenStatus:
-      type: string
-      enum:
-      - active
-      - expired
-      - revoked
-      title: PersonalAccessTokenStatus
-    PersonalAccessTokenCreated:
-      properties:
-        token:
-          type: string
-          maxLength: 2048
-          minLength: 1
-          title: Token
-          description: The actual token - save this, it won't be shown again!
-        token_info:
-          $ref: '#/components/schemas/PersonalAccessTokenOut'
-      type: object
-      required:
-      - token
-      - token_info
-      title: PersonalAccessTokenCreated
-      description: Response when a new PAT is created - includes the actual token
