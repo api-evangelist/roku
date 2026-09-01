@@ -245,7 +245,7 @@ apis:
   description: The asyncapi API from Roku — 3 operation(s) for asyncapi.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
-  - asyncapi
+  - AsyncAPI
   tags_raw:
   - asyncapi
   properties:
@@ -405,7 +405,7 @@ apis:
   description: The builds API from Roku — 2 operation(s) for builds.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
-  - builds
+  - Builds
   tags_raw:
   - builds
   properties:
@@ -806,7 +806,7 @@ apis:
   description: The healthz API from Roku — 2 operation(s) for healthz.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
-  - healthz
+  - Healthz
   tags_raw:
   - healthz
   properties:
@@ -1124,7 +1124,7 @@ apis:
   description: The organisations API from Roku — 10 operation(s) for organisations.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
-  - organisations
+  - Organisations
   tags_raw:
   - organisations
   properties:
@@ -1205,7 +1205,7 @@ apis:
   description: The personal-access-tokens API from Roku — 4 operation(s) for personal-access-tokens.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
-  - personal-access-tokens
+  - Personal Access Tokens
   tags_raw:
   - personal-access-tokens
   properties:
@@ -1446,7 +1446,7 @@ apis:
   description: The serviceaccounts API from Roku — 1 operation(s) for serviceaccounts.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
-  - serviceaccounts
+  - Service Accounts
   tags_raw:
   - serviceaccounts
   properties:
