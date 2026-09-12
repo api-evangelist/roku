@@ -2,17 +2,17 @@
   "repo": "roku",
   "feeds": [
     {
+      "source": "https://developer.roku.com/en-gb/support",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://www.roku.com/blog/feed/",
       "feed_url": "https://www.roku.com/blog/feed/",
       "title": "",
       "saved": 0,
       "method": "feed"
-    },
-    {
-      "source": "https://developer.roku.com/en-gb/support",
-      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 0
 }
