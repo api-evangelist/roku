@@ -241,87 +241,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-- aid: roku:roku-asyncapi-api
-  name: Roku asyncapi API
-  description: The asyncapi API from Roku — 3 operation(s) for asyncapi.
-  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
-  tags:
-  - AsyncAPI
-  tags_raw:
-  - asyncapi
-  properties:
-  - type: OpenAPI
-    url: openapi/roku-asyncapi-api-openapi.yml
-  - type: Documentation
-    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
-  - type: APIReference
-    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-active-app-schema.json
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-app-list-schema.json
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-app-schema.json
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-device-info-schema.json
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-media-player-schema.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-device-info-structure.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-app-structure.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-app-list-structure.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-active-app-structure.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-media-player-structure.json
-  - type: JSONLD
-    url: json-ld/roku-external-control-protocol-context.jsonld
-  - type: Examples
-    url: examples/external-control-protocol-query-device-info-example.json
-  - type: Examples
-    url: examples/external-control-protocol-query-apps-example.json
-  - type: Examples
-    url: examples/external-control-protocol-launch-app-example.json
-  - type: Documentation
-    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
-  - type: APIReference
-    url: https://developer.roku.com/dev/docs/roku-web-service
-  - type: JSONSchema
-    url: json-schema/pay-web-services-transaction-validation-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-refund-validation-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-refund-subscription-request-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-issue-credit-request-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-subscription-result-schema.json
-  - type: JSONStructure
-    url: json-structure/pay-web-services-transaction-validation-structure.json
-  - type: JSONStructure
-    url: json-structure/pay-web-services-refund-validation-structure.json
-  - type: JSONStructure
-    url: json-structure/pay-web-services-subscription-result-structure.json
-  - type: JSONLD
-    url: json-ld/roku-pay-web-services-context.jsonld
-  - type: Examples
-    url: examples/pay-web-services-validate-transaction-example.json
-  - type: Examples
-    url: examples/pay-web-services-cancel-subscription-example.json
-  - type: Documentation
-    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
-  - type: JSONLD
-    url: json-ld/roku-nabu-cloud-context.jsonld
-  - type: Examples
-    url: examples/nabu-cloud-list-devices-example.json
-  - type: Examples
-    url: examples/nabu-cloud-create-device-example.json
 - aid: roku:roku-billing-api
   name: Roku Billing API
   description: Billing cycle and credit management
@@ -1442,87 +1361,6 @@ apis:
     url: examples/nabu-cloud-list-devices-example.json
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
-- aid: roku:roku-serviceaccounts-api
-  name: Roku serviceaccounts API
-  description: The serviceaccounts API from Roku — 1 operation(s) for serviceaccounts.
-  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
-  tags:
-  - Service Accounts
-  tags_raw:
-  - serviceaccounts
-  properties:
-  - type: OpenAPI
-    url: openapi/roku-serviceaccounts-api-openapi.yml
-  - type: Documentation
-    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
-  - type: APIReference
-    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-active-app-schema.json
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-app-list-schema.json
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-app-schema.json
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-device-info-schema.json
-  - type: JSONSchema
-    url: json-schema/external-control-protocol-media-player-schema.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-device-info-structure.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-app-structure.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-app-list-structure.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-active-app-structure.json
-  - type: JSONStructure
-    url: json-structure/external-control-protocol-media-player-structure.json
-  - type: JSONLD
-    url: json-ld/roku-external-control-protocol-context.jsonld
-  - type: Examples
-    url: examples/external-control-protocol-query-device-info-example.json
-  - type: Examples
-    url: examples/external-control-protocol-query-apps-example.json
-  - type: Examples
-    url: examples/external-control-protocol-launch-app-example.json
-  - type: Documentation
-    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
-  - type: APIReference
-    url: https://developer.roku.com/dev/docs/roku-web-service
-  - type: JSONSchema
-    url: json-schema/pay-web-services-transaction-validation-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-refund-validation-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-refund-subscription-request-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-issue-credit-request-schema.json
-  - type: JSONSchema
-    url: json-schema/pay-web-services-subscription-result-schema.json
-  - type: JSONStructure
-    url: json-structure/pay-web-services-transaction-validation-structure.json
-  - type: JSONStructure
-    url: json-structure/pay-web-services-refund-validation-structure.json
-  - type: JSONStructure
-    url: json-structure/pay-web-services-subscription-result-structure.json
-  - type: JSONLD
-    url: json-ld/roku-pay-web-services-context.jsonld
-  - type: Examples
-    url: examples/pay-web-services-validate-transaction-example.json
-  - type: Examples
-    url: examples/pay-web-services-cancel-subscription-example.json
-  - type: Documentation
-    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
-  - type: JSONLD
-    url: json-ld/roku-nabu-cloud-context.jsonld
-  - type: Examples
-    url: examples/nabu-cloud-list-devices-example.json
-  - type: Examples
-    url: examples/nabu-cloud-create-device-example.json
 - aid: roku:roku-snapshots-api
   name: Roku snapshots API
   description: The snapshots API from Roku — 2 operation(s) for snapshots.
@@ -1773,6 +1611,164 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/roku-validation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+- aid: roku:roku-async-api-api
+  name: Roku Async API
+  description: The Async API API from Roku — 3 operation(s) for async api.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Async API
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-async-api-api-openapi.yml
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: APIReference
+    url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-active-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-list-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-app-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-device-info-schema.json
+  - type: JSONSchema
+    url: json-schema/external-control-protocol-media-player-schema.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-device-info-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-app-list-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-active-app-structure.json
+  - type: JSONStructure
+    url: json-structure/external-control-protocol-media-player-structure.json
+  - type: JSONLD
+    url: json-ld/roku-external-control-protocol-context.jsonld
+  - type: Examples
+    url: examples/external-control-protocol-query-device-info-example.json
+  - type: Examples
+    url: examples/external-control-protocol-query-apps-example.json
+  - type: Examples
+    url: examples/external-control-protocol-launch-app-example.json
+  - type: Documentation
+    url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
+  - type: APIReference
+    url: https://developer.roku.com/dev/docs/roku-web-service
+  - type: JSONSchema
+    url: json-schema/pay-web-services-transaction-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-validation-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-cancel-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-refund-subscription-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-update-bill-cycle-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-issue-credit-request-schema.json
+  - type: JSONSchema
+    url: json-schema/pay-web-services-subscription-result-schema.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-transaction-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-refund-validation-structure.json
+  - type: JSONStructure
+    url: json-structure/pay-web-services-subscription-result-structure.json
+  - type: JSONLD
+    url: json-ld/roku-pay-web-services-context.jsonld
+  - type: Examples
+    url: examples/pay-web-services-validate-transaction-example.json
+  - type: Examples
+    url: examples/pay-web-services-cancel-subscription-example.json
+  - type: Documentation
+    url: https://github.com/rokudev/dev-doc/tree/v2.0/reference/nabu_cloud
+  - type: JSONLD
+    url: json-ld/roku-nabu-cloud-context.jsonld
+  - type: Examples
+    url: examples/nabu-cloud-list-devices-example.json
+  - type: Examples
+    url: examples/nabu-cloud-create-device-example.json
+- aid: roku:roku-service-accounts-api
+  name: Roku Service Accounts API
+  description: The Service Accounts API from Roku — 1 operation(s) for service accounts.
+  humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
+  tags:
+  - Service Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/roku-service-accounts-api-openapi.yml
   - type: Documentation
     url: https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
   - type: APIReference
