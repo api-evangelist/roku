@@ -1686,6 +1686,8 @@ apis:
   description: The Async API API from Roku — 3 operation(s) for async api.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
+  - AsyncAPI
+  tags_raw:
   - Async API
   properties:
   - type: OpenAPI
