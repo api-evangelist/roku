@@ -1,17 +1,11 @@
 {
   "provider": "roku",
   "sources": [
-    "_original/roku-external-control-protocol.yaml",
     "_original/roku-nabu-cloud.yaml",
-    "_original/roku-pay-web-services.yaml"
+    "_ae-authored/roku-external-control-protocol.yaml",
+    "_ae-authored/roku-pay-web-services.yaml"
   ],
   "outputs": [
-    "roku-apps-api-openapi.yml",
-    "roku-diagnostics-api-openapi.yml",
-    "roku-discovery-api-openapi.yml",
-    "roku-input-api-openapi.yml",
-    "roku-keypress-api-openapi.yml",
-    "roku-query-api-openapi.yml",
     "roku-asyncapi-api-openapi.yml",
     "roku-builds-api-openapi.yml",
     "roku-devices-api-openapi.yml",
@@ -24,16 +18,23 @@
     "roku-serviceaccounts-api-openapi.yml",
     "roku-snapshots-api-openapi.yml",
     "roku-users-api-openapi.yml",
+    "roku-apps-api-openapi.yml",
+    "roku-diagnostics-api-openapi.yml",
+    "roku-discovery-api-openapi.yml",
+    "roku-input-api-openapi.yml",
+    "roku-keypress-api-openapi.yml",
+    "roku-query-api-openapi.yml",
     "roku-billing-api-openapi.yml",
     "roku-subscription-api-openapi.yml",
     "roku-validation-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "roku-external-control-protocol.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "roku-nabu-cloud.yaml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "roku-nabu-cloud.yaml: declared missing tag: asyncapi",
     "roku-nabu-cloud.yaml: declared missing tag: builds",
@@ -47,11 +48,14 @@
     "roku-nabu-cloud.yaml: declared missing tag: serviceaccounts",
     "roku-nabu-cloud.yaml: declared missing tag: snapshots",
     "roku-nabu-cloud.yaml: declared missing tag: users",
-    "roku-pay-web-services.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0"
+    "roku-external-control-protocol.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "roku-pay-web-services.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "superseded outputs removed: roku-async-api-api-openapi.yml, roku-service-accounts-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 27 total)"
   ],
   "skipped": [
     "roku-apps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "roku-asyncapi-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "roku-async-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "roku-billing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "roku-builds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "roku-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -66,7 +70,7 @@
     "roku-personal-access-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "roku-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "roku-query-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "roku-serviceaccounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "roku-service-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "roku-snapshots-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "roku-subscription-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "roku-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",

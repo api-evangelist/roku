@@ -12,12 +12,12 @@ servers:
 - url: https://api.cloud.roku.dev
   description: Roku Nabu Cloud Production
 tags:
-- name: snapshots
+- name: Snapshots
 paths:
   /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/snapshots:
     get:
       tags:
-      - snapshots
+      - Snapshots
       summary: Roku List Snapshots
       operationId: snapshots-list_snapshots
       security:
@@ -174,7 +174,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     post:
       tags:
-      - snapshots
+      - Snapshots
       summary: Roku Create Snapshot
       description: 'Snapshots can either be created from a device''s current filesystem state (or
 
@@ -246,7 +246,7 @@ paths:
   /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/snapshots/{snapshot_id}:
     get:
       tags:
-      - snapshots
+      - Snapshots
       summary: Roku Get Snapshot
       operationId: snapshots-get_snapshot
       security:
@@ -291,7 +291,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     patch:
       tags:
-      - snapshots
+      - Snapshots
       summary: Roku Update Snapshot
       operationId: snapshots-update_snapshot
       security:
@@ -342,7 +342,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     delete:
       tags:
-      - snapshots
+      - Snapshots
       summary: Roku Delete Snapshot
       operationId: snapshots-delete_snapshot
       security:
@@ -383,6 +383,67 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    SnapshotCreate:
+      properties:
+        parent_id:
+          anyOf:
+          - type: integer
+            minimum: 0
+          - type: 'null'
+          title: Parent Id
+          description: The ID of the parent Snapshot.
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Snapshot.
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Description of the Snapshot.
+        properties:
+          anyOf:
+          - additionalProperties: true
+            type: object
+            maxProperties: 8192
+          - type: 'null'
+          title: Properties
+          description: Properties of the Snapshot.
+          examples:
+          - config_service_flags:
+              fw.swup.channel-sync-enabled: 'false'
+        system_setting_changes:
+          anyOf:
+          - additionalProperties:
+              anyOf:
+              - type: string
+                format: binary
+              - type: 'null'
+            propertyNames:
+              format: binary
+            type: object
+          - type: 'null'
+          title: System Setting Changes
+          description: "\n            A dictionary of system setting changes to apply to the snapshot.\n            This dictionary changes settings in system.conf.db. Entries with a\n            value of null will be removed.\n        "
+        config_server_overrides_changes:
+          anyOf:
+          - additionalProperties:
+              anyOf:
+              - type: string
+              - type: 'null'
+            type: object
+          - type: 'null'
+          title: Config Server Overrides Changes
+          description: "\n            A dictionary of config server setting override changes to apply to\n            the snapshot. These overrides are set in the ConfigServer/Overrides\n            key of system.conf.db. Entries with a value of null will be removed.\n        "
+      type: object
+      required:
+      - name
+      title: SnapshotCreate
     SnapshotOut:
       properties:
         id:
@@ -460,6 +521,15 @@ components:
       - id
       - created_at
       title: SnapshotOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     SnapshotUpdate:
       properties:
         name:
@@ -510,73 +580,3 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    SnapshotCreate:
-      properties:
-        parent_id:
-          anyOf:
-          - type: integer
-            minimum: 0
-          - type: 'null'
-          title: Parent Id
-          description: The ID of the parent Snapshot.
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the Snapshot.
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: Description of the Snapshot.
-        properties:
-          anyOf:
-          - additionalProperties: true
-            type: object
-            maxProperties: 8192
-          - type: 'null'
-          title: Properties
-          description: Properties of the Snapshot.
-          examples:
-          - config_service_flags:
-              fw.swup.channel-sync-enabled: 'false'
-        system_setting_changes:
-          anyOf:
-          - additionalProperties:
-              anyOf:
-              - type: string
-                format: binary
-              - type: 'null'
-            propertyNames:
-              format: binary
-            type: object
-          - type: 'null'
-          title: System Setting Changes
-          description: "\n            A dictionary of system setting changes to apply to the snapshot.\n            This dictionary changes settings in system.conf.db. Entries with a\n            value of null will be removed.\n        "
-        config_server_overrides_changes:
-          anyOf:
-          - additionalProperties:
-              anyOf:
-              - type: string
-              - type: 'null'
-            type: object
-          - type: 'null'
-          title: Config Server Overrides Changes
-          description: "\n            A dictionary of config server setting override changes to apply to\n            the snapshot. These overrides are set in the ConfigServer/Overrides\n            key of system.conf.db. Entries with a value of null will be removed.\n        "
-      type: object
-      required:
-      - name
-      title: SnapshotCreate

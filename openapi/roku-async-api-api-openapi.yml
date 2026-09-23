@@ -12,12 +12,12 @@ servers:
 - url: https://api.cloud.roku.dev
   description: Roku Nabu Cloud Production
 tags:
-- name: asyncapi
+- name: Async API
 paths:
   /asyncapi:
     get:
       tags:
-      - asyncapi
+      - Async API
       summary: Roku Serve Asyncapi Schema
       description: Serve the AsyncAPI schema as an HTML response.
       operationId: asyncapi-serve_asyncapi_schema
@@ -93,7 +93,7 @@ paths:
   /asyncapi.json:
     get:
       tags:
-      - asyncapi
+      - Async API
       summary: Roku Download App Json Schema
       operationId: asyncapi-download_app_json_schema
       responses:
@@ -105,7 +105,7 @@ paths:
   /asyncapi.yaml:
     get:
       tags:
-      - asyncapi
+      - Async API
       summary: Roku Download App Yaml Schema
       operationId: asyncapi-download_app_yaml_schema
       responses:

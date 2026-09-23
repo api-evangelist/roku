@@ -12,12 +12,12 @@ servers:
 - url: https://api.cloud.roku.dev
   description: Roku Nabu Cloud Production
 tags:
-- name: organisations
+- name: Organisations
 paths:
   /api/v1/organisations:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku List Organisations
       operationId: organisations-list_organisations
       security:
@@ -134,7 +134,7 @@ paths:
   /api/v1/organisations/{organisation_id}:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku Get Organisation
       description: Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use.
       operationId: organisations-get_organisation
@@ -163,7 +163,7 @@ paths:
   /api/v1/organisations/{organisation_id}/members:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku List Organisation Members
       operationId: organisations-list_organisation_members
       security:
@@ -213,7 +213,7 @@ paths:
   /api/v1/organisations/{organisation_id}/members/{user_id}:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku Get Organisation Member
       operationId: organisations-get_organisation_member
       security:
@@ -248,7 +248,7 @@ paths:
   /api/v1/organisations/{organisation_id}/regions:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku List Organisation Regions
       description: Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use.
       operationId: organisations-list_organisation_regions
@@ -299,7 +299,7 @@ paths:
   /api/v1/organisations/{organisation_id}/regions/{region_id}:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku Get Organisation Region
       operationId: organisations-get_organisation_region
       security:
@@ -333,7 +333,7 @@ paths:
   /api/v1/organisations/{organisation_id}/roles/projects:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku List Project Roles
       operationId: organisations-list_project_roles
       security:
@@ -383,7 +383,7 @@ paths:
   /api/v1/organisations/{organisation_id}/roles/projects/{role_id}:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku Get Project Role
       operationId: organisations-get_project_role
       security:
@@ -417,7 +417,7 @@ paths:
   /api/v1/organisations/{organisation_id}/roles/groups:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku List Group Roles
       operationId: organisations-list_group_roles
       security:
@@ -467,7 +467,7 @@ paths:
   /api/v1/organisations/{organisation_id}/roles/groups/{role_id}:
     get:
       tags:
-      - organisations
+      - Organisations
       summary: Roku Get Group Role
       operationId: organisations-get_group_role
       security:
@@ -500,37 +500,28 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    AWSRegion:
-      type: string
-      enum:
-      - us-west-2
-      title: AWSRegion
-    OrganisationRegionOut:
+    OrganisationMemberOut:
       properties:
-        region_id:
-          type: integer
-          title: Region Id
-        region_name:
+        user_id:
           type: string
-          title: Region Name
-        aws_region:
-          $ref: '#/components/schemas/AWSRegion'
-        agent_active:
-          type: boolean
-          title: Agent Active
-        agent_stream_options:
-          items:
-            $ref: '#/components/schemas/AgentStreamOption'
-          type: array
-          title: Agent Stream Options
+          format: uuid
+          title: User Id
+        username:
+          type: string
+          title: Username
+        organisation_role_id:
+          type: integer
+          title: Organisation Role Id
+        organisation_role_name:
+          type: string
+          title: Organisation Role Name
       type: object
       required:
-      - region_id
-      - region_name
-      - aws_region
-      - agent_active
-      - agent_stream_options
-      title: OrganisationRegionOut
+      - user_id
+      - username
+      - organisation_role_id
+      - organisation_role_name
+      title: OrganisationMemberOut
     AgentStreamOption:
       properties:
         id:
@@ -544,46 +535,6 @@ components:
       - id
       - name
       title: AgentStreamOption
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    GroupRoleOut:
-      properties:
-        group_role_id:
-          type: integer
-          title: Group Role Id
-        name:
-          type: string
-          title: Name
-        permissions:
-          items:
-            type: string
-          type: array
-          title: Permissions
-      type: object
-      required:
-      - group_role_id
-      - name
-      - permissions
-      title: GroupRoleOut
     HTTPValidationError:
       properties:
         detail:
@@ -612,28 +563,72 @@ components:
       - name
       - permissions
       title: ProjectRoleOut
-    OrganisationMemberOut:
+    GroupRoleOut:
       properties:
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
-        username:
-          type: string
-          title: Username
-        organisation_role_id:
+        group_role_id:
           type: integer
-          title: Organisation Role Id
-        organisation_role_name:
+          title: Group Role Id
+        name:
           type: string
-          title: Organisation Role Name
+          title: Name
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
       type: object
       required:
-      - user_id
-      - username
-      - organisation_role_id
-      - organisation_role_name
-      title: OrganisationMemberOut
+      - group_role_id
+      - name
+      - permissions
+      title: GroupRoleOut
+    OrganisationRegionOut:
+      properties:
+        region_id:
+          type: integer
+          title: Region Id
+        region_name:
+          type: string
+          title: Region Name
+        aws_region:
+          $ref: '#/components/schemas/AWSRegion'
+        agent_active:
+          type: boolean
+          title: Agent Active
+        agent_stream_options:
+          items:
+            $ref: '#/components/schemas/AgentStreamOption'
+          type: array
+          title: Agent Stream Options
+      type: object
+      required:
+      - region_id
+      - region_name
+      - aws_region
+      - agent_active
+      - agent_stream_options
+      title: OrganisationRegionOut
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     OrganisationOut:
       properties:
         id:
@@ -703,3 +698,8 @@ components:
       - max_project_snapshots
       - max_project_runtime
       title: OrganisationOut
+    AWSRegion:
+      type: string
+      enum:
+      - us-west-2
+      title: AWSRegion

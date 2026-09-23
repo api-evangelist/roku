@@ -4,22 +4,7 @@ info:
   version: '1.0'
   description: 'Roku Pay Web Services provide server-to-server APIs for billing, subscription management,
 
-    transaction validation, and entitlement checks for monetized Roku channels. Use these endpoints
-
-    to verify that a Roku user holds a valid entitlement to your content, to issue refunds, to update
-
-    billing cycles, and to grant service credits. All endpoints require a Roku-issued Partner API
-
-    Key.
-
-
-    Roku Pay handles payment processing, subscription state, and tax calculation on behalf of the
-
-    publisher; channels query these endpoints from their authentication backends rather than from
-
-    BrightScript directly.
-
-    '
+    transaction validation, and entitlement checks for monetized Roku channels.'
   contact:
     name: Roku Pay Support
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
@@ -42,9 +27,7 @@ paths:
 
         Returns the purchase status, expiration date, and source channel of the transaction.
 
-        Channels must call this from their backend before granting entitled access to content.
-
-        '
+        Channels must call this from their backend before granting entitled access to content.'
       tags:
       - Validation
       parameters:
@@ -141,15 +124,6 @@ components:
           type: string
         refundReason:
           type: string
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
     TransactionValidation:
       type: object
       description: Result of a transaction-validation request.
@@ -205,6 +179,15 @@ components:
         tax:
           type: number
           format: float
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
   responses:
     Error:
       description: Error response

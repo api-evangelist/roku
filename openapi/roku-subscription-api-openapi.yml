@@ -4,22 +4,7 @@ info:
   version: '1.0'
   description: 'Roku Pay Web Services provide server-to-server APIs for billing, subscription management,
 
-    transaction validation, and entitlement checks for monetized Roku channels. Use these endpoints
-
-    to verify that a Roku user holds a valid entitlement to your content, to issue refunds, to update
-
-    billing cycles, and to grant service credits. All endpoints require a Roku-issued Partner API
-
-    Key.
-
-
-    Roku Pay handles payment processing, subscription state, and tax calculation on behalf of the
-
-    publisher; channels query these endpoints from their authentication backends rather than from
-
-    BrightScript directly.
-
-    '
+    transaction validation, and entitlement checks for monetized Roku channels.'
   contact:
     name: Roku Pay Support
     url: https://developer.roku.com/docs/developer-program/roku-pay/overview.md
@@ -90,6 +75,25 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CancelSubscriptionRequest:
+      type: object
+      required:
+      - partnerAPIKey
+      - rokuCustomerId
+      - productCode
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        productCode:
+          type: string
+        cancellationDate:
+          type: string
+          format: date-time
+        reason:
+          type: string
     RefundSubscriptionRequest:
       type: object
       required:
@@ -112,34 +116,6 @@ components:
           type: string
         reason:
           type: string
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
-    CancelSubscriptionRequest:
-      type: object
-      required:
-      - partnerAPIKey
-      - rokuCustomerId
-      - productCode
-      x-schema-source: documentation
-      properties:
-        partnerAPIKey:
-          type: string
-        rokuCustomerId:
-          type: string
-        productCode:
-          type: string
-        cancellationDate:
-          type: string
-          format: date-time
-        reason:
-          type: string
     SubscriptionResult:
       type: object
       x-schema-source: documentation
@@ -157,6 +133,15 @@ components:
         effectiveDate:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
   responses:
     Error:
       description: Error response

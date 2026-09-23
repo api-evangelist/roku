@@ -12,12 +12,12 @@ servers:
 - url: https://api.cloud.roku.dev
   description: Roku Nabu Cloud Production
 tags:
-- name: builds
+- name: Builds
 paths:
   /api/v1/builds:
     get:
       tags:
-      - builds
+      - Builds
       summary: Roku List All Builds
       operationId: builds-list_builds
       security:
@@ -121,7 +121,7 @@ paths:
   /api/v1/builds/{build_id}:
     get:
       tags:
-      - builds
+      - Builds
       summary: Roku Get Build
       operationId: builds-get_build
       security:
@@ -148,6 +148,24 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    BuildSource:
+      type: string
+      enum:
+      - pre-merge
+      - main
+      - released
+      - alpha
+      - misc
+      title: BuildSource
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -169,24 +187,13 @@ components:
       - msg
       - type
       title: ValidationError
-    BuildSource:
+    DeviceType:
       type: string
       enum:
-      - pre-merge
-      - main
-      - released
-      - alpha
-      - misc
-      title: BuildSource
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
+      - tv
+      - stb
+      - streambar
+      title: DeviceType
     BuildOut:
       properties:
         id:
@@ -239,10 +246,3 @@ components:
       - source
       - device_type
       title: BuildOut
-    DeviceType:
-      type: string
-      enum:
-      - tv
-      - stb
-      - streambar
-      title: DeviceType

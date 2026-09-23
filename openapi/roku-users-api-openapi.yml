@@ -12,12 +12,12 @@ servers:
 - url: https://api.cloud.roku.dev
   description: Roku Nabu Cloud Production
 tags:
-- name: users
+- name: Users
 paths:
   /api/v1/users/me:
     get:
       tags:
-      - users
+      - Users
       summary: Roku Get Me
       operationId: users-get_me
       responses:
@@ -32,7 +32,7 @@ paths:
   /api/v1/users/me/organisations:
     get:
       tags:
-      - users
+      - Users
       summary: Roku Get My Organisation
       description: Currently only returns a single item, the roku organisation
       operationId: users-get_my_organisation
@@ -150,7 +150,7 @@ paths:
   /api/v1/users/me/projects:
     get:
       tags:
-      - users
+      - Users
       summary: Roku Get My Projects
       operationId: users-get_my_projects
       security:
@@ -284,7 +284,7 @@ paths:
   /api/v1/users/me/groups:
     get:
       tags:
-      - users
+      - Users
       summary: Roku Get My Group
       operationId: users-get_my_group
       security:
@@ -395,6 +395,31 @@ components:
       - full_name
       - email
       title: UserOut
+    GroupOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - id
+      - name
+      title: GroupOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ProjectOut:
       properties:
         id:
@@ -500,31 +525,6 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    GroupOut:
-      properties:
-        id:
-          type: integer
-          title: Id
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the group. Unique in the organisation
-      type: object
-      required:
-      - id
-      - name
-      title: GroupOut
     OrganisationOut:
       properties:
         id:

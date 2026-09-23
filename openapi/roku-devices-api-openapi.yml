@@ -12,12 +12,12 @@ servers:
 - url: https://api.cloud.roku.dev
   description: Roku Nabu Cloud Production
 tags:
-- name: devices
+- name: Devices
 paths:
   /api/v1/organisations/{organisation_id}/projects/{project_id}/devices:
     get:
       tags:
-      - devices
+      - Devices
       summary: Roku List Devices
       description: Show devices in a project.
       operationId: devices-list_devices
@@ -163,7 +163,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     post:
       tags:
-      - devices
+      - Devices
       summary: Roku Create Device
       operationId: devices-create_device
       security:
@@ -203,7 +203,7 @@ paths:
   /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}:
     get:
       tags:
-      - devices
+      - Devices
       summary: Roku Get Device
       operationId: devices-get_device
       security:
@@ -242,7 +242,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     patch:
       tags:
-      - devices
+      - Devices
       summary: Roku Update Device
       operationId: devices-update_device
       security:
@@ -287,7 +287,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     delete:
       tags:
-      - devices
+      - Devices
       summary: Roku Delete Device
       operationId: devices-delete_device
       security:
@@ -330,7 +330,7 @@ paths:
   /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/start:
     post:
       tags:
-      - devices
+      - Devices
       summary: Roku Start Device
       operationId: devices-start_device
       security:
@@ -383,7 +383,7 @@ paths:
   /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/stop:
     post:
       tags:
-      - devices
+      - Devices
       summary: Roku Stop Device
       operationId: devices-stop_device
       security:
@@ -423,7 +423,7 @@ paths:
   /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/runs:
     get:
       tags:
-      - devices
+      - Devices
       summary: Roku Get Device Runs
       operationId: devices-get_device_runs
       security:
@@ -466,7 +466,7 @@ paths:
   /api/v1/organisations/{organisation_id}/projects/{project_id}/devices/{device_id}/logs/{instance_id}:
     get:
       tags:
-      - devices
+      - Devices
       summary: Roku Read Logs
       operationId: devices-read_logs
       security:
@@ -507,6 +507,258 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    KubernetesStatus:
+      type: string
+      enum:
+      - created
+      - pending
+      - running
+      - completed
+      - failed
+      - crashed
+      - unknown
+      title: KubernetesStatus
+    DeviceHistoryOut:
+      properties:
+        instance_id:
+          type: integer
+          minimum: 0
+          title: Instance Id
+          description: ID of the device instance.
+        creator_id:
+          type: string
+          format: uuid
+          title: Creator Id
+          description: The ID of the user who started the device.
+        creator_username:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Creator Username
+          description: The username of the user who started the device.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        started_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Started At
+        ended_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Ended At
+        runtime:
+          type: integer
+          minimum: 0
+          title: Runtime
+          description: Runtime of the device in seconds.
+        snapshot_id:
+          type: integer
+          minimum: 0
+          title: Snapshot Id
+          description: The ID of the snapshot to use for the device.
+        snapshot_name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Snapshot Name
+          description: Name of the snapshot.
+        region_id:
+          type: integer
+          minimum: 0
+          title: Region Id
+          description: The ID of the region where the device will run.
+        region_name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Region Name
+          description: Name of the region.
+        stream_option_id:
+          type: integer
+          minimum: 0
+          title: Stream Option Id
+          description: The ID of the stream option to use for the device.
+        stream_option_name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Stream Option Name
+          description: 'Name of the stream option. '
+        max_runtime:
+          type: integer
+          minimum: 0
+          title: Max Runtime
+          description: The maximum runtime of the device in seconds, 0 for project max runtime.
+        status:
+          $ref: '#/components/schemas/KubernetesStatus'
+        rootfs_artifactory_path:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-zA-Z0-9_-]*(\/[a-zA-Z0-9._-]+)*(\:[a-zA-Z0-9._-]+)?$
+          title: Rootfs Artifactory Path
+          description: The path of the rootfs image in artifactory.
+          examples:
+          - official/release/2024-h2/r14.0.4.122xx-rta/native_tv:latest
+          - premergeci/native_tv:4838657
+        reboot:
+          type: integer
+          maximum: 150
+          minimum: -1
+          title: Reboot
+          description: Device reboot behaviour.-1 for no reboots, including requested reboot; 0 for no device crash reboots; and >0 for n number of device crash reboots.A device crash is determined by restart_reason in the device nvram. A device shutdown will act like a reboot.
+      type: object
+      required:
+      - instance_id
+      - creator_id
+      - creator_username
+      - created_at
+      - runtime
+      - snapshot_id
+      - region_id
+      - stream_option_id
+      - max_runtime
+      - status
+      - rootfs_artifactory_path
+      - reboot
+      title: DeviceHistoryOut
+    DeviceStatus:
+      type: string
+      enum:
+      - shutdown
+      - pending
+      - running
+      title: DeviceStatus
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    DeviceUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Device.
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Description of the Device.
+        account_name:
+          anyOf:
+          - type: string
+            format: email
+          - type: 'null'
+          title: Account Name
+          description: Account name of the Device.
+          examples:
+          - user@roku.com
+        properties:
+          anyOf:
+          - additionalProperties: true
+            type: object
+            maxProperties: 8192
+          - type: 'null'
+          title: Properties
+          description: Device properties.
+          examples:
+          - {}
+          - config_service_flags:
+              fw.swup.channel-sync-enabled: 'false'
+        qa_hub:
+          type: boolean
+          title: Qa Hub
+          description: Whether the device should be auto registered in QA Hub.
+      type: object
+      title: DeviceUpdate
+    DeviceCreate:
+      properties:
+        device_type:
+          $ref: '#/components/schemas/DeviceType'
+          description: The type of the Device.
+          examples:
+          - tv
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Device.
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Description of the Device.
+        account_name:
+          anyOf:
+          - type: string
+            format: email
+          - type: 'null'
+          title: Account Name
+          description: Account name of the Device.
+          examples:
+          - user@roku.com
+        properties:
+          anyOf:
+          - additionalProperties: true
+            type: object
+            maxProperties: 8192
+          - type: 'null'
+          title: Properties
+          description: Device properties.
+          examples:
+          - {}
+          - config_service_flags:
+              fw.swup.channel-sync-enabled: 'false'
+        qa_hub:
+          type: boolean
+          title: Qa Hub
+          description: Whether the device should be auto registered in QA Hub.
+      type: object
+      required:
+      - device_type
+      - name
+      title: DeviceCreate
+    IceServer:
+      properties:
+        urls:
+          items:
+            type: string
+          type: array
+          title: Urls
+        username:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Username
+        credential:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Credential
+      type: object
+      required:
+      - urls
+      title: IceServer
     DeviceInstanceInfo:
       properties:
         id:
@@ -643,137 +895,13 @@ components:
       - reboot
       - instance_uuid
       title: DeviceInstanceInfo
-    IceServer:
-      properties:
-        urls:
-          items:
-            type: string
-          type: array
-          title: Urls
-        username:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Username
-        credential:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Credential
-      type: object
-      required:
-      - urls
-      title: IceServer
-    DeviceHistoryOut:
-      properties:
-        instance_id:
-          type: integer
-          minimum: 0
-          title: Instance Id
-          description: ID of the device instance.
-        creator_id:
-          type: string
-          format: uuid
-          title: Creator Id
-          description: The ID of the user who started the device.
-        creator_username:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Creator Username
-          description: The username of the user who started the device.
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        started_at:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Started At
-        ended_at:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Ended At
-        runtime:
-          type: integer
-          minimum: 0
-          title: Runtime
-          description: Runtime of the device in seconds.
-        snapshot_id:
-          type: integer
-          minimum: 0
-          title: Snapshot Id
-          description: The ID of the snapshot to use for the device.
-        snapshot_name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Snapshot Name
-          description: Name of the snapshot.
-        region_id:
-          type: integer
-          minimum: 0
-          title: Region Id
-          description: The ID of the region where the device will run.
-        region_name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Region Name
-          description: Name of the region.
-        stream_option_id:
-          type: integer
-          minimum: 0
-          title: Stream Option Id
-          description: The ID of the stream option to use for the device.
-        stream_option_name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Stream Option Name
-          description: 'Name of the stream option. '
-        max_runtime:
-          type: integer
-          minimum: 0
-          title: Max Runtime
-          description: The maximum runtime of the device in seconds, 0 for project max runtime.
-        status:
-          $ref: '#/components/schemas/KubernetesStatus'
-        rootfs_artifactory_path:
-          type: string
-          maxLength: 255
-          minLength: 3
-          pattern: ^[a-zA-Z0-9_-]*(\/[a-zA-Z0-9._-]+)*(\:[a-zA-Z0-9._-]+)?$
-          title: Rootfs Artifactory Path
-          description: The path of the rootfs image in artifactory.
-          examples:
-          - official/release/2024-h2/r14.0.4.122xx-rta/native_tv:latest
-          - premergeci/native_tv:4838657
-        reboot:
-          type: integer
-          maximum: 150
-          minimum: -1
-          title: Reboot
-          description: Device reboot behaviour.-1 for no reboots, including requested reboot; 0 for no device crash reboots; and >0 for n number of device crash reboots.A device crash is determined by restart_reason in the device nvram. A device shutdown will act like a reboot.
-      type: object
-      required:
-      - instance_id
-      - creator_id
-      - creator_username
-      - created_at
-      - runtime
-      - snapshot_id
-      - region_id
-      - stream_option_id
-      - max_runtime
-      - status
-      - rootfs_artifactory_path
-      - reboot
-      title: DeviceHistoryOut
+    DeviceType:
+      type: string
+      enum:
+      - tv
+      - stb
+      - streambar
+      title: DeviceType
     ValidationError:
       properties:
         loc:
@@ -795,60 +923,6 @@ components:
       - msg
       - type
       title: ValidationError
-    DeviceUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the Device.
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: Description of the Device.
-        account_name:
-          anyOf:
-          - type: string
-            format: email
-          - type: 'null'
-          title: Account Name
-          description: Account name of the Device.
-          examples:
-          - user@roku.com
-        properties:
-          anyOf:
-          - additionalProperties: true
-            type: object
-            maxProperties: 8192
-          - type: 'null'
-          title: Properties
-          description: Device properties.
-          examples:
-          - {}
-          - config_service_flags:
-              fw.swup.channel-sync-enabled: 'false'
-        qa_hub:
-          type: boolean
-          title: Qa Hub
-          description: Whether the device should be auto registered in QA Hub.
-      type: object
-      title: DeviceUpdate
-    KubernetesStatus:
-      type: string
-      enum:
-      - created
-      - pending
-      - running
-      - completed
-      - failed
-      - crashed
-      - unknown
-      title: KubernetesStatus
     DeviceOut:
       properties:
         id:
@@ -950,15 +1024,6 @@ components:
       - name
       - qa_hub
       title: DeviceOut
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     DeviceStart:
       properties:
         snapshot_id:
@@ -1012,68 +1077,3 @@ components:
       - stream_option_id
       - rootfs_artifactory_path
       title: DeviceStart
-    DeviceType:
-      type: string
-      enum:
-      - tv
-      - stb
-      - streambar
-      title: DeviceType
-    DeviceCreate:
-      properties:
-        device_type:
-          $ref: '#/components/schemas/DeviceType'
-          description: The type of the Device.
-          examples:
-          - tv
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the Device.
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: Description of the Device.
-        account_name:
-          anyOf:
-          - type: string
-            format: email
-          - type: 'null'
-          title: Account Name
-          description: Account name of the Device.
-          examples:
-          - user@roku.com
-        properties:
-          anyOf:
-          - additionalProperties: true
-            type: object
-            maxProperties: 8192
-          - type: 'null'
-          title: Properties
-          description: Device properties.
-          examples:
-          - {}
-          - config_service_flags:
-              fw.swup.channel-sync-enabled: 'false'
-        qa_hub:
-          type: boolean
-          title: Qa Hub
-          description: Whether the device should be auto registered in QA Hub.
-      type: object
-      required:
-      - device_type
-      - name
-      title: DeviceCreate
-    DeviceStatus:
-      type: string
-      enum:
-      - shutdown
-      - pending
-      - running
-      title: DeviceStatus

@@ -12,12 +12,12 @@ servers:
 - url: https://api.cloud.roku.dev
   description: Roku Nabu Cloud Production
 tags:
-- name: groups
+- name: Groups
 paths:
   /api/v1/organisations/{organisation_id}/groups:
     get:
       tags:
-      - groups
+      - Groups
       summary: Roku List Group
       operationId: groups-list_group
       security:
@@ -107,7 +107,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     post:
       tags:
-      - groups
+      - Groups
       summary: Roku Create Group
       operationId: groups-create_group
       security:
@@ -141,7 +141,7 @@ paths:
   /api/v1/organisations/{organisation_id}/groups/{group_id}:
     get:
       tags:
-      - groups
+      - Groups
       summary: Roku Get a Group by ID
       operationId: groups-get_group
       security:
@@ -174,7 +174,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     patch:
       tags:
-      - groups
+      - Groups
       summary: Roku Update Group
       operationId: groups-update_group
       security:
@@ -213,7 +213,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     delete:
       tags:
-      - groups
+      - Groups
       summary: Roku Delete Group
       operationId: groups-delete_group
       security:
@@ -243,7 +243,7 @@ paths:
   /api/v1/organisations/{organisation_id}/groups/{group_id}/members:
     get:
       tags:
-      - groups
+      - Groups
       summary: Roku List Group Members
       operationId: groups-list_group_members
       security:
@@ -299,7 +299,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     post:
       tags:
-      - groups
+      - Groups
       summary: Roku Add Group Member
       operationId: groups-add_group_member
       security:
@@ -339,7 +339,7 @@ paths:
   /api/v1/organisations/{organisation_id}/groups/{group_id}/members/{user_id}:
     get:
       tags:
-      - groups
+      - Groups
       summary: Roku Get Group Member
       operationId: groups-get_group_member
       security:
@@ -379,7 +379,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     patch:
       tags:
-      - groups
+      - Groups
       summary: Roku Update Group Member
       operationId: groups-update_group_member
       security:
@@ -425,7 +425,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     delete:
       tags:
-      - groups
+      - Groups
       summary: Roku Remove Group Member
       operationId: groups-remove_group_member
       security:
@@ -461,6 +461,48 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    GroupAddMember:
+      properties:
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+      type: object
+      required:
+      - group_role_id
+      - user_id
+      title: GroupAddMember
+    GroupOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - id
+      - name
+      title: GroupOut
+    GroupUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - name
+      title: GroupUpdate
     GroupMemberOut:
       properties:
         id:
@@ -496,6 +538,15 @@ components:
       - group_role_id
       - group_role_name
       title: GroupMemberOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     GroupCreate:
       properties:
         name:
@@ -529,54 +580,3 @@ components:
       - msg
       - type
       title: ValidationError
-    GroupAddMember:
-      properties:
-        group_role_id:
-          type: integer
-          title: Group Role Id
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
-      type: object
-      required:
-      - group_role_id
-      - user_id
-      title: GroupAddMember
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    GroupOut:
-      properties:
-        id:
-          type: integer
-          title: Id
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the group. Unique in the organisation
-      type: object
-      required:
-      - id
-      - name
-      title: GroupOut
-    GroupUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the group. Unique in the organisation
-      type: object
-      required:
-      - name
-      title: GroupUpdate

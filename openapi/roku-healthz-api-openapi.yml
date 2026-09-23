@@ -12,12 +12,12 @@ servers:
 - url: https://api.cloud.roku.dev
   description: Roku Nabu Cloud Production
 tags:
-- name: healthz
+- name: Healthz
 paths:
   /api/v1/-/livez:
     get:
       tags:
-      - healthz
+      - Healthz
       summary: Roku Healthz
       operationId: healthz-healthz
       responses:
@@ -33,7 +33,7 @@ paths:
   /api/v1/-/readyz:
     get:
       tags:
-      - healthz
+      - Healthz
       summary: Roku Readyz
       operationId: healthz-readyz
       responses:

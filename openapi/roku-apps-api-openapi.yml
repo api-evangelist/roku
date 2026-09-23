@@ -4,24 +4,7 @@ info:
   version: '1.0'
   description: 'The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku
 
-    streaming device on the local network. It enables third-party applications, mobile remote-control
-
-    apps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,
-
-    inject simulated remote-control key presses, launch installed apps with deep-link parameters,
-
-    query device state, and retrieve diagnostic information.
-
-
-    The protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.
-
-    Most control operations require the user to enable "Control by mobile apps" on the device.
-
-    Additional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku
-
-    Developer Mode.
-
-    '
+    streaming device on the local network.'
   contact:
     name: Roku Developer Program
     url: https://developer.roku.com
@@ -206,15 +189,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/App'
-    ActiveApp:
-      type: object
-      description: Currently active app or screensaver/home if none.
-      x-schema-source: documentation
-      properties:
-        app:
-          $ref: '#/components/schemas/App'
-        screensaver:
-          $ref: '#/components/schemas/App'
     App:
       type: object
       description: An installed Roku channel.
@@ -238,3 +212,12 @@ components:
         name:
           type: string
           description: Human-readable channel name.
+    ActiveApp:
+      type: object
+      description: Currently active app or screensaver/home if none.
+      x-schema-source: documentation
+      properties:
+        app:
+          $ref: '#/components/schemas/App'
+        screensaver:
+          $ref: '#/components/schemas/App'
