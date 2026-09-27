@@ -461,20 +461,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    GroupAddMember:
+    HTTPValidationError:
       properties:
-        group_role_id:
-          type: integer
-          title: Group Role Id
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      required:
-      - group_role_id
-      - user_id
-      title: GroupAddMember
+      title: HTTPValidationError
     GroupOut:
       properties:
         id:
@@ -491,7 +486,7 @@ components:
       - id
       - name
       title: GroupOut
-    GroupUpdate:
+    GroupCreate:
       properties:
         name:
           type: string
@@ -502,7 +497,42 @@ components:
       type: object
       required:
       - name
-      title: GroupUpdate
+      title: GroupCreate
+    GroupAddMember:
+      properties:
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+      type: object
+      required:
+      - group_role_id
+      - user_id
+      title: GroupAddMember
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     GroupMemberOut:
       properties:
         id:
@@ -538,16 +568,7 @@ components:
       - group_role_id
       - group_role_name
       title: GroupMemberOut
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    GroupCreate:
+    GroupUpdate:
       properties:
         name:
           type: string
@@ -558,25 +579,4 @@ components:
       type: object
       required:
       - name
-      title: GroupCreate
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      title: GroupUpdate

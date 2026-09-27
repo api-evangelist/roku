@@ -75,24 +75,14 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CancelSubscriptionRequest:
+    Error:
       type: object
-      required:
-      - partnerAPIKey
-      - rokuCustomerId
-      - productCode
-      x-schema-source: documentation
       properties:
-        partnerAPIKey:
+        status:
           type: string
-        rokuCustomerId:
-          type: string
-        productCode:
-          type: string
-        cancellationDate:
-          type: string
-          format: date-time
-        reason:
+        errorCode:
+          type: integer
+        errorMessage:
           type: string
     RefundSubscriptionRequest:
       type: object
@@ -116,6 +106,25 @@ components:
           type: string
         reason:
           type: string
+    CancelSubscriptionRequest:
+      type: object
+      required:
+      - partnerAPIKey
+      - rokuCustomerId
+      - productCode
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        productCode:
+          type: string
+        cancellationDate:
+          type: string
+          format: date-time
+        reason:
+          type: string
     SubscriptionResult:
       type: object
       x-schema-source: documentation
@@ -133,15 +142,6 @@ components:
         effectiveDate:
           type: string
           format: date-time
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
   responses:
     Error:
       description: Error response

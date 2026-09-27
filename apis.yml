@@ -3,17 +3,24 @@ url: https://github.com/api-evangelist/roku
 name: Roku
 type: Index
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - rokudev/dev-doc
+    - rokudev/roku-debug
+    - rokudev/roku-deploy
+    - rokudev/samples
+    - rokudev/vscode-brightscript-language
   open_source: unknown
   commercial: true
-  callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  callable_host: true
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: free
@@ -1684,8 +1691,6 @@ apis:
   description: The Async API API from Roku — 3 operation(s) for async api.
   humanURL: https://developer.roku.com/docs/references/brightscript/component-reference.md
   tags:
-  - AsyncAPI
-  tags_raw:
   - Async API
   properties:
   - type: OpenAPI

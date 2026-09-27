@@ -102,6 +102,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
     IssueCreditRequest:
       type: object
       required:
@@ -120,26 +129,6 @@ components:
           format: float
         currency:
           type: string
-        reason:
-          type: string
-    UpdateBillCycleRequest:
-      type: object
-      required:
-      - partnerAPIKey
-      - rokuCustomerId
-      - productCode
-      - nextBillDate
-      x-schema-source: documentation
-      properties:
-        partnerAPIKey:
-          type: string
-        rokuCustomerId:
-          type: string
-        productCode:
-          type: string
-        nextBillDate:
-          type: string
-          format: date-time
         reason:
           type: string
     RefundSubscriptionRequest:
@@ -164,6 +153,26 @@ components:
           type: string
         reason:
           type: string
+    UpdateBillCycleRequest:
+      type: object
+      required:
+      - partnerAPIKey
+      - rokuCustomerId
+      - productCode
+      - nextBillDate
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        productCode:
+          type: string
+        nextBillDate:
+          type: string
+          format: date-time
+        reason:
+          type: string
     SubscriptionResult:
       type: object
       x-schema-source: documentation
@@ -181,15 +190,6 @@ components:
         effectiveDate:
           type: string
           format: date-time
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
   responses:
     Error:
       description: Error response

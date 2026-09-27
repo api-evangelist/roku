@@ -383,15 +383,8 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    SnapshotCreate:
+    SnapshotUpdate:
       properties:
-        parent_id:
-          anyOf:
-          - type: integer
-            minimum: 0
-          - type: 'null'
-          title: Parent Id
-          description: The ID of the parent Snapshot.
         name:
           type: string
           maxLength: 255
@@ -417,33 +410,8 @@ components:
           examples:
           - config_service_flags:
               fw.swup.channel-sync-enabled: 'false'
-        system_setting_changes:
-          anyOf:
-          - additionalProperties:
-              anyOf:
-              - type: string
-                format: binary
-              - type: 'null'
-            propertyNames:
-              format: binary
-            type: object
-          - type: 'null'
-          title: System Setting Changes
-          description: "\n            A dictionary of system setting changes to apply to the snapshot.\n            This dictionary changes settings in system.conf.db. Entries with a\n            value of null will be removed.\n        "
-        config_server_overrides_changes:
-          anyOf:
-          - additionalProperties:
-              anyOf:
-              - type: string
-              - type: 'null'
-            type: object
-          - type: 'null'
-          title: Config Server Overrides Changes
-          description: "\n            A dictionary of config server setting override changes to apply to\n            the snapshot. These overrides are set in the ConfigServer/Overrides\n            key of system.conf.db. Entries with a value of null will be removed.\n        "
       type: object
-      required:
-      - name
-      title: SnapshotCreate
+      title: SnapshotUpdate
     SnapshotOut:
       properties:
         id:
@@ -530,8 +498,15 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    SnapshotUpdate:
+    SnapshotCreate:
       properties:
+        parent_id:
+          anyOf:
+          - type: integer
+            minimum: 0
+          - type: 'null'
+          title: Parent Id
+          description: The ID of the parent Snapshot.
         name:
           type: string
           maxLength: 255
@@ -557,8 +532,33 @@ components:
           examples:
           - config_service_flags:
               fw.swup.channel-sync-enabled: 'false'
+        system_setting_changes:
+          anyOf:
+          - additionalProperties:
+              anyOf:
+              - type: string
+                format: binary
+              - type: 'null'
+            propertyNames:
+              format: binary
+            type: object
+          - type: 'null'
+          title: System Setting Changes
+          description: "\n            A dictionary of system setting changes to apply to the snapshot.\n            This dictionary changes settings in system.conf.db. Entries with a\n            value of null will be removed.\n        "
+        config_server_overrides_changes:
+          anyOf:
+          - additionalProperties:
+              anyOf:
+              - type: string
+              - type: 'null'
+            type: object
+          - type: 'null'
+          title: Config Server Overrides Changes
+          description: "\n            A dictionary of config server setting override changes to apply to\n            the snapshot. These overrides are set in the ConfigServer/Overrides\n            key of system.conf.db. Entries with a value of null will be removed.\n        "
       type: object
-      title: SnapshotUpdate
+      required:
+      - name
+      title: SnapshotCreate
     ValidationError:
       properties:
         loc:

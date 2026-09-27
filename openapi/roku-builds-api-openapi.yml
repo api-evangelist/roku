@@ -148,15 +148,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    BuildSource:
-      type: string
-      enum:
-      - pre-merge
-      - main
-      - released
-      - alpha
-      - misc
-      title: BuildSource
     HTTPValidationError:
       properties:
         detail:
@@ -166,27 +157,15 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+    BuildSource:
+      type: string
+      enum:
+      - pre-merge
+      - main
+      - released
+      - alpha
+      - misc
+      title: BuildSource
     DeviceType:
       type: string
       enum:
@@ -246,3 +225,24 @@ components:
       - source
       - device_type
       title: BuildOut
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

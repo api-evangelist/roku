@@ -189,6 +189,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/App'
+    ActiveApp:
+      type: object
+      description: Currently active app or screensaver/home if none.
+      x-schema-source: documentation
+      properties:
+        app:
+          $ref: '#/components/schemas/App'
+        screensaver:
+          $ref: '#/components/schemas/App'
     App:
       type: object
       description: An installed Roku channel.
@@ -212,12 +221,3 @@ components:
         name:
           type: string
           description: Human-readable channel name.
-    ActiveApp:
-      type: object
-      description: Currently active app or screensaver/home if none.
-      x-schema-source: documentation
-      properties:
-        app:
-          $ref: '#/components/schemas/App'
-        screensaver:
-          $ref: '#/components/schemas/App'

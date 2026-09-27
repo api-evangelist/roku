@@ -88,34 +88,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    OrganisationRoleOut:
-      properties:
-        organisation_id:
-          type: integer
-          title: Organisation Id
-        name:
-          type: string
-          title: Name
-        permissions:
-          items:
-            type: string
-          type: array
-          title: Permissions
-      type: object
-      required:
-      - organisation_id
-      - name
-      - permissions
-      title: OrganisationRoleOut
     ValidationError:
       properties:
         loc:
@@ -137,3 +109,31 @@ components:
       - msg
       - type
       title: ValidationError
+    OrganisationRoleOut:
+      properties:
+        organisation_id:
+          type: integer
+          title: Organisation Id
+        name:
+          type: string
+          title: Name
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+      type: object
+      required:
+      - organisation_id
+      - name
+      - permissions
+      title: OrganisationRoleOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

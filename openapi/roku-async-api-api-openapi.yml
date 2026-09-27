@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Roku Nabu Cloud Asyncapi API
+  title: Roku Nabu Cloud AsyncAPI API
   contact:
     name: DevX Tools Team
     email: dldevxtools@roku.com
@@ -116,15 +116,6 @@ paths:
               schema: {}
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -146,3 +137,12 @@ components:
       - msg
       - type
       title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
