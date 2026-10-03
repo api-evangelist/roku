@@ -461,15 +461,20 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
+    GroupAddMember:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
       type: object
-      title: HTTPValidationError
+      required:
+      - group_role_id
+      - user_id
+      title: GroupAddMember
     GroupOut:
       properties:
         id:
@@ -498,20 +503,6 @@ components:
       required:
       - name
       title: GroupCreate
-    GroupAddMember:
-      properties:
-        group_role_id:
-          type: integer
-          title: Group Role Id
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
-      type: object
-      required:
-      - group_role_id
-      - user_id
-      title: GroupAddMember
     ValidationError:
       properties:
         loc:
@@ -533,6 +524,15 @@ components:
       - msg
       - type
       title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     GroupMemberOut:
       properties:
         id:

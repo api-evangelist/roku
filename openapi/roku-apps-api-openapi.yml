@@ -180,15 +180,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    AppList:
-      type: object
-      description: Container for the list of installed channels.
-      x-schema-source: documentation
-      properties:
-        apps:
-          type: array
-          items:
-            $ref: '#/components/schemas/App'
     ActiveApp:
       type: object
       description: Currently active app or screensaver/home if none.
@@ -221,3 +212,12 @@ components:
         name:
           type: string
           description: Human-readable channel name.
+    AppList:
+      type: object
+      description: Container for the list of installed channels.
+      x-schema-source: documentation
+      properties:
+        apps:
+          type: array
+          items:
+            $ref: '#/components/schemas/App'

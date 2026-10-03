@@ -383,35 +383,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    SnapshotUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the Snapshot.
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: Description of the Snapshot.
-        properties:
-          anyOf:
-          - additionalProperties: true
-            type: object
-            maxProperties: 8192
-          - type: 'null'
-          title: Properties
-          description: Properties of the Snapshot.
-          examples:
-          - config_service_flags:
-              fw.swup.channel-sync-enabled: 'false'
-      type: object
-      title: SnapshotUpdate
     SnapshotOut:
       properties:
         id:
@@ -489,6 +460,35 @@ components:
       - id
       - created_at
       title: SnapshotOut
+    SnapshotUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Snapshot.
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Description of the Snapshot.
+        properties:
+          anyOf:
+          - additionalProperties: true
+            type: object
+            maxProperties: 8192
+          - type: 'null'
+          title: Properties
+          description: Properties of the Snapshot.
+          examples:
+          - config_service_flags:
+              fw.swup.channel-sync-enabled: 'false'
+      type: object
+      title: SnapshotUpdate
     HTTPValidationError:
       properties:
         detail:
@@ -498,6 +498,27 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     SnapshotCreate:
       properties:
         parent_id:
@@ -559,24 +580,3 @@ components:
       required:
       - name
       title: SnapshotCreate
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError

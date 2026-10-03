@@ -101,36 +101,17 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  schemas:
+  responses:
     Error:
-      type: object
-      properties:
-        status:
-          type: string
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
-    IssueCreditRequest:
-      type: object
-      required:
-      - partnerAPIKey
-      - rokuCustomerId
-      - amount
-      - currency
-      x-schema-source: documentation
-      properties:
-        partnerAPIKey:
-          type: string
-        rokuCustomerId:
-          type: string
-        amount:
-          type: number
-          format: float
-        currency:
-          type: string
-        reason:
-          type: string
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
     RefundSubscriptionRequest:
       type: object
       required:
@@ -149,6 +130,26 @@ components:
           type: number
           format: float
           description: If omitted, a full refund is issued.
+        currency:
+          type: string
+        reason:
+          type: string
+    IssueCreditRequest:
+      type: object
+      required:
+      - partnerAPIKey
+      - rokuCustomerId
+      - amount
+      - currency
+      x-schema-source: documentation
+      properties:
+        partnerAPIKey:
+          type: string
+        rokuCustomerId:
+          type: string
+        amount:
+          type: number
+          format: float
         currency:
           type: string
         reason:
@@ -190,16 +191,15 @@ components:
         effectiveDate:
           type: string
           format: date-time
-  responses:
     Error:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/Error'
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
   securitySchemes:
     PartnerAPIKey:
       type: apiKey

@@ -74,16 +74,17 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  schemas:
+  responses:
     Error:
-      type: object
-      properties:
-        status:
-          type: string
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
     RefundSubscriptionRequest:
       type: object
       required:
@@ -142,16 +143,15 @@ components:
         effectiveDate:
           type: string
           format: date-time
-  responses:
     Error:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/Error'
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
   securitySchemes:
     PartnerAPIKey:
       type: apiKey
