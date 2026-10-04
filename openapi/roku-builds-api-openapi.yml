@@ -148,15 +148,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    BuildSource:
-      type: string
-      enum:
-      - pre-merge
-      - main
-      - released
-      - alpha
-      - misc
-      title: BuildSource
     DeviceType:
       type: string
       enum:
@@ -164,36 +155,6 @@ components:
       - stb
       - streambar
       title: DeviceType
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     BuildOut:
       properties:
         id:
@@ -246,3 +207,42 @@ components:
       - source
       - device_type
       title: BuildOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    BuildSource:
+      type: string
+      enum:
+      - pre-merge
+      - main
+      - released
+      - alpha
+      - misc
+      title: BuildSource

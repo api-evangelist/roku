@@ -437,6 +437,79 @@ components:
       - max_project_snapshots
       - max_project_runtime
       title: OrganisationOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    GroupOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - id
+      - name
+      title: GroupOut
+    UserOut:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        username:
+          type: string
+          title: Username
+        full_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Full Name
+        email:
+          anyOf:
+          - type: string
+            format: email
+          - type: 'null'
+          title: Email
+      type: object
+      required:
+      - id
+      - username
+      - full_name
+      - email
+      title: UserOut
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     ProjectOut:
       properties:
         id:
@@ -521,76 +594,3 @@ components:
       - user_project
       - created_at
       title: ProjectOut
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    UserOut:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        username:
-          type: string
-          title: Username
-        full_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Full Name
-        email:
-          anyOf:
-          - type: string
-            format: email
-          - type: 'null'
-          title: Email
-      type: object
-      required:
-      - id
-      - username
-      - full_name
-      - email
-      title: UserOut
-    GroupOut:
-      properties:
-        id:
-          type: integer
-          title: Id
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the group. Unique in the organisation
-      type: object
-      required:
-      - id
-      - name
-      title: GroupOut

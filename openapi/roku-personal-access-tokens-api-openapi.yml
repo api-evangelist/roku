@@ -144,134 +144,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    PersonalAccessTokenCreated:
-      properties:
-        token:
-          type: string
-          maxLength: 2048
-          minLength: 1
-          title: Token
-          description: The actual token - save this, it won't be shown again!
-        token_info:
-          $ref: '#/components/schemas/PersonalAccessTokenOut'
-      type: object
-      required:
-      - token
-      - token_info
-      title: PersonalAccessTokenCreated
-      description: Response when a new PAT is created - includes the actual token
-    PersonalAccessTokenRefresh:
-      properties:
-        expires_in_days:
-          type: integer
-          maximum: 365
-          minimum: 1
-          title: Expires In Days
-          description: Number of days until the token expires (1-365 days)
-          default: 30
-      type: object
-      title: PersonalAccessTokenRefresh
-    ScopeOut:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
-          title: Name
-          description: The name of the scope
-        description:
-          type: string
-          maxLength: 4096
-          minLength: 0
-          title: Description
-          description: Description of what the scope allows
-        permissions:
-          items:
-            type: string
-          type: array
-          title: Permissions
-          description: List of permissions granted by this scope
-      type: object
-      required:
-      - name
-      - description
-      - permissions
-      title: ScopeOut
-    PersonalAccessTokenStatus:
-      type: string
-      enum:
-      - active
-      - expired
-      - revoked
-      title: PersonalAccessTokenStatus
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    PersonalAccessTokenCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: A descriptive name for the token
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: Optional description for the token
-        expires_in_days:
-          type: integer
-          maximum: 365
-          minimum: 1
-          title: Expires In Days
-          description: Number of days until the token expires (1-365 days)
-          default: 30
-        scopes:
-          items:
-            type: string
-            maxLength: 255
-            minLength: 3
-            pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
-          type: array
-          title: Scopes
-          description: List of scopes that define the token's permissions
-      type: object
-      required:
-      - name
-      - scopes
-      title: PersonalAccessTokenCreate
     PersonalAccessTokenOut:
       properties:
         id:
@@ -342,3 +214,131 @@ components:
       - expires_at
       - status
       title: PersonalAccessTokenOut
+    ScopeOut:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Name
+          description: The name of the scope
+        description:
+          type: string
+          maxLength: 4096
+          minLength: 0
+          title: Description
+          description: Description of what the scope allows
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+          description: List of permissions granted by this scope
+      type: object
+      required:
+      - name
+      - description
+      - permissions
+      title: ScopeOut
+    PersonalAccessTokenRefresh:
+      properties:
+        expires_in_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          title: Expires In Days
+          description: Number of days until the token expires (1-365 days)
+          default: 30
+      type: object
+      title: PersonalAccessTokenRefresh
+    PersonalAccessTokenCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: A descriptive name for the token
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: Optional description for the token
+        expires_in_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          title: Expires In Days
+          description: Number of days until the token expires (1-365 days)
+          default: 30
+        scopes:
+          items:
+            type: string
+            maxLength: 255
+            minLength: 3
+            pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          type: array
+          title: Scopes
+          description: List of scopes that define the token's permissions
+      type: object
+      required:
+      - name
+      - scopes
+      title: PersonalAccessTokenCreate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    PersonalAccessTokenCreated:
+      properties:
+        token:
+          type: string
+          maxLength: 2048
+          minLength: 1
+          title: Token
+          description: The actual token - save this, it won't be shown again!
+        token_info:
+          $ref: '#/components/schemas/PersonalAccessTokenOut'
+      type: object
+      required:
+      - token
+      - token_info
+      title: PersonalAccessTokenCreated
+      description: Response when a new PAT is created - includes the actual token
+    PersonalAccessTokenStatus:
+      type: string
+      enum:
+      - active
+      - expired
+      - revoked
+      title: PersonalAccessTokenStatus

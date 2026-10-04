@@ -569,25 +569,49 @@ components:
       - max_project_snapshots
       - max_project_runtime
       title: OrganisationOut
-    GroupRoleOut:
+    AgentStreamOption:
       properties:
-        group_role_id:
+        id:
           type: integer
-          title: Group Role Id
+          title: Id
         name:
           type: string
           title: Name
-        permissions:
-          items:
-            type: string
-          type: array
-          title: Permissions
       type: object
       required:
-      - group_role_id
+      - id
       - name
-      - permissions
-      title: GroupRoleOut
+      title: AgentStreamOption
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     OrganisationRegionOut:
       properties:
         region_id:
@@ -614,27 +638,6 @@ components:
       - agent_active
       - agent_stream_options
       title: OrganisationRegionOut
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     ProjectRoleOut:
       properties:
         project_role_id:
@@ -654,15 +657,30 @@ components:
       - name
       - permissions
       title: ProjectRoleOut
-    HTTPValidationError:
+    AWSRegion:
+      type: string
+      enum:
+      - us-west-2
+      title: AWSRegion
+    GroupRoleOut:
       properties:
-        detail:
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        name:
+          type: string
+          title: Name
+        permissions:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            type: string
           type: array
-          title: Detail
+          title: Permissions
       type: object
-      title: HTTPValidationError
+      required:
+      - group_role_id
+      - name
+      - permissions
+      title: GroupRoleOut
     OrganisationMemberOut:
       properties:
         user_id:
@@ -685,21 +703,3 @@ components:
       - organisation_role_id
       - organisation_role_name
       title: OrganisationMemberOut
-    AWSRegion:
-      type: string
-      enum:
-      - us-west-2
-      title: AWSRegion
-    AgentStreamOption:
-      properties:
-        id:
-          type: integer
-          title: Id
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - id
-      - name
-      title: AgentStreamOption

@@ -99,15 +99,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
     RefundValidation:
       type: object
       description: Result of a refund-validation request.
@@ -188,6 +179,15 @@ components:
         tax:
           type: number
           format: float
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
   responses:
     Error:
       description: Error response

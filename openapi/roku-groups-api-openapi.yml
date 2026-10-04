@@ -461,20 +461,39 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    GroupAddMember:
+    GroupCreate:
       properties:
-        group_role_id:
-          type: integer
-          title: Group Role Id
-        user_id:
+        name:
           type: string
-          format: uuid
-          title: User Id
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
       type: object
       required:
-      - group_role_id
-      - user_id
-      title: GroupAddMember
+      - name
+      title: GroupCreate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    GroupUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - name
+      title: GroupUpdate
     GroupOut:
       properties:
         id:
@@ -491,18 +510,6 @@ components:
       - id
       - name
       title: GroupOut
-    GroupCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the group. Unique in the organisation
-      type: object
-      required:
-      - name
-      title: GroupCreate
     ValidationError:
       properties:
         loc:
@@ -524,15 +531,20 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
+    GroupAddMember:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
       type: object
-      title: HTTPValidationError
+      required:
+      - group_role_id
+      - user_id
+      title: GroupAddMember
     GroupMemberOut:
       properties:
         id:
@@ -568,15 +580,3 @@ components:
       - group_role_id
       - group_role_name
       title: GroupMemberOut
-    GroupUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the group. Unique in the organisation
-      type: object
-      required:
-      - name
-      title: GroupUpdate

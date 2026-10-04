@@ -826,6 +826,188 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    ProjectUpdate:
+      properties:
+        slug:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Slug
+          description: The slug of the project, used in URLs
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Project
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: The description of the Project
+        billing_entity:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Billing Entity
+          description: The billing entity of the Project
+        max_devices:
+          type: integer
+          minimum: 0
+          title: Max Devices
+          description: Maximum number of devices in the project, 0 for organisation max
+        max_snapshots:
+          type: integer
+          minimum: 0
+          title: Max Snapshots
+          description: Maximum number of snapshots in the project, 0 for organisation max
+        max_runtime:
+          type: integer
+          minimum: 0
+          title: Max Runtime
+          description: Maximum runtime of a device in the project, 0 for organisation max
+        private:
+          type: boolean
+          title: Private
+          description: Whether the project is listed in search results
+      type: object
+      title: ProjectUpdate
+    ProjectGroupOut:
+      properties:
+        group_id:
+          type: integer
+          title: Group Id
+        group_name:
+          type: string
+          title: Group Name
+        project_role_id:
+          type: integer
+          title: Project Role Id
+        project_role_name:
+          type: string
+          title: Project Role Name
+      type: object
+      required:
+      - group_id
+      - group_name
+      - project_role_id
+      - project_role_name
+      title: ProjectGroupOut
+    ProjectMemberAdd:
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        project_role_id:
+          type: integer
+          title: Project Role Id
+      type: object
+      required:
+      - user_id
+      - project_role_id
+      title: ProjectMemberAdd
+    ProjectGroupUpdate:
+      properties:
+        project_role_id:
+          type: integer
+          title: Project Role Id
+      type: object
+      required:
+      - project_role_id
+      title: ProjectGroupUpdate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ProjectCreate:
+      properties:
+        slug:
+          type: string
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Slug
+          description: The slug of the project, used in URLs
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the Project
+        description:
+          anyOf:
+          - type: string
+            maxLength: 4096
+            minLength: 0
+          - type: 'null'
+          title: Description
+          description: The description of the Project
+        billing_entity:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Billing Entity
+          description: The billing entity of the Project
+        max_devices:
+          type: integer
+          minimum: 0
+          title: Max Devices
+          description: Maximum number of devices in the project, 0 for organisation max
+          default: 0
+        max_snapshots:
+          type: integer
+          minimum: 0
+          title: Max Snapshots
+          description: Maximum number of snapshots in the project, 0 for organisation max
+          default: 0
+        max_runtime:
+          type: integer
+          minimum: 0
+          title: Max Runtime
+          description: Maximum runtime of a device in the project, 0 for organisation max
+          default: 0
+        private:
+          type: boolean
+          title: Private
+          description: Whether the project is listed in search results
+          default: false
+      type: object
+      required:
+      - slug
+      - name
+      - billing_entity
+      title: ProjectCreate
     ProjectOut:
       properties:
         id:
@@ -910,15 +1092,6 @@ components:
       - user_project
       - created_at
       title: ProjectOut
-    ProjectGroupUpdate:
-      properties:
-        project_role_id:
-          type: integer
-          title: Project Role Id
-      type: object
-      required:
-      - project_role_id
-      title: ProjectGroupUpdate
     ProjectMemberOut:
       properties:
         user_id:
@@ -941,135 +1114,6 @@ components:
       - project_role_id
       - project_role_name
       title: ProjectMemberOut
-    ProjectUpdate:
-      properties:
-        slug:
-          type: string
-          maxLength: 255
-          minLength: 3
-          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
-          title: Slug
-          description: The slug of the project, used in URLs
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the Project
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: The description of the Project
-        billing_entity:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Billing Entity
-          description: The billing entity of the Project
-        max_devices:
-          type: integer
-          minimum: 0
-          title: Max Devices
-          description: Maximum number of devices in the project, 0 for organisation max
-        max_snapshots:
-          type: integer
-          minimum: 0
-          title: Max Snapshots
-          description: Maximum number of snapshots in the project, 0 for organisation max
-        max_runtime:
-          type: integer
-          minimum: 0
-          title: Max Runtime
-          description: Maximum runtime of a device in the project, 0 for organisation max
-        private:
-          type: boolean
-          title: Private
-          description: Whether the project is listed in search results
-      type: object
-      title: ProjectUpdate
-    ProjectCreate:
-      properties:
-        slug:
-          type: string
-          maxLength: 255
-          minLength: 3
-          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
-          title: Slug
-          description: The slug of the project, used in URLs
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the Project
-        description:
-          anyOf:
-          - type: string
-            maxLength: 4096
-            minLength: 0
-          - type: 'null'
-          title: Description
-          description: The description of the Project
-        billing_entity:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Billing Entity
-          description: The billing entity of the Project
-        max_devices:
-          type: integer
-          minimum: 0
-          title: Max Devices
-          description: Maximum number of devices in the project, 0 for organisation max
-          default: 0
-        max_snapshots:
-          type: integer
-          minimum: 0
-          title: Max Snapshots
-          description: Maximum number of snapshots in the project, 0 for organisation max
-          default: 0
-        max_runtime:
-          type: integer
-          minimum: 0
-          title: Max Runtime
-          description: Maximum runtime of a device in the project, 0 for organisation max
-          default: 0
-        private:
-          type: boolean
-          title: Private
-          description: Whether the project is listed in search results
-          default: false
-      type: object
-      required:
-      - slug
-      - name
-      - billing_entity
-      title: ProjectCreate
-    ProjectGroupOut:
-      properties:
-        group_id:
-          type: integer
-          title: Group Id
-        group_name:
-          type: string
-          title: Group Name
-        project_role_id:
-          type: integer
-          title: Project Role Id
-        project_role_name:
-          type: string
-          title: Project Role Name
-      type: object
-      required:
-      - group_id
-      - group_name
-      - project_role_id
-      - project_role_name
-      title: ProjectGroupOut
     ProjectGroupAdd:
       properties:
         group_id:
@@ -1083,47 +1127,3 @@ components:
       - group_id
       - project_role_id
       title: ProjectGroupAdd
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ProjectMemberAdd:
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
-        project_role_id:
-          type: integer
-          title: Project Role Id
-      type: object
-      required:
-      - user_id
-      - project_role_id
-      title: ProjectMemberAdd
