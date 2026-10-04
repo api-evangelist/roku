@@ -1,22 +1,20 @@
-# Kin Score artifact — roku — 2026-09-02T211804
+# Kin Score artifact — roku — 2026-09-25T210408
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: roku
-  schema_version: 0.18.0
-  scored_at: '2026-09-02'
-  run_ts: 2026-09-02T211804
-  composite: 41.0
+  schema_version: 0.23.0
+  scored_at: '2026-09-25'
+  run_ts: 2026-09-25T210408
+  composite: 43.3
   band: developing
   facets:
-    discoverability: 53.7
-    contract_quality: 55.5
-    governance: 28.8
-    operational_transparency: 23.7
+    discoverability: 51.8
+    contract_quality: 47.0
+    contract_governance: 27.3
+    operational_transparency: 21.6
     developer_ergonomics: 59.5
-    commercial_clarity: 39.5
-    contract_governance: 28.8
-    access_clarity: 39.5
+    access_clarity: 37.4
   agent_readiness:
     score: 28.5
     band: agent-aware
@@ -40,13 +38,16 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
-  open_source:
+  regulatory:
     applies: true
-    score: 0.0
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 26.5
+    matched_via: fallback
   provenance:
     agentic_access: derived
     contracts:
       total: 23
       derived: 11
       coverage: 47.8
-      callable: 69.6
+      callable: 100.0
