@@ -52,7 +52,7 @@ description: Roku is the leading TV streaming platform in the U.S., Canada, and 
   frameworks for app development, and the Nabu Cloud developer cloud for managing
   remote test devices and channel builds.
 created: '2026-05-04'
-modified: '2026-05-19'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: roku:brightscript
@@ -1845,6 +1845,8 @@ apis:
   - type: Examples
     url: examples/nabu-cloud-create-device-example.json
 common:
+- url: https://www.roku.com/blog
+  type: Blog
 - type: IssueTracker
   url: https://github.com/rokudev/dev-doc/issues
 - type: AgenticAccess
