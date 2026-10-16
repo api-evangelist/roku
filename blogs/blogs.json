@@ -2,8 +2,18 @@
   "repo": "roku",
   "feeds": [
     {
-      "source": "https://developer.roku.com/en-gb/support",
-      "error": "HTTPError"
+      "source": "https://www.roku.com/blog",
+      "feed_url": "https://www.roku.com/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    },
+    {
+      "source": "https://blog.roku.com",
+      "feed_url": "https://blog.roku.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     },
     {
       "source": "https://www.roku.com/blog/feed/",
@@ -13,6 +23,6 @@
       "method": "feed"
     }
   ],
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 0
 }
