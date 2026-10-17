@@ -102,14 +102,25 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Error:
+    IssueCreditRequest:
       type: object
+      required:
+      - partnerAPIKey
+      - rokuCustomerId
+      - amount
+      - currency
+      x-schema-source: documentation
       properties:
-        status:
+        partnerAPIKey:
           type: string
-        errorCode:
-          type: integer
-        errorMessage:
+        rokuCustomerId:
+          type: string
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+        reason:
           type: string
     RefundSubscriptionRequest:
       type: object
@@ -133,26 +144,23 @@ components:
           type: string
         reason:
           type: string
-    IssueCreditRequest:
+    SubscriptionResult:
       type: object
-      required:
-      - partnerAPIKey
-      - rokuCustomerId
-      - amount
-      - currency
       x-schema-source: documentation
       properties:
-        partnerAPIKey:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
           type: string
         rokuCustomerId:
           type: string
-        amount:
-          type: number
-          format: float
-        currency:
+        productCode:
           type: string
-        reason:
+        effectiveDate:
           type: string
+          format: date-time
     UpdateBillCycleRequest:
       type: object
       required:
@@ -173,9 +181,8 @@ components:
           format: date-time
         reason:
           type: string
-    SubscriptionResult:
+    Error:
       type: object
-      x-schema-source: documentation
       properties:
         status:
           type: string
@@ -183,13 +190,6 @@ components:
           type: integer
         errorMessage:
           type: string
-        rokuCustomerId:
-          type: string
-        productCode:
-          type: string
-        effectiveDate:
-          type: string
-          format: date-time
   responses:
     Error:
       description: Error response

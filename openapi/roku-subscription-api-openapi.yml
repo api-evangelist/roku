@@ -75,15 +75,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-        errorCode:
-          type: integer
-        errorMessage:
-          type: string
     CancelSubscriptionRequest:
       type: object
       required:
@@ -142,6 +133,15 @@ components:
         effectiveDate:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
   responses:
     Error:
       description: Error response

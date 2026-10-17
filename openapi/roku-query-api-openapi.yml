@@ -178,73 +178,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DeviceInfo:
-      type: object
-      description: Roku device metadata returned as XML.
-      x-schema-source: documentation
-      properties:
-        udn:
-          type: string
-          description: Unique Device Name (UUID).
-        serialNumber:
-          type: string
-          description: Hardware serial number.
-        deviceId:
-          type: string
-        modelNumber:
-          type: string
-          description: Hardware model number (e.g., 4660X).
-        modelName:
-          type: string
-          description: Marketing model name (e.g., Roku Ultra).
-        friendlyDeviceName:
-          type: string
-        softwareVersion:
-          type: string
-          example: 12.5.0
-        softwareBuild:
-          type: string
-        userDeviceName:
-          type: string
-        wifiMac:
-          type: string
-        ethernetMac:
-          type: string
-        networkType:
-          type: string
-          enum:
-          - wifi
-          - ethernet
-        countryCode:
-          type: string
-        language:
-          type: string
-        timeZone:
-          type: string
-        powerMode:
-          type: string
-          enum:
-          - PowerOn
-          - DisplayOff
-          - Headless
-          - Ready
-        supportsEcsTextedit:
-          type: boolean
-        supportsEcsMicrophone:
-          type: boolean
-        supportsWakeOnWlan:
-          type: boolean
-        developerEnabled:
-          type: boolean
-    AppList:
-      type: object
-      description: Container for the list of installed channels.
-      x-schema-source: documentation
-      properties:
-        apps:
-          type: array
-          items:
-            $ref: '#/components/schemas/App'
     MediaPlayer:
       type: object
       description: State of the active video player.
@@ -321,6 +254,15 @@ components:
               type: string
             time:
               type: integer
+    ActiveApp:
+      type: object
+      description: Currently active app or screensaver/home if none.
+      x-schema-source: documentation
+      properties:
+        app:
+          $ref: '#/components/schemas/App'
+        screensaver:
+          $ref: '#/components/schemas/App'
     App:
       type: object
       description: An installed Roku channel.
@@ -344,12 +286,70 @@ components:
         name:
           type: string
           description: Human-readable channel name.
-    ActiveApp:
+    DeviceInfo:
       type: object
-      description: Currently active app or screensaver/home if none.
+      description: Roku device metadata returned as XML.
       x-schema-source: documentation
       properties:
-        app:
-          $ref: '#/components/schemas/App'
-        screensaver:
-          $ref: '#/components/schemas/App'
+        udn:
+          type: string
+          description: Unique Device Name (UUID).
+        serialNumber:
+          type: string
+          description: Hardware serial number.
+        deviceId:
+          type: string
+        modelNumber:
+          type: string
+          description: Hardware model number (e.g., 4660X).
+        modelName:
+          type: string
+          description: Marketing model name (e.g., Roku Ultra).
+        friendlyDeviceName:
+          type: string
+        softwareVersion:
+          type: string
+          example: 12.5.0
+        softwareBuild:
+          type: string
+        userDeviceName:
+          type: string
+        wifiMac:
+          type: string
+        ethernetMac:
+          type: string
+        networkType:
+          type: string
+          enum:
+          - wifi
+          - ethernet
+        countryCode:
+          type: string
+        language:
+          type: string
+        timeZone:
+          type: string
+        powerMode:
+          type: string
+          enum:
+          - PowerOn
+          - DisplayOff
+          - Headless
+          - Ready
+        supportsEcsTextedit:
+          type: boolean
+        supportsEcsMicrophone:
+          type: boolean
+        supportsWakeOnWlan:
+          type: boolean
+        developerEnabled:
+          type: boolean
+    AppList:
+      type: object
+      description: Container for the list of installed channels.
+      x-schema-source: documentation
+      properties:
+        apps:
+          type: array
+          items:
+            $ref: '#/components/schemas/App'

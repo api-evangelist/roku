@@ -437,31 +437,6 @@ components:
       - max_project_snapshots
       - max_project_runtime
       title: OrganisationOut
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    GroupOut:
-      properties:
-        id:
-          type: integer
-          title: Id
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          title: Name
-          description: The name of the group. Unique in the organisation
-      type: object
-      required:
-      - id
-      - name
-      title: GroupOut
     UserOut:
       properties:
         id:
@@ -489,6 +464,31 @@ components:
       - full_name
       - email
       title: UserOut
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    GroupOut:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          maxLength: 255
+          minLength: 3
+          title: Name
+          description: The name of the group. Unique in the organisation
+      type: object
+      required:
+      - id
+      - name
+      title: GroupOut
     ValidationError:
       properties:
         loc:

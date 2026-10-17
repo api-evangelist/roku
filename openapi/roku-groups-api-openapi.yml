@@ -461,6 +461,41 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    GroupMemberOut:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        username:
+          type: string
+          title: Username
+        full_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Full Name
+        email:
+          anyOf:
+          - type: string
+            format: email
+          - type: 'null'
+          title: Email
+        group_role_id:
+          type: integer
+          title: Group Role Id
+        group_role_name:
+          type: string
+          title: Group Role Name
+      type: object
+      required:
+      - id
+      - username
+      - full_name
+      - email
+      - group_role_id
+      - group_role_name
+      title: GroupMemberOut
     GroupCreate:
       properties:
         name:
@@ -473,15 +508,6 @@ components:
       required:
       - name
       title: GroupCreate
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     GroupUpdate:
       properties:
         name:
@@ -494,6 +520,15 @@ components:
       required:
       - name
       title: GroupUpdate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     GroupOut:
       properties:
         id:
@@ -545,38 +580,3 @@ components:
       - group_role_id
       - user_id
       title: GroupAddMember
-    GroupMemberOut:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        username:
-          type: string
-          title: Username
-        full_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Full Name
-        email:
-          anyOf:
-          - type: string
-            format: email
-          - type: 'null'
-          title: Email
-        group_role_id:
-          type: integer
-          title: Group Role Id
-        group_role_name:
-          type: string
-          title: Group Role Name
-      type: object
-      required:
-      - id
-      - username
-      - full_name
-      - email
-      - group_role_id
-      - group_role_name
-      title: GroupMemberOut

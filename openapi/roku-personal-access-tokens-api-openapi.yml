@@ -144,6 +144,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     PersonalAccessTokenOut:
       properties:
         id:
@@ -214,44 +223,13 @@ components:
       - expires_at
       - status
       title: PersonalAccessTokenOut
-    ScopeOut:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 3
-          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
-          title: Name
-          description: The name of the scope
-        description:
-          type: string
-          maxLength: 4096
-          minLength: 0
-          title: Description
-          description: Description of what the scope allows
-        permissions:
-          items:
-            type: string
-          type: array
-          title: Permissions
-          description: List of permissions granted by this scope
-      type: object
-      required:
-      - name
-      - description
-      - permissions
-      title: ScopeOut
-    PersonalAccessTokenRefresh:
-      properties:
-        expires_in_days:
-          type: integer
-          maximum: 365
-          minimum: 1
-          title: Expires In Days
-          description: Number of days until the token expires (1-365 days)
-          default: 30
-      type: object
-      title: PersonalAccessTokenRefresh
+    PersonalAccessTokenStatus:
+      type: string
+      enum:
+      - active
+      - expired
+      - revoked
+      title: PersonalAccessTokenStatus
     PersonalAccessTokenCreate:
       properties:
         name:
@@ -289,15 +267,33 @@ components:
       - name
       - scopes
       title: PersonalAccessTokenCreate
-    HTTPValidationError:
+    PersonalAccessTokenCreated:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        token:
+          type: string
+          maxLength: 2048
+          minLength: 1
+          title: Token
+          description: The actual token - save this, it won't be shown again!
+        token_info:
+          $ref: '#/components/schemas/PersonalAccessTokenOut'
       type: object
-      title: HTTPValidationError
+      required:
+      - token
+      - token_info
+      title: PersonalAccessTokenCreated
+      description: Response when a new PAT is created - includes the actual token
+    PersonalAccessTokenRefresh:
+      properties:
+        expires_in_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          title: Expires In Days
+          description: Number of days until the token expires (1-365 days)
+          default: 30
+      type: object
+      title: PersonalAccessTokenRefresh
     ValidationError:
       properties:
         loc:
@@ -319,26 +315,30 @@ components:
       - msg
       - type
       title: ValidationError
-    PersonalAccessTokenCreated:
+    ScopeOut:
       properties:
-        token:
+        name:
           type: string
-          maxLength: 2048
-          minLength: 1
-          title: Token
-          description: The actual token - save this, it won't be shown again!
-        token_info:
-          $ref: '#/components/schemas/PersonalAccessTokenOut'
+          maxLength: 255
+          minLength: 3
+          pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+          title: Name
+          description: The name of the scope
+        description:
+          type: string
+          maxLength: 4096
+          minLength: 0
+          title: Description
+          description: Description of what the scope allows
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+          description: List of permissions granted by this scope
       type: object
       required:
-      - token
-      - token_info
-      title: PersonalAccessTokenCreated
-      description: Response when a new PAT is created - includes the actual token
-    PersonalAccessTokenStatus:
-      type: string
-      enum:
-      - active
-      - expired
-      - revoked
-      title: PersonalAccessTokenStatus
+      - name
+      - description
+      - permissions
+      title: ScopeOut
