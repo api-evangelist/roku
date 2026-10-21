@@ -3,30 +3,15 @@ method: searched
 checked:
 - https://hightouch.com/docs/destinations/roku-ads
 - https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+- https://dvb.org/membership/
+- https://www.atsc.org/members/
+- https://www.atsc.org/nextgen-tv/deployments/
+- https://www.hbbtv.org/membership/
+- https://www.hbbtv.org/resource-library/
+- https://www.hbbtv.org/wp-content/uploads/2022/06/List-of-Test-Suite-Licensees-06-2022.pdf
+- https://www.watchnextgentv.com/shop/receivers/
 marketplace_apps: []
 edges:
-- partner_name: Hightouch
-  partner: hightouch
-  partner_match: aggregator
-  marketplace: coverage
-  channel: partner-built
-  direction: partner-built
-  type: coverage
-  relationship: connector-coverage
-  evidence: https://hightouch.com/docs/destinations/roku-ads
-  coverage_role:
-  - destination
-  cdp_signals:
-    destination:
-      catalog_entries:
-      - roku-ads
-      status: released
-      sync_types:
-      - Audiences
-      sync_modes:
-      - all
-  detected_by: sweep-cdp.py
-  first_seen: '2026-10-14'
 - partner_name: Google Ad Tech Providers
   partner: null
   partner_match: domain
@@ -50,4 +35,74 @@ edges:
     detected: '2026-10-14'
   detected_by: sweep-adtech.py
   detected: '2026-10-14'
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/roku-ads
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - roku-ads
+      status: released
+      sync_types:
+      - Audiences
+      sync_modes:
+      - all
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: HbbTV Association
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.hbbtv.org/membership/#members
+  category: hybrid broadcast broadband TV standards body membership
+  contract_reference:
+    register: HbbTV Association members (hbbtv.org/membership/#members)
+    standard: HbbTV (ETSI TS 102 796)
+    spec_file: null
+    role: hbbtv-member
+    registered_name: Roku
+    matched_domain: roku.com
+    matched_by: domain
+    signal_note: 'participation only: association membership'
+    detected_by: sweep-broadcast-tv.py
+    detected: '2026-10-20'
+  detected_by: sweep-broadcast-tv.py
+  first_seen: '2026-10-20'
+- partner_name: HbbTV Test Suite licence
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.hbbtv.org/wp-content/uploads/2022/06/List-of-Test-Suite-Licensees-06-2022.pdf
+  category: HbbTV Test Suite licence
+  contract_reference:
+    register: HbbTV Test Suite licensees (List-of-Test-Suite-Licensees-06-2022.pdf)
+    standard: HbbTV (ETSI TS 102 796)
+    spec_file: null
+    role: hbbtv-test-suite-licensee
+    registered_name: Roku, Inc.
+    register_as_of: 2022-06
+    matched_domain: roku.com
+    matched_by: domain
+    signal_note: 'participation only: licence to run the HbbTV Test Suite in-house (not a certification); the published
+      list is dated June 2022'
+    detected_by: sweep-broadcast-tv.py
+    detected: '2026-10-20'
+    identity: wikidata Q7360089 'Roku, Inc.' P856 https://www.roku.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-broadcast-tv.py
+  first_seen: '2026-10-20'
 source: https://hightouch.com/docs/destinations/roku-ads
