@@ -1,505 +1,512 @@
 {
+  "info": {
+    "_postman_id": "efa51140-15a1-4072-979f-c76533334650",
+    "name": "Roku Pay Web Services Validation API",
+    "description": "Roku Pay Web Services provide server-to-server APIs for billing, subscription management,\ntransaction validation, and entitlement checks for monetized Roku channels.\n\nContact Support:\n Name: Roku Pay Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:14:38.000Z",
+    "updatedAt": "2026-10-21T20:14:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-efa51140-15a1-4072-979f-c76533334650"
+  },
   "item": [
     {
-      "id": "cf27b05b-93b3-4090-9b8e-e524cd1bc9e6",
-      "name": "Validation",
-      "description": {
-        "content": "Transaction and refund validation",
-        "type": "text/plain"
-      },
+      "name": "validate-transaction",
       "item": [
         {
-          "id": "8343ce03-1aa8-4ce1-b39a-1b3ce56b56d0",
-          "name": "Roku Validate Transaction",
-          "request": {
-            "name": "Roku Validate Transaction",
-            "description": {
-              "content": "Verifies that a customer holds a valid entitlement to a product purchased through Roku Pay.\nReturns the purchase status, expiration date, and source channel of the transaction.\nChannels must call this from their backend before granting entitled access to content.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "validate-transaction",
-                ":partnerAPIKey",
-                ":transactionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "partnerAPIKey",
-                  "description": "(Required) The publisher's Roku-issued Partner API key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "transactionId",
-                  "description": "(Required) The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore component at purchase time."
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{partnerAPIKey}",
+          "item": [
             {
-              "id": "97b66e04-b8b4-400b-af03-a775b86f70b2",
-              "name": "Transaction validation result",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "validate-transaction",
-                    ":partnerAPIKey",
-                    ":transactionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "partnerAPIKey",
-                      "description": "(Required) The publisher's Roku-issued Partner API key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "transactionId",
-                      "description": "(Required) The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore component at purchase time."
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{transactionId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Roku Validate Transaction",
+                  "id": "78cf2699-4084-4178-bd7c-9eaf6928a240",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/validate-transaction/:partnerAPIKey/:transactionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "validate-transaction",
+                        ":partnerAPIKey",
+                        ":transactionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7a8aee65-c50a-4e61-8e7c-70a7979e763b",
+                          "key": "partnerAPIKey",
+                          "value": "<string>",
+                          "description": "(Required) The publisher's Roku-issued Partner API key."
+                        },
+                        {
+                          "id": "390f85d2-1058-4ad4-8ecd-563c7cf6a8d6",
+                          "key": "transactionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore component at purchase time."
+                        }
+                      ]
+                    },
+                    "description": "Verifies that a customer holds a valid entitlement to a product purchased through Roku Pay.\nReturns the purchase status, expiration date, and source channel of the transaction.\nChannels must call this from their backend before granting entitled access to content."
+                  },
+                  "response": [
+                    {
+                      "id": "bd38bdd4-5da6-41fd-a99c-ad50ec029242",
+                      "name": "Transaction validation result",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/validate-transaction/:partnerAPIKey/:transactionId?partnerAPIKey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "validate-transaction",
+                            ":partnerAPIKey",
+                            ":transactionId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "partnerAPIKey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "partnerAPIKey"
+                            },
+                            {
+                              "key": "transactionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"purchaseDate\": \"<dateTime>\",\n  \"expirationDate\": \"<dateTime>\",\n  \"purchaseStatus\": \"Pending_Inactive\",\n  \"isEntitled\": \"<boolean>\",\n  \"purchaseChannel\": \"<string>\",\n  \"purchaseContext\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"tax\": \"<float>\"\n}",
+                      "createdAt": "2026-10-21T20:14:39.000Z",
+                      "updatedAt": "2026-10-21T20:14:39.000Z",
+                      "uid": "35240-bd38bdd4-5da6-41fd-a99c-ad50ec029242"
+                    },
+                    {
+                      "id": "dcb8b0a7-7b65-4a3c-8d01-da6c823507a5",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/validate-transaction/:partnerAPIKey/:transactionId?partnerAPIKey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "validate-transaction",
+                            ":partnerAPIKey",
+                            ":transactionId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "partnerAPIKey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "partnerAPIKey"
+                            },
+                            {
+                              "key": "transactionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:14:39.000Z",
+                      "updatedAt": "2026-10-21T20:14:39.000Z",
+                      "uid": "35240-dcb8b0a7-7b65-4a3c-8d01-da6c823507a5"
+                    },
+                    {
+                      "id": "42f093fa-9b19-4e12-8f88-9c1bfc7eb366",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/validate-transaction/:partnerAPIKey/:transactionId?partnerAPIKey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "validate-transaction",
+                            ":partnerAPIKey",
+                            ":transactionId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "partnerAPIKey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "partnerAPIKey"
+                            },
+                            {
+                              "key": "transactionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:14:39.000Z",
+                      "updatedAt": "2026-10-21T20:14:39.000Z",
+                      "uid": "35240-42f093fa-9b19-4e12-8f88-9c1bfc7eb366"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:14:39.000Z",
+                  "updatedAt": "2026-10-21T20:14:39.000Z",
+                  "uid": "35240-78cf2699-4084-4178-bd7c-9eaf6928a240"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 263,\n  \"errorMessage\": \"string\",\n  \"transactionId\": \"string\",\n  \"productId\": \"string\",\n  \"productName\": \"string\",\n  \"purchaseDate\": \"1990-09-16T00:47:53.331Z\",\n  \"expirationDate\": \"2000-01-24T10:39:48.530Z\",\n  \"purchaseStatus\": \"Active\",\n  \"isEntitled\": true,\n  \"purchaseChannel\": \"string\",\n  \"purchaseContext\": \"string\",\n  \"rokuCustomerId\": \"string\",\n  \"amount\": 212.18343891396762,\n  \"currency\": \"string\",\n  \"tax\": 1739.6484438333603\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "535d87a0-f943-4a8a-889a-ab75e4e7b216",
-              "name": "Error response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "validate-transaction",
-                    ":partnerAPIKey",
-                    ":transactionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "partnerAPIKey",
-                      "description": "(Required) The publisher's Roku-issued Partner API key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "transactionId",
-                      "description": "(Required) The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore component at purchase time."
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 5657,\n  \"errorMessage\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6d5c18c5-334a-4678-92ad-3fdacc0d356f",
-              "name": "Error response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "validate-transaction",
-                    ":partnerAPIKey",
-                    ":transactionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "partnerAPIKey",
-                      "description": "(Required) The publisher's Roku-issued Partner API key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "transactionId",
-                      "description": "(Required) The unique transaction identifier (up to 1024 ASCII bytes) returned to the channel by the Roku ChannelStore component at purchase time."
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 5657,\n  \"errorMessage\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "5c196530-0345-49fd-957c-2aa112ee76b4",
+              "createdAt": "2026-10-21T20:14:39.000Z",
+              "updatedAt": "2026-10-21T20:14:39.000Z",
+              "uid": "35240-5c196530-0345-49fd-957c-2aa112ee76b4"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3f721d12-437f-4f33-8fcb-a73293558c85",
-          "name": "Roku Validate Refund",
-          "request": {
-            "name": "Roku Validate Refund",
-            "description": {
-              "content": "Confirms whether a refund has been successfully issued for a previous transaction.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "validate-refund",
-                ":partnerAPIKey",
-                ":refundId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "partnerAPIKey",
-                  "description": "(Required) The publisher's Roku-issued Partner API key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "refundId",
-                  "description": "(Required) The Roku-issued refund identifier."
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8ce27511-a85e-4fec-a068-1be2857d752b",
-              "name": "Refund validation result",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "validate-refund",
-                    ":partnerAPIKey",
-                    ":refundId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "partnerAPIKey",
-                      "description": "(Required) The publisher's Roku-issued Partner API key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "refundId",
-                      "description": "(Required) The Roku-issued refund identifier."
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 501,\n  \"errorMessage\": \"string\",\n  \"refundId\": \"string\",\n  \"transactionId\": \"string\",\n  \"refundDate\": \"2003-02-17T12:11:54.105Z\",\n  \"refundAmount\": 6643.020152659378,\n  \"currency\": \"string\",\n  \"refundReason\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "96827d14-8176-4771-8253-6264c794e090",
-              "name": "Error response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "validate-refund",
-                    ":partnerAPIKey",
-                    ":refundId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "partnerAPIKey",
-                      "description": "(Required) The publisher's Roku-issued Partner API key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "refundId",
-                      "description": "(Required) The Roku-issued refund identifier."
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 5657,\n  \"errorMessage\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cc289857-8850-44b4-ae20-40ff3cc2436c",
-              "name": "Error response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "validate-refund",
-                    ":partnerAPIKey",
-                    ":refundId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "partnerAPIKey",
-                      "description": "(Required) The publisher's Roku-issued Partner API key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "refundId",
-                      "description": "(Required) The Roku-issued refund identifier."
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 5657,\n  \"errorMessage\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "49963f3e-a77e-4e84-90f8-b16b14dd1a45",
+          "createdAt": "2026-10-21T20:14:39.000Z",
+          "updatedAt": "2026-10-21T20:14:39.000Z",
+          "uid": "35240-49963f3e-a77e-4e84-90f8-b16b14dd1a45"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
+      "id": "a91958c0-3ece-4fb0-b14e-23a393eb2e46",
+      "createdAt": "2026-10-21T20:14:39.000Z",
+      "updatedAt": "2026-10-21T20:14:39.000Z",
+      "uid": "35240-a91958c0-3ece-4fb0-b14e-23a393eb2e46"
     },
     {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "name": "validate-refund",
+      "item": [
+        {
+          "name": "{partnerAPIKey}",
+          "item": [
+            {
+              "name": "{refundId}",
+              "item": [
+                {
+                  "name": "Roku Validate Refund",
+                  "id": "16b8c124-37c9-4c42-9d45-065036fc7a41",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/validate-refund/:partnerAPIKey/:refundId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "validate-refund",
+                        ":partnerAPIKey",
+                        ":refundId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3adb9823-68d2-496b-83a2-602213673644",
+                          "key": "partnerAPIKey",
+                          "value": "<string>",
+                          "description": "(Required) The publisher's Roku-issued Partner API key."
+                        },
+                        {
+                          "id": "7538a4c4-5e71-4858-baf2-6d624ffdc768",
+                          "key": "refundId",
+                          "value": "<string>",
+                          "description": "(Required) The Roku-issued refund identifier."
+                        }
+                      ]
+                    },
+                    "description": "Confirms whether a refund has been successfully issued for a previous transaction."
+                  },
+                  "response": [
+                    {
+                      "id": "c5281741-e532-4fa9-ad72-870a733fb576",
+                      "name": "Refund validation result",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/validate-refund/:partnerAPIKey/:refundId?partnerAPIKey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "validate-refund",
+                            ":partnerAPIKey",
+                            ":refundId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "partnerAPIKey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "partnerAPIKey"
+                            },
+                            {
+                              "key": "refundId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\",\n  \"refundId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundDate\": \"<dateTime>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"refundReason\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:14:39.000Z",
+                      "updatedAt": "2026-10-21T20:14:39.000Z",
+                      "uid": "35240-c5281741-e532-4fa9-ad72-870a733fb576"
+                    },
+                    {
+                      "id": "234aea28-7260-40a6-a608-d3bf78281578",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/validate-refund/:partnerAPIKey/:refundId?partnerAPIKey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "validate-refund",
+                            ":partnerAPIKey",
+                            ":refundId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "partnerAPIKey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "partnerAPIKey"
+                            },
+                            {
+                              "key": "refundId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:14:39.000Z",
+                      "updatedAt": "2026-10-21T20:14:39.000Z",
+                      "uid": "35240-234aea28-7260-40a6-a608-d3bf78281578"
+                    },
+                    {
+                      "id": "fabeaab0-5b05-4214-865b-aea867ef0d93",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/validate-refund/:partnerAPIKey/:refundId?partnerAPIKey=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "validate-refund",
+                            ":partnerAPIKey",
+                            ":refundId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "partnerAPIKey",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "partnerAPIKey"
+                            },
+                            {
+                              "key": "refundId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:14:39.000Z",
+                      "updatedAt": "2026-10-21T20:14:39.000Z",
+                      "uid": "35240-fabeaab0-5b05-4214-865b-aea867ef0d93"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:14:39.000Z",
+                  "updatedAt": "2026-10-21T20:14:39.000Z",
+                  "uid": "35240-16b8c124-37c9-4c42-9d45-065036fc7a41"
+                }
+              ],
+              "id": "a7f49021-d394-4464-8ee6-35cceb4bf064",
+              "createdAt": "2026-10-21T20:14:39.000Z",
+              "updatedAt": "2026-10-21T20:14:39.000Z",
+              "uid": "35240-a7f49021-d394-4464-8ee6-35cceb4bf064"
+            }
+          ],
+          "id": "1087826c-5ce8-4ff5-8d2c-b8b547c7e2f6",
+          "createdAt": "2026-10-21T20:14:39.000Z",
+          "updatedAt": "2026-10-21T20:14:39.000Z",
+          "uid": "35240-1087826c-5ce8-4ff5-8d2c-b8b547c7e2f6"
+        }
+      ],
+      "id": "5ca9b8af-5435-4f18-9aa9-bd3de8e00ac1",
+      "createdAt": "2026-10-21T20:14:39.000Z",
+      "updatedAt": "2026-10-21T20:14:39.000Z",
+      "uid": "35240-5ca9b8af-5435-4f18-9aa9-bd3de8e00ac1"
     }
   ],
-  "info": {
-    "_postman_id": "e55ed75f-15a4-46db-bdee-408bf0b5042d",
-    "name": "Roku External Control Protocol (ECP) Apps Validation API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "partnerAPIKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://apipub.roku.com/listen/transaction-service.svc"
     }
-  }
+  ]
 }

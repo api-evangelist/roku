@@ -1,1941 +1,1821 @@
 {
+  "info": {
+    "_postman_id": "e5fb8d46-a4dc-4e52-a75c-66dfebd68df8",
+    "name": "Roku Nabu Cloud Organisations API",
+    "description": "Nabu Cloud is Roku's developer cloud platform for managing test devices, snapshots, builds, projects, organisations, groups, and personal access tokens. It provides REST APIs for orchestrating remote Roku test devices and CI/CD workflows.\n\nContact Support:\n Name: DevX Tools Team\n Email: dldevxtools@roku.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:13:55.000Z",
+    "updatedAt": "2026-10-21T20:13:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e5fb8d46-a4dc-4e52-a75c-66dfebd68df8"
+  },
   "item": [
     {
-      "id": "ea0267b5-12d2-4c36-9f05-026c3f3b0db6",
-      "name": "organisations",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "bf2dc15c-c519-4ecc-a3e6-37f567d65284",
-          "name": "Roku List Organisations",
-          "request": {
-            "name": "Roku List Organisations",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "items",
-                  "value": "100",
-                  "description": "The number of items per page. Use 0 for no limit."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "The page number. Use 0 for the first page."
-                },
-                {
-                  "disabled": false,
-                  "key": "slug",
-                  "value": "<string>",
-                  "description": "Slug of the organisation, used in URLs"
-                },
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "max_devices",
-                  "value": "<integer>",
-                  "description": "Maximum number of devices in the organisation"
-                },
-                {
-                  "disabled": false,
-                  "key": "max_snapshots",
-                  "value": "<integer>",
-                  "description": "Maximum number of snapshots in the organisation"
-                },
-                {
-                  "disabled": false,
-                  "key": "max_project_devices",
-                  "value": "<integer>",
-                  "description": "Maximum number of devices in the organisation per project, 0 for Organisation max"
-                },
-                {
-                  "disabled": false,
-                  "key": "max_project_snapshots",
-                  "value": "<integer>",
-                  "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max"
-                },
-                {
-                  "disabled": false,
-                  "key": "max_project_runtime",
-                  "value": "<integer>",
-                  "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max"
-                },
-                {
-                  "disabled": false,
-                  "key": "created_at",
-                  "value": "<date>",
-                  "description": "The creation day of the organisation"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "d331b40e-b133-41b8-92b0-1e7081223897",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "slug",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "max_devices",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "max_snapshots",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "max_project_devices",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "max_project_snapshots",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "max_project_runtime",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "created_at",
-                      "value": "<date>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "organisations",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{organisation_id}",
+                  "item": [
+                    {
+                      "name": "members",
+                      "item": [
+                        {
+                          "name": "{user_id}",
+                          "item": [
+                            {
+                              "name": "Roku Get Organisation Member",
+                              "id": "8315c7af-c140-409d-94cf-86c6ad416443",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/members/:user_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "organisations",
+                                    ":organisation_id",
+                                    "members",
+                                    ":user_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b5ba3dfe-84d1-4847-b50c-f54b40a9e774",
+                                      "key": "organisation_id",
+                                      "value": "<integer>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "ac1955e2-e132-4fe9-870c-f98a14db401a",
+                                      "key": "user_id",
+                                      "value": "<uuid>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "998fb46b-8d00-4bd2-827e-ec09e5daf0b1",
+                                  "name": "Successful Response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/members/:user_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "members",
+                                        ":user_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organisation_id"
+                                        },
+                                        {
+                                          "key": "user_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"user_id\": \"<uuid>\",\n  \"username\": \"<string>\",\n  \"organisation_role_id\": \"<integer>\",\n  \"organisation_role_name\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-998fb46b-8d00-4bd2-827e-ec09e5daf0b1"
+                                },
+                                {
+                                  "id": "2f9905e5-5669-411c-a041-1547663538b5",
+                                  "name": "Validation Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/members/:user_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "members",
+                                        ":user_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organisation_id"
+                                        },
+                                        {
+                                          "key": "user_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                  "code": 422,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-2f9905e5-5669-411c-a041-1547663538b5"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-8315c7af-c140-409d-94cf-86c6ad416443"
+                            }
+                          ],
+                          "id": "2a191831-f5a4-43a3-bd25-1e21ac02b860",
+                          "createdAt": "2026-10-21T20:13:56.000Z",
+                          "updatedAt": "2026-10-21T20:13:56.000Z",
+                          "uid": "35240-2a191831-f5a4-43a3-bd25-1e21ac02b860"
+                        },
+                        {
+                          "name": "Roku List Organisation Members",
+                          "id": "05277d37-69ad-4989-94c1-d21af44cab07",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/members?items=100&page=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organisations",
+                                ":organisation_id",
+                                "members"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The number of items per page. Use 0 for no limit.",
+                                  "key": "items",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "The page number. Use 0 for the first page.",
+                                  "key": "page",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7637753a-275a-451f-859d-23d33e6572d5",
+                                  "key": "organisation_id",
+                                  "value": "<integer>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "61d08d77-0206-47ff-aea2-0fb45fce2277",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/members?items=100&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "organisations",
+                                    ":organisation_id",
+                                    "members"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The number of items per page. Use 0 for no limit.",
+                                      "key": "items",
+                                      "value": "100"
+                                    },
+                                    {
+                                      "description": "The page number. Use 0 for the first page.",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organisation_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"user_id\": \"<uuid>\",\n    \"username\": \"<string>\",\n    \"organisation_role_id\": \"<integer>\",\n    \"organisation_role_name\": \"<string>\"\n  },\n  {\n    \"user_id\": \"<uuid>\",\n    \"username\": \"<string>\",\n    \"organisation_role_id\": \"<integer>\",\n    \"organisation_role_name\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-61d08d77-0206-47ff-aea2-0fb45fce2277"
+                            },
+                            {
+                              "id": "18a433a7-8bfc-49df-ad1f-6af9772ec538",
+                              "name": "Validation Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/members?items=100&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "organisations",
+                                    ":organisation_id",
+                                    "members"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The number of items per page. Use 0 for no limit.",
+                                      "key": "items",
+                                      "value": "100"
+                                    },
+                                    {
+                                      "description": "The page number. Use 0 for the first page.",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organisation_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-18a433a7-8bfc-49df-ad1f-6af9772ec538"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:13:56.000Z",
+                          "updatedAt": "2026-10-21T20:13:56.000Z",
+                          "uid": "35240-05277d37-69ad-4989-94c1-d21af44cab07"
+                        }
+                      ],
+                      "id": "a0a3c632-8a27-4b5f-a59d-84c9171b7c93",
+                      "createdAt": "2026-10-21T20:13:56.000Z",
+                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                      "uid": "35240-a0a3c632-8a27-4b5f-a59d-84c9171b7c93"
+                    },
+                    {
+                      "name": "regions",
+                      "item": [
+                        {
+                          "name": "{region_id}",
+                          "item": [
+                            {
+                              "name": "Roku Get Organisation Region",
+                              "id": "4791ae17-6b02-4142-a060-3f643b4f4429",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/regions/:region_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "organisations",
+                                    ":organisation_id",
+                                    "regions",
+                                    ":region_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "15a62c66-247b-4574-9a1b-750dacdd5bfb",
+                                      "key": "organisation_id",
+                                      "value": "<integer>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "4c248c18-090b-421f-bb71-f5bd7f6712e5",
+                                      "key": "region_id",
+                                      "value": "<integer>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "13ea5abc-a55a-45e7-88ec-7e064df957d7",
+                                  "name": "Successful Response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/regions/:region_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "regions",
+                                        ":region_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organisation_id"
+                                        },
+                                        {
+                                          "key": "region_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"region_id\": \"<integer>\",\n  \"region_name\": \"<string>\",\n  \"aws_region\": \"us-west-2\",\n  \"agent_active\": \"<boolean>\",\n  \"agent_stream_options\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-13ea5abc-a55a-45e7-88ec-7e064df957d7"
+                                },
+                                {
+                                  "id": "dc2fab43-7b8b-4658-8599-06bdc7a862ec",
+                                  "name": "Validation Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/regions/:region_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "regions",
+                                        ":region_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organisation_id"
+                                        },
+                                        {
+                                          "key": "region_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                  "code": 422,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-dc2fab43-7b8b-4658-8599-06bdc7a862ec"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-4791ae17-6b02-4142-a060-3f643b4f4429"
+                            }
+                          ],
+                          "id": "68044f3b-c4d4-4546-b15e-d53f835228b7",
+                          "createdAt": "2026-10-21T20:13:56.000Z",
+                          "updatedAt": "2026-10-21T20:13:56.000Z",
+                          "uid": "35240-68044f3b-c4d4-4546-b15e-d53f835228b7"
+                        },
+                        {
+                          "name": "Roku List Organisation Regions",
+                          "id": "1fd3fc30-fc64-4c40-bbe1-027be4c0244b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/regions?items=100&page=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organisations",
+                                ":organisation_id",
+                                "regions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The number of items per page. Use 0 for no limit.",
+                                  "key": "items",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "The page number. Use 0 for the first page.",
+                                  "key": "page",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "238456ca-f9ff-4eb5-923e-26ba84ec2462",
+                                  "key": "organisation_id",
+                                  "value": "<integer>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use."
+                          },
+                          "response": [
+                            {
+                              "id": "e35e6537-487e-483f-8fc2-755c942e8266",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/regions?items=100&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "organisations",
+                                    ":organisation_id",
+                                    "regions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The number of items per page. Use 0 for no limit.",
+                                      "key": "items",
+                                      "value": "100"
+                                    },
+                                    {
+                                      "description": "The page number. Use 0 for the first page.",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organisation_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"region_id\": \"<integer>\",\n    \"region_name\": \"<string>\",\n    \"aws_region\": \"us-west-2\",\n    \"agent_active\": \"<boolean>\",\n    \"agent_stream_options\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"region_id\": \"<integer>\",\n    \"region_name\": \"<string>\",\n    \"aws_region\": \"us-west-2\",\n    \"agent_active\": \"<boolean>\",\n    \"agent_stream_options\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-e35e6537-487e-483f-8fc2-755c942e8266"
+                            },
+                            {
+                              "id": "d9e6c714-50b7-4ee8-8520-2e0177c31368",
+                              "name": "Validation Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/regions?items=100&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "organisations",
+                                    ":organisation_id",
+                                    "regions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The number of items per page. Use 0 for no limit.",
+                                      "key": "items",
+                                      "value": "100"
+                                    },
+                                    {
+                                      "description": "The page number. Use 0 for the first page.",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organisation_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-d9e6c714-50b7-4ee8-8520-2e0177c31368"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:13:56.000Z",
+                          "updatedAt": "2026-10-21T20:13:56.000Z",
+                          "uid": "35240-1fd3fc30-fc64-4c40-bbe1-027be4c0244b"
+                        }
+                      ],
+                      "id": "8bbdea9f-e2a8-4b5a-ab35-8d9cb3fc1cee",
+                      "createdAt": "2026-10-21T20:13:56.000Z",
+                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                      "uid": "35240-8bbdea9f-e2a8-4b5a-ab35-8d9cb3fc1cee"
+                    },
+                    {
+                      "name": "roles",
+                      "item": [
+                        {
+                          "name": "projects",
+                          "item": [
+                            {
+                              "name": "{role_id}",
+                              "item": [
+                                {
+                                  "name": "Roku Get Project Role",
+                                  "id": "8aa067c6-5f7f-474e-af0c-e45ed378ea77",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/projects/:role_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "roles",
+                                        "projects",
+                                        ":role_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "b5a4cbc7-f483-4cbe-9996-ea5e023ef188",
+                                          "key": "organisation_id",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "51281a60-7f01-4dce-bdd1-bf1c9e62a7f6",
+                                          "key": "role_id",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "ee609826-190f-4e2e-9348-52028af9b0e3",
+                                      "name": "Successful Response",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/projects/:role_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "organisations",
+                                            ":organisation_id",
+                                            "roles",
+                                            "projects",
+                                            ":role_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organisation_id"
+                                            },
+                                            {
+                                              "key": "role_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"project_role_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"permissions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "createdAt": "2026-10-21T20:13:56.000Z",
+                                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                                      "uid": "35240-ee609826-190f-4e2e-9348-52028af9b0e3"
+                                    },
+                                    {
+                                      "id": "5ee40869-b0ce-4dc6-94e3-1ace7e201625",
+                                      "name": "Validation Error",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/projects/:role_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "organisations",
+                                            ":organisation_id",
+                                            "roles",
+                                            "projects",
+                                            ":role_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organisation_id"
+                                            },
+                                            {
+                                              "key": "role_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                      "code": 422,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-10-21T20:13:56.000Z",
+                                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                                      "uid": "35240-5ee40869-b0ce-4dc6-94e3-1ace7e201625"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-8aa067c6-5f7f-474e-af0c-e45ed378ea77"
+                                }
+                              ],
+                              "id": "9360662b-1992-409d-870b-25ed92869c65",
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-9360662b-1992-409d-870b-25ed92869c65"
+                            },
+                            {
+                              "name": "Roku List Project Roles",
+                              "id": "f227c0c7-7309-48af-90f7-cf288a37b5f8",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/projects?items=100&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "organisations",
+                                    ":organisation_id",
+                                    "roles",
+                                    "projects"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The number of items per page. Use 0 for no limit.",
+                                      "key": "items",
+                                      "value": "100"
+                                    },
+                                    {
+                                      "description": "The page number. Use 0 for the first page.",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "318698a2-4420-4c35-8496-a8b5cd80cd94",
+                                      "key": "organisation_id",
+                                      "value": "<integer>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "17d33842-bf99-46cd-819d-516877b77578",
+                                  "name": "Successful Response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/projects?items=100&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "roles",
+                                        "projects"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The number of items per page. Use 0 for no limit.",
+                                          "key": "items",
+                                          "value": "100"
+                                        },
+                                        {
+                                          "description": "The page number. Use 0 for the first page.",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organisation_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"project_role_id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"project_role_id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-17d33842-bf99-46cd-819d-516877b77578"
+                                },
+                                {
+                                  "id": "05c9675a-abdc-4cc7-9817-16f2e22e1937",
+                                  "name": "Validation Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/projects?items=100&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "roles",
+                                        "projects"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The number of items per page. Use 0 for no limit.",
+                                          "key": "items",
+                                          "value": "100"
+                                        },
+                                        {
+                                          "description": "The page number. Use 0 for the first page.",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organisation_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                  "code": 422,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-05c9675a-abdc-4cc7-9817-16f2e22e1937"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-f227c0c7-7309-48af-90f7-cf288a37b5f8"
+                            }
+                          ],
+                          "id": "37f01a21-eee7-4a3d-837c-a96300acaae2",
+                          "createdAt": "2026-10-21T20:13:56.000Z",
+                          "updatedAt": "2026-10-21T20:13:56.000Z",
+                          "uid": "35240-37f01a21-eee7-4a3d-837c-a96300acaae2"
+                        },
+                        {
+                          "name": "groups",
+                          "item": [
+                            {
+                              "name": "{role_id}",
+                              "item": [
+                                {
+                                  "name": "Roku Get Group Role",
+                                  "id": "e5e7dce4-f2d0-4fd8-ae09-47e05fb71004",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/groups/:role_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "roles",
+                                        "groups",
+                                        ":role_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "113aedfb-d812-4fcb-9c95-9790ba6ce04c",
+                                          "key": "organisation_id",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "e4b5e2b4-79be-4ef1-abb5-0d2ade6641af",
+                                          "key": "role_id",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "e416ff1c-5c25-44a3-ae3d-af3efab68b0b",
+                                      "name": "Successful Response",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/groups/:role_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "organisations",
+                                            ":organisation_id",
+                                            "roles",
+                                            "groups",
+                                            ":role_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organisation_id"
+                                            },
+                                            {
+                                              "key": "role_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"group_role_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"permissions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "createdAt": "2026-10-21T20:13:56.000Z",
+                                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                                      "uid": "35240-e416ff1c-5c25-44a3-ae3d-af3efab68b0b"
+                                    },
+                                    {
+                                      "id": "a5f2f024-15a1-4c35-973f-2a401e17c59b",
+                                      "name": "Validation Error",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/groups/:role_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "organisations",
+                                            ":organisation_id",
+                                            "roles",
+                                            "groups",
+                                            ":role_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organisation_id"
+                                            },
+                                            {
+                                              "key": "role_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                      "code": 422,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-10-21T20:13:56.000Z",
+                                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                                      "uid": "35240-a5f2f024-15a1-4c35-973f-2a401e17c59b"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-e5e7dce4-f2d0-4fd8-ae09-47e05fb71004"
+                                }
+                              ],
+                              "id": "94c9f16e-cbd6-40aa-9b59-f091dd9ddad4",
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-94c9f16e-cbd6-40aa-9b59-f091dd9ddad4"
+                            },
+                            {
+                              "name": "Roku List Group Roles",
+                              "id": "6242662b-dc19-4bc7-b47a-5ef698d544d4",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/groups?items=100&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "organisations",
+                                    ":organisation_id",
+                                    "roles",
+                                    "groups"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The number of items per page. Use 0 for no limit.",
+                                      "key": "items",
+                                      "value": "100"
+                                    },
+                                    {
+                                      "description": "The page number. Use 0 for the first page.",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "7809fbda-0fc3-439a-8d9f-7997caaea4b6",
+                                      "key": "organisation_id",
+                                      "value": "<integer>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "61eba27a-e447-4b30-867e-8ce197e2be8e",
+                                  "name": "Successful Response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/groups?items=100&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "roles",
+                                        "groups"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The number of items per page. Use 0 for no limit.",
+                                          "key": "items",
+                                          "value": "100"
+                                        },
+                                        {
+                                          "description": "The page number. Use 0 for the first page.",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organisation_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"group_role_id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"group_role_id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-61eba27a-e447-4b30-867e-8ce197e2be8e"
+                                },
+                                {
+                                  "id": "33d85cac-c2bc-4203-83a3-0af08ecf6304",
+                                  "name": "Validation Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id/roles/groups?items=100&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "organisations",
+                                        ":organisation_id",
+                                        "roles",
+                                        "groups"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The number of items per page. Use 0 for no limit.",
+                                          "key": "items",
+                                          "value": "100"
+                                        },
+                                        {
+                                          "description": "The page number. Use 0 for the first page.",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organisation_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                  "code": 422,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:13:56.000Z",
+                                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                                  "uid": "35240-33d85cac-c2bc-4203-83a3-0af08ecf6304"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:13:56.000Z",
+                              "updatedAt": "2026-10-21T20:13:56.000Z",
+                              "uid": "35240-6242662b-dc19-4bc7-b47a-5ef698d544d4"
+                            }
+                          ],
+                          "id": "2e7c2cc4-9aa1-4d0d-8314-61929cbac4f8",
+                          "createdAt": "2026-10-21T20:13:56.000Z",
+                          "updatedAt": "2026-10-21T20:13:56.000Z",
+                          "uid": "35240-2e7c2cc4-9aa1-4d0d-8314-61929cbac4f8"
+                        }
+                      ],
+                      "id": "619d9a1d-b617-4374-bd7c-441d7eb1c735",
+                      "createdAt": "2026-10-21T20:13:56.000Z",
+                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                      "uid": "35240-619d9a1d-b617-4374-bd7c-441d7eb1c735"
+                    },
+                    {
+                      "name": "Roku Get Organisation",
+                      "id": "b11c0ae3-54cd-4438-a2dd-1873da6c0c97",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organisations",
+                            ":organisation_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "32c0c906-c7a2-41c9-9600-6a42479905a8",
+                              "key": "organisation_id",
+                              "value": "<integer>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use."
+                      },
+                      "response": [
+                        {
+                          "id": "b509fb58-44d1-4523-a8bc-c91a0c2c35f3",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organisations",
+                                ":organisation_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organisation_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"7fejto-d-4cb3\",\n  \"slug\": \"<string>\",\n  \"max_devices\": \"<integer>\",\n  \"max_snapshots\": \"<integer>\",\n  \"max_project_devices\": \"<integer>\",\n  \"max_project_snapshots\": \"<integer>\",\n  \"max_project_runtime\": \"<integer>\",\n  \"idp_id\": \"<uuid>\",\n  \"current_devices\": 0,\n  \"current_snapshots\": 0\n}",
+                          "createdAt": "2026-10-21T20:13:56.000Z",
+                          "updatedAt": "2026-10-21T20:13:56.000Z",
+                          "uid": "35240-b509fb58-44d1-4523-a8bc-c91a0c2c35f3"
+                        },
+                        {
+                          "id": "dd20f069-df4a-42ea-ab76-5daf62d88d0e",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organisations/:organisation_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organisations",
+                                ":organisation_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organisation_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-21T20:13:56.000Z",
+                          "updatedAt": "2026-10-21T20:13:56.000Z",
+                          "uid": "35240-dd20f069-df4a-42ea-ab76-5daf62d88d0e"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:13:56.000Z",
+                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                      "uid": "35240-b11c0ae3-54cd-4438-a2dd-1873da6c0c97"
+                    }
+                  ],
+                  "id": "cb3de955-15b5-4f06-b273-85f7fa9f44a2",
+                  "createdAt": "2026-10-21T20:13:56.000Z",
+                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                  "uid": "35240-cb3de955-15b5-4f06-b273-85f7fa9f44a2"
+                },
+                {
+                  "name": "Roku List Organisations",
+                  "id": "601c8591-8de8-4dde-b3d8-981d70c52d1a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/organisations?items=100&page=0&slug=f1fj-d2q7xjlwn&name=<string>&max_devices=<integer>&max_snapshots=<integer>&max_project_devices=<integer>&max_project_snapshots=<integer>&max_project_runtime=<integer>&created_at=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "organisations"
+                      ],
+                      "query": [
+                        {
+                          "description": "The number of items per page. Use 0 for no limit.",
+                          "key": "items",
+                          "value": "100"
+                        },
+                        {
+                          "description": "The page number. Use 0 for the first page.",
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Slug of the organisation, used in URLs",
+                          "key": "slug",
+                          "value": "f1fj-d2q7xjlwn"
+                        },
+                        {
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of devices in the organisation",
+                          "key": "max_devices",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of snapshots in the organisation",
+                          "key": "max_snapshots",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of devices in the organisation per project, 0 for Organisation max",
+                          "key": "max_project_devices",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max",
+                          "key": "max_project_snapshots",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max",
+                          "key": "max_project_runtime",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The creation day of the organisation",
+                          "key": "created_at",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "0134ebc0-69a3-4316-9ddd-e0cfa79625e6",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organisations?items=100&page=0&slug=f1fj-d2q7xjlwn&name=<string>&max_devices=<integer>&max_snapshots=<integer>&max_project_devices=<integer>&max_project_snapshots=<integer>&max_project_runtime=<integer>&created_at=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organisations"
+                          ],
+                          "query": [
+                            {
+                              "description": "The number of items per page. Use 0 for no limit.",
+                              "key": "items",
+                              "value": "100"
+                            },
+                            {
+                              "description": "The page number. Use 0 for the first page.",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Slug of the organisation, used in URLs",
+                              "key": "slug",
+                              "value": "f1fj-d2q7xjlwn"
+                            },
+                            {
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of devices in the organisation",
+                              "key": "max_devices",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of snapshots in the organisation",
+                              "key": "max_snapshots",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of devices in the organisation per project, 0 for Organisation max",
+                              "key": "max_project_devices",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max",
+                              "key": "max_project_snapshots",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max",
+                              "key": "max_project_runtime",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The creation day of the organisation",
+                              "key": "created_at",
+                              "value": "<date>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"wxxbrtlx2-8gojd-w1r4rwo9lc4-uytuf-53el-gn8vqg0e-9o9w-9q7ucyy-hi\",\n    \"slug\": \"<string>\",\n    \"max_devices\": \"<integer>\",\n    \"max_snapshots\": \"<integer>\",\n    \"max_project_devices\": \"<integer>\",\n    \"max_project_snapshots\": \"<integer>\",\n    \"max_project_runtime\": \"<integer>\",\n    \"idp_id\": \"<uuid>\",\n    \"current_devices\": 0,\n    \"current_snapshots\": 0\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"5j-g71u37d-e94obevnf1-a0ajdslle-4zvm5hu34c8-8u80dzjq-ry-6bzn3hijq-wes6amv25q-g5t\",\n    \"slug\": \"<string>\",\n    \"max_devices\": \"<integer>\",\n    \"max_snapshots\": \"<integer>\",\n    \"max_project_devices\": \"<integer>\",\n    \"max_project_snapshots\": \"<integer>\",\n    \"max_project_runtime\": \"<integer>\",\n    \"idp_id\": \"<uuid>\",\n    \"current_devices\": 0,\n    \"current_snapshots\": 0\n  }\n]",
+                      "createdAt": "2026-10-21T20:13:56.000Z",
+                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                      "uid": "35240-0134ebc0-69a3-4316-9ddd-e0cfa79625e6"
+                    },
+                    {
+                      "id": "6976701a-8c70-444d-a699-461481c054b9",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organisations?items=100&page=0&slug=f1fj-d2q7xjlwn&name=<string>&max_devices=<integer>&max_snapshots=<integer>&max_project_devices=<integer>&max_project_snapshots=<integer>&max_project_runtime=<integer>&created_at=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organisations"
+                          ],
+                          "query": [
+                            {
+                              "description": "The number of items per page. Use 0 for no limit.",
+                              "key": "items",
+                              "value": "100"
+                            },
+                            {
+                              "description": "The page number. Use 0 for the first page.",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Slug of the organisation, used in URLs",
+                              "key": "slug",
+                              "value": "f1fj-d2q7xjlwn"
+                            },
+                            {
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of devices in the organisation",
+                              "key": "max_devices",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of snapshots in the organisation",
+                              "key": "max_snapshots",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of devices in the organisation per project, 0 for Organisation max",
+                              "key": "max_project_devices",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of snapshots in the organisation per project, 0 for Organisation max",
+                              "key": "max_project_snapshots",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum runtime of a device in the organisation per project, 0 for Organisation max",
+                              "key": "max_project_runtime",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The creation day of the organisation",
+                              "key": "created_at",
+                              "value": "<date>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:13:56.000Z",
+                      "updatedAt": "2026-10-21T20:13:56.000Z",
+                      "uid": "35240-6976701a-8c70-444d-a699-461481c054b9"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:13:56.000Z",
+                  "updatedAt": "2026-10-21T20:13:56.000Z",
+                  "uid": "35240-601c8591-8de8-4dde-b3d8-981d70c52d1a"
                 }
               ],
-              "body": "[\n  {\n    \"id\": 3213,\n    \"name\": \"7szzw7htmt-33uhj8ub6by-8mtzcka-l06k-wz\",\n    \"slug\": \"string\",\n    \"max_devices\": 9855,\n    \"max_snapshots\": 7950,\n    \"max_project_devices\": 2096,\n    \"max_project_snapshots\": 9940,\n    \"max_project_runtime\": 5680,\n    \"idp_id\": \"af20eb56-fc93-f5e6-d3ea-b33b9b1c3325\",\n    \"current_devices\": 0,\n    \"current_snapshots\": 0\n  },\n  {\n    \"id\": 3023,\n    \"name\": \"1bifsm-027n0-6f-uu-x-wgq-mog\",\n    \"slug\": \"string\",\n    \"max_devices\": 9916,\n    \"max_snapshots\": 2980,\n    \"max_project_devices\": 9986,\n    \"max_project_snapshots\": 269,\n    \"max_project_runtime\": 7437,\n    \"idp_id\": \"fc4444c2-97ec-645d-6788-9962d0988f3e\",\n    \"current_devices\": 0,\n    \"current_snapshots\": 0\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5c0ca8f0-58cd-49a3-834b-06efac926838",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "slug",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "max_devices",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "max_snapshots",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "max_project_devices",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "max_project_snapshots",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "max_project_runtime",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "created_at",
-                      "value": "<date>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "246c0372-f9ec-4d79-b1ca-8469b35d7c67",
+              "createdAt": "2026-10-21T20:13:56.000Z",
+              "updatedAt": "2026-10-21T20:13:56.000Z",
+              "uid": "35240-246c0372-f9ec-4d79-b1ca-8469b35d7c67"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8f598dce-ef66-4fe4-a939-36ef81dc15bd",
-          "name": "Roku Get Organisation",
-          "request": {
-            "name": "Roku Get Organisation",
-            "description": {
-              "content": "Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "fa946bab-52d4-4905-9e46-1904e133127e",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 3671,\n  \"name\": \"dm2s47oih-7u5k684qn\",\n  \"slug\": \"string\",\n  \"max_devices\": 9863,\n  \"max_snapshots\": 3641,\n  \"max_project_devices\": 9150,\n  \"max_project_snapshots\": 3586,\n  \"max_project_runtime\": 1953,\n  \"idp_id\": \"1f631ea6-3d09-1353-c10a-20f3f50fd73e\",\n  \"current_devices\": 0,\n  \"current_snapshots\": 0\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0ae8e621-aba6-4a1d-8444-23916bdd72fe",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "00be939e-b336-4ef6-a922-15f7bf73a1fd",
-          "name": "Roku List Organisation Members",
-          "request": {
-            "name": "Roku List Organisation Members",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id",
-                "members"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "items",
-                  "value": "100",
-                  "description": "The number of items per page. Use 0 for no limit."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "The page number. Use 0 for the first page."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "be9aa445-b2b8-49db-b1d8-1312a8eafb9f",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "members"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"user_id\": \"c40283ad-75e5-6ba6-b1e7-d4e1a45ee789\",\n    \"username\": \"string\",\n    \"organisation_role_id\": 8660,\n    \"organisation_role_name\": \"string\"\n  },\n  {\n    \"user_id\": \"4dc8eae9-bb29-e2d1-2717-b38a9d538fba\",\n    \"username\": \"string\",\n    \"organisation_role_id\": 7887,\n    \"organisation_role_name\": \"string\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c579c755-7335-4a7e-8406-f54910fbc4f2",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "members"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b60124da-cd69-42a5-85ba-36f012c9ed64",
-          "name": "Roku Get Organisation Member",
-          "request": {
-            "name": "Roku Get Organisation Member",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id",
-                "members",
-                ":user_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "user_id",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "4b773b34-82d7-4b00-9ad2-43f8df059567",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "members",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"user_id\": \"9546149d-6f69-5cef-a6a9-4dc2d371f23e\",\n  \"username\": \"string\",\n  \"organisation_role_id\": 2828,\n  \"organisation_role_name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "dffb04c0-f662-4c7d-bd29-158e4cb7764c",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "members",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0b9dafc4-5413-481a-9af6-35a026653bb5",
-          "name": "Roku List Organisation Regions",
-          "request": {
-            "name": "Roku List Organisation Regions",
-            "description": {
-              "content": "Set Organisation_id to 1. Currently not in use as there is only Roku, but kept for future use.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id",
-                "regions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "items",
-                  "value": "100",
-                  "description": "The number of items per page. Use 0 for no limit."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "The page number. Use 0 for the first page."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "a7351e63-a54b-4673-a1bb-d2bb5816e8b6",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "regions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"region_id\": 1293,\n    \"region_name\": \"string\",\n    \"aws_region\": \"us-west-2\",\n    \"agent_active\": false,\n    \"agent_stream_options\": [\n      {\n        \"id\": 7627,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 9712,\n        \"name\": \"string\"\n      }\n    ]\n  },\n  {\n    \"region_id\": 1483,\n    \"region_name\": \"string\",\n    \"aws_region\": \"us-west-2\",\n    \"agent_active\": false,\n    \"agent_stream_options\": [\n      {\n        \"id\": 8115,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 7821,\n        \"name\": \"string\"\n      }\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b542de4b-263b-4bd2-9196-8009bf874c39",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "regions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "620c8eaf-2e91-4fd0-8763-115c0aa249bf",
-          "name": "Roku Get Organisation Region",
-          "request": {
-            "name": "Roku Get Organisation Region",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id",
-                "regions",
-                ":region_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "region_id",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "c9bcc8b2-7387-4ee5-8a60-4b4784153d9a",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "regions",
-                    ":region_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "region_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"region_id\": 2830,\n  \"region_name\": \"string\",\n  \"aws_region\": \"us-west-2\",\n  \"agent_active\": true,\n  \"agent_stream_options\": [\n    {\n      \"id\": 5683,\n      \"name\": \"string\"\n    },\n    {\n      \"id\": 1382,\n      \"name\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9f7ca48b-b98a-416a-a8f6-1e15a22318df",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "regions",
-                    ":region_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "region_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "57528e31-621e-4693-8162-eda9482f8122",
-          "name": "Roku List Project Roles",
-          "request": {
-            "name": "Roku List Project Roles",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id",
-                "roles",
-                "projects"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "items",
-                  "value": "100",
-                  "description": "The number of items per page. Use 0 for no limit."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "The page number. Use 0 for the first page."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "c4cd232f-8b83-4f5a-94c2-c9a11d75beef",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "roles",
-                    "projects"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"project_role_id\": 1811,\n    \"name\": \"string\",\n    \"permissions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"project_role_id\": 6124,\n    \"name\": \"string\",\n    \"permissions\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "da79e038-fccf-4860-aa01-c64886c74d35",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "roles",
-                    "projects"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4f1a9d3c-183f-450d-9743-ebfbda0f0768",
-          "name": "Roku Get Project Role",
-          "request": {
-            "name": "Roku Get Project Role",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id",
-                "roles",
-                "projects",
-                ":role_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "role_id",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "413f83d8-bac8-4c7e-8ed7-1886af74b880",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "roles",
-                    "projects",
-                    ":role_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "role_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"project_role_id\": 8244,\n  \"name\": \"string\",\n  \"permissions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "aaffb309-0898-44a9-928e-810bd95ee810",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "roles",
-                    "projects",
-                    ":role_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "role_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "64c62b9f-f0a5-4f05-bbd2-4dace565d7e4",
-          "name": "Roku List Group Roles",
-          "request": {
-            "name": "Roku List Group Roles",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id",
-                "roles",
-                "groups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "items",
-                  "value": "100",
-                  "description": "The number of items per page. Use 0 for no limit."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "The page number. Use 0 for the first page."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "d961d50c-3a7e-4e7e-807d-6882fb3d8619",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "roles",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"group_role_id\": 3918,\n    \"name\": \"string\",\n    \"permissions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"group_role_id\": 6317,\n    \"name\": \"string\",\n    \"permissions\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "93027113-0c06-4e51-9941-75c223c3b190",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "roles",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "items",
-                      "value": "100"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c3c11705-0306-441d-8c3c-81715182e412",
-          "name": "Roku Get Group Role",
-          "request": {
-            "name": "Roku Get Group Role",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organisations",
-                ":organisation_id",
-                "roles",
-                "groups",
-                ":role_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "role_id",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "organisation_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "19b9af68-fea3-4abc-9741-c0b2d4f51fb3",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "roles",
-                    "groups",
-                    ":role_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "role_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"group_role_id\": 9796,\n  \"name\": \"string\",\n  \"permissions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b4e6828f-6c47-426a-aa23-0eaacc6daf04",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organisations",
-                    ":organisation_id",
-                    "roles",
-                    "groups",
-                    ":role_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "role_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "organisation_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "67b7f4df-d3c1-48d5-8613-4b34e10fd7b7",
+          "createdAt": "2026-10-21T20:13:56.000Z",
+          "updatedAt": "2026-10-21T20:13:56.000Z",
+          "uid": "35240-67b7f4df-d3c1-48d5-8613-4b34e10fd7b7"
         }
       ],
-      "event": []
+      "id": "ca78bc30-1e07-44d2-803d-7f466f252a67",
+      "createdAt": "2026-10-21T20:13:56.000Z",
+      "updatedAt": "2026-10-21T20:13:56.000Z",
+      "uid": "35240-ca78bc30-1e07-44d2-803d-7f466f252a67"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
-    },
-    {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.roku.dev"
     }
-  ],
-  "info": {
-    "_postman_id": "15ee7a82-21a5-4c80-b69e-de65cd3b2041",
-    "name": "Roku External Control Protocol (ECP) Apps organisations API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

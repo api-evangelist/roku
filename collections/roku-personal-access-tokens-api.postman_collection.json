@@ -1,745 +1,726 @@
 {
+  "info": {
+    "_postman_id": "556194cc-ac26-4e72-8a54-12f1e4e03f29",
+    "name": "Roku Nabu Cloud Personal Access Tokens API",
+    "description": "Nabu Cloud is Roku's developer cloud platform for managing test devices, snapshots, builds, projects, organisations, groups, and personal access tokens. It provides REST APIs for orchestrating remote Roku test devices and CI/CD workflows.\n\nContact Support:\n Name: DevX Tools Team\n Email: dldevxtools@roku.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:14:00.000Z",
+    "updatedAt": "2026-10-21T20:14:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-556194cc-ac26-4e72-8a54-12f1e4e03f29"
+  },
   "item": [
     {
-      "id": "02adc6de-a9f8-4222-8dbc-2f69536b0e91",
-      "name": "personal-access-tokens",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "14818ff8-f3ce-4ea3-8242-513d159ffe6e",
-          "name": "Roku List Personal Access Tokens",
-          "request": {
-            "name": "Roku List Personal Access Tokens",
-            "description": {
-              "content": "List all personal access tokens for the authenticated user with their associated scopes.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "users",
-                "me",
-                "personal_access_tokens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "1fc43d20-258f-4205-9acd-48bdb9fd9668",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "users",
-                    "me",
-                    "personal_access_tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "users",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "me",
+                  "item": [
+                    {
+                      "name": "personal_access_tokens",
+                      "item": [
+                        {
+                          "name": "{token_id}",
+                          "item": [
+                            {
+                              "name": "refresh",
+                              "item": [
+                                {
+                                  "name": "Roku Refresh Personal Access Token",
+                                  "id": "053809b0-ff9c-4dc2-9751-0ee1541b04f6",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"expires_in_days\": 30\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens/:token_id/refresh",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        "me",
+                                        "personal_access_tokens",
+                                        ":token_id",
+                                        "refresh"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "d90c3805-5401-4359-ba5b-cb5598e702c1",
+                                          "key": "token_id",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Refresh a personal access token by updating its expiration date."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "17d8cd71-cfff-4dc0-bcfb-5602cd675485",
+                                      "name": "Successful Response",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"expires_in_days\": 30\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens/:token_id/refresh",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "me",
+                                            "personal_access_tokens",
+                                            ":token_id",
+                                            "refresh"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "token_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"scopes\": [\n    \"cdlddut-4xafds8qe-ytnk\",\n    \"blc-rvxzs6-fjbmpf1hhb9-d39k-4-8s\"\n  ],\n  \"version\": \"<integer>\",\n  \"created_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"status\": \"active\",\n  \"description\": \"<string>\",\n  \"last_used_at\": \"<dateTime>\",\n  \"revoked_at\": \"<dateTime>\"\n}",
+                                      "createdAt": "2026-10-21T20:14:01.000Z",
+                                      "updatedAt": "2026-10-21T20:14:01.000Z",
+                                      "uid": "35240-17d8cd71-cfff-4dc0-bcfb-5602cd675485"
+                                    },
+                                    {
+                                      "id": "8a23f145-720e-4770-bfc0-b35b6f7711ca",
+                                      "name": "Validation Error",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"expires_in_days\": 30\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens/:token_id/refresh",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "me",
+                                            "personal_access_tokens",
+                                            ":token_id",
+                                            "refresh"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "token_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                      "code": 422,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-10-21T20:14:01.000Z",
+                                      "updatedAt": "2026-10-21T20:14:01.000Z",
+                                      "uid": "35240-8a23f145-720e-4770-bfc0-b35b6f7711ca"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T20:14:01.000Z",
+                                  "updatedAt": "2026-10-21T20:14:01.000Z",
+                                  "uid": "35240-053809b0-ff9c-4dc2-9751-0ee1541b04f6"
+                                }
+                              ],
+                              "id": "a50ac056-610e-40fc-9570-09437d557257",
+                              "createdAt": "2026-10-21T20:14:01.000Z",
+                              "updatedAt": "2026-10-21T20:14:01.000Z",
+                              "uid": "35240-a50ac056-610e-40fc-9570-09437d557257"
+                            },
+                            {
+                              "name": "Roku Revoke Personal Access Token",
+                              "id": "b095d48d-e896-4a7d-aefa-68aa3c81a662",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens/:token_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "users",
+                                    "me",
+                                    "personal_access_tokens",
+                                    ":token_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "32db7ca9-5f34-48f8-b2be-c37041d1893b",
+                                      "key": "token_id",
+                                      "value": "<integer>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Revoke a specific personal access token for the authenticated user by token ID."
+                              },
+                              "response": [
+                                {
+                                  "id": "71fd9a17-9e98-4985-8992-a30851c019a6",
+                                  "name": "Successful Response",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens/:token_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        "me",
+                                        "personal_access_tokens",
+                                        ":token_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "token_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-10-21T20:14:01.000Z",
+                                  "updatedAt": "2026-10-21T20:14:01.000Z",
+                                  "uid": "35240-71fd9a17-9e98-4985-8992-a30851c019a6"
+                                },
+                                {
+                                  "id": "c906d9eb-e47c-4a8c-bdf0-47243806725a",
+                                  "name": "Validation Error",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens/:token_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        "me",
+                                        "personal_access_tokens",
+                                        ":token_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "token_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                  "code": 422,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T20:14:01.000Z",
+                                  "updatedAt": "2026-10-21T20:14:01.000Z",
+                                  "uid": "35240-c906d9eb-e47c-4a8c-bdf0-47243806725a"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:14:01.000Z",
+                              "updatedAt": "2026-10-21T20:14:01.000Z",
+                              "uid": "35240-b095d48d-e896-4a7d-aefa-68aa3c81a662"
+                            }
+                          ],
+                          "id": "e8ba1afd-5886-491f-bef0-6caa5227739d",
+                          "createdAt": "2026-10-21T20:14:01.000Z",
+                          "updatedAt": "2026-10-21T20:14:01.000Z",
+                          "uid": "35240-e8ba1afd-5886-491f-bef0-6caa5227739d"
+                        },
+                        {
+                          "name": "scopes",
+                          "item": [
+                            {
+                              "name": "Roku Get Personal Access Token Scopes",
+                              "id": "6a3921dc-ea6e-4edc-85de-4b9623244f9d",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens/scopes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "users",
+                                    "me",
+                                    "personal_access_tokens",
+                                    "scopes"
+                                  ]
+                                },
+                                "description": "Get all available scopes for personal access tokens that the authenticated user can use. Admin scope is only available to superusers."
+                              },
+                              "response": [
+                                {
+                                  "id": "811fe231-5134-4384-af1e-e96c09573248",
+                                  "name": "Successful Response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens/scopes",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        "me",
+                                        "personal_access_tokens",
+                                        "scopes"
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"name\": \"3oq3a79n4-0solzet7-39sub2gxlen-iq4fy-1exz59u7jy-jnv2-k-l-dqve8p\",\n    \"description\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"name\": \"dgk7es9dw-xnu3cxjp9-po\",\n    \"description\": \"<string>\",\n    \"permissions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                                  "createdAt": "2026-10-21T20:14:01.000Z",
+                                  "updatedAt": "2026-10-21T20:14:01.000Z",
+                                  "uid": "35240-811fe231-5134-4384-af1e-e96c09573248"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T20:14:01.000Z",
+                              "updatedAt": "2026-10-21T20:14:01.000Z",
+                              "uid": "35240-6a3921dc-ea6e-4edc-85de-4b9623244f9d"
+                            }
+                          ],
+                          "id": "0b1432ad-d8b8-4fbe-bc9d-055b2addb5c8",
+                          "createdAt": "2026-10-21T20:14:01.000Z",
+                          "updatedAt": "2026-10-21T20:14:01.000Z",
+                          "uid": "35240-0b1432ad-d8b8-4fbe-bc9d-055b2addb5c8"
+                        },
+                        {
+                          "name": "Roku List Personal Access Tokens",
+                          "id": "07fb6f3e-7e9b-4ccb-8fed-77b9cee1fee2",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                "me",
+                                "personal_access_tokens"
+                              ]
+                            },
+                            "description": "List all personal access tokens for the authenticated user with their associated scopes."
+                          },
+                          "response": [
+                            {
+                              "id": "edb25a1f-5fed-44c7-b149-1744957372fd",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "users",
+                                    "me",
+                                    "personal_access_tokens"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"scopes\": [\n      \"4ses62xra-8ol40obp-9u76u8p\",\n      \"ncu83oy3-4ri-jx9-6td4l-x7oh-tr22v73ma\"\n    ],\n    \"version\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"expires_at\": \"<dateTime>\",\n    \"status\": \"active\",\n    \"description\": \"<string>\",\n    \"last_used_at\": \"<dateTime>\",\n    \"revoked_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"scopes\": [\n      \"4ajbpj6xh25-levm-5nst3z6-cz6t8z-ejcdf-29wqo91-1fnr4lt-8b2yp18j\",\n      \"0xtmst-d-slp3v6ub-s-lm7oi7vg5n1-uma3h\"\n    ],\n    \"version\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"expires_at\": \"<dateTime>\",\n    \"status\": \"revoked\",\n    \"description\": \"<string>\",\n    \"last_used_at\": \"<dateTime>\",\n    \"revoked_at\": \"<dateTime>\"\n  }\n]",
+                              "createdAt": "2026-10-21T20:14:01.000Z",
+                              "updatedAt": "2026-10-21T20:14:01.000Z",
+                              "uid": "35240-edb25a1f-5fed-44c7-b149-1744957372fd"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:14:01.000Z",
+                          "updatedAt": "2026-10-21T20:14:01.000Z",
+                          "uid": "35240-07fb6f3e-7e9b-4ccb-8fed-77b9cee1fee2"
+                        },
+                        {
+                          "name": "Roku Create Personal Access Token",
+                          "id": "7eb3ca33-f83b-4c03-9921-baa5b2d3ee1c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"scopes\": [\n    \"u2d-kzy9v-09lhikv-up76kei-ufid36\",\n    \"pblrf57b-ie9uhg7ql\"\n  ],\n  \"description\": \"<string>\",\n  \"expires_in_days\": 30\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                "me",
+                                "personal_access_tokens"
+                              ]
+                            },
+                            "description": "Create a new personal access token for the authenticated user. The token will be returned only once and cannot be retrieved again. Maximum of 20 tokens per user."
+                          },
+                          "response": [
+                            {
+                              "id": "27bd8e2f-321d-48fb-b2f5-c06936f7349a",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"scopes\": [\n    \"u2d-kzy9v-09lhikv-up76kei-ufid36\",\n    \"pblrf57b-ie9uhg7ql\"\n  ],\n  \"description\": \"<string>\",\n  \"expires_in_days\": 30\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "users",
+                                    "me",
+                                    "personal_access_tokens"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"token\": \"<string>\",\n  \"token_info\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"scopes\": [\n      \"4x8hiw-nabvtru-g7ixlnq7-ubbzxv0-8ohblfwex1-wk7es2c-rc4k0buec3-69vlf9ppv-ordsq\",\n      \"iq16r-m2s-3b0aqm-nkj5e0qd8x9-rc-5pra5\"\n    ],\n    \"version\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"expires_at\": \"<dateTime>\",\n    \"status\": \"revoked\",\n    \"description\": \"<string>\",\n    \"last_used_at\": \"<dateTime>\",\n    \"revoked_at\": \"<dateTime>\"\n  }\n}",
+                              "createdAt": "2026-10-21T20:14:01.000Z",
+                              "updatedAt": "2026-10-21T20:14:01.000Z",
+                              "uid": "35240-27bd8e2f-321d-48fb-b2f5-c06936f7349a"
+                            },
+                            {
+                              "id": "2026d1bd-abc7-4e9f-b395-705bc41108a8",
+                              "name": "Validation Error",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"scopes\": [\n    \"u2d-kzy9v-09lhikv-up76kei-ufid36\",\n    \"pblrf57b-ie9uhg7ql\"\n  ],\n  \"description\": \"<string>\",\n  \"expires_in_days\": 30\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/users/me/personal_access_tokens",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "users",
+                                    "me",
+                                    "personal_access_tokens"
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T20:14:01.000Z",
+                              "updatedAt": "2026-10-21T20:14:01.000Z",
+                              "uid": "35240-2026d1bd-abc7-4e9f-b395-705bc41108a8"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:14:01.000Z",
+                          "updatedAt": "2026-10-21T20:14:01.000Z",
+                          "uid": "35240-7eb3ca33-f83b-4c03-9921-baa5b2d3ee1c"
+                        }
+                      ],
+                      "id": "c06a032c-465e-49eb-a042-d7344d988525",
+                      "createdAt": "2026-10-21T20:14:01.000Z",
+                      "updatedAt": "2026-10-21T20:14:01.000Z",
+                      "uid": "35240-c06a032c-465e-49eb-a042-d7344d988525"
+                    }
+                  ],
+                  "id": "b7110a68-c0a2-4d66-b84b-0a28e1f40aec",
+                  "createdAt": "2026-10-21T20:14:01.000Z",
+                  "updatedAt": "2026-10-21T20:14:01.000Z",
+                  "uid": "35240-b7110a68-c0a2-4d66-b84b-0a28e1f40aec"
                 }
               ],
-              "body": "[\n  {\n    \"id\": 8895,\n    \"name\": \"string\",\n    \"scopes\": [\n      \"hqpnqy-waiij6ao75-epu-exve5ic-tt8gklq2lh0-u9ey8\",\n      \"bbbb\"\n    ],\n    \"version\": 3609,\n    \"created_at\": \"1974-07-03T08:08:27.225Z\",\n    \"expires_at\": \"2020-06-29T12:32:54.126Z\",\n    \"status\": \"revoked\",\n    \"description\": \"string\",\n    \"last_used_at\": \"1977-04-06T10:45:25.239Z\",\n    \"revoked_at\": \"2015-08-21T19:50:04.096Z\"\n  },\n  {\n    \"id\": 1860,\n    \"name\": \"string\",\n    \"scopes\": [\n      \"0qy67c7ov9p-ck-0vbok-x042-zgjk-s3m38dd3-bh1e6qi-91e2dn-3uwno4x\",\n      \"brqomfpl-5orzvf-0-a4a59z-kzahaqzjx-2cpmv2-3-xlud0-i0-vvhum-iqqako\"\n    ],\n    \"version\": 5885,\n    \"created_at\": \"1962-10-27T16:51:01.560Z\",\n    \"expires_at\": \"1975-04-26T16:40:51.481Z\",\n    \"status\": \"active\",\n    \"description\": \"string\",\n    \"last_used_at\": \"1958-10-21T13:05:16.533Z\",\n    \"revoked_at\": \"1994-08-16T22:02:33.472Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "ee678f54-a78c-4f2a-b5a2-696a288ca3fe",
+              "createdAt": "2026-10-21T20:14:01.000Z",
+              "updatedAt": "2026-10-21T20:14:01.000Z",
+              "uid": "35240-ee678f54-a78c-4f2a-b5a2-696a288ca3fe"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "beb765d8-63ea-44f7-b345-33fd8d30de85",
-          "name": "Roku Create Personal Access Token",
-          "request": {
-            "name": "Roku Create Personal Access Token",
-            "description": {
-              "content": "Create a new personal access token for the authenticated user. The token will be returned only once and cannot be retrieved again. Maximum of 20 tokens per user.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "users",
-                "me",
-                "personal_access_tokens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"expires_in_days\": 30\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "fad560bc-3c54-4d6a-9f11-76f7692cae99",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "users",
-                    "me",
-                    "personal_access_tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"expires_in_days\": 30\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"token\": \"string\",\n  \"token_info\": {\n    \"id\": 6306,\n    \"name\": \"string\",\n    \"scopes\": [\n      \"6cly1s6wu-ep-gwofev-n41-6d-ja99h3sn39j\",\n      \"wp-06-4uv6mf45766-obrr70b-5c7ibt9b-phvzzu-5wiludrk-i31dve-yj-fl58vk609\"\n    ],\n    \"version\": 4933,\n    \"created_at\": \"2009-07-07T23:59:47.621Z\",\n    \"expires_at\": \"2016-09-19T10:21:39.705Z\",\n    \"status\": \"revoked\",\n    \"description\": \"string\",\n    \"last_used_at\": \"1980-11-05T22:35:28.452Z\",\n    \"revoked_at\": \"2010-08-14T10:29:34.875Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cf017618-3c11-4ea5-a711-36f32cd01a7f",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "users",
-                    "me",
-                    "personal_access_tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"expires_in_days\": 30\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "80fdc9c6-f594-4ee3-aaf9-537f54fb9e75",
-          "name": "Roku Revoke Personal Access Token",
-          "request": {
-            "name": "Roku Revoke Personal Access Token",
-            "description": {
-              "content": "Revoke a specific personal access token for the authenticated user by token ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "users",
-                "me",
-                "personal_access_tokens",
-                ":token_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "token_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE"
-          },
-          "response": [
-            {
-              "id": "cea9cfd7-a0b0-4818-9793-8b41d8046550",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "users",
-                    "me",
-                    "personal_access_tokens",
-                    ":token_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "token_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "85f7f34c-a185-48df-984d-2cff928f2d30",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "users",
-                    "me",
-                    "personal_access_tokens",
-                    ":token_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "token_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c622f930-48d6-4d1d-8055-7a9711a7bdac",
-          "name": "Roku Get Personal Access Token Scopes",
-          "request": {
-            "name": "Roku Get Personal Access Token Scopes",
-            "description": {
-              "content": "Get all available scopes for personal access tokens that the authenticated user can use. Admin scope is only available to superusers.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "users",
-                "me",
-                "personal_access_tokens",
-                "scopes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [
-            {
-              "id": "76dbf6f7-ec38-4778-8673-f5a6e8f5289d",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "users",
-                    "me",
-                    "personal_access_tokens",
-                    "scopes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"name\": \"sptla06b-0-2ugwlcydw8-8wtpwoer30-l0kcgarw-l7wjstbn-z6mv9h9r\",\n    \"description\": \"string\",\n    \"permissions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"name\": \"h87kva-og72yniikv\",\n    \"description\": \"string\",\n    \"permissions\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9d90a0b1-61e2-4d56-bea6-3dcb5be9260c",
-          "name": "Roku Refresh Personal Access Token",
-          "request": {
-            "name": "Roku Refresh Personal Access Token",
-            "description": {
-              "content": "Refresh a personal access token by updating its expiration date.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "users",
-                "me",
-                "personal_access_tokens",
-                ":token_id",
-                "refresh"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "token_id",
-                  "description": "(Required) "
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"expires_in_days\": 30\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "bece0a2c-1f3d-4557-a7bd-2cbfb5fe21b4",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "users",
-                    "me",
-                    "personal_access_tokens",
-                    ":token_id",
-                    "refresh"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "token_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"expires_in_days\": 30\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 1553,\n  \"name\": \"string\",\n  \"scopes\": [\n    \"gxva-80w-gvleub3rzgu-26vql-m-u\",\n    \"5q9gde-dhg-rpn1gv0b2l-7l-d-y\"\n  ],\n  \"version\": 5307,\n  \"created_at\": \"1969-09-13T09:23:16.161Z\",\n  \"expires_at\": \"1947-02-15T02:06:24.268Z\",\n  \"status\": \"active\",\n  \"description\": \"string\",\n  \"last_used_at\": \"1954-07-26T16:52:53.384Z\",\n  \"revoked_at\": \"1947-09-24T01:48:56.386Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4d012e0f-198b-4197-a269-9b6607970d20",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "users",
-                    "me",
-                    "personal_access_tokens",
-                    ":token_id",
-                    "refresh"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "token_id",
-                      "description": "(Required) "
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"expires_in_days\": 30\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ceecb0f3-143a-458a-bb4b-c82997962012",
+          "createdAt": "2026-10-21T20:14:01.000Z",
+          "updatedAt": "2026-10-21T20:14:01.000Z",
+          "uid": "35240-ceecb0f3-143a-458a-bb4b-c82997962012"
         }
       ],
-      "event": []
+      "id": "bff0f6ac-c414-4058-89dd-769c29262822",
+      "createdAt": "2026-10-21T20:14:01.000Z",
+      "updatedAt": "2026-10-21T20:14:01.000Z",
+      "uid": "35240-bff0f6ac-c414-4058-89dd-769c29262822"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
-    },
-    {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.roku.dev"
     }
-  ],
-  "info": {
-    "_postman_id": "4359184b-ac82-4aae-83af-2d45cd06244b",
-    "name": "Roku External Control Protocol (ECP) Apps personal-access-tokens API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

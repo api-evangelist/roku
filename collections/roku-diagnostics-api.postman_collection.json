@@ -1,505 +1,487 @@
 {
+  "info": {
+    "_postman_id": "a24bd72e-436f-4616-9082-be9e60dd8cfb",
+    "name": "Roku External Control Protocol (ECP) Diagnostics API",
+    "description": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network.\n\nContact Support:\n Name: Roku Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:13:12.000Z",
+    "updatedAt": "2026-10-21T20:13:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a24bd72e-436f-4616-9082-be9e60dd8cfb"
+  },
   "item": [
     {
-      "id": "6212c4a0-14e1-4f15-a590-86ec24e81251",
-      "name": "Diagnostics",
-      "description": {
-        "content": "Developer-mode diagnostics and performance counters",
-        "type": "text/plain"
-      },
+      "name": "query",
       "item": [
         {
-          "id": "0657de63-cb76-4b40-9618-362e21a07d8c",
-          "name": "Roku Query Channel Performance",
-          "request": {
-            "name": "Roku Query Channel Performance",
-            "description": {
-              "content": "Returns CPU and memory utilization metrics for the foreground channel. Requires Roku Developer Mode.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "chanperf"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "chanperf",
+          "item": [
             {
-              "id": "b7bc1256-a328-4969-b9a2-f528c027fb02",
-              "name": "Channel perf metrics XML",
-              "originalRequest": {
+              "name": "Roku Query Channel Performance",
+              "id": "b74f339f-042b-4c17-8cdf-139c29a72d0c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/query/chanperf",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "query",
                     "chanperf"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
+                "description": "Returns CPU and memory utilization metrics for the foreground channel. Requires Roku Developer Mode."
+              },
+              "response": [
+                {
+                  "id": "dda372e7-d112-44c8-968e-0340af82c4a0",
+                  "name": "Channel perf metrics XML",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/chanperf",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "chanperf"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "createdAt": "2026-10-21T20:13:13.000Z",
+                  "updatedAt": "2026-10-21T20:13:13.000Z",
+                  "uid": "35240-dda372e7-d112-44c8-968e-0340af82c4a0"
+                }
+              ],
+              "createdAt": "2026-10-21T20:13:13.000Z",
+              "updatedAt": "2026-10-21T20:13:13.000Z",
+              "uid": "35240-b74f339f-042b-4c17-8cdf-139c29a72d0c"
+            }
+          ],
+          "id": "790480c5-e9be-48f3-8570-4d2ff576fa16",
+          "createdAt": "2026-10-21T20:13:13.000Z",
+          "updatedAt": "2026-10-21T20:13:13.000Z",
+          "uid": "35240-790480c5-e9be-48f3-8570-4d2ff576fa16"
+        },
+        {
+          "name": "r2d2-bitmaps",
+          "item": [
+            {
+              "name": "Roku Query R2D2 Bitmaps",
+              "id": "55470531-37fa-4785-9292-8d3759125b0e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d6a3880a-1327-4550-b340-4eb54df2cdc3",
-          "name": "Roku Query R2D2 Bitmaps",
-          "request": {
-            "name": "Roku Query R2D2 Bitmaps",
-            "description": {
-              "content": "Lists currently loaded texture/bitmap assets and their memory footprint. Requires Roku Developer Mode.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "r2d2-bitmaps"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b8e51128-b844-41af-8fd7-b22177015301",
-              "name": "Bitmap inventory XML",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/query/r2d2-bitmaps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "query",
                     "r2d2-bitmaps"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/xml"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Lists currently loaded texture/bitmap assets and their memory footprint. Requires Roku Developer Mode."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a4dbd67a-3841-4b1b-b852-a136546e4c19",
-          "name": "Roku Query SceneGraph Nodes",
-          "request": {
-            "name": "Roku Query SceneGraph Nodes",
-            "description": {
-              "content": "Enumerates all SceneGraph nodes currently allocated by the channel along with reference counts. Requires Roku Developer Mode.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "sgnodes",
-                "all"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5a70ede5-40d4-47c2-9ca9-77fa7cae5167",
-              "name": "SceneGraph node tree XML",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "query",
-                    "sgnodes",
-                    "all"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
+                  "id": "2c9df5fc-c783-47d2-96ea-0c968a707944",
+                  "name": "Bitmap inventory XML",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/r2d2-bitmaps",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "r2d2-bitmaps"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/xml"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "createdAt": "2026-10-21T20:13:13.000Z",
+                  "updatedAt": "2026-10-21T20:13:13.000Z",
+                  "uid": "35240-2c9df5fc-c783-47d2-96ea-0c968a707944"
                 }
               ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
+              "createdAt": "2026-10-21T20:13:13.000Z",
+              "updatedAt": "2026-10-21T20:13:13.000Z",
+              "uid": "35240-55470531-37fa-4785-9292-8d3759125b0e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "2a35e4de-6f66-4b67-812a-56832319422d",
+          "createdAt": "2026-10-21T20:13:13.000Z",
+          "updatedAt": "2026-10-21T20:13:13.000Z",
+          "uid": "35240-2a35e4de-6f66-4b67-812a-56832319422d"
         },
         {
-          "id": "36ce0892-ce1a-433b-95cc-f37c63239e39",
-          "name": "Roku Query Registry",
-          "request": {
-            "name": "Roku Query Registry",
-            "description": {
-              "content": "Returns the persistent registry entries written by the specified channel. Requires Roku Developer Mode.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "registry",
-                ":appId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) The Roku channel identifier"
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "sgnodes",
+          "item": [
             {
-              "id": "7d25f5d4-7e80-48af-ac4b-d6382e4c79ae",
-              "name": "Registry entries XML",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "query",
-                    "registry",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) The Roku channel identifier"
+              "name": "all",
+              "item": [
+                {
+                  "name": "Roku Query SceneGraph Nodes",
+                  "id": "fce10a33-5228-467a-975b-250aa9767e61",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/sgnodes/all",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "sgnodes",
+                        "all"
+                      ]
                     },
+                    "description": "Enumerates all SceneGraph nodes currently allocated by the channel along with reference counts. Requires Roku Developer Mode."
+                  },
+                  "response": [
                     {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
+                      "id": "1fa41d86-f335-4dc6-a4cb-f6b8db7dd1c5",
+                      "name": "SceneGraph node tree XML",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/xml"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/query/sgnodes/all",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "query",
+                            "sgnodes",
+                            "all"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "xml",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/xml"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "createdAt": "2026-10-21T20:13:13.000Z",
+                      "updatedAt": "2026-10-21T20:13:13.000Z",
+                      "uid": "35240-1fa41d86-f335-4dc6-a4cb-f6b8db7dd1c5"
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/xml"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
+                  ],
+                  "createdAt": "2026-10-21T20:13:13.000Z",
+                  "updatedAt": "2026-10-21T20:13:13.000Z",
+                  "uid": "35240-fce10a33-5228-467a-975b-250aa9767e61"
                 }
               ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
+              "id": "2ee52c1e-e1f6-4ae3-9e1a-63b16fe8fcf3",
+              "createdAt": "2026-10-21T20:13:13.000Z",
+              "updatedAt": "2026-10-21T20:13:13.000Z",
+              "uid": "35240-2ee52c1e-e1f6-4ae3-9e1a-63b16fe8fcf3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f0a0609a-0b86-4711-a05f-47fc2c22f093",
+          "createdAt": "2026-10-21T20:13:13.000Z",
+          "updatedAt": "2026-10-21T20:13:13.000Z",
+          "uid": "35240-f0a0609a-0b86-4711-a05f-47fc2c22f093"
         },
         {
-          "id": "60b58715-a318-4670-a36f-5459e57095d3",
-          "name": "Roku Query App State",
-          "request": {
-            "name": "Roku Query App State",
-            "description": {
-              "content": "Returns whether the specified channel is currently active, in the background, or inactive.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "app-state",
-                ":appId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) The Roku channel identifier"
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "registry",
+          "item": [
             {
-              "id": "ffbee358-50ea-4f6a-98c2-c9ecc81bad4c",
-              "name": "App state XML",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "query",
-                    "app-state",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) The Roku channel identifier"
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/xml"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{appId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/xml"
+                  "name": "Roku Query Registry",
+                  "id": "ae01a2a4-6b97-4212-99f2-c4ac1715eb9a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/registry/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "registry",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "56f4fb36-d99c-4766-b7bc-6c9fa2ed0845",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) The Roku channel identifier"
+                        }
+                      ]
+                    },
+                    "description": "Returns the persistent registry entries written by the specified channel. Requires Roku Developer Mode."
+                  },
+                  "response": [
+                    {
+                      "id": "8fc688cf-2cf3-4672-b368-ca625b0bcbf9",
+                      "name": "Registry entries XML",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/xml"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/query/registry/:appId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "query",
+                            "registry",
+                            ":appId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "xml",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/xml"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "createdAt": "2026-10-21T20:13:13.000Z",
+                      "updatedAt": "2026-10-21T20:13:13.000Z",
+                      "uid": "35240-8fc688cf-2cf3-4672-b368-ca625b0bcbf9"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:13:13.000Z",
+                  "updatedAt": "2026-10-21T20:13:13.000Z",
+                  "uid": "35240-ae01a2a4-6b97-4212-99f2-c4ac1715eb9a"
                 }
               ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
+              "id": "6cffc431-a5b8-499e-9ccb-fbf56a5431d2",
+              "createdAt": "2026-10-21T20:13:13.000Z",
+              "updatedAt": "2026-10-21T20:13:13.000Z",
+              "uid": "35240-6cffc431-a5b8-499e-9ccb-fbf56a5431d2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0e3b6ac2-1f3d-4a39-a451-9311d4883332",
+          "createdAt": "2026-10-21T20:13:13.000Z",
+          "updatedAt": "2026-10-21T20:13:13.000Z",
+          "uid": "35240-0e3b6ac2-1f3d-4a39-a451-9311d4883332"
+        },
+        {
+          "name": "app-state",
+          "item": [
+            {
+              "name": "{appId}",
+              "item": [
+                {
+                  "name": "Roku Query App State",
+                  "id": "4e06238c-a4f0-4d2b-ad27-6b1b45eb3c04",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/app-state/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "app-state",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d9d533ba-03ef-4e07-981d-14ce401f7578",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) The Roku channel identifier"
+                        }
+                      ]
+                    },
+                    "description": "Returns whether the specified channel is currently active, in the background, or inactive."
+                  },
+                  "response": [
+                    {
+                      "id": "948b0139-acd7-4d87-b264-08cc8169c3ec",
+                      "name": "App state XML",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/xml"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/query/app-state/:appId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "query",
+                            "app-state",
+                            ":appId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "xml",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/xml"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "createdAt": "2026-10-21T20:13:13.000Z",
+                      "updatedAt": "2026-10-21T20:13:13.000Z",
+                      "uid": "35240-948b0139-acd7-4d87-b264-08cc8169c3ec"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:13:13.000Z",
+                  "updatedAt": "2026-10-21T20:13:13.000Z",
+                  "uid": "35240-4e06238c-a4f0-4d2b-ad27-6b1b45eb3c04"
+                }
+              ],
+              "id": "c9cfdebe-48c0-4efe-8ae6-f7658cd3c67b",
+              "createdAt": "2026-10-21T20:13:13.000Z",
+              "updatedAt": "2026-10-21T20:13:13.000Z",
+              "uid": "35240-c9cfdebe-48c0-4efe-8ae6-f7658cd3c67b"
+            }
+          ],
+          "id": "af9e6acd-ad75-4da9-a125-dcb6b52d15c3",
+          "createdAt": "2026-10-21T20:13:13.000Z",
+          "updatedAt": "2026-10-21T20:13:13.000Z",
+          "uid": "35240-af9e6acd-ad75-4da9-a125-dcb6b52d15c3"
         }
       ],
-      "event": []
+      "id": "4d38e32e-7a63-4308-8b6e-84c7b8707596",
+      "createdAt": "2026-10-21T20:13:13.000Z",
+      "updatedAt": "2026-10-21T20:13:13.000Z",
+      "uid": "35240-4d38e32e-7a63-4308-8b6e-84c7b8707596"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
+      "key": "rokuDeviceIp",
+      "value": "192.168.1.100"
     },
     {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{rokuDeviceIp}}:8060"
     }
-  ],
-  "info": {
-    "_postman_id": "addf290a-11cc-4787-926b-58c2a48cf3a4",
-    "name": "Roku External Control Protocol (ECP) Apps Diagnostics API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

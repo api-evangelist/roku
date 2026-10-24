@@ -1,0 +1,388 @@
+{
+  "info": {
+    "_postman_id": "a0d874ef-f77a-4cdd-b1ec-bfd42650ddfb",
+    "name": "Roku Nabu Cloud AsyncAPI API",
+    "description": "Nabu Cloud is Roku's developer cloud platform for managing test devices, snapshots, builds, projects, organisations, groups, and personal access tokens. It provides REST APIs for orchestrating remote Roku test devices and CI/CD workflows.\n\nContact Support:\n Name: DevX Tools Team\n Email: dldevxtools@roku.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:14:42.000Z",
+    "updatedAt": "2026-10-21T20:14:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a0d874ef-f77a-4cdd-b1ec-bfd42650ddfb"
+  },
+  "item": [
+    {
+      "name": "asyncapi",
+      "item": [
+        {
+          "name": "Roku Serve Asyncapi Schema",
+          "id": "b8a618a1-5dec-4057-a538-72348601f526",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/asyncapi?sidebar=true&info=true&servers=true&operations=true&messages=true&schemas=true&errors=true&expandMessageExamples=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "asyncapi"
+              ],
+              "query": [
+                {
+                  "key": "sidebar",
+                  "value": "true"
+                },
+                {
+                  "key": "info",
+                  "value": "true"
+                },
+                {
+                  "key": "servers",
+                  "value": "true"
+                },
+                {
+                  "key": "operations",
+                  "value": "true"
+                },
+                {
+                  "key": "messages",
+                  "value": "true"
+                },
+                {
+                  "key": "schemas",
+                  "value": "true"
+                },
+                {
+                  "key": "errors",
+                  "value": "true"
+                },
+                {
+                  "key": "expandMessageExamples",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "Serve the AsyncAPI schema as an HTML response."
+          },
+          "response": [
+            {
+              "id": "00443978-6cda-46d2-80ef-001588b0ecc4",
+              "name": "Successful Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/asyncapi?sidebar=true&info=true&servers=true&operations=true&messages=true&schemas=true&errors=true&expandMessageExamples=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "asyncapi"
+                  ],
+                  "query": [
+                    {
+                      "key": "sidebar",
+                      "value": "true"
+                    },
+                    {
+                      "key": "info",
+                      "value": "true"
+                    },
+                    {
+                      "key": "servers",
+                      "value": "true"
+                    },
+                    {
+                      "key": "operations",
+                      "value": "true"
+                    },
+                    {
+                      "key": "messages",
+                      "value": "true"
+                    },
+                    {
+                      "key": "schemas",
+                      "value": "true"
+                    },
+                    {
+                      "key": "errors",
+                      "value": "true"
+                    },
+                    {
+                      "key": "expandMessageExamples",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-10-21T20:14:43.000Z",
+              "updatedAt": "2026-10-21T20:14:43.000Z",
+              "uid": "35240-00443978-6cda-46d2-80ef-001588b0ecc4"
+            },
+            {
+              "id": "bb005786-e3e3-43d7-a773-deb618398a12",
+              "name": "Validation Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/asyncapi?sidebar=true&info=true&servers=true&operations=true&messages=true&schemas=true&errors=true&expandMessageExamples=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "asyncapi"
+                  ],
+                  "query": [
+                    {
+                      "key": "sidebar",
+                      "value": "true"
+                    },
+                    {
+                      "key": "info",
+                      "value": "true"
+                    },
+                    {
+                      "key": "servers",
+                      "value": "true"
+                    },
+                    {
+                      "key": "operations",
+                      "value": "true"
+                    },
+                    {
+                      "key": "messages",
+                      "value": "true"
+                    },
+                    {
+                      "key": "schemas",
+                      "value": "true"
+                    },
+                    {
+                      "key": "errors",
+                      "value": "true"
+                    },
+                    {
+                      "key": "expandMessageExamples",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:14:43.000Z",
+              "updatedAt": "2026-10-21T20:14:43.000Z",
+              "uid": "35240-bb005786-e3e3-43d7-a773-deb618398a12"
+            }
+          ],
+          "createdAt": "2026-10-21T20:14:43.000Z",
+          "updatedAt": "2026-10-21T20:14:43.000Z",
+          "uid": "35240-b8a618a1-5dec-4057-a538-72348601f526"
+        }
+      ],
+      "id": "111f2ec0-50be-44e0-9772-e9722701b049",
+      "createdAt": "2026-10-21T20:14:43.000Z",
+      "updatedAt": "2026-10-21T20:14:43.000Z",
+      "uid": "35240-111f2ec0-50be-44e0-9772-e9722701b049"
+    },
+    {
+      "name": "asyncapi.json",
+      "item": [
+        {
+          "name": "Roku Download App Json Schema",
+          "id": "d4b68224-6979-4533-b61e-aeb0ce8602eb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/asyncapi.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "asyncapi.json"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f7219140-892a-4657-acf6-5c5d317eec46",
+              "name": "Successful Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/asyncapi.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "asyncapi.json"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-10-21T20:14:43.000Z",
+              "updatedAt": "2026-10-21T20:14:43.000Z",
+              "uid": "35240-f7219140-892a-4657-acf6-5c5d317eec46"
+            }
+          ],
+          "createdAt": "2026-10-21T20:14:43.000Z",
+          "updatedAt": "2026-10-21T20:14:43.000Z",
+          "uid": "35240-d4b68224-6979-4533-b61e-aeb0ce8602eb"
+        }
+      ],
+      "id": "f3655333-6eeb-4f87-ba17-d82acb728f67",
+      "createdAt": "2026-10-21T20:14:43.000Z",
+      "updatedAt": "2026-10-21T20:14:43.000Z",
+      "uid": "35240-f3655333-6eeb-4f87-ba17-d82acb728f67"
+    },
+    {
+      "name": "asyncapi.yaml",
+      "item": [
+        {
+          "name": "Roku Download App Yaml Schema",
+          "id": "34990260-700e-49d4-a2a1-a83c24e5d3da",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/asyncapi.yaml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "asyncapi.yaml"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "98476a20-07e9-47f7-8357-15f9627b41e5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/asyncapi.yaml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "asyncapi.yaml"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-10-21T20:14:43.000Z",
+              "updatedAt": "2026-10-21T20:14:43.000Z",
+              "uid": "35240-98476a20-07e9-47f7-8357-15f9627b41e5"
+            }
+          ],
+          "createdAt": "2026-10-21T20:14:43.000Z",
+          "updatedAt": "2026-10-21T20:14:43.000Z",
+          "uid": "35240-34990260-700e-49d4-a2a1-a83c24e5d3da"
+        }
+      ],
+      "id": "ea46d860-f652-4be1-84e3-e8166f853047",
+      "createdAt": "2026-10-21T20:14:43.000Z",
+      "updatedAt": "2026-10-21T20:14:43.000Z",
+      "uid": "35240-ea46d860-f652-4be1-84e3-e8166f853047"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloud.roku.dev"
+    }
+  ]
+}

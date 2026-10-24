@@ -1,113 +1,86 @@
 {
+  "info": {
+    "_postman_id": "2a8f15e2-0bec-4d62-9260-1e65fa6eff5b",
+    "name": "Roku External Control Protocol (ECP) Input API",
+    "description": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network.\n\nContact Support:\n Name: Roku Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:13:37.000Z",
+    "updatedAt": "2026-10-21T20:13:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2a8f15e2-0bec-4d62-9260-1e65fa6eff5b"
+  },
   "item": [
     {
-      "id": "19a46a92-5e39-45e2-ae07-61a2f7ad5cfa",
-      "name": "Input",
-      "description": {
-        "content": "Custom input event injection",
-        "type": "text/plain"
-      },
+      "name": "input",
       "item": [
         {
-          "id": "7bfc8279-3e86-47d4-ab0c-c8e2dc6e9fc0",
           "name": "Roku Send Input Event",
+          "id": "104e2962-ace4-499a-9906-e05f4ac9ad98",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Roku Send Input Event",
-            "description": {
-              "content": "Sends a custom input event (key/value query parameters) to the active channel via the `roInput` SceneGraph node. Used for deep-linking, sensor data, and external control integrations.",
-              "type": "text/plain"
-            },
+            "method": "POST",
+            "header": [],
             "url": {
-              "path": [
-                "input"
-              ],
+              "raw": "{{baseUrl}}/input",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
+              "path": [
+                "input"
               ]
             },
-            "method": "POST",
-            "auth": null
+            "description": "Sends a custom input event (key/value query parameters) to the active channel via the `roInput` SceneGraph node. Used for deep-linking, sensor data, and external control integrations."
           },
           "response": [
             {
-              "id": "d2a8adbd-01c5-4f83-bbed-3a230c4f2928",
+              "id": "f9f963f5-18bb-440a-ba59-6f73af6432cf",
               "name": "Input event delivered",
               "originalRequest": {
+                "method": "POST",
+                "header": [],
                 "url": {
-                  "path": [
-                    "input"
-                  ],
+                  "raw": "{{baseUrl}}/input",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
+                  "path": [
+                    "input"
                   ]
-                },
-                "method": "POST",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:13:37.000Z",
+              "updatedAt": "2026-10-21T20:13:37.000Z",
+              "uid": "35240-f9f963f5-18bb-440a-ba59-6f73af6432cf"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:13:37.000Z",
+          "updatedAt": "2026-10-21T20:13:37.000Z",
+          "uid": "35240-104e2962-ace4-499a-9906-e05f4ac9ad98"
         }
       ],
-      "event": []
+      "id": "ae1ae48e-8f5f-40fe-8284-9283ac2fce71",
+      "createdAt": "2026-10-21T20:13:37.000Z",
+      "updatedAt": "2026-10-21T20:13:37.000Z",
+      "uid": "35240-ae1ae48e-8f5f-40fe-8284-9283ac2fce71"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
+      "key": "rokuDeviceIp",
+      "value": "192.168.1.100"
     },
     {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{rokuDeviceIp}}:8060"
     }
-  ],
-  "info": {
-    "_postman_id": "66d6d0c8-05a5-47d6-82cd-fc728d4ab093",
-    "name": "Roku External Control Protocol (ECP) Apps Input API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

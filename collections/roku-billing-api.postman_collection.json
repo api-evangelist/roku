@@ -1,39 +1,26 @@
 {
+  "info": {
+    "_postman_id": "5fb113a3-1dc4-4fe4-918f-fbc48a730cbd",
+    "name": "Roku Pay Web Services Billing API",
+    "description": "Roku Pay Web Services provide server-to-server APIs for billing, subscription management,\ntransaction validation, and entitlement checks for monetized Roku channels.\n\nContact Support:\n Name: Roku Pay Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:12:46.000Z",
+    "updatedAt": "2026-10-21T20:12:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5fb113a3-1dc4-4fe4-918f-fbc48a730cbd"
+  },
   "item": [
     {
-      "id": "b4568777-2ea8-46ba-bd30-448194345f3e",
-      "name": "Billing",
-      "description": {
-        "content": "Billing cycle and credit management",
-        "type": "text/plain"
-      },
+      "name": "refund-subscription",
       "item": [
         {
-          "id": "f9882186-ba3c-4047-8999-e246fac3e625",
           "name": "Roku Refund Subscription",
+          "id": "781e9bbd-503d-41d8-8167-bee6f406bee4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Roku Refund Subscription",
-            "description": {
-              "content": "Issues a partial or full refund against a Roku Pay subscription.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "refund-subscription"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -44,201 +31,224 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/refund-subscription",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "refund-subscription"
+              ]
+            },
+            "description": "Issues a partial or full refund against a Roku Pay subscription."
           },
           "response": [
             {
-              "id": "99a42e8f-f4fc-4bba-aae9-45558ecea05e",
+              "id": "79695f9f-d31e-4e96-b585-6a8004c43dc7",
               "name": "Refund result",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "refund-subscription"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/refund-subscription?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refund-subscription"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1254,\n  \"errorMessage\": \"string\",\n  \"rokuCustomerId\": \"string\",\n  \"productCode\": \"string\",\n  \"effectiveDate\": \"1997-04-14T16:58:05.842Z\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"effectiveDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-79695f9f-d31e-4e96-b585-6a8004c43dc7"
             },
             {
-              "id": "298c2bd1-f1cc-4807-b4ae-e1ca9c97498d",
+              "id": "469af83f-a02e-451a-8d2d-72c1d9e87c00",
               "name": "Error response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "refund-subscription"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/refund-subscription?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refund-subscription"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1360,\n  \"errorMessage\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-469af83f-a02e-451a-8d2d-72c1d9e87c00"
             },
             {
-              "id": "21fafec8-d942-46f7-8997-46a973373a2d",
+              "id": "93fa74c3-30b3-4545-9d45-091d52207f23",
               "name": "Error response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "refund-subscription"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/refund-subscription?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refund-subscription"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1360,\n  \"errorMessage\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-93fa74c3-30b3-4545-9d45-091d52207f23"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-21T20:12:47.000Z",
+          "updatedAt": "2026-10-21T20:12:47.000Z",
+          "uid": "35240-781e9bbd-503d-41d8-8167-bee6f406bee4"
+        }
+      ],
+      "id": "3ec4d6a9-8f1e-4632-8cc0-be2ec9a23de9",
+      "createdAt": "2026-10-21T20:12:47.000Z",
+      "updatedAt": "2026-10-21T20:12:47.000Z",
+      "uid": "35240-3ec4d6a9-8f1e-4632-8cc0-be2ec9a23de9"
+    },
+    {
+      "name": "update-bill-cycle",
+      "item": [
+        {
+          "name": "Roku Update Bill Cycle",
+          "id": "eae64710-96f4-43d2-888e-b68b1e86169b",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e4d1021e-b9c3-453e-9995-be3c89922646",
-          "name": "Roku Update Bill Cycle",
+          },
           "request": {
-            "name": "Roku Update Bill Cycle",
-            "description": {
-              "content": "Adjusts the next billing date on an active Roku Pay subscription.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "update-bill-cycle"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -249,201 +259,224 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"nextBillDate\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/update-bill-cycle",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "update-bill-cycle"
+              ]
+            },
+            "description": "Adjusts the next billing date on an active Roku Pay subscription."
           },
           "response": [
             {
-              "id": "37e14173-87b0-413c-891e-0a2fd854511d",
+              "id": "10249e7a-3364-4443-a39c-9348c6396773",
               "name": "Updated billing schedule",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "update-bill-cycle"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"nextBillDate\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-bill-cycle?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-bill-cycle"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1254,\n  \"errorMessage\": \"string\",\n  \"rokuCustomerId\": \"string\",\n  \"productCode\": \"string\",\n  \"effectiveDate\": \"1997-04-14T16:58:05.842Z\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"effectiveDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-10249e7a-3364-4443-a39c-9348c6396773"
             },
             {
-              "id": "b47e9396-e657-4036-9602-b56ce0b788c7",
+              "id": "570b380e-dcc2-4afe-928e-50c06716f854",
               "name": "Error response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "update-bill-cycle"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"nextBillDate\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-bill-cycle?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-bill-cycle"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1360,\n  \"errorMessage\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-570b380e-dcc2-4afe-928e-50c06716f854"
             },
             {
-              "id": "dcce3b7c-66aa-4941-b2c9-66bfd887fe78",
+              "id": "01fbdee1-9a75-4801-9967-9ece7f313740",
               "name": "Error response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "update-bill-cycle"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"nextBillDate\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-bill-cycle?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-bill-cycle"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1360,\n  \"errorMessage\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-01fbdee1-9a75-4801-9967-9ece7f313740"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-21T20:12:47.000Z",
+          "updatedAt": "2026-10-21T20:12:47.000Z",
+          "uid": "35240-eae64710-96f4-43d2-888e-b68b1e86169b"
+        }
+      ],
+      "id": "daa81222-51ac-4b33-96cc-b738706a02ed",
+      "createdAt": "2026-10-21T20:12:47.000Z",
+      "updatedAt": "2026-10-21T20:12:47.000Z",
+      "uid": "35240-daa81222-51ac-4b33-96cc-b738706a02ed"
+    },
+    {
+      "name": "issue-service-credit",
+      "item": [
+        {
+          "name": "Roku Issue Service Credit",
+          "id": "67459814-450a-43a1-8257-79c0ee89a189",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e3b765a3-c716-49f7-9cee-d417114ce8ed",
-          "name": "Roku Issue Service Credit",
+          },
           "request": {
-            "name": "Roku Issue Service Credit",
-            "description": {
-              "content": "Grants an account-level service credit to the customer, typically used to compensate for service interruptions or as a goodwill gesture.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "issue-service-credit"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -454,203 +487,238 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/issue-service-credit",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "issue-service-credit"
+              ]
+            },
+            "description": "Grants an account-level service credit to the customer, typically used to compensate for service interruptions or as a goodwill gesture."
           },
           "response": [
             {
-              "id": "e9791096-cb78-4b23-9e06-9c8d35a88066",
+              "id": "33d72867-879a-4afc-89b9-c479d8411715",
               "name": "Credit issuance result",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "issue-service-credit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/issue-service-credit?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "issue-service-credit"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1254,\n  \"errorMessage\": \"string\",\n  \"rokuCustomerId\": \"string\",\n  \"productCode\": \"string\",\n  \"effectiveDate\": \"1997-04-14T16:58:05.842Z\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"productCode\": \"<string>\",\n  \"effectiveDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-33d72867-879a-4afc-89b9-c479d8411715"
             },
             {
-              "id": "3270e610-9480-48ca-b4f1-f3ba58222b69",
+              "id": "35060d0d-37c2-4168-bc81-0311448f9473",
               "name": "Error response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "issue-service-credit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/issue-service-credit?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "issue-service-credit"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1360,\n  \"errorMessage\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-35060d0d-37c2-4168-bc81-0311448f9473"
             },
             {
-              "id": "8aaab385-0b4d-47ee-9a75-3044d49d5568",
+              "id": "94a1a723-b2ce-4f5d-9e6f-e50682757803",
               "name": "Error response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "issue-service-credit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"partnerAPIKey\": \"<string>\",\n  \"rokuCustomerId\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"currency\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/issue-service-credit?partnerAPIKey=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "issue-service-credit"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "partnerAPIKey",
+                      "value": "<API Key>"
+                    }
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"errorCode\": 1360,\n  \"errorMessage\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-94a1a723-b2ce-4f5d-9e6f-e50682757803"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:12:47.000Z",
+          "updatedAt": "2026-10-21T20:12:47.000Z",
+          "uid": "35240-67459814-450a-43a1-8257-79c0ee89a189"
         }
       ],
-      "event": []
+      "id": "b0541bff-8883-48a6-a4f0-b45230818e0f",
+      "createdAt": "2026-10-21T20:12:47.000Z",
+      "updatedAt": "2026-10-21T20:12:47.000Z",
+      "uid": "35240-b0541bff-8883-48a6-a4f0-b45230818e0f"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "partnerAPIKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
-    },
-    {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://apipub.roku.com/listen/transaction-service.svc"
     }
-  ],
-  "info": {
-    "_postman_id": "f733ed86-0d7c-4f32-a2d8-3a9e2278cccd",
-    "name": "Roku External Control Protocol (ECP) Apps Billing API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

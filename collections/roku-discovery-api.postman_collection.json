@@ -1,211 +1,189 @@
 {
+  "info": {
+    "_postman_id": "3c483b9e-8110-4535-ae46-b57373eda08d",
+    "name": "Roku External Control Protocol (ECP) Discovery API",
+    "description": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network.\n\nContact Support:\n Name: Roku Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:13:19.000Z",
+    "updatedAt": "2026-10-21T20:13:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3c483b9e-8110-4535-ae46-b57373eda08d"
+  },
   "item": [
     {
-      "id": "92024b64-5df1-44ca-9ba1-805022989e13",
-      "name": "Discovery",
-      "description": {
-        "content": "Device discovery and metadata",
-        "type": "text/plain"
-      },
+      "name": "/",
       "item": [
         {
-          "id": "b7419534-e31f-4c2d-bbc3-56fdd88de93b",
           "name": "Roku Get Device Root",
+          "id": "889d8317-ed77-4bf0-9465-c717cdfc2907",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Roku Get Device Root",
-            "description": {
-              "content": "Returns the SSDP device description XML used for UPnP discovery.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/xml"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "Returns the SSDP device description XML used for UPnP discovery."
           },
           "response": [
             {
-              "id": "f4e9ace8-3f09-4089-bfdd-8659bab09f05",
+              "id": "8fe3111f-5e53-4835-88ae-cd3c9c915953",
               "name": "Device description XML",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "xml",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/xml"
                 }
               ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
               "cookie": [],
-              "_postman_previewlanguage": "xml"
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-8fe3111f-5e53-4835-88ae-cd3c9c915953"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
+          "createdAt": "2026-10-21T20:13:19.000Z",
+          "updatedAt": "2026-10-21T20:13:19.000Z",
+          "uid": "35240-889d8317-ed77-4bf0-9465-c717cdfc2907"
+        }
+      ],
+      "id": "92a92c6b-ace4-4c48-b349-7d2c8e381106",
+      "createdAt": "2026-10-21T20:13:19.000Z",
+      "updatedAt": "2026-10-21T20:13:19.000Z",
+      "uid": "35240-92a92c6b-ace4-4c48-b349-7d2c8e381106"
+    },
+    {
+      "name": "query",
+      "item": [
         {
-          "id": "61853089-e2fb-465c-aed9-e505dc29278d",
-          "name": "Roku Query Device Info",
-          "request": {
-            "name": "Roku Query Device Info",
-            "description": {
-              "content": "Returns metadata about the Roku device including model, serial number, software version, network status, supported features, and user account state.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "device-info"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "device-info",
+          "item": [
             {
-              "id": "0f03d876-e0a2-4589-a467-182524ade538",
-              "name": "Device info XML",
-              "originalRequest": {
+              "name": "Roku Query Device Info",
+              "id": "ba01f498-ff1d-40b3-8616-5d7543a8264b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/query/device-info",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "query",
                     "device-info"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/xml"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns metadata about the Roku device including model, serial number, software version, network status, supported features, and user account state."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/xml"
+                  "id": "b79de337-f92b-4f80-8672-826387b2974c",
+                  "name": "Device info XML",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/device-info",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "device-info"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <udn>(string)</udn>\n  <serialNumber>(string)</serialNumber>\n  <deviceId>(string)</deviceId>\n  <modelNumber>(string)</modelNumber>\n  <modelName>(string)</modelName>\n  <friendlyDeviceName>(string)</friendlyDeviceName>\n  <softwareVersion>(string)</softwareVersion>\n  <softwareBuild>(string)</softwareBuild>\n  <userDeviceName>(string)</userDeviceName>\n  <wifiMac>(string)</wifiMac>\n  <ethernetMac>(string)</ethernetMac>\n  <networkType>(string)</networkType>\n  <countryCode>(string)</countryCode>\n  <language>(string)</language>\n  <timeZone>(string)</timeZone>\n  <powerMode>(string)</powerMode>\n  <supportsEcsTextedit>(boolean)</supportsEcsTextedit>\n  <supportsEcsMicrophone>(boolean)</supportsEcsMicrophone>\n  <supportsWakeOnWlan>(boolean)</supportsWakeOnWlan>\n  <developerEnabled>(boolean)</developerEnabled>\n</element>",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-b79de337-f92b-4f80-8672-826387b2974c"
                 }
               ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <udn>(string)</udn>\n  <serialNumber>(string)</serialNumber>\n  <deviceId>(string)</deviceId>\n  <modelNumber>(string)</modelNumber>\n  <modelName>(string)</modelName>\n  <friendlyDeviceName>(string)</friendlyDeviceName>\n  <softwareVersion>12.5.0</softwareVersion>\n  <softwareBuild>(string)</softwareBuild>\n  <userDeviceName>(string)</userDeviceName>\n  <wifiMac>(string)</wifiMac>\n  <ethernetMac>(string)</ethernetMac>\n  <networkType>(string)</networkType>\n  <countryCode>(string)</countryCode>\n  <language>(string)</language>\n  <timeZone>(string)</timeZone>\n  <powerMode>(string)</powerMode>\n  <supportsEcsTextedit>(boolean)</supportsEcsTextedit>\n  <supportsEcsMicrophone>(boolean)</supportsEcsMicrophone>\n  <supportsWakeOnWlan>(boolean)</supportsWakeOnWlan>\n  <developerEnabled>(boolean)</developerEnabled>\n</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-ba01f498-ff1d-40b3-8616-5d7543a8264b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b0ee3136-734b-4de4-8759-3f4ebfcd9e9f",
+          "createdAt": "2026-10-21T20:13:19.000Z",
+          "updatedAt": "2026-10-21T20:13:19.000Z",
+          "uid": "35240-b0ee3136-734b-4de4-8759-3f4ebfcd9e9f"
         }
       ],
-      "event": []
+      "id": "2bdf026e-9ab3-4edc-a5d0-a4cc0e49e8a3",
+      "createdAt": "2026-10-21T20:13:19.000Z",
+      "updatedAt": "2026-10-21T20:13:19.000Z",
+      "uid": "35240-2bdf026e-9ab3-4edc-a5d0-a4cc0e49e8a3"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
+      "key": "rokuDeviceIp",
+      "value": "192.168.1.100"
     },
     {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{rokuDeviceIp}}:8060"
     }
-  ],
-  "info": {
-    "_postman_id": "d13df721-2813-41c3-aa64-879ce179d568",
-    "name": "Roku External Control Protocol (ECP) Apps Discovery API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

@@ -1,761 +1,713 @@
 {
+  "info": {
+    "_postman_id": "1bcc7059-b4d0-4897-90aa-a50a17754dd9",
+    "name": "Roku External Control Protocol (ECP) Query API",
+    "description": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network.\n\nContact Support:\n Name: Roku Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:14:11.000Z",
+    "updatedAt": "2026-10-21T20:14:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1bcc7059-b4d0-4897-90aa-a50a17754dd9"
+  },
   "item": [
     {
-      "id": "b92f8d11-d524-4700-88b6-e90d208096d7",
-      "name": "Query",
-      "description": {
-        "content": "Device, media, and TV state queries",
-        "type": "text/plain"
-      },
+      "name": "query",
       "item": [
         {
-          "id": "bcc5ef54-0ea3-41e3-a9e6-472a6b56271c",
-          "name": "Roku Query Device Info",
-          "request": {
-            "name": "Roku Query Device Info",
-            "description": {
-              "content": "Returns metadata about the Roku device including model, serial number, software version, network status, supported features, and user account state.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "device-info"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "device-info",
+          "item": [
             {
-              "id": "149b37f7-fe69-4b38-866e-50094500a696",
-              "name": "Device info XML",
-              "originalRequest": {
+              "name": "Roku Query Device Info",
+              "id": "8fc54b16-ea72-4896-ab74-df4760970567",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/query/device-info",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "query",
                     "device-info"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
+                "description": "Returns metadata about the Roku device including model, serial number, software version, network status, supported features, and user account state."
+              },
+              "response": [
+                {
+                  "id": "8252113a-2fe4-483e-bf74-0f42271ca28a",
+                  "name": "Device info XML",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/device-info",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "device-info"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <udn>(string)</udn>\n  <serialNumber>(string)</serialNumber>\n  <deviceId>(string)</deviceId>\n  <modelNumber>(string)</modelNumber>\n  <modelName>(string)</modelName>\n  <friendlyDeviceName>(string)</friendlyDeviceName>\n  <softwareVersion>(string)</softwareVersion>\n  <softwareBuild>(string)</softwareBuild>\n  <userDeviceName>(string)</userDeviceName>\n  <wifiMac>(string)</wifiMac>\n  <ethernetMac>(string)</ethernetMac>\n  <networkType>(string)</networkType>\n  <countryCode>(string)</countryCode>\n  <language>(string)</language>\n  <timeZone>(string)</timeZone>\n  <powerMode>(string)</powerMode>\n  <supportsEcsTextedit>(boolean)</supportsEcsTextedit>\n  <supportsEcsMicrophone>(boolean)</supportsEcsMicrophone>\n  <supportsWakeOnWlan>(boolean)</supportsWakeOnWlan>\n  <developerEnabled>(boolean)</developerEnabled>\n</element>",
+                  "createdAt": "2026-10-21T20:14:12.000Z",
+                  "updatedAt": "2026-10-21T20:14:12.000Z",
+                  "uid": "35240-8252113a-2fe4-483e-bf74-0f42271ca28a"
+                }
+              ],
+              "createdAt": "2026-10-21T20:14:12.000Z",
+              "updatedAt": "2026-10-21T20:14:12.000Z",
+              "uid": "35240-8fc54b16-ea72-4896-ab74-df4760970567"
+            }
+          ],
+          "id": "ef91664e-af24-424f-9555-a678fbd74f32",
+          "createdAt": "2026-10-21T20:14:12.000Z",
+          "updatedAt": "2026-10-21T20:14:12.000Z",
+          "uid": "35240-ef91664e-af24-424f-9555-a678fbd74f32"
+        },
+        {
+          "name": "apps",
+          "item": [
+            {
+              "name": "Roku Query Installed Apps",
+              "id": "d9f63577-d101-4fce-9aa2-36d85c323c27",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <udn>(string)</udn>\n  <serialNumber>(string)</serialNumber>\n  <deviceId>(string)</deviceId>\n  <modelNumber>(string)</modelNumber>\n  <modelName>(string)</modelName>\n  <friendlyDeviceName>(string)</friendlyDeviceName>\n  <softwareVersion>12.5.0</softwareVersion>\n  <softwareBuild>(string)</softwareBuild>\n  <userDeviceName>(string)</userDeviceName>\n  <wifiMac>(string)</wifiMac>\n  <ethernetMac>(string)</ethernetMac>\n  <networkType>(string)</networkType>\n  <countryCode>(string)</countryCode>\n  <language>(string)</language>\n  <timeZone>(string)</timeZone>\n  <powerMode>(string)</powerMode>\n  <supportsEcsTextedit>(boolean)</supportsEcsTextedit>\n  <supportsEcsMicrophone>(boolean)</supportsEcsMicrophone>\n  <supportsWakeOnWlan>(boolean)</supportsWakeOnWlan>\n  <developerEnabled>(boolean)</developerEnabled>\n</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7e1bea35-267e-49a5-9864-197ac183e57c",
-          "name": "Roku Query Installed Apps",
-          "request": {
-            "name": "Roku Query Installed Apps",
-            "description": {
-              "content": "Returns the list of channels (apps) installed on the device with their app ID, name, version, and type.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "apps"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e77d7180-0329-41c0-9b52-1d44b552c361",
-              "name": "Apps XML list",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/query/apps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "query",
                     "apps"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
+                "description": "Returns the list of channels (apps) installed on the device with their app ID, name, version, and type."
+              },
+              "response": [
+                {
+                  "id": "86c905ea-69a2-41dc-96bc-13d1055501ff",
+                  "name": "Apps XML list",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/apps",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "apps"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <apps>\n    <id>(string)</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </apps>\n  <apps>\n    <id>(string)</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </apps>\n</element>",
+                  "createdAt": "2026-10-21T20:14:12.000Z",
+                  "updatedAt": "2026-10-21T20:14:12.000Z",
+                  "uid": "35240-86c905ea-69a2-41dc-96bc-13d1055501ff"
+                }
+              ],
+              "createdAt": "2026-10-21T20:14:12.000Z",
+              "updatedAt": "2026-10-21T20:14:12.000Z",
+              "uid": "35240-d9f63577-d101-4fce-9aa2-36d85c323c27"
+            }
+          ],
+          "id": "8400d11a-47fa-4343-afee-761551102c22",
+          "createdAt": "2026-10-21T20:14:12.000Z",
+          "updatedAt": "2026-10-21T20:14:12.000Z",
+          "uid": "35240-8400d11a-47fa-4343-afee-761551102c22"
+        },
+        {
+          "name": "active-app",
+          "item": [
+            {
+              "name": "Roku Query Active App",
+              "id": "13261649-9073-41e7-beb1-43757f707f0d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <apps>\n    <id>12</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </apps>\n  <apps>\n    <id>12</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </apps>\n</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "42858b9c-4eee-4836-9a73-0e8345380ffb",
-          "name": "Roku Query Active App",
-          "request": {
-            "name": "Roku Query Active App",
-            "description": {
-              "content": "Returns the currently running app (or Roku home if no channel is active).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "active-app"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "aeb0b383-815e-45d2-b56a-dd5d13e9ce8c",
-              "name": "Active app XML",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/query/active-app",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "query",
                     "active-app"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
+                "description": "Returns the currently running app (or Roku home if no channel is active)."
+              },
+              "response": [
+                {
+                  "id": "f4f1599c-0290-40cd-a7b7-30aa4d3f1f66",
+                  "name": "Active app XML",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/active-app",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "active-app"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <app>\n    <id>(string)</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </app>\n  <screensaver>\n    <id>(string)</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </screensaver>\n</element>",
+                  "createdAt": "2026-10-21T20:14:12.000Z",
+                  "updatedAt": "2026-10-21T20:14:12.000Z",
+                  "uid": "35240-f4f1599c-0290-40cd-a7b7-30aa4d3f1f66"
+                }
+              ],
+              "createdAt": "2026-10-21T20:14:12.000Z",
+              "updatedAt": "2026-10-21T20:14:12.000Z",
+              "uid": "35240-13261649-9073-41e7-beb1-43757f707f0d"
+            }
+          ],
+          "id": "3f75bf2a-ec7f-42e4-9d5f-360646ba5e1d",
+          "createdAt": "2026-10-21T20:14:12.000Z",
+          "updatedAt": "2026-10-21T20:14:12.000Z",
+          "uid": "35240-3f75bf2a-ec7f-42e4-9d5f-360646ba5e1d"
+        },
+        {
+          "name": "icon",
+          "item": [
+            {
+              "name": "{appId}",
+              "item": [
+                {
+                  "name": "Roku Query App Icon",
+                  "id": "83daae1c-8124-454e-9c77-cf9277334673",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "image/png"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/icon/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "icon",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c1c5c82d-6a51-4a29-84a6-3ba02daf6a12",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) The Roku channel/app identifier"
+                        }
+                      ]
+                    },
+                    "description": "Returns the binary icon image for the given installed app."
+                  },
+                  "response": [
+                    {
+                      "id": "689a19ad-268a-4476-950a-43f85e850e24",
+                      "name": "Icon image",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "image/png"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/query/icon/:appId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "query",
+                            "icon",
+                            ":appId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "image/png"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<binary>",
+                      "createdAt": "2026-10-21T20:14:12.000Z",
+                      "updatedAt": "2026-10-21T20:14:12.000Z",
+                      "uid": "35240-689a19ad-268a-4476-950a-43f85e850e24"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:14:12.000Z",
+                  "updatedAt": "2026-10-21T20:14:12.000Z",
+                  "uid": "35240-83daae1c-8124-454e-9c77-cf9277334673"
+                }
+              ],
+              "id": "f4c00cd1-267f-4c5b-9a04-34735eb14efd",
+              "createdAt": "2026-10-21T20:14:12.000Z",
+              "updatedAt": "2026-10-21T20:14:12.000Z",
+              "uid": "35240-f4c00cd1-267f-4c5b-9a04-34735eb14efd"
+            }
+          ],
+          "id": "0457635b-f720-4df1-8d6c-864e25236673",
+          "createdAt": "2026-10-21T20:14:12.000Z",
+          "updatedAt": "2026-10-21T20:14:12.000Z",
+          "uid": "35240-0457635b-f720-4df1-8d6c-864e25236673"
+        },
+        {
+          "name": "media-player",
+          "item": [
+            {
+              "name": "Roku Query Media Player",
+              "id": "4402eda8-bde5-497d-bcf6-452126817c4d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <app>\n    <id>12</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </app>\n  <screensaver>\n    <id>12</id>\n    <type>(string)</type>\n    <version>(string)</version>\n    <subtype>(string)</subtype>\n    <name>(string)</name>\n  </screensaver>\n</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e358f246-ce2d-449e-9f83-ab784d72df86",
-          "name": "Roku Query App Icon",
-          "request": {
-            "name": "Roku Query App Icon",
-            "description": {
-              "content": "Returns the binary icon image for the given installed app.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "icon",
-                ":appId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) The Roku channel/app identifier"
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "image/png"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f0f80379-f4cf-4871-b9d9-831b111d8afc",
-              "name": "Icon image",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "query",
-                    "icon",
-                    ":appId"
-                  ],
+                  "raw": "{{baseUrl}}/query/media-player",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) The Roku channel/app identifier"
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "image/png"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "image/png"
-                }
-              ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "dd9d38db-021a-4f27-87f5-d5e3f43c7271",
-          "name": "Roku Query Media Player",
-          "request": {
-            "name": "Roku Query Media Player",
-            "description": {
-              "content": "Returns the playback state, stream URI, current position, duration, and buffering metrics for the active video player.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "media-player"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "219d7cb7-15ed-414e-b220-c5a34411c16c",
-              "name": "Media player state XML",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "query",
                     "media-player"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
+                "description": "Returns the playback state, stream URI, current position, duration, and buffering metrics for the active video player."
+              },
+              "response": [
+                {
+                  "id": "7860785c-b2b8-4cb0-8151-614e917ed639",
+                  "name": "Media player state XML",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/media-player",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "media-player"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <state>(string)</state>\n  <error>(boolean)</error>\n  <plugin>\n    <id>(string)</id>\n    <name>(string)</name>\n  </plugin>\n  <format>\n    <audio>(string)</audio>\n    <captions>(string)</captions>\n    <container>(string)</container>\n    <drm>(string)</drm>\n    <video>(string)</video>\n    <videoRes>(string)</videoRes>\n  </format>\n  <position>(integer)</position>\n  <duration>(integer)</duration>\n  <is_live>(boolean)</is_live>\n  <runtime>(integer)</runtime>\n  <buffering>\n    <current>(integer)</current>\n    <max>(integer)</max>\n    <target>(integer)</target>\n  </buffering>\n  <new_stream>\n    <speed>(integer)</speed>\n  </new_stream>\n  <stream_segment>\n    <bitrate>(integer)</bitrate>\n    <media_sequence>(integer)</media_sequence>\n    <segment_type>(string)</segment_type>\n    <time>(integer)</time>\n  </stream_segment>\n</element>",
+                  "createdAt": "2026-10-21T20:14:12.000Z",
+                  "updatedAt": "2026-10-21T20:14:12.000Z",
+                  "uid": "35240-7860785c-b2b8-4cb0-8151-614e917ed639"
+                }
+              ],
+              "createdAt": "2026-10-21T20:14:12.000Z",
+              "updatedAt": "2026-10-21T20:14:12.000Z",
+              "uid": "35240-4402eda8-bde5-497d-bcf6-452126817c4d"
+            }
+          ],
+          "id": "eef921ef-7c91-4092-b5cc-f01ed2f0639d",
+          "createdAt": "2026-10-21T20:14:12.000Z",
+          "updatedAt": "2026-10-21T20:14:12.000Z",
+          "uid": "35240-eef921ef-7c91-4092-b5cc-f01ed2f0639d"
+        },
+        {
+          "name": "tv-channels",
+          "item": [
+            {
+              "name": "Roku Query TV Channels",
+              "id": "76b09625-5754-4c56-9857-6adf9c1dae7e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <state>(string)</state>\n  <error>(boolean)</error>\n  <plugin>\n    <id>(string)</id>\n    <name>(string)</name>\n  </plugin>\n  <format>\n    <audio>(string)</audio>\n    <captions>(string)</captions>\n    <container>(string)</container>\n    <drm>(string)</drm>\n    <video>(string)</video>\n    <videoRes>(string)</videoRes>\n  </format>\n  <position>(integer)</position>\n  <duration>(integer)</duration>\n  <is_live>(boolean)</is_live>\n  <runtime>(integer)</runtime>\n  <buffering>\n    <current>(integer)</current>\n    <max>(integer)</max>\n    <target>(integer)</target>\n  </buffering>\n  <new_stream>\n    <speed>(integer)</speed>\n  </new_stream>\n  <stream_segment>\n    <bitrate>(integer)</bitrate>\n    <media_sequence>(integer)</media_sequence>\n    <segment_type>(string)</segment_type>\n    <time>(integer)</time>\n  </stream_segment>\n</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c959ab95-c123-4f08-8ed9-459f649a8ae8",
-          "name": "Roku Query TV Channels",
-          "request": {
-            "name": "Roku Query TV Channels",
-            "description": {
-              "content": "Returns the list of antenna or TV-input channels tuned on a Roku TV device.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "tv-channels"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "de058434-5311-4ed4-8fc7-7a5b2fca27e9",
-              "name": "TV channel list XML",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/query/tv-channels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "query",
                     "tv-channels"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
+                "description": "Returns the list of antenna or TV-input channels tuned on a Roku TV device."
+              },
+              "response": [
+                {
+                  "id": "a86f3c3c-900a-4ada-ad7e-0f69050acc88",
+                  "name": "TV channel list XML",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/tv-channels",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "tv-channels"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "createdAt": "2026-10-21T20:14:12.000Z",
+                  "updatedAt": "2026-10-21T20:14:12.000Z",
+                  "uid": "35240-a86f3c3c-900a-4ada-ad7e-0f69050acc88"
+                }
+              ],
+              "createdAt": "2026-10-21T20:14:12.000Z",
+              "updatedAt": "2026-10-21T20:14:12.000Z",
+              "uid": "35240-76b09625-5754-4c56-9857-6adf9c1dae7e"
+            }
+          ],
+          "id": "16d78627-15cb-4cc6-82de-bdb4aefdded3",
+          "createdAt": "2026-10-21T20:14:12.000Z",
+          "updatedAt": "2026-10-21T20:14:12.000Z",
+          "uid": "35240-16d78627-15cb-4cc6-82de-bdb4aefdded3"
+        },
+        {
+          "name": "tv-active-channel",
+          "item": [
+            {
+              "name": "Roku Query Active TV Channel",
+              "id": "e99c13f5-52f2-47da-8ff8-567c1ae28286",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "84f63c60-284f-435f-bd9d-547cf4c7d944",
-          "name": "Roku Query Active TV Channel",
-          "request": {
-            "name": "Roku Query Active TV Channel",
-            "description": {
-              "content": "Returns the currently tuned TV channel and signal information on a Roku TV device.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "tv-active-channel"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7be88e54-a062-49de-bb7f-64bcb91cc30f",
-              "name": "Active TV channel XML",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/query/tv-active-channel",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "query",
                     "tv-active-channel"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/xml"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns the currently tuned TV channel and signal information on a Roku TV device."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/xml"
+                  "id": "c4e68731-3295-401e-a0fd-7278d3744caa",
+                  "name": "Active TV channel XML",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/tv-active-channel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "tv-active-channel"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "createdAt": "2026-10-21T20:14:12.000Z",
+                  "updatedAt": "2026-10-21T20:14:12.000Z",
+                  "uid": "35240-c4e68731-3295-401e-a0fd-7278d3744caa"
                 }
               ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
+              "createdAt": "2026-10-21T20:14:12.000Z",
+              "updatedAt": "2026-10-21T20:14:12.000Z",
+              "uid": "35240-e99c13f5-52f2-47da-8ff8-567c1ae28286"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6c2e91b3-79d5-4675-acbb-937774e26d65",
+          "createdAt": "2026-10-21T20:14:12.000Z",
+          "updatedAt": "2026-10-21T20:14:12.000Z",
+          "uid": "35240-6c2e91b3-79d5-4675-acbb-937774e26d65"
         },
         {
-          "id": "cff00b1f-72d8-4fef-9049-c878d7049574",
-          "name": "Roku Query App State",
-          "request": {
-            "name": "Roku Query App State",
-            "description": {
-              "content": "Returns whether the specified channel is currently active, in the background, or inactive.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "query",
-                "app-state",
-                ":appId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) The Roku channel identifier"
-                },
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "app-state",
+          "item": [
             {
-              "id": "be2b864f-4c26-42d4-9b6b-a190d46ecc2a",
-              "name": "App state XML",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "query",
-                    "app-state",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) The Roku channel identifier"
-                    },
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/xml"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{appId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/xml"
+                  "name": "Roku Query App State",
+                  "id": "9368306d-5c09-4303-a86f-07eb3e2a5ee2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/query/app-state/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "query",
+                        "app-state",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "097aec68-31ed-4829-b899-aa5f36a8f618",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) The Roku channel identifier"
+                        }
+                      ]
+                    },
+                    "description": "Returns whether the specified channel is currently active, in the background, or inactive."
+                  },
+                  "response": [
+                    {
+                      "id": "b64d2b23-cd56-46ab-bb38-c6799b6217fb",
+                      "name": "App state XML",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/xml"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/query/app-state/:appId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "query",
+                            "app-state",
+                            ":appId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "xml",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/xml"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "createdAt": "2026-10-21T20:14:12.000Z",
+                      "updatedAt": "2026-10-21T20:14:12.000Z",
+                      "uid": "35240-b64d2b23-cd56-46ab-bb38-c6799b6217fb"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:14:12.000Z",
+                  "updatedAt": "2026-10-21T20:14:12.000Z",
+                  "uid": "35240-9368306d-5c09-4303-a86f-07eb3e2a5ee2"
                 }
               ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
+              "id": "2c9937a0-2e28-42b3-b314-59c2a316207c",
+              "createdAt": "2026-10-21T20:14:12.000Z",
+              "updatedAt": "2026-10-21T20:14:12.000Z",
+              "uid": "35240-2c9937a0-2e28-42b3-b314-59c2a316207c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "340b4fb5-83f4-4920-b3fd-3f1e27d3e9ba",
+          "createdAt": "2026-10-21T20:14:12.000Z",
+          "updatedAt": "2026-10-21T20:14:12.000Z",
+          "uid": "35240-340b4fb5-83f4-4920-b3fd-3f1e27d3e9ba"
         }
       ],
-      "event": []
+      "id": "3b542d8a-0114-4518-bcaa-ee3a4d2933f8",
+      "createdAt": "2026-10-21T20:14:12.000Z",
+      "updatedAt": "2026-10-21T20:14:12.000Z",
+      "uid": "35240-3b542d8a-0114-4518-bcaa-ee3a4d2933f8"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
+      "key": "rokuDeviceIp",
+      "value": "192.168.1.100"
     },
     {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{rokuDeviceIp}}:8060"
     }
-  ],
-  "info": {
-    "_postman_id": "e6571d88-4bee-4e72-954f-c74e11924fa2",
-    "name": "Roku External Control Protocol (ECP) Apps Query API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

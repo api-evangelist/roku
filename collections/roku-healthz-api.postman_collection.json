@@ -1,215 +1,211 @@
 {
+  "info": {
+    "_postman_id": "1ab19ea9-3d5b-4dcc-b992-abb77a3e8adb",
+    "name": "Roku Nabu Cloud Healthz API",
+    "description": "Nabu Cloud is Roku's developer cloud platform for managing test devices, snapshots, builds, projects, organisations, groups, and personal access tokens. It provides REST APIs for orchestrating remote Roku test devices and CI/CD workflows.\n\nContact Support:\n Name: DevX Tools Team\n Email: dldevxtools@roku.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:13:29.000Z",
+    "updatedAt": "2026-10-21T20:13:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1ab19ea9-3d5b-4dcc-b992-abb77a3e8adb"
+  },
   "item": [
     {
-      "id": "f7ccb435-e9cf-47b8-aede-29d749bebdda",
-      "name": "healthz",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "10c32fff-594c-46f6-aa5d-d18fd8e3d291",
-          "name": "Roku Healthz",
-          "request": {
-            "name": "Roku Healthz",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "-",
-                "livez"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "dcd86581-ac03-4841-a3b6-923d2f5ba06a",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "-",
-                    "livez"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "-",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "livez",
+                  "item": [
+                    {
+                      "name": "Roku Healthz",
+                      "id": "6234c0a0-432d-43fd-8599-66fcacdc8ec0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/-/livez",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "-",
+                            "livez"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e75fadf1-7ece-4ec3-96a2-21357e07a520",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/-/livez",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "-",
+                                "livez"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"proident5\": \"<string>\",\n  \"labore_89a\": \"<string>\",\n  \"incididunt_8e6\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:13:29.000Z",
+                          "updatedAt": "2026-10-21T20:13:29.000Z",
+                          "uid": "35240-e75fadf1-7ece-4ec3-96a2-21357e07a520"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:13:29.000Z",
+                      "updatedAt": "2026-10-21T20:13:29.000Z",
+                      "uid": "35240-6234c0a0-432d-43fd-8599-66fcacdc8ec0"
+                    }
+                  ],
+                  "id": "46b9cc08-3cd8-462d-9abf-2fc50a1b14aa",
+                  "createdAt": "2026-10-21T20:13:29.000Z",
+                  "updatedAt": "2026-10-21T20:13:29.000Z",
+                  "uid": "35240-46b9cc08-3cd8-462d-9abf-2fc50a1b14aa"
+                },
+                {
+                  "name": "readyz",
+                  "item": [
+                    {
+                      "name": "Roku Readyz",
+                      "id": "cabcc0b8-f1c9-45c4-b6ad-13ff43fa1a74",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/-/readyz",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "-",
+                            "readyz"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "ba8959ac-fb60-4d4f-b8ad-9232f5e39e3d",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/-/readyz",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "-",
+                                "readyz"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"cillum54\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:13:29.000Z",
+                          "updatedAt": "2026-10-21T20:13:29.000Z",
+                          "uid": "35240-ba8959ac-fb60-4d4f-b8ad-9232f5e39e3d"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:13:29.000Z",
+                      "updatedAt": "2026-10-21T20:13:29.000Z",
+                      "uid": "35240-cabcc0b8-f1c9-45c4-b6ad-13ff43fa1a74"
+                    }
+                  ],
+                  "id": "581f9d45-c7a3-4463-90f6-daa6711b0540",
+                  "createdAt": "2026-10-21T20:13:29.000Z",
+                  "updatedAt": "2026-10-21T20:13:29.000Z",
+                  "uid": "35240-581f9d45-c7a3-4463-90f6-daa6711b0540"
                 }
               ],
-              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "4f1d65d5-2c72-4659-a64a-911c9ba8eac9",
+              "createdAt": "2026-10-21T20:13:29.000Z",
+              "updatedAt": "2026-10-21T20:13:29.000Z",
+              "uid": "35240-4f1d65d5-2c72-4659-a64a-911c9ba8eac9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c6da8bf4-8902-4087-9fa4-086ae900c733",
-          "name": "Roku Readyz",
-          "request": {
-            "name": "Roku Readyz",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "-",
-                "readyz"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                  "type": "any",
-                  "value": "{{rokuDeviceIp}}",
-                  "key": "rokuDeviceIp"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "dc942b2d-71b4-4537-9ef8-b134e5bb604f",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "-",
-                    "readyz"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The IPv4 address of the Roku device, discovered via SSDP",
-                      "type": "any",
-                      "value": "{{rokuDeviceIp}}",
-                      "key": "rokuDeviceIp"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"key_0\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b1a9ca36-3785-40ba-b305-805893574b55",
+          "createdAt": "2026-10-21T20:13:29.000Z",
+          "updatedAt": "2026-10-21T20:13:29.000Z",
+          "uid": "35240-b1a9ca36-3785-40ba-b305-805893574b55"
         }
       ],
-      "event": []
+      "id": "453ae827-ccae-467f-92b3-664fc65d0c8e",
+      "createdAt": "2026-10-21T20:13:29.000Z",
+      "updatedAt": "2026-10-21T20:13:29.000Z",
+      "uid": "35240-453ae827-ccae-467f-92b3-664fc65d0c8e"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "The IPv4 address of the Roku device, discovered via SSDP",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "192.168.1.100",
-      "key": "rokuDeviceIp"
-    },
-    {
-      "type": "string",
-      "value": "http://{{rokuDeviceIp}}:8060",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.roku.dev"
     }
-  ],
-  "info": {
-    "_postman_id": "48717a8a-2cbd-4d96-853f-0b2b0090ac22",
-    "name": "Roku External Control Protocol (ECP) Apps healthz API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The External Control Protocol (ECP) is an HTTP-based API exposed on port 8060 of every Roku\nstreaming device on the local network. It enables third-party applications, mobile remote-control\napps, automated testing systems, and home-automation hubs to discover Roku devices via SSDP,\ninject simulated remote-control key presses, launch installed apps with deep-link parameters,\nquery device state, and retrieve diagnostic information.\n\nThe protocol is plain HTTP/1.1 (no TLS) and is intended for trusted local-network use only.\nMost control operations require the user to enable \"Control by mobile apps\" on the device.\nAdditional diagnostic endpoints (chanperf, sgnodes, registry, etc.) are gated behind Roku\nDeveloper Mode.\n\n\nContact Support:\n Name: Roku Developer Program",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
